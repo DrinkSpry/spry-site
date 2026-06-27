@@ -1,0 +1,5 @@
+# Spry static site — Netlify deploy config
+# Repo root IS the site (index.html at top level), no build step.
+[build]
+  publish = "."
+  command = ""

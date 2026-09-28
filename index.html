@@ -257,6 +257,19 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 .sticky-cta .p strong{display:block;color:var(--chalk);font-size:15px}
 @media (max-width:900px){.sticky-cta{display:flex}}
 
+
+/* motion: v1 loops, recolored (glow on black, screened over the teal) */
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.62;-webkit-mask-image:linear-gradient(90deg,transparent 16%,#000 60%),linear-gradient(180deg,#000 78%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 16%,#000 60%),linear-gradient(180deg,#000 78%,transparent 100%);mask-composite:intersect}
+@media (max-width:900px){.hero-vid{top:auto;bottom:0;height:66vh;opacity:.55;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 32%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 32%,#000 82%,transparent 100%);-webkit-mask-composite:source-over;mask-composite:add}}
+.cell.vidcell{background:var(--deeper);min-height:420px}
+.cell.vidcell video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.cell.vidcell::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,31,33,.94) 0%,rgba(8,31,33,.6) 36%,rgba(8,31,33,0) 64%);pointer-events:none}
+.cell.vidcell h3,.cell.vidcell p{position:relative;z-index:1}
+.section.founder{position:relative;overflow:hidden;padding:clamp(120px,15vw,210px) 0}
+.founder .bg-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;mix-blend-mode:screen;opacity:.62;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 80%,transparent 100%)}
+.founder::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 58% 50% at 50% 50%,rgba(18,59,61,.86) 0%,rgba(18,59,61,.5) 55%,rgba(18,59,61,0) 82%)}
+.founder .wrap{position:relative;z-index:2}
+@supports not (mix-blend-mode:screen){.hero-vid,.founder .bg-vid{display:none}}
 /* reveals */
 [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 [data-reveal].in{opacity:1;transform:none}
@@ -264,6 +277,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
   [data-reveal]{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
   .stage img,.cloud::before,.stage::before{transition:none}
+  .hero-vid,.founder .bg-vid{display:none}
 }
 .skip{position:absolute;left:12px;top:-60px;z-index:60;background:var(--ember);color:var(--deepest);padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none}
 .skip:focus{top:12px}
@@ -299,6 +313,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 <main id="top">
 
 <section class="hero" id="hero">
+  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/img/ribbons.webp" aria-hidden="true" tabindex="-1"><source src="/assets/img/ribbons.mp4" type="video/mp4"></video>
   <div class="hero-copy">
     <h1>Finally, a functional beverage that actually does something.</h1>
     <p class="lede">One peptide with published human trials, at the serving the trials used. Cold, lightly sparkling, made from a bean.</p>
@@ -348,7 +363,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
       </div>
       <div class="cell img c2"><img src="/assets/img/fava.webp" alt="Fava bean pods split open on linen" loading="lazy" width="1200" height="1490"></div>
       <div class="cell img c3"><video id="pourVideo" src="" poster="/assets/img/pour.webp" muted loop playsinline preload="none" aria-label="A cloudy, lightly sparkling drink being poured into a glass"></video></div>
-      <div class="cell text c4 tint">
+      <div class="cell text c4 vidcell">
+        <video class="lazy-vid" data-src="/assets/img/roll.mp4" poster="/assets/img/roll.webp" muted loop playsinline preload="none" aria-label="A hand rolls a can of Spry on a counter, then stands it back up"></video>
         <h3>Cloudy on purpose</h3>
         <p>Real fruit, and the color comes from the fruit. The haze is the peptide. Roll it once, then open.</p>
       </div>
@@ -390,7 +406,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 
 <section class="section flavors" id="flavors">
   <div class="wrap">
-    <h2 data-reveal>Science sells the first can. Taste sells the fourth.</h2>
+    <h2 data-reveal>It has to taste good, too.</h2>
     <p class="lede sub" data-reveal>Four flavors made with real fruit and kept low on sweetness. Pick one and the can changes.</p>
     <div class="pills" role="group" aria-label="Choose a flavor" data-reveal>
       <button class="pill" data-flavor="mango" aria-pressed="true">Mango Passionfruit</button>
@@ -463,8 +479,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 </section>
 
 <section class="section founder">
+  <video class="bg-vid lazy-vid" data-src="/assets/img/orbs.mp4" poster="/assets/img/orbs.webp" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   <div class="wrap" data-reveal>
-    <blockquote>“I came to peptides as a user first. I wanted the version I could buy where I buy groceries: a peptide studied in humans, safe to drink, and none of the methods I was never going to use. Easy to take at the right moment of the day, with benefits measured in people.”</blockquote>
+    <blockquote>“I came to peptides as a user first. I wanted one that was studied in people and safe to drink, sold where I buy my groceries. I couldn’t find it, so we made it.”</blockquote>
     <cite>Alejandro Navarro, founder</cite>
   </div>
 </section>

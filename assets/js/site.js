@@ -23,7 +23,9 @@
         initial: current,
         scrollEl: document.getElementById('hero'),
         startAngle: -0.35,
-        idle: 0.1,
+        idle: 0.2,
+        intro: 0.85,
+        introDur: 2.6,
         scrollTurns: 1.1
       });
     } catch (e) { document.documentElement.classList.add('no-webgl'); }
@@ -126,6 +128,32 @@
     function upd() { var on = !heroVisible && !reserveVisible; sticky.classList.toggle('on', on); sticky.setAttribute('aria-hidden', on ? 'false' : 'true'); }
     new IntersectionObserver(function (es) { heroVisible = es[0].isIntersecting; upd(); }, { threshold: 0.15 }).observe(hero);
     new IntersectionObserver(function (es) { reserveVisible = es[0].isIntersecting; upd(); }, { threshold: 0.05 }).observe(reserve);
+  }
+
+  // ---------- hero loop: pause when the hero is off screen ----------
+  var hv = document.getElementById('heroVid');
+  if (hv) {
+    if (reduce) { hv.removeAttribute('autoplay'); try { hv.pause(); } catch (e) {} }
+    else if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { var pr = hv.play(); if (pr && pr.catch) pr.catch(function () {}); } else { hv.pause(); }
+      }, { threshold: 0 }).observe(hv);
+    }
+  }
+
+  // ---------- other loops: load when near, pause when away ----------
+  var lazyVids = document.querySelectorAll('video.lazy-vid');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var lvo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) {
+          if (!v.getAttribute('src') && v.dataset.src) v.setAttribute('src', v.dataset.src);
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        } else if (v.getAttribute('src')) { v.pause(); }
+      });
+    }, { rootMargin: '200px 0px' });
+    lazyVids.forEach(function (v) { lvo.observe(v); });
   }
 
   // ---------- pour loop, loaded only when near ----------

@@ -3,113 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spry · Legal — reservation terms, refunds, terms, privacy</title>
-<meta name="description" content="Founding-member reservation terms, refund and cancellation policy, terms of service, and privacy policy for Spry RECOVER.">
+<title>Spry. The fine print, in plain language.</title>
+<meta name="description" content="Founding-member reservation terms, refund policy, terms of service and privacy policy for drinkspry.com.">
+<meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --cream:#F6F1E8; --cream-2:#EFE7D8; --green:#2D5F3F; --green-d:#234C32;
-    --ink:#161C25; --muted:#5C6660; --line:rgba(22,28,37,.12);
-    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    --legal-bg:url('https://d8j0ntlcm91z4.cloudfront.net/user_3F2MpxRCLnFG6YJR51H5xMSp8iW/hf_20260627_142458_48e8d58b-846e-4e27-85eb-bbcd623642a7.png');
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em}
-  a{color:var(--green)}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
-  .btn{display:inline-block;background:var(--green);color:var(--cream);font-weight:600;font-size:14px;padding:12px 22px;border-radius:999px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s}
-  .btn:hover{background:var(--green-d);transform:translateY(-1px)}
-
-  header{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .hdr{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-family:var(--serif);font-weight:600;font-size:26px;color:var(--ink);text-decoration:none}
-  .brand span{color:var(--green)}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{font-size:14px;color:var(--muted);text-decoration:none}
-  .nav-links a:hover{color:var(--ink)}
-  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
-
-  /* legal hero band, brand molecule backdrop */
-  .lhero{position:relative;padding:74px 0 58px;background-image:var(--legal-bg);background-size:cover;background-position:center right;overflow:hidden}
-  .lhero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--cream) 40%,rgba(246,241,232,.74) 70%,rgba(246,241,232,.42))}
-  .lhero .wrap{position:relative;z-index:2}
-  .lhero h1{font-size:clamp(34px,5vw,54px);margin:14px 0 0;max-width:720px}
-  .lhero .sub{font-size:16.5px;color:var(--muted);margin-top:16px}
-  .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-  .toc a{font-size:13px;font-weight:600;color:var(--green);text-decoration:none;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:999px;padding:8px 15px;transition:background .15s}
-  .toc a:hover{background:#fff}
-
-  main{padding:46px 0 20px}
-  .legal-wrap{max-width:880px;margin:0 auto;padding:0 24px}
-  .policy{background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px 40px;margin:22px 0;box-shadow:0 1px 3px rgba(0,0,0,.04);scroll-margin-top:84px}
-  .policy h2{font-size:clamp(24px,3vw,32px);color:var(--green);margin-bottom:4px}
-  .policy .eff{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:18px}
-  .policy h3{font-family:var(--sans);font-weight:600;font-size:15.5px;letter-spacing:0;margin:20px 0 5px;color:var(--ink)}
-  .policy p{font-size:14.5px;color:var(--ink);opacity:.86;margin-top:8px}
-  .policy p strong{opacity:1}
-  @media(max-width:600px){.policy{padding:26px 22px}}
-
-  .legal-foot-note{max-width:880px;margin:18px auto 0;padding:0 24px;font-size:13px;color:var(--muted)}
-
-  footer{background:var(--ink);color:rgba(246,241,232,.7);padding:58px 0 40px;margin-top:40px}
-  footer .brand{color:var(--cream)}
-  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
-  footer a{color:rgba(246,241,232,.7);text-decoration:none;font-size:14px}
-  footer a:hover{color:var(--cream)}
-  .disclaimer{margin-top:32px;padding-top:22px;border-top:1px solid rgba(246,241,232,.16);font-size:12px;line-height:1.6;color:rgba(246,241,232,.5);max-width:780px}
+@font-face{font-family:"Bricolage Grotesque";src:url("/assets/fonts/bricolage-var.woff2") format("woff2");font-weight:300 800;font-display:swap}
+@font-face{font-family:"Manrope";src:url("/assets/fonts/manrope-var.woff2") format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{--deep:#123B3D;--deeper:#0D2D2F;--off:#F2EFE8;--ink:#1E4B4D;--muted:#4C6C6D;--line:rgba(18,59,61,.16);--ember:#FF8A3D;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Manrope","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--off);color:var(--ink);line-height:1.6;font-size:16.5px;-webkit-font-smoothing:antialiased}
+a{color:var(--deep)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.nav{height:68px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;width:100%}
+.brand{font-family:var(--display);font-weight:800;font-size:27px;letter-spacing:-.045em;text-decoration:none;color:var(--deep)}
+.btn{display:inline-flex;align-items:center;background:var(--ember);color:#081F21;font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px;text-decoration:none}
+.lhero{padding:72px 0 40px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,4.5vw,3.6rem);letter-spacing:-.03em;line-height:1;color:var(--deep);max-width:16ch}
+.sub{margin-top:16px;color:var(--muted);max-width:60ch}
+.toc{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.toc a{font-size:14px;font-weight:600;text-decoration:none;border:1.5px solid var(--line);border-radius:999px;padding:9px 14px;color:var(--deep)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+main .legal-wrap{max-width:780px;margin:0 auto;padding:16px 24px 64px}
+.policy{padding:40px 0;border-top:1px solid var(--line)}
+.policy h2{font-family:var(--display);font-weight:700;font-size:1.9rem;letter-spacing:-.025em;line-height:1.05;color:var(--deep)}
+.policy .eff{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:12px 0 8px}
+.policy h3{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.01em;margin:26px 0 8px;color:var(--deep)}
+.policy p{margin-top:8px;max-width:70ch}
+.policy ul{margin:8px 0 0 22px}
+.legal-foot-note{text-align:center;padding:0 24px 56px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:14px}
+footer .foot-grid{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+footer a{text-decoration:none}
+.disclaimer{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;max-width:80ch;line-height:1.6}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap hdr">
-    <a class="brand" href="index.html">Spry<span>.</span></a>
-    <nav class="nav-links">
-      <a href="index.html#science">The science</a>
-      <a href="index.html#flavors">Flavors</a>
-      <a href="index.html#reserve" class="btn">Reserve yours</a>
-    </nav>
-  </div>
-</header>
-
-<!-- LEGAL HERO -->
-<section class="lhero">
-  <div class="wrap">
-    <div class="eyebrow">Legal</div>
-    <h1>The fine print, in plain language.</h1>
-    <p class="sub">Founding-member reservation terms, refunds, terms of service, and privacy · effective June 26, 2026.</p>
-    <div class="toc">
-      <a href="#reservation">Reservation terms</a>
-      <a href="#refund">Refund &amp; cancellation</a>
-      <a href="#terms">Terms of service</a>
-      <a href="#privacy">Privacy</a>
-    </div>
-  </div>
-</section>
-
+<header class="nav"><div class="wrap"><a class="brand" href="/">Spry</a><a class="btn" href="/#reserve">Reserve a pack</a></div></header>
+<section class="lhero"><div class="wrap">
+  <div class="eyebrow">Legal</div>
+  <h1>The fine print, in plain language.</h1>
+  <p class="sub">Founding-member reservation terms, refunds, terms of service, and privacy. Effective June 26, 2026, prices and ship window updated September 2026.</p>
+  <div class="toc"><a href="#reservation">Reservation terms</a><a href="#refund">Refund and cancellation</a><a href="#terms">Terms of service</a><a href="#privacy">Privacy</a></div>
+</div></section>
 <main>
   <div class="legal-wrap">
 
     <!-- 1 -->
     <div class="policy" id="reservation">
       <h2>Founding-Member Reservation Terms</h2>
-      <p class="eff">Effective June 26, 2026. These terms govern founding-member reservations placed at drinkspry.com.</p>
+      <p class="eff">Effective June 26, 2026. Updated September 28, 2026. These terms govern founding-member reservations placed at drinkspry.com.</p>
       <h3>What a reservation is</h3>
-      <p>A founding-member reservation lets you pre-pay for a 6-pack or 12-pack of Spry RECOVER to (a) reserve your place in our first production run and (b) lock founding-member pricing. A reservation is not a gift card, store credit, security, or investment, and confers no equity or ownership in Spry Inc.</p>
+      <p>A founding-member reservation lets you pre-pay for a 6-pack or 12-pack of Spry to (a) reserve your place in our first production run and (b) lock founding-member pricing. A reservation is not a gift card, store credit, security, or investment, and confers no equity or ownership in Spry Inc.</p>
       <h3>Payment</h3>
-      <p>You are charged the <strong>full price of the pack you select</strong> at the time you reserve (6-pack $35.94; 12-pack $64.99), plus any applicable tax. Funds are held by Spry and do not earn interest.</p>
+      <p>You are charged the <strong>full price of the pack you select</strong> at the time you reserve (6-pack $26.94; 12-pack $47.88), plus any applicable tax. Funds are held by Spry and do not earn interest.</p>
       <h3>Fully refundable</h3>
-      <p>Your reservation is <strong>fully refundable at any time before your order ships</strong>. To cancel and receive a full refund, email alejandro@drinkspry.com from the address used to reserve. Refunds are issued to the original payment method, typically within 5–10 business days.</p>
+      <p>Your reservation is <strong>fully refundable at any time before your order ships</strong>. To cancel and receive a full refund, email alejandro@drinkspry.com from the address used to reserve. Refunds are issued to the original payment method, typically within 5 to 10 business days.</p>
       <h3>Shipment timing and your refund right</h3>
-      <p>We expect to ship founding-member reservations in <strong>Q4 2026</strong>. This is a good-faith estimate, not a guaranteed date. Consistent with the U.S. FTC Mail, Internet, or Telephone Order Merchandise Rule, if we cannot ship by the estimated date (or within 30 days of any later date we communicate), we will notify you and you may consent to the new date or cancel for a full refund. If we are ever unable to deliver the product, you will receive a full refund.</p>
+      <p>We expect to ship founding-member reservations in <strong>December 2026</strong>. This is a good-faith estimate, not a guaranteed date. Consistent with the U.S. FTC Mail, Internet, or Telephone Order Merchandise Rule, if we cannot ship by the estimated date (or within 30 days of any later date we communicate), we will notify you and you may consent to the new date or cancel for a full refund. If we are ever unable to deliver the product, you will receive a full refund.</p>
       <h3>Flavors</h3>
       <p>You choose a flavor (or a mixed pack) when you reserve. Launch flavors may change before production; you may change your selection any time before your order ships, subject to availability.</p>
       <h3>Early-stage disclosure</h3>
@@ -119,9 +74,9 @@
     <!-- 2 -->
     <div class="policy" id="refund">
       <h2>Refund &amp; Cancellation Policy</h2>
-      <p class="eff">Effective June 26, 2026.</p>
-      <p><strong>Before shipment.</strong> Cancel any founding-member reservation any time before it ships for a full refund, no questions asked. Email alejandro@drinkspry.com from your reservation email address. Refunds go to the original payment method, typically within 5–10 business days.</p>
-      <p><strong>After shipment (at launch).</strong> If a product arrives damaged, defective, or incorrect, contact us within 14 days of delivery for a replacement or refund. Because this is a perishable, refrigerated food product, we generally cannot accept returns of opened or consumed product except where it is damaged, defective, or required by law.</p>
+      <p class="eff">Effective June 26, 2026. Updated September 28, 2026.</p>
+      <p><strong>Before shipment.</strong> Cancel any founding-member reservation any time before it ships for a full refund, no questions asked. Email alejandro@drinkspry.com from your reservation email address. Refunds go to the original payment method, typically within 5 to 10 business days.</p>
+      <p><strong>After shipment (at launch).</strong> If a product arrives damaged, defective, or incorrect, contact us within 14 days of delivery for a replacement or refund. Because this is a food product, we generally cannot accept returns of opened or consumed product except where it is damaged, defective, or required by law.</p>
       <p><strong>How to reach us.</strong> alejandro@drinkspry.com. We aim to respond within 2 business days.</p>
       <p>Nothing in this policy limits any non-waivable rights you have under applicable consumer-protection law.</p>
     </div>
@@ -165,35 +120,15 @@
   </div>
   <p class="legal-foot-note">Questions about any of the above? Email <a href="mailto:alejandro@drinkspry.com">alejandro@drinkspry.com</a>.</p>
 </main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <a class="brand" href="index.html" style="font-size:26px">Spry<span style="color:var(--green)">.</span></a>
-        <p style="font-size:14px;max-width:300px;margin-top:10px">A bioactive recovery peptide, in a can. Made for recovery and everyday strength.</p>
-      </div>
-      <div style="display:flex;gap:46px;flex-wrap:wrap">
-        <div style="display:grid;gap:10px">
-          <a href="index.html#inside">What's inside</a>
-          <a href="index.html#science">The science</a>
-          <a href="index.html#flavors">Flavors</a>
-          <a href="index.html#reserve">Reserve</a>
-        </div>
-        <div style="display:grid;gap:10px">
-          <a href="#reservation">Reservation terms</a>
-          <a href="#refund">Refund policy</a>
-          <a href="#terms">Terms of service</a>
-          <a href="#privacy">Privacy</a>
-        </div>
-      </div>
-    </div>
-    <div class="disclaimer">
-      Spry is an early-stage venture. Founding-member reservations are fully refundable and the product is not yet available for general sale. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-      <br><br>© 2026 Spry Inc. · drinkspry.com
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div><a class="brand" href="/">Spry</a><p style="margin-top:8px;max-width:36ch">The peptide drink. One clinically studied peptide, in a cold, lightly sparkling can.</p></div>
+    <div style="display:flex;gap:40px;flex-wrap:wrap">
+      <div style="display:grid;gap:8px"><a href="/#inside">What's in it</a><a href="/#science">The science</a><a href="/#flavors">Flavors</a><a href="/#reserve">Reserve a pack</a></div>
+      <div style="display:grid;gap:8px"><a href="#reservation">Reservation terms</a><a href="#refund">Refund policy</a><a href="#terms">Terms of service</a><a href="#privacy">Privacy</a></div>
     </div>
   </div>
-</footer>
-
+  <div class="disclaimer">Spry is an early-stage venture. Founding-member reservations are fully refundable and the product is not yet available for general sale. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.<br><br>© 2026 Spry Inc.</div>
+</div></footer>
 </body>
 </html>

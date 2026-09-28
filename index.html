@@ -1,489 +1,558 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-flavor="mango">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spry RECOVER · Founding Members · Reserve yours</title>
-<meta name="description" content="Spry RECOVER is a refrigerated, lightly sparkling bioactive peptide drink, made for recovery and everyday strength. Reserve your founding-member pack. Launching Q4 2026.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Spry. The peptide drink.</title>
+<meta name="description" content="One clinically studied peptide, at the serving the trials used, in a cold, lightly sparkling can. Reserve a pack. The first run ships in December.">
+<meta name="theme-color" content="#123B3D">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://drinkspry.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spry">
-<meta property="og:title" content="Spry · Recovery is finally drinkable.">
-<meta property="og:description" content="A refrigerated, lightly sparkling bioactive peptide recovery drink. Reserve your founding-member pack. Launching Q4 2026.">
+<meta property="og:title" content="Spry. The peptide drink.">
+<meta property="og:description" content="Finally, a functional beverage that actually does something. One clinically studied peptide in a cold, lightly sparkling can. First run ships in December.">
 <meta property="og:image" content="https://drinkspry.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://drinkspry.com/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Spry · Recovery is finally drinkable.">
-<meta name="twitter:description" content="A refrigerated, lightly sparkling bioactive peptide recovery drink. Reserve your founding-member pack.">
+<meta name="twitter:title" content="Spry. The peptide drink.">
+<meta name="twitter:description" content="Finally, a functional beverage that actually does something. One clinically studied peptide in a cold, lightly sparkling can.">
 <meta name="twitter:image" content="https://drinkspry.com/og-image.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/can/label-mango.webp" as="image" crossorigin="anonymous">
 <style>
-  :root{
-    --cream:#F6F1E8; --cream-2:#EFE7D8; --green:#2D5F3F; --green-d:#234C32;
-    --ink:#161C25; --muted:#5C6660; --line:rgba(22,28,37,.12);
-    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    --pep:url('https://d8j0ntlcm91z4.cloudfront.net/user_3F2MpxRCLnFG6YJR51H5xMSp8iW/hf_20260619_190920_0665788f-f5e0-425e-9581-c33930ca16a0.png');
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
-  .btn{display:inline-block;background:var(--green);color:#fff;font-weight:600;font-size:14px;padding:12px 22px;border-radius:999px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s}
-  .btn:hover{background:var(--green-d);transform:translateY(-1px)}
-  .btn.lg{font-size:15.5px;padding:15px 32px}
-  .btn.ghost{background:transparent;color:var(--green);border:1.5px solid var(--green)}
-  .btn.ghost:hover{background:var(--green);color:var(--cream)}
+@font-face{font-family:"Bricolage Grotesque";src:url("/assets/fonts/bricolage-var.woff2") format("woff2");font-weight:300 800;font-display:swap}
+@font-face{font-family:"Manrope";src:url("/assets/fonts/manrope-var.woff2") format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-600.woff2") format("woff2");font-weight:600;font-display:swap}
 
-  header{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .hdr{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-family:var(--serif);font-weight:600;font-size:26px;color:var(--ink)}
-  .brand span{color:var(--green)}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{font-size:14px;color:var(--muted);text-decoration:none}
-  .nav-links a:hover{color:var(--ink)}
-  .nav-links a.btn{color:#fff}
-  .nav-links a.btn:hover{color:#fff}
-  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+:root{
+  --deep:#123B3D; --deeper:#0D2D2F; --deepest:#081F21; --lift:#17474A; --lift2:#1C5356;
+  --chalk:#ECF1EC; --chalk-80:rgba(236,241,236,.8); --chalk-60:rgba(236,241,236,.62); --chalk-40:rgba(236,241,236,.42);
+  --line:rgba(236,241,236,.14); --line-2:rgba(236,241,236,.24);
+  --off:#F2EFE8; --ember:#FF8A3D; --ember-d:#E5722A;
+  --cloud1:#F2A93B; --cloud2:#FF7A2F;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --max:1280px; --gutter:24px; --r:18px; --ease:cubic-bezier(.16,1,.3,1);
+}
+html[data-flavor="mango"]{--cloud1:#F2A93B;--cloud2:#FF7A2F}
+html[data-flavor="blood"]{--cloud1:#FF4B2B;--cloud2:#B5121F}
+html[data-flavor="yuzu"]{--cloud1:#C9E85B;--cloud2:#6FBF3A}
+html[data-flavor="berry"]{--cloud1:#E0457B;--cloud2:#7A1F52}
 
-  .hero{position:relative;padding:60px 0 46px;background-image:var(--pep);background-size:cover;background-position:left center}
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(246,241,232,.62) 0%,rgba(246,241,232,.86) 42%,var(--cream) 58%,var(--cream) 100%)}
-  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}
-  .hero h1{font-size:clamp(40px,6vw,66px);margin:16px 0 0}
-  .hero .lede{font-size:19px;color:var(--muted);max-width:520px;margin:20px 0 28px}
-  .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-  .who{margin-top:20px;font-size:13.5px;color:var(--muted)}
-  .who b{color:var(--ink);font-weight:600}
-  .hero-can{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
-  .hero-can img{position:relative;z-index:1;max-height:560px;width:auto;max-width:100%;display:block;filter:drop-shadow(0 26px 40px rgba(35,76,50,.26))}
-  @media(max-width:860px){.hero-can img{max-height:420px}}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:26px}.hero{background-position:left top}.hero::before{background:rgba(246,241,232,.82)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--deep);color:var(--chalk);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video,canvas{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-optical-sizing:auto;font-weight:700;line-height:1.02;letter-spacing:-.025em}
+h2{font-size:clamp(2rem,4.2vw,3.4rem);max-width:16ch}
+p{max-width:62ch}
+.mono{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:12.5px;font-weight:500}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:clamp(72px,9vw,128px) 0}
+.lede{font-size:clamp(1.05rem,1.35vw,1.25rem);color:var(--chalk-80);max-width:58ch}
+.sub{margin-top:18px}
 
-  .strip{background:var(--green);color:var(--cream)}
-  .strip .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:16px 24px;font-size:13px;font-weight:500;letter-spacing:.02em}
-  .strip span{opacity:.92}
+/* buttons: pills everywhere (rule: buttons pill, panels 18px, inputs 12px) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ember);color:var(--deepest);font-weight:700;font-size:15px;padding:15px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:transform .18s var(--ease),background .18s;line-height:1}
+.btn:hover{background:#FF9A57;transform:translateY(-1px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn.ghost{background:transparent;color:var(--chalk);border:1.5px solid var(--line-2)}
+.btn.ghost:hover{background:rgba(236,241,236,.06)}
+.btn.lg{padding:18px 30px;font-size:16px}
+.btn.sm{padding:11px 18px;font-size:14px}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
 
-  section.block{padding:84px 0}
-  .sec-head{max-width:660px;margin-bottom:44px}
-  .sec-head h2{font-size:clamp(30px,4vw,44px);margin-top:12px}
-  .sec-head p{color:var(--muted);font-size:17px;margin-top:14px}
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:68px;display:flex;align-items:center;background:rgba(18,59,61,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.brand{font-family:var(--display);font-weight:800;font-size:27px;letter-spacing:-.045em;text-decoration:none;line-height:1}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:600;color:var(--chalk-80)}
+.nav-links a:hover{color:var(--chalk)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.menu-btn{display:none;background:none;border:0;color:var(--chalk);cursor:pointer;padding:6px}
+.menu-btn svg{width:26px;height:26px}
+@media (max-width:900px){.nav-links{display:none}.menu-btn{display:block}.nav .btn{display:none}}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:49;background:var(--deeper);border-bottom:1px solid var(--line);padding:12px 24px 22px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 0;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid var(--line)}
+.mobile-menu .btn{margin-top:16px;width:100%}
 
-  /* moment band */
-  .moment{background:var(--cream-2)}
-  .moment .wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;padding:0}
-  .moment img{width:100%;display:block;border-radius:0}
-  .moment .copy{padding:78px 24px 78px 0}
-  .moment h2{font-size:clamp(28px,3.6vw,40px)}
-  .moment p{color:var(--muted);font-size:16.5px;margin-top:14px;max-width:440px}
-  @media(max-width:860px){.moment .wrap{grid-template-columns:1fr}.moment .copy{padding:30px 24px 60px}}
+/* hero */
+.hero{position:relative;min-height:100dvh;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;padding-top:68px;overflow:hidden}
+.hero-copy{position:relative;z-index:2;padding:40px 0 40px var(--gutter);max-width:640px;justify-self:end;width:100%}
+.hero h1{font-size:clamp(2.3rem,3.95vw,3.7rem);letter-spacing:-.032em;line-height:.98;max-width:19ch}
+.hero .lede{margin-top:22px}
+.hero-cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.hero-stage{position:relative;height:calc(100dvh - 68px);min-height:560px}
+.cloud{position:absolute;inset:0;pointer-events:none}
+.cloud::before{content:"";position:absolute;left:50%;top:58%;width:78vmin;height:78vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1) 0%,var(--cloud2) 38%,transparent 72%);opacity:.55;filter:blur(38px);transition:background 1.2s var(--ease)}
+.cloud::after{content:"";position:absolute;left:50%;top:70%;width:58vmin;height:40vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud2),transparent 70%);opacity:.35;filter:blur(30px)}
+.ground{position:absolute;left:50%;bottom:7.5%;width:34%;height:5%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(5,20,21,.55),transparent 75%);filter:blur(8px);pointer-events:none}
+#can{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.can-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:1}
+.can-fallback img{height:82%;width:auto}
+.no-webgl .can-fallback{display:flex}
+.no-webgl #can{display:none}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:0;padding-top:88px}
+  .hero-copy{padding:8px var(--gutter) 0;max-width:none;justify-self:stretch}
+  .hero h1{font-size:clamp(2.2rem,9vw,3rem);max-width:none}
+  .hero-stage{height:58vh;min-height:420px}
+  .cloud::before{top:55%;width:110vw;height:110vw}
+}
 
-  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 22px}
-  .card .k{font-family:var(--serif);font-size:26px;color:var(--green);font-weight:600}
-  .card h3{font-size:17px;margin:12px 0 8px;font-family:var(--sans);font-weight:600;letter-spacing:0}
-  .card p{font-size:14px;color:var(--muted)}
-  @media(max-width:860px){.cards{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:520px){.cards{grid-template-columns:1fr}}
+/* facts strip */
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:22px 0}
+.facts li{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60);line-height:1.5}
+.facts li strong{display:block;color:var(--chalk);font-weight:600;text-transform:none;font-size:14px;letter-spacing:.02em}
+@media (max-width:900px){.facts ul{grid-template-columns:1fr 1fr;gap:18px 16px}}
 
-  .science{background-image:var(--pep);background-size:cover;background-position:center;position:relative}
-  .science::before{content:"";position:absolute;inset:0;background:rgba(246,241,232,.78)}
-  .science .wrap{position:relative}
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
-  .science-points{display:grid;gap:22px;margin-top:6px}
-  .sp{display:flex;gap:16px}
-  .sp .n{font-family:var(--serif);font-size:22px;color:var(--green);font-weight:600;flex:0 0 28px}
-  .sp h3{font-size:17px;font-family:var(--sans);font-weight:600;letter-spacing:0;margin-bottom:4px}
-  .sp p{font-size:14.5px;color:var(--muted)}
-  @media(max-width:860px){.split{grid-template-columns:1fr;gap:30px}}
+/* the vial section */
+.vials .lede{margin-top:20px}
+.vials figure{margin-top:44px}
+.vials img{width:100%;border-radius:var(--r);aspect-ratio:21/9;object-fit:cover;object-position:50% 72%}
+.captions{display:flex;justify-content:space-between;margin-top:16px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
+.captions span:last-child{color:var(--ember)}
 
-  .flavors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .flav{border:1px solid var(--line);border-radius:18px;padding:28px;background:#fff;position:relative}
-  .flav .dot{width:46px;height:46px;border-radius:50%;margin-bottom:18px}
-  .flav.hero-flav{border-color:var(--green);box-shadow:0 14px 30px rgba(35,76,50,.10)}
-  .flav .badge{position:absolute;top:16px;right:16px;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--cream-2);padding:5px 9px;border-radius:999px}
-  .flav h3{font-family:var(--serif);font-size:23px;margin-bottom:6px}
-  .flav p{font-size:14px;color:var(--muted)}
-  @media(max-width:760px){.flavors{grid-template-columns:1fr}}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(240px,auto);gap:16px;margin-top:44px}
+.cell{border-radius:var(--r);overflow:hidden;position:relative}
+.cell.text{background:var(--lift);padding:30px 30px 32px;display:flex;flex-direction:column;justify-content:flex-end;min-height:280px}
+.cell.text h3{font-size:clamp(1.35rem,2vw,1.7rem);margin-bottom:12px;letter-spacing:-.02em}
+.cell.text p{color:var(--chalk-80);font-size:16px;max-width:38ch}
+.cell.text .big{font-family:var(--display);font-size:clamp(3rem,5vw,4.6rem);letter-spacing:-.04em;line-height:.9;color:var(--ember);margin-bottom:auto;padding-bottom:28px}
+.cell.img img,.cell.img video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.c1{grid-column:span 7}.c2{grid-column:span 5}.c3{grid-column:span 4}.c4{grid-column:span 4}.c5{grid-column:span 4}
+.cell.tint{background:linear-gradient(160deg,var(--lift2),var(--deeper))}
+@media (max-width:900px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.c1,.c2,.c3,.c4,.c5{grid-column:span 2}.cell.img{min-height:260px;aspect-ratio:4/3}}
 
-  /* offer */
-  .offer{background:var(--green);color:var(--cream)}
-  .offer .wrap{padding:80px 24px}
-  .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
-  .offer h2{color:var(--cream);font-size:clamp(30px,4vw,44px)}
-  .offer .lede{color:rgba(246,241,232,.85);font-size:17px;margin:18px 0 24px;max-width:460px}
-  .perks{list-style:none;display:grid;gap:13px;margin-top:6px}
-  .perks li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(246,241,232,.95)}
-  .perks .tick{color:var(--cream);flex:0 0 auto;margin-top:2px}
-  .alloc{margin-top:26px;font-size:13px;color:rgba(246,241,232,.8)}
-  .bar{height:7px;background:rgba(246,241,232,.25);border-radius:99px;margin-top:8px;overflow:hidden}
-  .bar i{display:block;height:100%;width:38%;background:var(--cream);border-radius:99px}
+/* science */
+.science-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;margin-top:48px;align-items:start}
+.study{padding:30px 0;border-top:1px solid var(--line)}
+.study:last-of-type{border-bottom:1px solid var(--line)}
+.study h3{font-size:clamp(1.4rem,2vw,1.8rem);letter-spacing:-.02em}
+.study .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-top:16px;font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--chalk-60);line-height:1.5}
+.study .result{margin-top:14px;font-size:1.1rem;font-weight:600;max-width:40ch}
+.figure{display:none;margin-top:18px;font-family:var(--display);font-size:3.4rem;letter-spacing:-.04em;line-height:1;color:var(--ember)}
+.figure small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60);margin-top:6px}
+.show-figures .figure{display:block}
+.footnote{margin-top:22px;font-size:14px;color:var(--chalk-60);max-width:60ch}
+.trial-link{display:none;margin-top:22px}
+.show-trials .trial-link{display:inline-flex}
+.side-can{position:relative;display:flex;justify-content:center;padding:20px 0}
+.side-can::before{content:"";position:absolute;left:50%;top:55%;width:70%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1),transparent 72%);opacity:.35;filter:blur(30px)}
+.side-can img{position:relative;height:min(640px,70vh);width:auto}
+@media (max-width:900px){.science-grid{grid-template-columns:1fr;gap:28px}.side-can img{height:440px}}
 
-  .reserve-card{background:var(--cream);color:var(--ink);border-radius:22px;padding:30px}
-  .reserve-card .tag{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
-  .packs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
-  .pack{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;transition:border-color .15s,background .15s}
-  .pack.active{border-color:var(--green);background:var(--cream-2)}
-  .pack .pk{font-weight:600;font-size:15px}
-  .pack .pp{font-family:var(--serif);font-size:24px;font-weight:600;margin-top:4px}
-  .pack .pc{font-size:12px;color:var(--muted)}
-  .pack .save{position:absolute;top:-9px;right:10px;background:var(--green);color:var(--cream);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
-  .lbl{font-size:12.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:6px 0 8px}
-  .flavpick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .flavpick label{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px;cursor:pointer}
-  .flavpick input{accent-color:var(--green)}
-  .flavpick label.sel{border-color:var(--green);background:var(--cream-2)}
-  .caveat{font-size:11.5px;color:var(--muted);margin-top:8px}
-  .field{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:15px;background:#fff;margin:14px 0 12px}
-  .field:focus{outline:none;border-color:var(--green)}
-  .fineprint{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5}
-  .reserve-ok{display:none;background:var(--cream-2);border:1px solid var(--green);border-radius:14px;padding:18px;font-size:14.5px;color:var(--green-d)}
-  @media(max-width:860px){.offer-grid{grid-template-columns:1fr;gap:30px}}
+/* flavors */
+.flavors{text-align:center}
+.flavors h2,.flavors p{margin-left:auto;margin-right:auto}
+.flavors h2{max-width:22ch}
+.pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:36px}
+.pill{background:transparent;border:1.5px solid var(--line-2);color:var(--chalk);font-family:var(--body);font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:999px;cursor:pointer;transition:background .2s,border-color .2s}
+.pill:hover{background:rgba(236,241,236,.06)}
+.pill[aria-pressed="true"]{background:var(--chalk);color:var(--deepest);border-color:var(--chalk)}
+.stage{position:relative;height:min(78vh,720px);margin-top:28px;display:flex;align-items:center;justify-content:center}
+.stage::before{content:"";position:absolute;left:50%;top:52%;width:min(72vmin,620px);height:min(72vmin,620px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1) 0%,var(--cloud2) 40%,transparent 72%);opacity:.5;filter:blur(40px);transition:background 1s var(--ease)}
+.stage img{position:absolute;height:92%;width:auto;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.stage img.on{opacity:1}
+.flavor-desc{margin-top:8px;min-height:3.2em}
+.flavor-desc p{font-size:1.15rem;max-width:36ch;margin:0 auto;transition:opacity .3s}
+.flavor-desc .name{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;margin-bottom:6px}
+@media (max-width:900px){.stage{height:60vh}.stage::before{width:90vw;height:90vw}}
 
-  .ritual{text-align:center;padding:88px 0}
-  .ritual h2{font-size:clamp(34px,5vw,56px);max-width:760px;margin:0 auto}
-  .ritual p{color:var(--muted);font-size:18px;margin-top:16px}
+/* manifesto: the one deliberate colour-block switch on the page */
+.manifesto{background:var(--off);color:var(--deep)}
+.manifesto .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center}
+.manifesto h2{font-size:clamp(2.6rem,6vw,5.2rem);letter-spacing:-.04em;line-height:.95;max-width:none}
+.manifesto p{margin-top:22px;font-size:clamp(1.05rem,1.4vw,1.25rem);color:#1E4B4D;max-width:52ch}
+.manifesto p:first-of-type{margin-top:34px}
+.manifesto img{width:100%;border-radius:var(--r);aspect-ratio:4/5;object-fit:cover}
+@media (max-width:900px){.manifesto .grid{grid-template-columns:1fr;gap:32px}.manifesto img{aspect-ratio:4/3}}
 
-  .founder{display:grid;grid-template-columns:.8fr 1.2fr;gap:46px;align-items:center}
-  .founder .mark{font-family:var(--serif);font-size:120px;color:var(--green);line-height:.8;opacity:.25}
-  .founder blockquote{font-family:var(--serif);font-size:23px;line-height:1.35}
-  .founder .sig{margin-top:18px;font-size:14px;color:var(--muted)}
-  @media(max-width:760px){.founder{grid-template-columns:1fr;gap:18px}}
+/* reserve */
+.reserve-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.perks{list-style:none;margin-top:34px;display:grid;gap:14px}
+.perks li{display:flex;gap:12px;align-items:flex-start;color:var(--chalk-80);font-size:16px}
+.perks svg{width:22px;height:22px;flex:none;color:var(--ember)}
+.perks-title{margin-top:36px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
+.panel{background:var(--lift);border-radius:var(--r);padding:28px}
+.packs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pack{position:relative;border:1.5px solid var(--line-2);border-radius:14px;padding:18px 18px 16px;cursor:pointer;background:transparent;text-align:left;color:var(--chalk);font-family:var(--body);transition:border-color .2s,background .2s}
+.pack[aria-pressed="true"]{border-color:var(--ember);background:rgba(255,138,61,.08)}
+.pack .name,.pack .price,.pack .per{display:block}
+.pack .name{font-weight:700;font-size:17px}
+.pack .price{font-family:var(--display);font-weight:700;font-size:1.9rem;letter-spacing:-.03em;margin-top:8px;line-height:1}
+.pack .per{margin-top:6px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--chalk-60)}
+.pack .tag{position:absolute;top:-10px;right:14px;background:var(--ember);color:var(--deepest);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:999px}
+.field{margin-top:22px}
+.field label,.field .lbl{display:block;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60);margin-bottom:10px}
+.flav-opts{display:flex;flex-wrap:wrap;gap:8px}
+.flav-opts label{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line-2);border-radius:999px;padding:10px 14px;cursor:pointer;font-size:14.5px;font-weight:600;text-transform:none;letter-spacing:0;font-family:var(--body);color:var(--chalk);margin:0}
+.flav-opts input{appearance:none;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--chalk-60);margin:0}
+.flav-opts input:checked{background:var(--ember);border-color:var(--ember)}
+.flav-opts label:has(input:checked){border-color:var(--chalk)}
+.panel .btn{width:100%;margin-top:22px}
+.fine{margin-top:14px;font-size:13.5px;color:var(--chalk-60);max-width:none}
+.fine a{color:var(--chalk-80)}
+.panel-msg{display:none;margin-top:12px;font-size:14px;color:var(--ember)}
+@media (max-width:900px){.reserve-grid{grid-template-columns:1fr;gap:32px}.packs{grid-template-columns:1fr}}
 
-  .faq{max-width:760px;margin:0 auto}
-  details{border-bottom:1px solid var(--line);padding:20px 0}
-  summary{font-family:var(--serif);font-size:19px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--green);font-size:24px}
-  details[open] summary::after{content:"–"}
-  details p{color:var(--muted);font-size:15px;margin-top:12px}
+/* founder */
+.founder{text-align:center}
+.founder blockquote{font-family:var(--display);font-weight:500;font-size:clamp(1.35rem,2.4vw,1.9rem);letter-spacing:-.02em;line-height:1.3;max-width:30ch;margin:0 auto}
+.founder cite{display:block;margin-top:22px;font-style:normal;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
 
-  footer{background:var(--ink);color:rgba(246,241,232,.7);padding:58px 0 40px}
-  footer .brand{color:var(--cream)}
-  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
-  footer a{color:rgba(246,241,232,.7);text-decoration:none;font-size:14px}
-  footer a:hover{color:var(--cream)}
-  .disclaimer{margin-top:32px;padding-top:22px;border-top:1px solid rgba(246,241,232,.16);font-size:12px;line-height:1.6;color:rgba(246,241,232,.5);max-width:780px}
-  .cta-final{text-align:center;padding:86px 0 26px}
-  .cta-final h2{font-size:clamp(32px,4.5vw,50px);max-width:680px;margin:0 auto 24px}
+/* faq */
+.faq{max-width:780px;margin:0 auto}
+.faq h2{margin-bottom:28px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:700;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:20px;height:20px;flex:none;transition:transform .25s var(--ease);color:var(--chalk-60)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--chalk-80);max-width:62ch}
 
-  /* ambient Higgsfield video sections */
-  .vidsection{position:relative;overflow:hidden}
-  .vidsection>.bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
-  .vidsection>.vid-ov{position:absolute;inset:0;z-index:1}
-  .vidsection>.wrap{position:relative;z-index:2}
-  @media(prefers-reduced-motion:reduce){.vidsection>.bgvid{display:none}}
+/* founder list */
+.list-panel{background:var(--lift);border-radius:var(--r);padding:36px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center}
+.list-panel h2{font-size:clamp(1.6rem,2.6vw,2.2rem);max-width:none}
+.list-panel p{color:var(--chalk-80);margin-top:10px}
+.list-form{display:flex;gap:10px;flex-wrap:wrap}
+.list-form .lbl{width:100%;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
+.list-form input{flex:1;min-width:220px;background:var(--deeper);border:1.5px solid var(--line-2);border-radius:12px;color:var(--chalk);padding:14px 16px;font-size:16px;font-family:var(--body)}
+.list-form input::placeholder{color:var(--chalk-60)}
+.form-msg{width:100%;font-size:14px;color:var(--chalk-80);display:none}
+@media (max-width:900px){.list-panel{grid-template-columns:1fr;padding:28px}}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60);font-size:14px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
+.foot .brand{color:var(--chalk)}
+.foot p{margin-top:12px;max-width:36ch}
+.foot ul{list-style:none;display:grid;gap:10px}
+.foot a{text-decoration:none;color:var(--chalk-80)}
+.foot a:hover{color:var(--chalk)}
+.disclaimer{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;max-width:none;line-height:1.6}
+.copy{margin-top:16px;font-size:13px}
+@media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
+
+/* sticky mobile cta */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:48;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(13,45,47,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
+.sticky-cta.on{transform:translateY(0)}
+.sticky-cta .p{font-size:14px;color:var(--chalk-80)}
+.sticky-cta .p strong{display:block;color:var(--chalk);font-size:15px}
+@media (max-width:900px){.sticky-cta{display:flex}}
+
+/* reveals */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .stage img,.cloud::before,.stage::before{transition:none}
+}
+.skip{position:absolute;left:12px;top:-60px;z-index:60;background:var(--ember);color:var(--deepest);padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
 
-<header>
-  <div class="wrap hdr">
-    <div class="brand">Spry<span>.</span></div>
-    <nav class="nav-links">
-      <a href="#inside">What's inside</a>
-      <a href="#science">The science</a>
-      <a href="#flavors">Flavors</a>
-      <a href="#reserve" class="btn">Reserve yours</a>
-    </nav>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Spry home">Spry</a>
+    <ul class="nav-links">
+      <li><a href="#inside">What's in it</a></li>
+      <li><a href="#science">The science</a></li>
+      <li><a href="#flavors">Flavors</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="btn sm" href="#reserve">Reserve a pack</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg></button>
+    </div>
   </div>
 </header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+  <a href="#inside">What's in it</a>
+  <a href="#science">The science</a>
+  <a href="#flavors">Flavors</a>
+  <a href="#faq">Questions</a>
+  <a class="btn" href="#reserve">Reserve a pack</a>
+</nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">Founding Members · Limited first run · Q4 2026</div>
-      <h1>Recovery is finally drinkable.</h1>
-      <p class="lede">Spry RECOVER is a refrigerated, lightly sparkling drink built around a bioactive recovery peptide, with a full electrolyte profile, zero sugar, and nothing artificial. Made for how you recover and how you age.</p>
-      <div class="hero-cta">
-        <a href="#reserve" class="btn lg">Reserve yours</a>
-        <a href="#science" class="btn ghost lg">Why peptides</a>
+<main id="top">
+
+<section class="hero" id="hero">
+  <div class="hero-copy">
+    <h1>Finally, a functional beverage that actually does something.</h1>
+    <p class="lede">One peptide with published human trials, at the serving the trials used. Cold, lightly sparkling, made from a bean.</p>
+    <div class="hero-cta">
+      <a class="btn lg" href="#reserve">Reserve a pack</a>
+      <a class="btn ghost lg" href="#science">Read the science</a>
+    </div>
+  </div>
+  <div class="hero-stage">
+    <div class="cloud" aria-hidden="true"></div>
+    <div class="ground" aria-hidden="true"></div>
+    <canvas id="can" aria-label="The Spry can, turning as you scroll" role="img"></canvas>
+    <div class="can-fallback" aria-hidden="true"><img id="canFallback" src="/assets/can/can-mango-hero.webp" alt=""></div>
+  </div>
+</section>
+
+<section class="facts" aria-label="At a glance">
+  <div class="wrap">
+    <ul>
+      <li><strong>2.4 g</strong> clinically studied peptide in every can</li>
+      <li><strong>Plant-based</strong> made from fava beans</li>
+      <li><strong>Real fruit</strong> no artificial colors, flavors or sweeteners</li>
+      <li><strong>December</strong> the first run ships</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section vials" id="vials">
+  <div class="wrap">
+    <h2 data-reveal>Every way to take a peptide.</h2>
+    <p class="lede" data-reveal>Peptides are the most talked-about thing in strength and recovery. Almost all of it happens in vials, sold by strangers, with no label anyone can check. People do it anyway. So we made a drink with a peptide that has been clinically studied in humans.</p>
+    <figure data-reveal>
+      <img src="/assets/img/vials-can.webp" alt="A counter lined with a vial, a dropper bottle, a scoop of powder, two large capsules and a shaker bottle, and at the end a cold can of Spry" loading="lazy" width="1800" height="1005">
+      <figcaption class="captions"><span>The usual way</span><span>Ours</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="inside">
+  <div class="wrap">
+    <h2 data-reveal>What's in the can.</h2>
+    <div class="bento" data-reveal>
+      <div class="cell text c1">
+        <div class="big">2.4 g</div>
+        <h3>One peptide, at the studied serving</h3>
+        <p>A peptide made from fava beans, clinically studied in humans, at the same serving the trials used. That is why Spry exists.</p>
       </div>
-      <div class="who"><b>For people who train, move, and intend to stay strong for decades.</b> Clean enough for every day.</div>
-    </div>
-    <div class="hero-can">
-      <img src="spry-can-cutout.png" alt="Spry RECOVER can">
-    </div>
-  </div>
-</section>
-
-<div class="strip">
-  <div class="wrap">
-    <span>Bioactive recovery peptide</span>
-    <span>Full electrolyte profile</span>
-    <span>Zero sugar</span>
-    <span>Plant-based · all-natural</span>
-    <span>Refrigerated · lightly sparkling</span>
-  </div>
-</div>
-
-<!-- MOMENT -->
-<section class="moment">
-  <div class="wrap">
-    <img src="spry-04-hero-hand-held.jpg" alt="Holding a Spry RECOVER can in a kitchen">
-    <div class="copy">
-      <div class="eyebrow">The daily ritual</div>
-      <h2>The good part of your routine.</h2>
-      <p>Not a powder to scoop, not a vial to mix. One cold, clean can, the kind of thing you actually look forward to. Good for you, and good to drink.</p>
+      <div class="cell img c2"><img src="/assets/img/fava.webp" alt="Fava bean pods split open on linen" loading="lazy" width="1200" height="1490"></div>
+      <div class="cell img c3"><video id="pourVideo" src="" poster="/assets/img/pour.webp" muted loop playsinline preload="none" aria-label="A cloudy, lightly sparkling drink being poured into a glass"></video></div>
+      <div class="cell text c4 tint">
+        <h3>Cloudy on purpose</h3>
+        <p>Real fruit, and the color comes from the fruit. The haze is the peptide. Roll it once, then open.</p>
+      </div>
+      <div class="cell text c5">
+        <h3>Lightly sparkling, low sweetness</h3>
+        <p>Natural sweeteners from monk fruit and stevia, and a little real sugar. It drinks closer to a dry citrus soda than a sports drink. Electrolytes from magnesium, potassium and sodium citrate.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- INSIDE -->
-<section class="block vidsection" id="inside">
-  <video class="bgvid" autoplay muted loop playsinline preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_3F2MpxRCLnFG6YJR51H5xMSp8iW/hf_20260627_142458_48e8d58b-846e-4e27-85eb-bbcd623642a7.png"><source src="https://d8j0ntlcm91z4.cloudfront.net/user_3F2MpxRCLnFG6YJR51H5xMSp8iW/hf_20260627_145859_62087171-5515-4254-a463-7d53021120fd.mp4" type="video/mp4"></video>
-  <div class="vid-ov" style="background:rgba(246,241,232,.86)"></div>
+<section class="section" id="science">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">What's inside</div>
-      <h2>One can, engineered around the peptide.</h2>
-      <p>Most functional drinks drop an active into an existing formula and hope. We built the whole can around it: the acidity, the sparkle, the electrolytes, the taste.</p>
-    </div>
-    <div class="cards">
-      <div class="card"><div class="k">Peptide</div><h3>The recovery active</h3><p>A bioactive recovery peptide at its full studied serving, made to support recovery and everyday strength.</p></div>
-      <div class="card"><div class="k">Mg·K</div><h3>Full electrolytes</h3><p>Magnesium and potassium citrate. Clean label, plant-based, built for real recovery support.</p></div>
-      <div class="card"><div class="k">0g</div><h3>Zero sugar</h3><p>Lightly sweetened with monk fruit and stevia. Light and low-calorie. Nothing artificial.</p></div>
-      <div class="card"><div class="k">Clean</div><h3>Plant-based</h3><p>All-natural flavors and real fruit. Refrigerated and lightly sparkling. No caffeine, no fillers.</p></div>
+    <h2 data-reveal>One peptide. Studied in people.</h2>
+    <p class="lede sub" data-reveal>Two placebo-controlled, peer-reviewed human trials of the peptide, at the serving in every can.</p>
+    <div class="science-grid">
+      <div data-reveal>
+        <article class="study">
+          <h3>Strength with training</h3>
+          <div class="meta"><span>72 adults, ages 19 to 40</span><span>8 weeks of resistance training</span><span>Placebo-controlled</span><span>Peer-reviewed, 2025</span></div>
+          <div class="figure">+17%<small>strength vs placebo*</small></div>
+          <p class="result">Greater strength gains with training than placebo.</p>
+        </article>
+        <article class="study">
+          <h3>Recovery after hard sessions</h3>
+          <div class="meta"><span>30 men, ages 30 to 45</span><span>A muscle-damaging protocol, followed for 72 hours</span><span>Placebo-controlled</span><span>Peer-reviewed, 2023</span></div>
+          <div class="figure">2x<small>faster strength recovery*</small></div>
+          <p class="result">Faster strength recovery and less muscle fatigue than placebo.</p>
+        </article>
+        <p class="footnote">*Peer-reviewed, placebo-controlled human studies of the peptide at 2.4 g a day. We are also validating that the can keeps the peptide intact.</p>
+        <a class="btn ghost trial-link" href="#" id="trialLink">Read both trials</a>
+      </div>
+      <div class="side-can" data-reveal>
+        <img id="sideCan" src="/assets/can/can-mango-side.webp" alt="The side panel of the Spry can: one peptide, studied in people" loading="lazy" width="700" height="1000">
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SCIENCE -->
-<section class="block science" id="science">
-  <div class="wrap split">
-    <div>
-      <div class="eyebrow">The science</div>
-      <h2 style="font-size:clamp(30px,4vw,44px);margin-top:12px">The science has outrun the shelf.</h2>
-      <p style="color:var(--muted);font-size:17px;margin-top:16px">Peptides are the most exciting frontier in nutrition. They moved from the clinic into the culture, but the everyday versions are still powders and gray-market vials.</p>
-      <p style="color:var(--muted);font-size:15px;margin-top:14px">Spry brings a clean, food-grade bioactive peptide into a can you keep in the fridge. We respect the science: honest servings, honest language, nothing it can't stand behind.</p>
+<section class="section flavors" id="flavors">
+  <div class="wrap">
+    <h2 data-reveal>Science sells the first can. Taste sells the fourth.</h2>
+    <p class="lede sub" data-reveal>Four flavors made with real fruit and kept low on sweetness. Pick one and the can changes.</p>
+    <div class="pills" role="group" aria-label="Choose a flavor" data-reveal>
+      <button class="pill" data-flavor="mango" aria-pressed="true">Mango Passionfruit</button>
+      <button class="pill" data-flavor="blood" aria-pressed="false">Blood Orange</button>
+      <button class="pill" data-flavor="yuzu" aria-pressed="false">Yuzu Lime</button>
+      <button class="pill" data-flavor="berry" aria-pressed="false">Mixed Berry</button>
     </div>
-    <div class="science-points">
-      <div class="sp"><div class="n">01</div><div><h3>Made for recovery</h3><p>Formulated to support how your body recovers and rebuilds, day to day, as part of an active routine.</p></div></div>
-      <div class="sp"><div class="n">02</div><div><h3>Made for the long game</h3><p>Strength and muscle are among the strongest signals of how well you age. This is a daily ritual, not a quick fix.</p></div></div>
-      <div class="sp"><div class="n">03</div><div><h3>Clean by design</h3><p>Plant-based, zero sugar, all-natural, refrigerated. The good stuff in, the noise left out.</p></div></div>
+    <div class="stage" data-reveal>
+      <img class="on" data-flavor="mango" src="/assets/can/can-mango-front.webp" alt="Spry Mango Passionfruit can" width="700" height="1000">
+      <img data-flavor="blood" src="/assets/can/can-blood-front.webp" alt="Spry Blood Orange can" loading="lazy" width="700" height="1000">
+      <img data-flavor="yuzu" src="/assets/can/can-yuzu-front.webp" alt="Spry Yuzu Lime can" loading="lazy" width="700" height="1000">
+      <img data-flavor="berry" src="/assets/can/can-berry-front.webp" alt="Spry Mixed Berry can" loading="lazy" width="700" height="1000">
+    </div>
+    <div class="flavor-desc" aria-live="polite">
+      <p class="name" id="flavorName">Mango Passionfruit</p>
+      <p id="flavorText">The crowd-pleaser. Tropical and bright, with a tart edge.</p>
     </div>
   </div>
 </section>
 
-<!-- FLAVORS -->
-<section class="block" id="flavors" style="background:var(--cream-2)">
+<section class="section manifesto" id="habit">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Three flavors at launch</div>
-      <h2>Bright, tart, and fruit-forward.</h2>
-      <p>Each leads with real fruit purée, chosen to keep the taste clean and the texture smooth.</p>
-    </div>
-    <div class="flavors">
-      <div class="flav hero-flav"><span class="badge">Hero</span><div class="dot" style="background:#C9D14A"></div><h3>Yuzu–Lime</h3><p>Bright, citrus-forward, the cleanest sip of the three. The one we start everyone on.</p></div>
-      <div class="flav"><div class="dot" style="background:#7B3F6B"></div><h3>Blackberry–Hibiscus</h3><p>Tart and deep, with a natural berry color and an antioxidant halo.</p></div>
-      <div class="flav"><div class="dot" style="background:#E0913B"></div><h3>Mango–Passionfruit</h3><p>The crowd-pleaser. Round, tropical, broadest appeal across palates.</p></div>
+    <div class="grid">
+      <div data-reveal>
+        <h2>Strong is a habit.</h2>
+        <p>Not a heroic act. The stairs two at a time at forty-six, and the run club on a wet Tuesday. Showing up tomorrow because you recovered today.</p>
+        <p>The science that helps you keep that habit is real. Almost all of it is sold in vials, by strangers, with no label anyone can check. People buy it anyway, because nobody offered a better way.</p>
+        <p>So we took one peptide that was studied in people, at the serving that was studied, and made a drink around it. We print what the trials found. Roll it once. Then get on with your day.</p>
+      </div>
+      <img data-reveal src="/assets/img/runclub.webp" alt="Runners catching their breath by a railing after a run club on a wet morning" loading="lazy" width="1600" height="1073">
     </div>
   </div>
 </section>
 
-<!-- OFFER / RESERVE -->
-<section class="offer" id="reserve">
+<section class="section" id="reserve">
   <div class="wrap">
-    <div class="offer-grid">
-      <div>
-        <div class="eyebrow" style="color:var(--cream)">Founding Members</div>
-        <h2>Be among the first to drink it.</h2>
-        <p class="lede">We are opening a limited founding-member allocation ahead of our Q4 2026 launch. Reserve your pack now and help shape the first run.</p>
+    <div class="reserve-grid">
+      <div data-reveal>
+        <h2>The first run ships in December.</h2>
+        <p class="lede sub">Reserve a pack now. You pay the pack price, and it is fully refundable any time before we ship.</p>
+        <div class="perks-title">Founding members get</div>
         <ul class="perks">
-          <li><span class="tick">✓</span> Locked launch pricing, honored for your first year</li>
-          <li><span class="tick">✓</span> First production run ships to founding members first</li>
-          <li><span class="tick">✓</span> A numbered founding-member can in your first box</li>
-          <li><span class="tick">✓</span> A direct line to the founder and a vote on flavors</li>
+          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>Launch pricing, honored for your first year</span></li>
+          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>The first production run, before anyone else</span></li>
+          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>A numbered founding-member can in your first box</span></li>
+          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>A direct line to the founder and a vote on flavors</span></li>
         </ul>
-        <div class="alloc">Founding allocation, first wave
-          <div class="bar"><i></i></div>
-          <span style="font-size:12px">Filling now · reserve to hold your place</span>
-        </div>
       </div>
-
-      <div class="reserve-card">
-        <div class="tag">Reserve your pack</div>
-        <div class="packs">
-          <div class="pack active" data-pack="6" data-price="$35.94" data-per="$5.99 / can">
-            <div class="pk">6-pack</div><div class="pp">$35.94</div><div class="pc">$5.99 / can</div>
-          </div>
-          <div class="pack" data-pack="12" data-price="$64.99" data-per="$5.42 / can">
-            <span class="save">Save 10%</span>
-            <div class="pk">12-pack</div><div class="pp">$64.99</div><div class="pc">$5.42 / can · best value</div>
+      <div class="panel" data-reveal>
+        <div class="packs" role="group" aria-label="Pack size">
+          <button class="pack" data-pack="6" data-price="$26.94" aria-pressed="true"><span class="name">6-pack</span><span class="price">$26.94</span><span class="per">$4.49 a can</span></button>
+          <button class="pack" data-pack="12" data-price="$47.88" aria-pressed="false"><span class="tag">Best value</span><span class="name">12-pack</span><span class="price">$47.88</span><span class="per">$3.99 a can</span></button>
+        </div>
+        <div class="field">
+          <div class="lbl" id="flavLbl">Your flavor</div>
+          <div class="flav-opts" role="radiogroup" aria-labelledby="flavLbl">
+            <label><input type="radio" name="flav" value="mango" checked>Mango Passionfruit</label>
+            <label><input type="radio" name="flav" value="blood">Blood Orange</label>
+            <label><input type="radio" name="flav" value="yuzu">Yuzu Lime</label>
+            <label><input type="radio" name="flav" value="berry">Mixed Berry</label>
+            <label><input type="radio" name="flav" value="mixed">Mixed pack, all four</label>
           </div>
         </div>
-
-        <div class="lbl">Choose your flavor</div>
-        <div class="flavpick" id="flavpick">
-          <label class="sel"><input type="radio" name="flav" value="Yuzu–Lime" checked> Yuzu–Lime</label>
-          <label><input type="radio" name="flav" value="Blackberry–Hibiscus"> Blackberry–Hibiscus</label>
-          <label><input type="radio" name="flav" value="Mango–Passionfruit"> Mango–Passionfruit</label>
-          <label><input type="radio" name="flav" value="Mixed"> Mixed pack</label>
-        </div>
-        <div class="caveat">Founding flavors may evolve before launch. You can change your pick any time before we ship.</div>
-
-        <button class="btn lg" id="reserveBtn" style="width:100%;margin-top:4px">Reserve my <span id="btnpack">6-pack</span> · <span id="btnprice">$35.94</span></button>
-        <p class="fineprint">You pay the full pack price now and it is <strong>fully refundable</strong> any time before we ship (Q4 2026). Secure checkout via Shopify. Reserving locks your founding-member pricing and your place in the first run.</p>
-        <p class="fineprint" style="margin-top:8px"><a href="legal.html" style="color:var(--green)">Reservation terms</a> · <a href="legal.html" style="color:var(--green)">Refund policy</a></p>
+        <button class="btn lg" id="reserveBtn">Reserve my <span id="btnPack">6-pack</span> · <span id="btnPrice">$26.94</span></button>
+        <p class="panel-msg" id="panelMsg"></p>
+        <p class="fine">Secure checkout via Shopify. Fully refundable any time before we ship in December, and you can change your flavor until then. <a href="legal.html#reservation">Reservation terms</a> and <a href="legal.html#refund">refund policy</a>.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RITUAL -->
-<section class="ritual">
-  <div class="wrap">
-    <h2>Stay sharp. Stay strong. Stay spry.</h2>
-    <p>Your peptide ritual for the next 30 years.</p>
+<section class="section founder">
+  <div class="wrap" data-reveal>
+    <blockquote>“I came to peptides as a user first. I wanted the version I could buy where I buy groceries: a peptide studied in humans, safe to drink, and none of the methods I was never going to use. Easy to take at the right moment of the day, with benefits measured in people.”</blockquote>
+    <cite>Alejandro Navarro, founder</cite>
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section class="block vidsection" id="founder-sec" style="background:var(--cream-2)">
-  <video class="bgvid" autoplay muted loop playsinline preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_3F2MpxRCLnFG6YJR51H5xMSp8iW/hf_20260627_145901_d4a6d970-81f6-4cba-ab6e-aec22a6ed00b.png"><source src="https://d8j0ntlcm91z4.cloudfront.net/user_3F2MpxRCLnFG6YJR51H5xMSp8iW/hf_20260627_150028_2e4245d4-196b-4c70-8c47-6a1da26b5ddf.mp4" type="video/mp4"></video>
-  <div class="vid-ov" style="background:rgba(239,231,216,.82)"></div>
-  <div class="wrap founder">
-    <div class="mark">“</div>
-    <div>
-      <blockquote>I came to peptides as a user first. Once I felt the difference in my own recovery, I went looking for a clean, honest version I could drink every day. It didn't exist. So we are building it, properly, with the science respected and nothing overclaimed.</blockquote>
-      <div class="sig">Alejandro Navarro · Founder, Spry</div>
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="faq" data-reveal>
+      <h2>Questions.</h2>
+      <details><summary>When does it ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first production run ships in December 2026, to founding members first. You will hear from us before it leaves.</p></details>
+      <details><summary>Is my payment refundable? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, in full, any time before we ship. Cancel and we refund it. Otherwise it is simply your order at founding-member pricing.</p></details>
+      <details><summary>Can I change my flavor? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, any time before we ship. Reply to your confirmation email and we will switch it.</p></details>
+      <details><summary>What is in it? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>One peptide made from fava beans and clinically studied in humans, 2.4 g a can, with electrolytes, real fruit and lightly sparkling water. Natural sweeteners from monk fruit and stevia, and a little real sugar. No artificial colors, flavors or sweeteners. The full panel goes on the can and on this page before we ship.</p></details>
+      <details><summary>Why is it cloudy? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Because the peptide is in there. It settles a little in the can. Roll it once, then open.</p></details>
+      <details><summary>Is it a soda? A protein shake? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Neither. It is a lightly sparkling drink built around one studied peptide, and it is not sweet the way a soda is.</p></details>
+      <details><summary>Do I need to keep it cold? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Serve it cold. It tastes better that way.</p></details>
+      <details><summary>Where do you ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first run ships within the United States.</p></details>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="block">
-  <div class="wrap faq">
-    <div class="sec-head" style="text-align:center;margin:0 auto 40px">
-      <div class="eyebrow">Questions</div>
-      <h2>Good to know.</h2>
-    </div>
-    <details open><summary>When does it ship?</summary><p>Founding-member reservations ship with our first production run in Q4 2026. You will get a heads-up well before we charge the balance.</p></details>
-    <details><summary>Is my payment refundable?</summary><p>Completely. You pay the full pack price to reserve, and it's fully refundable any time before we ship in Q4 2026. Cancel and we refund it in full; otherwise it's simply your order, with founding-member pricing locked in.</p></details>
-    <details><summary>Can I pick my flavor?</summary><p>Yes. Choose Yuzu–Lime, Blackberry–Hibiscus, Mango–Passionfruit, or a mixed pack when you reserve. Founding flavors may evolve before launch, and you can change your pick before we ship.</p></details>
-    <details><summary>What's in it?</summary><p>A bioactive recovery peptide at its full studied serving, a complete magnesium and potassium electrolyte profile, real fruit, and natural sweeteners. Zero sugar, low calorie, plant-based, no caffeine, nothing artificial.</p></details>
-    <details><summary>Why reserve now?</summary><p>The first run is limited. Founding members lock launch pricing, ship first, and help shape the flavors. Reserving is fully refundable.</p></details>
-  </div>
-</section>
-
-<!-- FOUNDER LIST CAPTURE -->
-<section class="block" id="list" style="background:var(--cream-2);text-align:center">
-  <div class="wrap" style="max-width:560px">
-    <div class="eyebrow">Not ready to reserve?</div>
-    <h2 style="font-size:clamp(26px,3.6vw,38px);margin-top:10px">Join the founder list.</h2>
-    <p style="color:var(--muted);font-size:16.5px;margin-top:12px">Get launch updates and the first word when new batches and flavors drop. No commitment, unsubscribe anytime.</p>
-    <form id="founder-form" novalidate style="display:flex;gap:10px;max-width:450px;margin:24px auto 0;flex-wrap:wrap;justify-content:center">
-      <input class="field" type="email" name="email" placeholder="you@email.com" required autocomplete="email" aria-label="Email address" style="flex:1;min-width:230px;margin:0">
-      <button type="submit" class="btn lg" id="submit-btn" style="margin:0">Join</button>
-    </form>
-    <p id="form-msg" style="display:none;margin-top:14px;font-size:14.5px;color:var(--green-d);font-weight:600"></p>
-    <p class="fineprint" style="margin-top:10px">No spam. A handful of emails between now and launch.</p>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="cta-final">
+<section class="section" id="list">
   <div class="wrap">
-    <h2>Recovery you can keep in the fridge.</h2>
-    <a href="#reserve" class="btn lg">Reserve yours</a>
+    <div class="list-panel" data-reveal>
+      <div>
+        <h2>Not ready to reserve? Join the founder list.</h2>
+        <p>A handful of emails between now and launch. No spam.</p>
+      </div>
+      <form class="list-form" id="founderForm" novalidate>
+        <label class="lbl" for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <button class="btn" type="submit" id="submitBtn">Join</button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
-    <div class="foot-grid">
+    <div class="foot">
       <div>
-        <div class="brand" style="font-size:26px">Spry<span style="color:var(--green)">.</span></div>
-        <p style="font-size:14px;max-width:300px;margin-top:10px">A bioactive recovery peptide, in a can. Made for recovery and everyday strength.</p>
+        <a class="brand" href="#top">Spry</a>
+        <p>The peptide drink. One clinically studied peptide, in a cold, lightly sparkling can.</p>
       </div>
-      <div style="display:flex;gap:46px;flex-wrap:wrap">
-        <div style="display:grid;gap:10px">
-          <a href="#inside">What's inside</a>
-          <a href="#science">The science</a>
-          <a href="#flavors">Flavors</a>
-          <a href="#reserve">Reserve</a>
-        </div>
-        <div style="display:grid;gap:10px">
-          <a href="mailto:alejandro@drinkspry.com">Press &amp; partnerships</a>
-          <a href="#">Instagram</a>
-          <a href="#reserve">Founding members</a>
-        </div>
-        <div style="display:grid;gap:10px">
-          <a href="legal.html">Reservation terms</a>
-          <a href="legal.html">Refund policy</a>
-          <a href="legal.html">Terms of service</a>
-          <a href="legal.html">Privacy</a>
-        </div>
-      </div>
+      <ul>
+        <li><a href="#inside">What's in it</a></li>
+        <li><a href="#science">The science</a></li>
+        <li><a href="#flavors">Flavors</a></li>
+        <li><a href="#reserve">Reserve a pack</a></li>
+      </ul>
+      <ul>
+        <li><a href="mailto:alejandro@drinkspry.com">Press and partnerships</a></li>
+        <li><a href="https://www.tiktok.com/@drinkspry" rel="noopener" target="_blank">TikTok</a></li>
+        <li><a href="#list">Founder list</a></li>
+      </ul>
+      <ul>
+        <li><a href="legal.html#reservation">Reservation terms</a></li>
+        <li><a href="legal.html#refund">Refund policy</a></li>
+        <li><a href="legal.html#terms">Terms of service</a></li>
+        <li><a href="legal.html#privacy">Privacy</a></li>
+      </ul>
     </div>
-    <div class="disclaimer">
-      Spry is an early-stage venture. Founding-member reservations are fully refundable and the product is not yet available for general sale. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-      <br><br>© 2026 Spry Inc. · drinkspry.com
-    </div>
+    <p class="disclaimer">Spry is an early-stage venture. Founding-member reservations are fully refundable and the product is not yet available for general sale. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p class="copy">© 2026 Spry Inc.</p>
   </div>
 </footer>
 
-<script>
-  // Shopify reservation variants (draft until store + payments published)
-  var SHOP="https://spry-9197.myshopify.com";
-  var VARIANTS={
-    "6":{"Yuzu–Lime":"43321056722992","Blackberry–Hibiscus":"43321056755760","Mango–Passionfruit":"43321056788528","Mixed":"43321056821296"},
-    "12":{"Yuzu–Lime":"43321056854064","Blackberry–Hibiscus":"43321056886832","Mango–Passionfruit":"43321056919600","Mixed":"43321056952368"}
-  };
-  var pack="6";
-  document.querySelectorAll('.pack').forEach(function(p){
-    p.addEventListener('click',function(){
-      document.querySelectorAll('.pack').forEach(function(x){x.classList.remove('active')});
-      p.classList.add('active');
-      pack=p.dataset.pack;
-      document.getElementById('btnpack').textContent=pack+'-pack';
-      document.getElementById('btnprice').textContent=p.dataset.price;
-    });
-  });
-  document.querySelectorAll('.flavpick label').forEach(function(l){
-    l.addEventListener('click',function(){
-      document.querySelectorAll('.flavpick label').forEach(function(x){x.classList.remove('sel')});
-      l.classList.add('sel');
-    });
-  });
-  document.getElementById('reserveBtn').addEventListener('click',function(){
-    var flav=document.querySelector('input[name=flav]:checked').value;
-    var id=(VARIANTS[pack]||{})[flav];
-    if(!id) return;
-    window.location.href=SHOP+"/cart/"+id+":1";
-  });
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <div class="p"><strong>6-pack, $26.94</strong>Refundable until we ship</div>
+  <a class="btn sm" href="#reserve">Reserve</a>
+</div>
 
-  // Loops founder-list capture
-  var LOOPS_FORM_ID="cmpj2dwx5018t0j1l8yx344hv";
-  var lform=document.getElementById("founder-form");
-  var lmsg=document.getElementById("form-msg");
-  var lbtn=document.getElementById("submit-btn");
-  if(lform){
-    lform.addEventListener("submit",async function(e){
-      e.preventDefault();
-      var email=lform.email.value.trim();
-      if(!email||!email.includes("@")){ lmsg.textContent="Enter a valid email address."; lmsg.style.display="block"; return; }
-      lbtn.disabled=true; lbtn.textContent="Joining…";
-      try{
-        var res=await fetch("https://app.loops.so/api/newsletter-form/"+LOOPS_FORM_ID,{
-          method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"},
-          body:"email="+encodeURIComponent(email)+"&userGroup=Founder List"
-        });
-        if(res.ok){ lform.style.display="none"; lmsg.textContent="You're on the founder list. Check your inbox."; lmsg.style.display="block"; }
-        else { throw new Error(); }
-      }catch(err){
-        lbtn.disabled=false; lbtn.textContent="Join";
-        lmsg.textContent="Something went wrong. Email us instead: alejandro@drinkspry.com"; lmsg.style.display="block";
-      }
-    });
-  }
+<script>
+window.SPRY_CONFIG = {
+  showFigures: true,
+  trialsUrl: "",
+  shop: "https://spry-9197.myshopify.com",
+  variants: {
+    "6":  { mango: "43321056788528", blood: "43321056755760", yuzu: "43321056722992", berry: "50624505413680", mixed: "43321056821296" },
+    "12": { mango: "43321056919600", blood: "43321056886832", yuzu: "43321056854064", berry: "50624505479216", mixed: "43321056952368" }
+  },
+  loopsFormId: "cmpj2dwx5018t0j1l8yx344hv",
+  pourVideo: "/assets/img/pour.mp4"
+};
 </script>
+<script src="/assets/js/can.bundle.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

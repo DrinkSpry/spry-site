@@ -22,7 +22,7 @@
         textures: { mango: '/assets/can/label-mango.webp', blood: '/assets/can/label-blood.webp', yuzu: '/assets/can/label-yuzu.webp', berry: '/assets/can/label-berry.webp' },
         initial: current,
         scrollEl: document.getElementById('hero'),
-        startAngle: -0.35,
+        startAngle: 0.15,   // new label: front with the claims panel coming round
         idle: 0.2,
         intro: 0.85,
         introDur: 2.6,

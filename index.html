@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Spry. The peptide drink.</title>
-<meta name="description" content="One clinically studied peptide, at the serving the trials used, in a cold, lightly sparkling can. Reserve a pack. The first run ships in December.">
-<meta name="theme-color" content="#123B3D">
+<meta name="description" content="Spry is a lightly sparkling, low calorie drink with plant-derived peptides, clinically studied to support muscle strength and recovery. Reserve a pack. The first run ships in December.">
+<meta name="theme-color" content="#F2F0E9">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -13,14 +13,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spry">
 <meta property="og:title" content="Spry. The peptide drink.">
-<meta property="og:description" content="Finally, a functional beverage that actually does something. One clinically studied peptide in a cold, lightly sparkling can. First run ships in December.">
+<meta property="og:description" content="Supports muscle strength and recovery. A lightly sparkling, low calorie drink with plant-derived peptides. First run ships in December.">
 <meta property="og:image" content="https://drinkspry.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://drinkspry.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Spry. The peptide drink.">
-<meta name="twitter:description" content="Finally, a functional beverage that actually does something. One clinically studied peptide in a cold, lightly sparkling can.">
+<meta name="twitter:description" content="Supports muscle strength and recovery. A lightly sparkling, low calorie drink with plant-derived peptides.">
 <meta name="twitter:image" content="https://drinkspry.com/og-image.jpg">
 <link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -33,24 +33,26 @@
 @font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-600.woff2") format("woff2");font-weight:600;font-display:swap}
 
 :root{
-  --deep:#123B3D; --deeper:#0D2D2F; --deepest:#081F21; --lift:#17474A; --lift2:#1C5356;
-  --chalk:#ECF1EC; --chalk-80:rgba(236,241,236,.8); --chalk-60:rgba(236,241,236,.62); --chalk-40:rgba(236,241,236,.42);
-  --line:rgba(236,241,236,.14); --line-2:rgba(236,241,236,.24);
-  --off:#F2EFE8; --ember:#FF8A3D; --ember-d:#E5722A;
-  --cloud1:#F2A93B; --cloud2:#FF7A2F;
+  /* Oct 2026: palette follows the final can (off-white ground, teal type, one flavor color per can); the dark green ground is retired */
+  --bg:#F2F0E9; --ink:#004F51; --ink-2:#0B6466;
+  --deep:#F2F0E9; --deeper:#FBFAF6; --deepest:#F2F0E9; --lift:#E9E6DC; --lift2:#E2DED1;
+  --chalk:#004F51; --chalk-80:rgba(0,79,81,.84); --chalk-60:rgba(0,79,81,.68); --chalk-40:rgba(0,79,81,.46);
+  --line:rgba(0,79,81,.14); --line-2:rgba(0,79,81,.28);
+  --off:#E9E6DC; --ember:#004F51; --ember-d:#0B6466;
+  --cloud1:#F9B25C; --cloud2:#F68512;
   --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
   --body:"Manrope","Helvetica Neue",Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   --max:1280px; --gutter:24px; --r:18px; --ease:cubic-bezier(.16,1,.3,1);
 }
-html[data-flavor="mango"]{--cloud1:#F2A93B;--cloud2:#FF7A2F}
-html[data-flavor="blood"]{--cloud1:#FF4B2B;--cloud2:#B5121F}
-html[data-flavor="yuzu"]{--cloud1:#C9E85B;--cloud2:#6FBF3A}
-html[data-flavor="berry"]{--cloud1:#E0457B;--cloud2:#7A1F52}
+html[data-flavor="mango"]{--cloud1:#F9B25C;--cloud2:#F68512}
+html[data-flavor="blood"]{--cloud1:#FF8A6E;--cloud2:#F03E21}
+html[data-flavor="yuzu"]{--cloud1:#D6E870;--cloud2:#ACC913}
+html[data-flavor="berry"]{--cloud1:#F27BB0;--cloud2:#E4066E}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--body);background:var(--deep);color:var(--chalk);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video,canvas{display:block;max-width:100%}
 img{height:auto}
 a{color:inherit}
@@ -64,19 +66,20 @@ p{max-width:62ch}
 .sub{margin-top:18px}
 
 /* buttons: pills everywhere (rule: buttons pill, panels 18px, inputs 12px) */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ember);color:var(--deepest);font-weight:700;font-size:15px;padding:15px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:transform .18s var(--ease),background .18s;line-height:1}
-.btn:hover{background:#FF9A57;transform:translateY(-1px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:var(--bg);font-weight:700;font-size:15px;padding:15px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:transform .18s var(--ease),background .18s;line-height:1}
+.btn:hover{background:var(--ink-2);transform:translateY(-1px)}
 .btn:active{transform:translateY(0) scale(.98)}
 .btn.ghost{background:transparent;color:var(--chalk);border:1.5px solid var(--line-2)}
-.btn.ghost:hover{background:rgba(236,241,236,.06)}
+.btn.ghost:hover{background:rgba(0,79,81,.06)}
 .btn.lg{padding:18px 30px;font-size:16px}
 .btn.sm{padding:11px 18px;font-size:14px}
 .btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
 
 /* nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:68px;display:flex;align-items:center;background:rgba(18,59,61,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:68px;display:flex;align-items:center;background:rgba(242,240,233,.86);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
-.brand{font-family:var(--display);font-weight:800;font-size:27px;letter-spacing:-.045em;text-decoration:none;line-height:1}
+.brand{display:inline-flex;align-items:center;text-decoration:none;line-height:1;color:var(--ink)}
+.brand svg{height:24px;width:auto;display:block}
 .nav-links{display:flex;gap:30px;list-style:none}
 .nav-links a{text-decoration:none;font-size:15px;font-weight:600;color:var(--chalk-80)}
 .nav-links a:hover{color:var(--chalk)}
@@ -97,9 +100,9 @@ p{max-width:62ch}
 .hero-cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
 .hero-stage{position:relative;height:calc(100dvh - 68px);min-height:560px}
 .cloud{position:absolute;inset:0;pointer-events:none}
-.cloud::before{content:"";position:absolute;left:50%;top:58%;width:78vmin;height:78vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1) 0%,var(--cloud2) 38%,transparent 72%);opacity:.55;filter:blur(38px);transition:background 1.2s var(--ease)}
+.cloud::before{content:"";position:absolute;left:50%;top:58%;width:78vmin;height:78vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1) 0%,var(--cloud2) 38%,transparent 72%);opacity:.38;filter:blur(38px);transition:background 1.2s var(--ease)}
 .cloud::after{content:"";position:absolute;left:50%;top:70%;width:58vmin;height:40vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud2),transparent 70%);opacity:.35;filter:blur(30px)}
-.ground{position:absolute;left:50%;bottom:7.5%;width:34%;height:5%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(5,20,21,.55),transparent 75%);filter:blur(8px);pointer-events:none}
+.ground{position:absolute;left:50%;bottom:7.5%;width:34%;height:5%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(40,35,30,.32),transparent 75%);filter:blur(8px);pointer-events:none}
 #can{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 .can-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:1}
 .can-fallback img{height:82%;width:auto}
@@ -163,8 +166,8 @@ p{max-width:62ch}
 .flavors h2{max-width:22ch}
 .pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:36px}
 .pill{background:transparent;border:1.5px solid var(--line-2);color:var(--chalk);font-family:var(--body);font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:999px;cursor:pointer;transition:background .2s,border-color .2s}
-.pill:hover{background:rgba(236,241,236,.06)}
-.pill[aria-pressed="true"]{background:var(--chalk);color:var(--deepest);border-color:var(--chalk)}
+.pill:hover{background:rgba(0,79,81,.06)}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .stage{position:relative;height:min(78vh,720px);margin-top:28px;display:flex;align-items:center;justify-content:center}
 .stage::before{content:"";position:absolute;left:50%;top:52%;width:min(72vmin,620px);height:min(72vmin,620px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1) 0%,var(--cloud2) 40%,transparent 72%);opacity:.5;filter:blur(40px);transition:background 1s var(--ease)}
 .stage img{position:absolute;height:92%;width:auto;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .55s var(--ease),transform .55s var(--ease)}
@@ -175,10 +178,10 @@ p{max-width:62ch}
 @media (max-width:900px){.stage{height:60vh}.stage::before{width:90vw;height:90vw}}
 
 /* manifesto: the one deliberate colour-block switch on the page */
-.manifesto{background:var(--off);color:var(--deep)}
+.manifesto{background:var(--off);color:var(--ink)}
 .manifesto .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center}
 .manifesto h2{font-size:clamp(2.6rem,6vw,5.2rem);letter-spacing:-.04em;line-height:.95;max-width:none}
-.manifesto p{margin-top:22px;font-size:clamp(1.05rem,1.4vw,1.25rem);color:#1E4B4D;max-width:52ch}
+.manifesto p{margin-top:22px;font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--chalk-80);max-width:52ch}
 .manifesto p:first-of-type{margin-top:34px}
 .manifesto img{width:100%;border-radius:var(--r);aspect-ratio:4/5;object-fit:cover}
 @media (max-width:900px){.manifesto .grid{grid-template-columns:1fr;gap:32px}.manifesto img{aspect-ratio:4/3}}
@@ -192,12 +195,12 @@ p{max-width:62ch}
 .panel{background:var(--lift);border-radius:var(--r);padding:28px}
 .packs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pack{position:relative;border:1.5px solid var(--line-2);border-radius:14px;padding:18px 18px 16px;cursor:pointer;background:transparent;text-align:left;color:var(--chalk);font-family:var(--body);transition:border-color .2s,background .2s}
-.pack[aria-pressed="true"]{border-color:var(--ember);background:rgba(255,138,61,.08)}
+.pack[aria-pressed="true"]{border-color:var(--ink);background:rgba(0,79,81,.06)}
 .pack .name,.pack .price,.pack .per{display:block}
 .pack .name{font-weight:700;font-size:17px}
 .pack .price{font-family:var(--display);font-weight:700;font-size:1.9rem;letter-spacing:-.03em;margin-top:8px;line-height:1}
 .pack .per{margin-top:6px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--chalk-60)}
-.pack .tag{position:absolute;top:-10px;right:14px;background:var(--ember);color:var(--deepest);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:999px}
+.pack .tag{position:absolute;top:-10px;right:14px;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:999px}
 .field{margin-top:22px}
 .field label,.field .lbl{display:block;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60);margin-bottom:10px}
 .flav-opts{display:flex;flex-wrap:wrap;gap:8px}
@@ -233,7 +236,7 @@ p{max-width:62ch}
 .list-panel p{color:var(--chalk-80);margin-top:10px}
 .list-form{display:flex;gap:10px;flex-wrap:wrap}
 .list-form .lbl{width:100%;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
-.list-form input{flex:1;min-width:220px;background:var(--deeper);border:1.5px solid var(--line-2);border-radius:12px;color:var(--chalk);padding:14px 16px;font-size:16px;font-family:var(--body)}
+.list-form input{flex:1;min-width:220px;background:#FFFFFF;border:1.5px solid var(--line-2);border-radius:12px;color:var(--chalk);padding:14px 16px;font-size:16px;font-family:var(--body)}
 .list-form input::placeholder{color:var(--chalk-60)}
 .form-msg{width:100%;font-size:14px;color:var(--chalk-80);display:none}
 @media (max-width:900px){.list-panel{grid-template-columns:1fr;padding:28px}}
@@ -251,7 +254,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 @media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
 
 /* sticky mobile cta */
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:48;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(13,45,47,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:48;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(242,240,233,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
 .sticky-cta.on{transform:translateY(0)}
 .sticky-cta .p{font-size:14px;color:var(--chalk-80)}
 .sticky-cta .p strong{display:block;color:var(--chalk);font-size:15px}
@@ -263,13 +266,13 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 @media (max-width:900px){.hero-vid{top:auto;bottom:0;height:66vh;opacity:.55;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 32%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 32%,#000 82%,transparent 100%);-webkit-mask-composite:source-over;mask-composite:add}}
 .cell.vidcell{background:var(--deeper);min-height:420px}
 .cell.vidcell video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
-.cell.vidcell::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,31,33,.94) 0%,rgba(8,31,33,.6) 36%,rgba(8,31,33,0) 64%);pointer-events:none}
+.cell.text.tint2{background:var(--lift2)}
 .cell.vidcell h3,.cell.vidcell p{position:relative;z-index:1}
 .section.founder{position:relative;overflow:hidden;padding:clamp(120px,15vw,210px) 0}
 .founder .bg-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;mix-blend-mode:screen;opacity:.62;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 80%,transparent 100%)}
-.founder::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 58% 50% at 50% 50%,rgba(18,59,61,.86) 0%,rgba(18,59,61,.5) 55%,rgba(18,59,61,0) 82%)}
+.founder::before{content:"";position:absolute;left:50%;top:50%;width:min(90vw,900px);height:min(60vw,520px);transform:translate(-50%,-50%);z-index:1;pointer-events:none;border-radius:50%;background:radial-gradient(closest-side,var(--cloud1),transparent 75%);opacity:.32;filter:blur(40px)}
 .founder .wrap{position:relative;z-index:2}
-@supports not (mix-blend-mode:screen){.hero-vid,.founder .bg-vid{display:none}}
+.hero-vid,.founder .bg-vid{display:none}
 /* reveals */
 [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 [data-reveal].in{opacity:1;transform:none}
@@ -279,7 +282,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
   .stage img,.cloud::before,.stage::before{transition:none}
   .hero-vid,.founder .bg-vid{display:none}
 }
-.skip{position:absolute;left:12px;top:-60px;z-index:60;background:var(--ember);color:var(--deepest);padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip{position:absolute;left:12px;top:-60px;z-index:60;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none}
 .skip:focus{top:12px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
@@ -289,7 +292,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Spry home">Spry</a>
+    <a class="brand" href="#top" aria-label="Spry home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="2.1 5.7 837.7 228.3" role="img" aria-label="Spry"><path fill="currentColor" d="M 511.949219 108.269531 C 506.613281 108.269531 502.289062 103.945312 502.289062 98.609375 L 502.289062 65.59375 C 502.289062 60.261719 506.613281 55.9375 511.949219 55.9375 L 550.578125 55.9375 C 565.449219 55.9375 577.421875 68.339844 576.714844 83.367188 C 576.054688 97.441406 563.929688 108.269531 549.839844 108.269531 Z M 316.28125 108.269531 C 310.945312 108.269531 306.621094 103.945312 306.621094 98.609375 L 306.621094 65.59375 C 306.621094 60.261719 310.945312 55.9375 316.28125 55.9375 L 354.910156 55.9375 C 369.78125 55.9375 381.753906 68.339844 381.046875 83.367188 C 380.382812 97.441406 368.261719 108.269531 354.171875 108.269531 Z M 502.609375 217.765625 L 502.609375 174.617188 C 502.609375 166.160156 508.660156 158.644531 517.039062 157.523438 C 524.753906 156.492188 531.980469 160.816406 534.859375 167.828125 C 546.539062 196.25 577.050781 248.757812 657.304688 227.8125 C 663.632812 226.160156 667.996094 220.367188 667.996094 213.828125 L 667.996094 187.769531 C 667.996094 178.402344 659.238281 171.453125 650.136719 173.683594 C 638.054688 176.648438 621.75 178.546875 607.457031 173.035156 C 596.164062 168.679688 595.082031 153.171875 605.519531 147.039062 C 627.777344 133.964844 642.71875 109.78125 642.71875 82.101562 L 642.714844 81.796875 C 642.710938 77.449219 648.476562 75.917969 650.628906 79.695312 L 689.445312 147.777344 C 693.03125 154.066406 694.914062 161.175781 694.914062 168.414062 L 694.914062 217.765625 C 694.914062 225.765625 701.402344 232.253906 709.402344 232.253906 L 747.480469 232.253906 C 755.484375 232.253906 761.96875 225.765625 761.96875 217.765625 L 761.96875 168.414062 C 761.96875 161.175781 763.855469 154.066406 767.4375 147.777344 L 836.15625 28.484375 C 841.71875 18.824219 834.746094 6.765625 823.601562 6.765625 L 777.355469 6.765625 C 772.109375 6.761719 767.269531 9.59375 764.703125 14.171875 L 737.855469 85.070312 C 736.226562 89.371094 732.296875 91.429688 728.441406 91.285156 C 728.4375 91.285156 728.433594 91.28125 728.429688 91.285156 C 724.582031 91.425781 720.65625 89.367188 719.027344 85.070312 L 692.179688 14.171875 C 689.617188 9.59375 684.777344 6.761719 679.527344 6.765625 L 647.492188 6.796875 L 647.492188 6.832031 L 646.730469 6.832031 C 638.757812 6.832031 631.8125 13.164062 631.984375 21.132812 C 632.136719 28.160156 623.824219 31.761719 618.730469 27.015625 C 615.644531 24.140625 612.316406 21.527344 608.78125 19.199219 C 608.742188 19.175781 608.695312 19.15625 608.65625 19.132812 C 608.390625 18.957031 608.113281 18.789062 607.84375 18.617188 C 607.171875 18.191406 606.496094 17.769531 605.8125 17.363281 C 605.382812 17.109375 604.953125 16.859375 604.523438 16.613281 C 603.570312 16.074219 602.609375 15.546875 601.632812 15.050781 C 601.320312 14.890625 601.003906 14.742188 600.691406 14.585938 C 599.804688 14.148438 598.910156 13.726562 598.003906 13.324219 C 597.738281 13.207031 597.476562 13.082031 597.210938 12.96875 C 596.078125 12.480469 594.925781 12.019531 593.765625 11.585938 C 593.535156 11.5 593.304688 11.417969 593.074219 11.335938 C 591.847656 10.890625 590.609375 10.46875 589.355469 10.085938 L 589.355469 10.082031 C 582.425781 7.972656 575.070312 6.832031 567.449219 6.832031 L 451.0625 6.832031 C 443.089844 6.832031 436.148438 13.164062 436.316406 21.132812 C 436.46875 28.160156 428.15625 31.761719 423.0625 27.015625 C 409.621094 14.496094 391.597656 6.832031 371.777344 6.832031 C 371.777344 6.832031 148.6875 6.8125 102.707031 6.839844 C 90.707031 6.847656 78.765625 7.929688 67.046875 11.363281 C 54.621094 15.003906 42.855469 20.496094 32.9375 30.519531 C 20.148438 43.441406 13.90625 59.789062 16.050781 80.152344 C 17.828125 97.058594 25.179688 109.710938 36.734375 119.113281 C 54.113281 133.253906 73.644531 139.636719 94.1875 142.347656 C 102.578125 143.457031 111.027344 144.003906 119.359375 145.515625 C 124.136719 146.382812 129.03125 147.945312 133.355469 150.472656 C 143.085938 156.15625 143.914062 171.125 135.144531 178.722656 C 132.976562 180.601562 130.40625 182.015625 127.847656 182.976562 C 112.492188 188.742188 95.066406 180.972656 86.363281 164.671875 C 85.625 163.289062 84.882812 161.914062 84.191406 160.5 C 81.4375 154.839844 77.246094 152.476562 71.921875 152.492188 C 55.566406 152.542969 39.210938 152.445312 22.859375 152.640625 C 19.785156 152.679688 16.585938 153.347656 13.675781 154.539062 C 7.269531 157.15625 3.71875 163.765625 3.671875 171.90625 C 3.648438 175.800781 4.320312 179.550781 6.050781 182.722656 C 8.882812 187.910156 11.734375 193.195312 15.207031 197.742188 C 24.097656 209.394531 35.492188 216.320312 47.757812 221.367188 C 65.332031 228.601562 83.59375 230.949219 101.980469 231.894531 C 123.125 232.984375 144.191406 231.652344 165.0625 227.164062 C 177.589844 224.472656 189.632812 219.945312 200.855469 212.570312 C 209.46875 206.910156 216.855469 199.59375 222.492188 189.757812 C 234.648438 168.554688 230.308594 134.804688 209.679688 120.476562 C 203.75 116.355469 197.492188 113.242188 190.945312 110.894531 C 175.46875 105.351562 159.441406 103.734375 143.550781 101.066406 C 135.617188 99.738281 127.703125 98.066406 119.871094 96.050781 C 114.371094 94.636719 109.324219 91.660156 105.160156 86.894531 C 99.484375 80.398438 99.132812 71.074219 104.289062 63.957031 C 107.230469 59.890625 110.890625 57.097656 115.179688 55.621094 C 125.886719 51.9375 135.90625 54.09375 145.3125 61.058594 C 150.621094 64.988281 154.886719 70.261719 158.59375 76.21875 C 162.515625 82.515625 167.851562 85.433594 174.199219 85.023438 C 179.0625 84.707031 183.949219 83.855469 188.710938 82.609375 C 199.820312 79.707031 210.125 74.109375 220.289062 68.121094 C 222.847656 66.613281 225.453125 65.101562 228.171875 64.140625 L 228.226562 64.121094 C 234.296875 61.996094 240.652344 66.5 240.652344 72.933594 L 240.652344 217.765625 C 240.652344 225.765625 247.136719 232.253906 255.136719 232.253906 L 292.453125 232.253906 C 300.457031 232.253906 306.941406 225.765625 306.941406 217.765625 L 306.941406 171.859375 C 306.941406 163.859375 313.429688 157.371094 321.429688 157.371094 L 371.777344 157.371094 C 391.597656 157.371094 409.621094 149.710938 423.0625 137.191406 C 428.109375 132.484375 436.320312 135.984375 436.320312 142.882812 L 436.320312 217.765625 C 436.320312 225.765625 442.804688 232.253906 450.808594 232.253906 L 488.125 232.253906 C 496.125 232.253906 502.609375 225.765625 502.609375 217.765625 "/></svg></a>
     <ul class="nav-links">
       <li><a href="#inside">What's in it</a></li>
       <li><a href="#science">The science</a></li>
@@ -313,10 +316,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 <main id="top">
 
 <section class="hero" id="hero">
-  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/img/ribbons.webp" aria-hidden="true" tabindex="-1"><source src="/assets/img/ribbons.mp4" type="video/mp4"></video>
-  <div class="hero-copy">
-    <h1>Finally, a functional beverage that actually does something.</h1>
-    <p class="lede">One peptide with published human trials, at the serving the trials used. Cold, lightly sparkling, made from a bean.</p>
+    <div class="hero-copy">
+    <h1>The peptide drink.</h1>
+    <p class="lede">Plant-derived bioactive peptides from fava beans, clinically studied to support muscle strength and recovery after training. Lightly sparkling, low calorie, best served cold.</p>
     <div class="hero-cta">
       <a class="btn lg" href="#reserve">Reserve a pack</a>
       <a class="btn ghost lg" href="#science">Read the science</a>
@@ -333,9 +335,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 <section class="facts" aria-label="At a glance">
   <div class="wrap">
     <ul>
-      <li><strong>2.4 g</strong> clinically studied peptide in every can</li>
-      <li><strong>Plant-based</strong> made from fava beans</li>
-      <li><strong>Real fruit</strong> no artificial colors, flavors or sweeteners</li>
+      <li><strong>2.4 g</strong> hydrolyzed fava bean protein in every can, the amount the studies used</li>
+      <li><strong>Plant-based</strong> peptides extracted from fava beans</li>
+      <li><strong>Low calorie</strong> no artificial colors, flavors or sweeteners</li>
       <li><strong>December</strong> the first run ships</li>
     </ul>
   </div>
@@ -358,19 +360,18 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
     <div class="bento" data-reveal>
       <div class="cell text c1">
         <div class="big">2.4 g</div>
-        <h3>One peptide, at the studied serving</h3>
-        <p>A peptide made from fava beans, clinically studied in humans, at the same serving the trials used. That is why Spry exists.</p>
+        <h3>The studied amount, in every can</h3>
+        <p>Each can carries 2.4 g of hydrolyzed fava bean protein, the source of the peptides and the daily amount used in the human studies. That is why Spry exists.</p>
       </div>
       <div class="cell img c2"><img src="/assets/img/fava.webp" alt="Fava bean pods split open on linen" loading="lazy" width="1200" height="1490"></div>
       <div class="cell img c3"><video id="pourVideo" src="" poster="/assets/img/pour.webp" muted loop playsinline preload="none" aria-label="A cloudy, lightly sparkling drink being poured into a glass"></video></div>
-      <div class="cell text c4 vidcell">
-        <video class="lazy-vid" data-src="/assets/img/roll.mp4" poster="/assets/img/roll.webp" muted loop playsinline preload="none" aria-label="A hand rolls a can of Spry on a counter, then stands it back up"></video>
+      <div class="cell text c4 tint2">
         <h3>Cloudy on purpose</h3>
-        <p>Real fruit, and the color comes from the fruit. The haze is the peptide. Roll it once, then open.</p>
+        <p>The haze is the fava bean protein, and it settles a little in the can. Roll it once, then open.</p>
       </div>
       <div class="cell text c5">
-        <h3>Lightly sparkling, low sweetness</h3>
-        <p>Natural sweeteners from monk fruit and stevia, and a little real sugar. It drinks closer to a dry citrus soda than a sports drink. Electrolytes from magnesium, potassium and sodium citrate.</p>
+        <h3>Lightly sparkling. Low calorie.</h3>
+        <p>Sweetened with monk fruit and stevia, plus a little cane sugar. It drinks closer to a dry citrus soda than a sports drink. Electrolytes include sodium, potassium and magnesium.</p>
       </div>
     </div>
   </div>
@@ -378,27 +379,27 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 
 <section class="section" id="science">
   <div class="wrap">
-    <h2 data-reveal>One peptide. Studied in people.</h2>
-    <p class="lede sub" data-reveal>Two placebo-controlled, peer-reviewed human trials of the peptide, at the serving in every can.</p>
+    <h2 data-reveal>One peptide. Clinically studied.</h2>
+    <p class="lede sub" data-reveal>Two placebo-controlled, peer-reviewed human studies of the fava bean ingredient in Spry, at 2.4 g a day, the amount in every can. Both are cited below.</p>
     <div class="science-grid">
       <div data-reveal>
         <article class="study">
           <h3>Strength with training</h3>
           <div class="meta"><span>72 adults, ages 19 to 40</span><span>8 weeks of resistance training</span><span>Placebo-controlled</span><span>Peer-reviewed, 2025</span></div>
-          <div class="figure">+17%<small>strength vs placebo*</small></div>
-          <p class="result">Greater strength gains with training than placebo.</p>
+          <div class="figure">14%<small>more leg strength than placebo at day 28*</small></div>
+          <p class="result">Supports muscle strength with resistance training.</p>
         </article>
         <article class="study">
           <h3>Recovery after hard sessions</h3>
           <div class="meta"><span>30 men, ages 30 to 45</span><span>A muscle-damaging protocol, followed for 72 hours</span><span>Placebo-controlled</span><span>Peer-reviewed, 2023</span></div>
-          <div class="figure">2x<small>faster strength recovery*</small></div>
-          <p class="result">Faster strength recovery and less muscle fatigue than placebo.</p>
+          <div class="figure">&gt;2x<small>faster strength recovery than placebo*</small></div>
+          <p class="result">Supports muscle recovery after training and helps reduce exercise-induced fatigue.</p>
         </article>
-        <p class="footnote">*Peer-reviewed, placebo-controlled human studies of the peptide at 2.4 g a day. We are also validating that the can keeps the peptide intact.</p>
+        <p class="footnote">*Placebo-controlled, peer-reviewed human studies of hydrolyzed fava bean protein, the ingredient in Spry, taken as capsules at 2.4 g a day, the amount in one can. Strength: 72 healthy adults aged 19 to 40 on a resistance-training program, one-rep max leg extension at day 28 (Mohan et al., BMJ Nutrition, Prevention &amp; Health, 2025). Recovery: 30 healthy men aged 30 to 45, rate of strength recovery over the 72 hours after a workout designed to cause muscle soreness (Kerr et al., Nutrients, 2023). These results are for the ingredient, not for Spry itself, and we are testing that the can keeps the ingredient intact.</p>
         <a class="btn ghost trial-link" href="#" id="trialLink">Read both trials</a>
       </div>
       <div class="side-can" data-reveal>
-        <img id="sideCan" src="/assets/can/can-mango-side.webp" alt="The side panel of the Spry can: one peptide, studied in people" loading="lazy" width="700" height="1000">
+        <img id="sideCan" src="/assets/can/can-mango-side.webp" alt="The side panel of the Spry can: One peptide. Clinically studied." loading="lazy" width="700" height="1000">
       </div>
     </div>
   </div>
@@ -407,7 +408,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
 <section class="section flavors" id="flavors">
   <div class="wrap">
     <h2 data-reveal>It has to taste good, too.</h2>
-    <p class="lede sub" data-reveal>Four flavors made with real fruit and kept low on sweetness. Pick one and the can changes.</p>
+    <p class="lede sub" data-reveal>Four flavors, lightly sparkling and low calorie. Pick one and the can changes.</p>
     <div class="pills" role="group" aria-label="Choose a flavor" data-reveal>
       <button class="pill" data-flavor="mango" aria-pressed="true">Mango Passionfruit</button>
       <button class="pill" data-flavor="blood" aria-pressed="false">Blood Orange</button>
@@ -434,7 +435,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
         <h2>Strong is a habit.</h2>
         <p>Not a heroic act. The stairs two at a time at forty-six, and the run club on a wet Tuesday. Showing up tomorrow because you recovered today.</p>
         <p>The science that helps you keep that habit is real. Almost all of it is sold in vials, by strangers, with no label anyone can check. People buy it anyway, because nobody offered a better way.</p>
-        <p>So we took one peptide that was studied in people, at the serving that was studied, and made a drink around it. We print what the trials found. Roll it once. Then get on with your day.</p>
+        <p>So we took one ingredient that was studied in people, at the amount that was studied, and made a drink around it. We print what the studies found. Roll it once. Then get on with your day.</p>
       </div>
       <img data-reveal src="/assets/img/runclub.webp" alt="Runners catching their breath by a railing after a run club on a wet morning" loading="lazy" width="1600" height="1073">
     </div>
@@ -451,7 +452,6 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
         <ul class="perks">
           <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>Launch pricing, honored for your first year</span></li>
           <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>The first production run, before anyone else</span></li>
-          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>A numbered founding-member can in your first box</span></li>
           <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>A direct line to the founder and a vote on flavors</span></li>
         </ul>
       </div>
@@ -472,14 +472,13 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
         </div>
         <button class="btn lg" id="reserveBtn">Reserve my <span id="btnPack">6-pack</span> · <span id="btnPrice">$26.94</span></button>
         <p class="panel-msg" id="panelMsg"></p>
-        <p class="fine">Secure checkout via Shopify. Fully refundable any time before we ship in December, and you can change your flavor until then. <a href="legal.html#reservation">Reservation terms</a> and <a href="legal.html#refund">refund policy</a>.</p>
+        <p class="fine">Secure checkout via Shopify. Shipping is $5.99, free on orders of $70 or more, within the United States. Fully refundable any time before we ship in December, and you can change your flavor until then. <a href="legal.html#reservation">Reservation terms</a> and <a href="legal.html#refund">refund policy</a>.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="section founder">
-  <video class="bg-vid lazy-vid" data-src="/assets/img/orbs.mp4" poster="/assets/img/orbs.webp" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   <div class="wrap" data-reveal>
     <blockquote>“I came to peptides as a user first. I wanted one that was studied in people and safe to drink, sold where I buy my groceries. I couldn’t find it, so we made it.”</blockquote>
     <cite>Alejandro Navarro, founder</cite>
@@ -493,11 +492,11 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
       <details><summary>When does it ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first production run ships in December 2026, to founding members first. You will hear from us before it leaves.</p></details>
       <details><summary>Is my payment refundable? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, in full, any time before we ship. Cancel and we refund it. Otherwise it is simply your order at founding-member pricing.</p></details>
       <details><summary>Can I change my flavor? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, any time before we ship. Reply to your confirmation email and we will switch it.</p></details>
-      <details><summary>What is in it? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>One peptide made from fava beans and clinically studied in humans, 2.4 g a can, with electrolytes, real fruit and lightly sparkling water. Natural sweeteners from monk fruit and stevia, and a little real sugar. No artificial colors, flavors or sweeteners. The full panel goes on the can and on this page before we ship.</p></details>
-      <details><summary>Why is it cloudy? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Because the peptide is in there. It settles a little in the can. Roll it once, then open.</p></details>
-      <details><summary>Is it a soda? A protein shake? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Neither. It is a lightly sparkling drink built around one studied peptide, and it is not sweet the way a soda is.</p></details>
-      <details><summary>Do I need to keep it cold? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Serve it cold. It tastes better that way.</p></details>
-      <details><summary>Where do you ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first run ships within the United States.</p></details>
+      <details><summary>What is in it? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Lightly sparkling water, 2.4 g of hydrolyzed fava bean protein (the clinically studied ingredient) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners. Each flavor has its own ingredient list and Nutrition Facts, and both go on this page before we ship.</p></details>
+      <details><summary>Why is it cloudy? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Because of the fava bean protein. It settles a little in the can. Roll it once, then open.</p></details>
+      <details><summary>Is it a soda? A protein shake? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
+      <details><summary>Does it need to be refrigerated? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>No. Store it in a cool, dry place. It tastes best cold.</p></details>
+      <details><summary>Where do you ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first run ships within the United States. Shipping is $5.99, and free on orders of $70 or more.</p></details>
     </div>
   </div>
 </section>
@@ -525,8 +524,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand" href="#top">Spry</a>
-        <p>The peptide drink. One clinically studied peptide, in a cold, lightly sparkling can.</p>
+        <a class="brand" href="#top" aria-label="Spry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="2.1 5.7 837.7 228.3" role="img" aria-label="Spry"><path fill="currentColor" d="M 511.949219 108.269531 C 506.613281 108.269531 502.289062 103.945312 502.289062 98.609375 L 502.289062 65.59375 C 502.289062 60.261719 506.613281 55.9375 511.949219 55.9375 L 550.578125 55.9375 C 565.449219 55.9375 577.421875 68.339844 576.714844 83.367188 C 576.054688 97.441406 563.929688 108.269531 549.839844 108.269531 Z M 316.28125 108.269531 C 310.945312 108.269531 306.621094 103.945312 306.621094 98.609375 L 306.621094 65.59375 C 306.621094 60.261719 310.945312 55.9375 316.28125 55.9375 L 354.910156 55.9375 C 369.78125 55.9375 381.753906 68.339844 381.046875 83.367188 C 380.382812 97.441406 368.261719 108.269531 354.171875 108.269531 Z M 502.609375 217.765625 L 502.609375 174.617188 C 502.609375 166.160156 508.660156 158.644531 517.039062 157.523438 C 524.753906 156.492188 531.980469 160.816406 534.859375 167.828125 C 546.539062 196.25 577.050781 248.757812 657.304688 227.8125 C 663.632812 226.160156 667.996094 220.367188 667.996094 213.828125 L 667.996094 187.769531 C 667.996094 178.402344 659.238281 171.453125 650.136719 173.683594 C 638.054688 176.648438 621.75 178.546875 607.457031 173.035156 C 596.164062 168.679688 595.082031 153.171875 605.519531 147.039062 C 627.777344 133.964844 642.71875 109.78125 642.71875 82.101562 L 642.714844 81.796875 C 642.710938 77.449219 648.476562 75.917969 650.628906 79.695312 L 689.445312 147.777344 C 693.03125 154.066406 694.914062 161.175781 694.914062 168.414062 L 694.914062 217.765625 C 694.914062 225.765625 701.402344 232.253906 709.402344 232.253906 L 747.480469 232.253906 C 755.484375 232.253906 761.96875 225.765625 761.96875 217.765625 L 761.96875 168.414062 C 761.96875 161.175781 763.855469 154.066406 767.4375 147.777344 L 836.15625 28.484375 C 841.71875 18.824219 834.746094 6.765625 823.601562 6.765625 L 777.355469 6.765625 C 772.109375 6.761719 767.269531 9.59375 764.703125 14.171875 L 737.855469 85.070312 C 736.226562 89.371094 732.296875 91.429688 728.441406 91.285156 C 728.4375 91.285156 728.433594 91.28125 728.429688 91.285156 C 724.582031 91.425781 720.65625 89.367188 719.027344 85.070312 L 692.179688 14.171875 C 689.617188 9.59375 684.777344 6.761719 679.527344 6.765625 L 647.492188 6.796875 L 647.492188 6.832031 L 646.730469 6.832031 C 638.757812 6.832031 631.8125 13.164062 631.984375 21.132812 C 632.136719 28.160156 623.824219 31.761719 618.730469 27.015625 C 615.644531 24.140625 612.316406 21.527344 608.78125 19.199219 C 608.742188 19.175781 608.695312 19.15625 608.65625 19.132812 C 608.390625 18.957031 608.113281 18.789062 607.84375 18.617188 C 607.171875 18.191406 606.496094 17.769531 605.8125 17.363281 C 605.382812 17.109375 604.953125 16.859375 604.523438 16.613281 C 603.570312 16.074219 602.609375 15.546875 601.632812 15.050781 C 601.320312 14.890625 601.003906 14.742188 600.691406 14.585938 C 599.804688 14.148438 598.910156 13.726562 598.003906 13.324219 C 597.738281 13.207031 597.476562 13.082031 597.210938 12.96875 C 596.078125 12.480469 594.925781 12.019531 593.765625 11.585938 C 593.535156 11.5 593.304688 11.417969 593.074219 11.335938 C 591.847656 10.890625 590.609375 10.46875 589.355469 10.085938 L 589.355469 10.082031 C 582.425781 7.972656 575.070312 6.832031 567.449219 6.832031 L 451.0625 6.832031 C 443.089844 6.832031 436.148438 13.164062 436.316406 21.132812 C 436.46875 28.160156 428.15625 31.761719 423.0625 27.015625 C 409.621094 14.496094 391.597656 6.832031 371.777344 6.832031 C 371.777344 6.832031 148.6875 6.8125 102.707031 6.839844 C 90.707031 6.847656 78.765625 7.929688 67.046875 11.363281 C 54.621094 15.003906 42.855469 20.496094 32.9375 30.519531 C 20.148438 43.441406 13.90625 59.789062 16.050781 80.152344 C 17.828125 97.058594 25.179688 109.710938 36.734375 119.113281 C 54.113281 133.253906 73.644531 139.636719 94.1875 142.347656 C 102.578125 143.457031 111.027344 144.003906 119.359375 145.515625 C 124.136719 146.382812 129.03125 147.945312 133.355469 150.472656 C 143.085938 156.15625 143.914062 171.125 135.144531 178.722656 C 132.976562 180.601562 130.40625 182.015625 127.847656 182.976562 C 112.492188 188.742188 95.066406 180.972656 86.363281 164.671875 C 85.625 163.289062 84.882812 161.914062 84.191406 160.5 C 81.4375 154.839844 77.246094 152.476562 71.921875 152.492188 C 55.566406 152.542969 39.210938 152.445312 22.859375 152.640625 C 19.785156 152.679688 16.585938 153.347656 13.675781 154.539062 C 7.269531 157.15625 3.71875 163.765625 3.671875 171.90625 C 3.648438 175.800781 4.320312 179.550781 6.050781 182.722656 C 8.882812 187.910156 11.734375 193.195312 15.207031 197.742188 C 24.097656 209.394531 35.492188 216.320312 47.757812 221.367188 C 65.332031 228.601562 83.59375 230.949219 101.980469 231.894531 C 123.125 232.984375 144.191406 231.652344 165.0625 227.164062 C 177.589844 224.472656 189.632812 219.945312 200.855469 212.570312 C 209.46875 206.910156 216.855469 199.59375 222.492188 189.757812 C 234.648438 168.554688 230.308594 134.804688 209.679688 120.476562 C 203.75 116.355469 197.492188 113.242188 190.945312 110.894531 C 175.46875 105.351562 159.441406 103.734375 143.550781 101.066406 C 135.617188 99.738281 127.703125 98.066406 119.871094 96.050781 C 114.371094 94.636719 109.324219 91.660156 105.160156 86.894531 C 99.484375 80.398438 99.132812 71.074219 104.289062 63.957031 C 107.230469 59.890625 110.890625 57.097656 115.179688 55.621094 C 125.886719 51.9375 135.90625 54.09375 145.3125 61.058594 C 150.621094 64.988281 154.886719 70.261719 158.59375 76.21875 C 162.515625 82.515625 167.851562 85.433594 174.199219 85.023438 C 179.0625 84.707031 183.949219 83.855469 188.710938 82.609375 C 199.820312 79.707031 210.125 74.109375 220.289062 68.121094 C 222.847656 66.613281 225.453125 65.101562 228.171875 64.140625 L 228.226562 64.121094 C 234.296875 61.996094 240.652344 66.5 240.652344 72.933594 L 240.652344 217.765625 C 240.652344 225.765625 247.136719 232.253906 255.136719 232.253906 L 292.453125 232.253906 C 300.457031 232.253906 306.941406 225.765625 306.941406 217.765625 L 306.941406 171.859375 C 306.941406 163.859375 313.429688 157.371094 321.429688 157.371094 L 371.777344 157.371094 C 391.597656 157.371094 409.621094 149.710938 423.0625 137.191406 C 428.109375 132.484375 436.320312 135.984375 436.320312 142.882812 L 436.320312 217.765625 C 436.320312 225.765625 442.804688 232.253906 450.808594 232.253906 L 488.125 232.253906 C 496.125 232.253906 502.609375 225.765625 502.609375 217.765625 "/></svg></a>
+        <p>The peptide drink. Lightly sparkling, low calorie, with plant-derived peptides.</p>
       </div>
       <ul>
         <li><a href="#inside">What's in it</a></li>
@@ -546,7 +545,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
         <li><a href="legal.html#privacy">Privacy</a></li>
       </ul>
     </div>
-    <p class="disclaimer">Spry is an early-stage venture. Founding-member reservations are fully refundable and the product is not yet available for general sale. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p class="disclaimer">Spry is an early-stage venture. Founding-member reservations are fully refundable and the product is not yet available for general sale.</p>
     <p class="copy">© 2026 Spry Inc.</p>
   </div>
 </footer>

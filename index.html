@@ -138,9 +138,9 @@ p{max-width:62ch}
 .cell.text p{color:var(--chalk-80);font-size:16px;max-width:38ch}
 .cell.text .big{font-family:var(--display);font-size:clamp(3rem,5vw,4.6rem);letter-spacing:-.04em;line-height:.9;color:var(--ember);margin-bottom:auto;padding-bottom:28px}
 .cell.img img,.cell.img video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.c1{grid-column:span 7}.c2{grid-column:span 5}.c3{grid-column:span 4}.c4{grid-column:span 4}.c5{grid-column:span 4}
+.c1{grid-column:span 7}.c2{grid-column:span 5}.c3{grid-column:span 5;grid-row:span 2}.c4{grid-column:span 7}.c5{grid-column:span 7}
 .cell.tint{background:linear-gradient(160deg,var(--lift2),var(--deeper))}
-@media (max-width:900px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.c1,.c2,.c3,.c4,.c5{grid-column:span 2}.cell.img{min-height:260px;aspect-ratio:4/3}}
+@media (max-width:900px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.c1,.c2,.c3,.c4,.c5{grid-column:span 2;grid-row:auto}.cell.img{min-height:260px;aspect-ratio:4/3}.cell.img.c3{aspect-ratio:3/4}}
 
 /* science */
 .science-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;margin-top:48px;align-items:start}
@@ -364,10 +364,10 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
         <p>Each can carries 2.4 g of hydrolyzed fava bean protein, the source of the peptides and the daily amount used in the human studies. That is why Spry exists.</p>
       </div>
       <div class="cell img c2"><img src="/assets/img/fava.webp" alt="Fava bean pods split open on linen" loading="lazy" width="1200" height="1490"></div>
-      <div class="cell img c3"><video id="pourVideo" src="" poster="/assets/img/pour.webp" muted loop playsinline preload="none" aria-label="A cloudy, lightly sparkling drink being poured into a glass"></video></div>
+      <div class="cell img c3"><img src="/assets/img/glass-blood-orange.webp" alt="A glass of Spry Blood Orange: lightly sparkling, with a light haze" loading="lazy" width="900" height="1200" style="object-position:50% 60%"></div>
       <div class="cell text c4 tint2">
         <h3>Cloudy on purpose</h3>
-        <p>The haze is the fava bean protein, and it settles a little in the can. Roll it once, then open.</p>
+        <p>A light haze from the fava bean protein, which settles a little in the can. Roll it once, then open.</p>
       </div>
       <div class="cell text c5">
         <h3>Lightly sparkling. Low calorie.</h3>
@@ -493,7 +493,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60
       <details><summary>Is my payment refundable? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, in full, any time before we ship. Cancel and we refund it. Otherwise it is simply your order at founding-member pricing.</p></details>
       <details><summary>Can I change my flavor? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, any time before we ship. Reply to your confirmation email and we will switch it.</p></details>
       <details><summary>What is in it? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Lightly sparkling water, 2.4 g of hydrolyzed fava bean protein (the clinically studied ingredient) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners. Each flavor has its own ingredient list and Nutrition Facts, and both go on this page before we ship.</p></details>
-      <details><summary>Why is it cloudy? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Because of the fava bean protein. It settles a little in the can. Roll it once, then open.</p></details>
+      <details><summary>Why is it a little cloudy? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The light haze comes from the fava bean protein. It settles a little in the can, so roll it once, then open.</p></details>
       <details><summary>Is it a soda? A protein shake? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
       <details><summary>Does it need to be refrigerated? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>No. Store it in a cool, dry place. It tastes best cold.</p></details>
       <details><summary>Where do you ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first run ships within the United States. Shipping is $5.99, and free on orders of $70 or more.</p></details>

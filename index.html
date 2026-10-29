@@ -214,6 +214,7 @@ p{margin:0}
 .offer h2{font-size:clamp(52px,6.4vw,104px)}
 .offer .lede{margin-top:16px;font-size:20px;font-weight:600;color:var(--ink-2)}
 .opts{margin-top:30px;display:grid;gap:10px}
+.opts[hidden]{display:none}
 .opt{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:16px 18px;border-radius:22px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);cursor:pointer;transition:box-shadow .25s,transform .25s var(--ease)}
 .opt:hover{transform:translateY(-1px)}
 .opt input{position:absolute;opacity:0;pointer-events:none}
@@ -236,6 +237,14 @@ p{margin:0}
 .sub input:checked::after{transform:translateX(18px)}
 .sub b{font-weight:800}
 .sub .fine{display:block;margin-top:6px;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.plans{margin-top:10px;display:grid;gap:8px}
+.plans[hidden]{display:none}
+.plan{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);cursor:pointer;transition:box-shadow .25s}
+.plan input{width:18px;height:18px;accent-color:#004F51;margin:0}
+.plan b{display:block;font-weight:800;font-size:15.5px}
+.plan small{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px}
+.plan .amt{font-family:var(--display);font-weight:800;font-size:18px}
+.plan:has(input:checked){box-shadow:inset 0 0 0 2px var(--ink)}
 .offer .add{margin-top:22px;width:100%;justify-content:center;font-size:17px;padding:1.15em 1.6em}
 .reassure{margin-top:12px;text-align:center;font-size:14px;font-weight:600;color:var(--ink-soft)}
 .reassure a{color:var(--ink);font-weight:800}
@@ -259,7 +268,9 @@ p{margin:0}
 .study .big-fig{margin-top:14px;font-family:var(--display);font-weight:800;font-size:clamp(56px,6vw,88px);line-height:.9;letter-spacing:-.04em;color:var(--mango-1)}
 .study .big-fig sup{font-size:.45em;vertical-align:.9em;margin-left:2px}
 .study .fig-line{margin-top:10px;font-size:15.5px;color:#DCE8E4;font-weight:600}
-.papers{margin-top:26px;max-width:820px}
+.daily{margin-top:30px;font-size:19px;font-weight:500;color:#D5E6E2;max-width:60ch}
+.daily b{font-family:var(--display);font-weight:800;color:var(--mango-1);margin-right:6px;letter-spacing:-.01em}
+.papers{margin-top:20px;max-width:820px}
 .papers summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--mango-1);text-decoration:underline;text-underline-offset:4px}
 .papers summary::-webkit-details-marker{display:none}
 .papers summary .ico{transition:transform .3s var(--ease)}
@@ -470,7 +481,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   .dots{display:none}
   .roll .big{font-size:clamp(56px,17vw,120px)}
   .roll-vid{aspect-ratio:4/3}
-  .roll-vid video{object-position:58% 50%}
+  .roll-vid video{object-position:38% 50%}
   .roll .cap{font-size:15.5px}
   .roll .cap b{font-size:22px}
 
@@ -506,10 +517,10 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
 .shop-head p{font-size:19px;font-weight:500;color:var(--ink-2);max-width:36ch;justify-self:end}
 .shop-grid{margin-top:clamp(30px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(18px,3vw,44px);align-items:start}
 .shop-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.sku{display:grid;grid-template-columns:104px minmax(0,1fr) auto;align-items:center;gap:16px;padding:10px 14px 10px 8px;border-radius:26px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .3s,background .3s,transform .35s var(--ease)}
+.sku{display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:16px;padding:10px 14px 10px 8px;border-radius:26px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .3s,background .3s,transform .35s var(--ease)}
 .sku.on{box-shadow:inset 0 0 0 2.5px var(--c);background:#fff}
 .sku.pop{transform:scale(1.015)}
-.sku img{width:104px;height:auto;display:block}
+.sku img{width:84px;height:auto;display:block;justify-self:center}
 .sku-t b{display:block;font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1.05}
 .sku-t small{display:block;margin-top:3px;font-size:14px;color:var(--ink-soft);font-weight:600}
 .sku-t .pr{display:block;margin-top:6px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
@@ -552,13 +563,13 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   .shipbox-tot b{font-size:24px}
   .shipbox .btn{margin-top:10px;padding-block:12px}
   .stage-empty{bottom:12px;font-size:14px}
-  .sku{grid-template-columns:76px minmax(0,1fr) auto;gap:10px;border-radius:22px}
-  .sku img{width:76px}
+  .sku{grid-template-columns:64px minmax(0,1fr) auto;gap:10px;border-radius:22px}
+  .sku img{width:58px}
   .sku-t b{font-size:18px}
   .sku-t small{font-size:13px}
   .step button{width:36px;height:36px}
 }
-.sub,.qsub{display:none!important}
+.sub,.qsub,.plans{display:none!important}
 </style>
 </head>
 <body>
@@ -647,9 +658,14 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <div class="ship" id="shipNote"><svg class="ico"><use href="#i-truck"/></svg><span id="shipTxt">Add a second box and shipping is free.</span></div>
       <label class="sub" for="subT">
         <input type="checkbox" id="subT">
-        <span><b>Subscribe: $44.28 a box every 4 weeks</b>, ships free. That is $3.69 a can.
-          <span class="fine" id="subFine">Renews every 4 weeks at $44.28 a box until you cancel. Skip or cancel any time before your next box ships.</span></span>
+        <span><b>Subscribe: one a day, delivered.</b> From $3.49 a can, ships free.
+          <span class="fine" id="subFine">Pick how often. Skip or cancel any time before your next delivery ships.</span></span>
       </label>
+      <div class="plans" id="plans" role="radiogroup" aria-label="Subscription plan" hidden>
+        <label class="plan"><input type="radio" name="plan" value="m4" checked><span><b>2 boxes every 4 weeks</b><small>24 cans, $3.49 a can. One a day, six days a week.</small></span><span class="amt">$83.76</span></label>
+        <label class="plan"><input type="radio" name="plan" value="m3"><span><b>2 boxes every 3 weeks</b><small>24 cans, $3.49 a can. Every day, no skips.</small></span><span class="amt">$83.76</span></label>
+        <label class="plan"><input type="radio" name="plan" value="b2"><span><b>1 box every 2 weeks</b><small>12 cans, $3.69 a can.</small></span><span class="amt">$44.28</span></label>
+      </div>
       <button class="btn btn-ink add" id="addMixed">Add to cart <span id="addAmt">$47.88</span></button>
       <p class="reassure">First boxes ship in December, within the US. <a href="/legal.html#refund" target="_blank" rel="noopener">Refund policy</a></p>
     </div>
@@ -798,6 +814,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
         <ul><li>Placebo-controlled, peer-reviewed, 2025</li></ul>
       </div>
     </div>
+    <p class="daily"><b>One can a day.</b> Both studies used one serving a day, and every can is one serving.</p>
     <details class="papers">
       <summary>Don&rsquo;t believe us? Read the peer-reviewed clinical studies here <svg class="ico"><use href="#i-caret-down"/></svg></summary>
       <ul>
@@ -827,15 +844,15 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="wrap">
     <div class="shop-head">
       <h2 id="shh">Stack your boxes.</h2>
-      <p>Every box is 12 cans for $47.88. Mix flavors however you like. Two or more boxes ship free.</p>
+      <p>Every box is 12 cans for $47.88, twelve days at one a day. Mix flavors however you like. Two or more boxes ship free.</p>
     </div>
     <div class="shop-grid">
       <ul class="shop-list" id="shopList">
-        <li class="sku" data-k="mixed" style="--c:#F68512"><img src="/assets/v3/box/mixed-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>The Mixed Box</b><small>Three of each flavor</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="The Mixed Box boxes"><button type="button" data-d="-1" aria-label="One fewer The Mixed Box box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more The Mixed Box box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
-        <li class="sku" data-k="mango" style="--c:#F68512"><img src="/assets/v3/box/mango-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Mango Passionfruit</b><small>Tropical and bright</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Mango Passionfruit boxes"><button type="button" data-d="-1" aria-label="One fewer Mango Passionfruit box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Mango Passionfruit box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
-        <li class="sku" data-k="blood" style="--c:#F03E21"><img src="/assets/v3/box/blood-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Blood Orange</b><small>Red citrus, dry finish</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Blood Orange boxes"><button type="button" data-d="-1" aria-label="One fewer Blood Orange box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Blood Orange box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
-        <li class="sku" data-k="yuzu" style="--c:#ACC913"><img src="/assets/v3/box/yuzu-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Yuzu Lime</b><small>Crisp and floral</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Yuzu Lime boxes"><button type="button" data-d="-1" aria-label="One fewer Yuzu Lime box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Yuzu Lime box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
-        <li class="sku" data-k="berry" style="--c:#E4066E"><img src="/assets/v3/box/berry-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Mixed Berry</b><small>Dark berries, tart snap</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Mixed Berry boxes"><button type="button" data-d="-1" aria-label="One fewer Mixed Berry box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Mixed Berry box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="mixed" style="--c:#F68512"><img src="/assets/v3/box/mixed-s.webp" alt="" width="178" height="240" loading="lazy"><div class="sku-t"><b>The Mixed Box</b><small>Three of each flavor</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="The Mixed Box boxes"><button type="button" data-d="-1" aria-label="One fewer The Mixed Box box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more The Mixed Box box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="mango" style="--c:#F68512"><img src="/assets/v3/box/mango-s.webp" alt="" width="178" height="240" loading="lazy"><div class="sku-t"><b>Mango Passionfruit</b><small>Tropical and bright</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Mango Passionfruit boxes"><button type="button" data-d="-1" aria-label="One fewer Mango Passionfruit box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Mango Passionfruit box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="blood" style="--c:#F03E21"><img src="/assets/v3/box/blood-s.webp" alt="" width="178" height="240" loading="lazy"><div class="sku-t"><b>Blood Orange</b><small>Red citrus, dry finish</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Blood Orange boxes"><button type="button" data-d="-1" aria-label="One fewer Blood Orange box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Blood Orange box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="yuzu" style="--c:#ACC913"><img src="/assets/v3/box/yuzu-s.webp" alt="" width="178" height="240" loading="lazy"><div class="sku-t"><b>Yuzu Lime</b><small>Crisp and floral</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Yuzu Lime boxes"><button type="button" data-d="-1" aria-label="One fewer Yuzu Lime box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Yuzu Lime box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="berry" style="--c:#E4066E"><img src="/assets/v3/box/berry-s.webp" alt="" width="178" height="240" loading="lazy"><div class="sku-t"><b>Mixed Berry</b><small>Dark berries, tart snap</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Mixed Berry boxes"><button type="button" data-d="-1" aria-label="One fewer Mixed Berry box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Mixed Berry box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
       </ul>
       <aside class="shipbox" aria-label="Your shipment">
         <div class="shipbox-top"><b>Your shipment</b><span id="shipCount">0 boxes</span></div>
@@ -970,9 +987,10 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
     <div>
       <details class="qa"><summary>When does it ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The first production run ships in December 2026, within the United States. You will hear from us before your box leaves.</p></details>
       <details class="qa"><summary>What is in it?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Lightly sparkling water, PeptiStrong&reg; (the clinically studied plant-derived peptide, from fava beans) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners.</p></details>
+      <details class="qa"><summary>How many should I drink?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">One can a day. That is the daily serving used in the clinical studies, and each can holds one serving.</p></details>
       <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so roll it once, then open.</p></details>
       <details class="qa"><summary>Is it a soda? A protein shake?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
-      <details class="qa" hidden><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">A box every 4 weeks at $44.28 ($3.69 a can), shipped free. Skip or cancel any time before your next box ships. It renews until you cancel.</p></details>
+      <details class="qa" hidden><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Pick a plan: 2 boxes every 4 weeks or every 3 weeks at $3.49 a can, or 1 box every 2 weeks at $3.69 a can. Subscriptions ship free. Skip or cancel any time before your next delivery ships. It renews until you cancel.</p></details>
       <details class="qa"><summary>Does it need to be refrigerated?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">No. Store it in a cool, dry place. It tastes best cold.</p></details>
     </div>
   </div>
@@ -1007,7 +1025,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
     <p class="q-h">Buy now</p>
     <div class="seg" id="qProd" role="group" aria-label="Choose a box"><button type="button" data-p="mixed" aria-pressed="true">Mixed Box</button><button type="button" data-p="mango" aria-pressed="false">Mango Passionfruit</button><button type="button" data-p="blood" aria-pressed="false">Blood Orange</button><button type="button" data-p="yuzu" aria-pressed="false">Yuzu Lime</button><button type="button" data-p="berry" aria-pressed="false">Mixed Berry</button></div>
     <div class="seg" id="qQty" role="group" aria-label="How many boxes"><button type="button" data-n="1" aria-pressed="true">1 box</button><button type="button" data-n="2" aria-pressed="false">2 boxes, ships free</button></div>
-    <label class="qsub" for="qSub"><input type="checkbox" id="qSub"> Subscribe every 4 weeks: $3.69 a can, ships free</label>
+    <label class="qsub" for="qSub"><input type="checkbox" id="qSub"> <span id="qSubTxt">Subscribe: 1 box every 2 weeks, $3.69 a can, ships free</span></label>
     <button class="btn btn-ink" id="qAdd" style="justify-content:center">Add to cart <span id="qAmt">$47.88</span></button>
   </div>
   <div class="lines" id="lines"></div>
@@ -1214,7 +1232,9 @@ function initTray(){
 }
 
 /* ---------------- cart ---------------- */
-var PRICE = 47.88, SUB = 44.28, SHIP = 5.99;
+var PRICE = 47.88, SHIP = 5.99;
+// subscriptions are whole boxes; cadence does the work (no six-packs)
+var PLANS = { m4:{boxes:2, each:41.88, label:'2 boxes every 4 weeks', every:'every 4 weeks'}, m3:{boxes:2, each:41.88, label:'2 boxes every 3 weeks', every:'every 3 weeks'}, b2:{boxes:1, each:44.28, label:'1 box every 2 weeks', every:'every 2 weeks'} };
 var cart = { lines:{}, sub:false };
 function fmt(n){ return '$' + n.toFixed(2); }
 function boxes(){ var n = 0; for (var k in cart.lines) n += cart.lines[k]; return n; }
@@ -1227,7 +1247,7 @@ function postForm(name, data){
 }
 function toast(msg){ var t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('on'); }, 3200); }
 function renderCart(){
-  var n = boxes(), each = cart.sub ? SUB : PRICE, sub = n*each;
+  var n = boxes(), each = cart.sub ? PLANS[cart.sub].each : PRICE, sub = n*each;
   $('#cartN').textContent = n;
   var free = cart.sub || n >= 2;
   $('#freeTxt').textContent = n === 0 ? 'Two boxes ship free.' : free ? 'Free shipping unlocked.' : 'Add a second box and shipping is free.';
@@ -1239,14 +1259,15 @@ function renderCart(){
   for (var k in cart.lines){
     if (!cart.lines[k]) continue;
     var name = k === 'mixed' ? 'The Mixed Box' : FL[k].name, img = k === 'mixed' ? 'mango' : k;
-    html += '<div class="line"><img src="/assets/v3/can-'+img+'.webp" alt=""><div><b>'+name+'</b><small>12 cans'+(cart.sub ? ', every 4 weeks' : '')+'</small><div class="qty"><button aria-label="Remove one" data-q="'+k+'" data-d="-1"><svg class="ico"><use href="#i-minus"/></svg></button><span>'+cart.lines[k]+'</span><button aria-label="Add one" data-q="'+k+'" data-d="1"><svg class="ico"><use href="#i-plus"/></svg></button></div></div><span class="p">'+fmt(cart.lines[k]*each)+'</span></div>';
+    html += '<div class="line"><img src="/assets/v3/can-'+img+'.webp" alt=""><div><b>'+name+'</b><small>12 cans'+(cart.sub ? ', ' + PLANS[cart.sub].every : '')+'</small><div class="qty"><button aria-label="Remove one" data-q="'+k+'" data-d="-1"><svg class="ico"><use href="#i-minus"/></svg></button><span>'+cart.lines[k]+'</span><button aria-label="Add one" data-q="'+k+'" data-d="1"><svg class="ico"><use href="#i-plus"/></svg></button></div></div><span class="p">'+fmt(cart.lines[k]*each)+'</span></div>';
   }
   L.innerHTML = html;
 }
 function syncQuick(){
   var p = ($('#qProd [aria-pressed="true"]') || {}).getAttribute ? $('#qProd [aria-pressed="true"]').getAttribute('data-p') : 'mixed';
-  var n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n'), sub = $('#qSub').checked;
-  $('#qAmt').textContent = fmt(n * (sub ? SUB : PRICE));
+  var n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n'), sub = $('#qSub').checked, plan = PLANS[n >= 2 ? 'm4' : 'b2'];
+  $('#qSubTxt').textContent = 'Subscribe: ' + plan.label + ', $' + (plan.each / 12).toFixed(2) + ' a can, ships free';
+  $('#qAmt').textContent = fmt(n * (sub ? plan.each : PRICE));
 }
 function openCart(){ $('#drawer').classList.add('on'); $('#drawer').setAttribute('aria-hidden','false'); $('#scrim').classList.add('on'); $('#closeCart').focus(); }
 function closeCart(){ $('#drawer').classList.remove('on'); $('#drawer').setAttribute('aria-hidden','true'); $('#scrim').classList.remove('on'); }
@@ -1257,7 +1278,7 @@ function initCart(){
   $('#qSub').addEventListener('change', syncQuick);
   $('#qAdd').addEventListener('click', function(){
     var p = $('#qProd [aria-pressed="true"]').getAttribute('data-p'), n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n');
-    cart.sub = $('#qSub').checked; addBox(p, n); $('#quick').hidden = true;
+    cart.sub = $('#qSub').checked ? (n >= 2 ? 'm4' : 'b2') : false; addBox(p, n); $('#quick').hidden = true;
   });
   $('#closeCart').addEventListener('click', closeCart);
   $('#scrim').addEventListener('click', closeCart);
@@ -1270,17 +1291,22 @@ function initCart(){
   // mixed box offer
   var subT = $('#subT');
   function syncOffer(){
-    var n = +$('input[name=boxes]:checked').value, each = subT.checked ? SUB : PRICE;
-    $('#addAmt').textContent = fmt(n*each);
-    $('#amt1').innerHTML = fmt(each) + '<small>' + (subT.checked ? 'Ships free' : '+ $5.99 shipping') + '</small>';
+    var n = +$('input[name=boxes]:checked').value, each = PRICE, on = subT.checked;
+    var plan = PLANS[$('input[name=plan]:checked').value];
+    $('.opts').hidden = on; $('#plans').hidden = !on;
+    $('#subFine').textContent = on ? 'Renews ' + plan.every + ' at ' + fmt(plan.boxes * plan.each) + ' until you cancel. Skip or cancel any time before your next delivery ships.' : 'Pick how often. Skip or cancel any time before your next delivery ships.';
+    $('#addAmt').textContent = fmt(on ? plan.boxes * plan.each : n * each);
+    $('#amt1').innerHTML = fmt(each) + '<small>+ $5.99 shipping</small>';
     $('#amt2').innerHTML = fmt(2*each) + '<small>Ships free</small>';
     $('#shipTxt').textContent = subT.checked ? 'Subscriptions ship free.' : n >= 2 ? 'Two boxes ship free.' : 'Add a second box and shipping is free.';
-    $$('.opt .s')[0].textContent = '12 cans, ' + (subT.checked ? '$3.69' : '$3.99') + ' a can';
-    $$('.opt .s')[1].textContent = '24 cans, ' + (subT.checked ? '$3.69' : '$3.99') + ' a can';
   }
   $$('input[name=boxes]').forEach(function(r){ r.addEventListener('change', syncOffer); });
   subT.addEventListener('change', syncOffer);
-  $('#addMixed').addEventListener('click', function(){ var n = +$('input[name=boxes]:checked').value; cart.sub = subT.checked; addBox('mixed', n); openCart(); });
+  $$('input[name=plan]').forEach(function(r){ r.addEventListener('change', syncOffer); });
+  $('#addMixed').addEventListener('click', function(){
+    var k = $('input[name=plan]:checked').value, n = subT.checked ? PLANS[k].boxes : +$('input[name=boxes]:checked').value;
+    cart.sub = subT.checked ? k : false; addBox('mixed', n); openCart();
+  });
   var SHOP = 'https://spry-9197.myshopify.com', VAR = {mixed:'43321056952368', mango:'43321056919600', blood:'43321056886832', yuzu:'43321056854064', berry:'50624505479216'};
   $('#checkout').addEventListener('click', function(){
     if (!boxes()){ toast('Add a box first.'); return; }
@@ -1295,7 +1321,7 @@ function initCart(){
 /* ---------------- shop: boxes stack as you add them ---------------- */
 function initShop(){
   var stage = $('#shipStage'); if (!stage) return;
-  var C = {"w": 494, "h": 434, "x0": 203, "y0": 233, "dx": [317.1, 104.6], "dz": [0.0, -219.9], "sx0": 103, "sy0": 329, "sw": 783, "sh": 381};
+  var C = {"w": 486, "h": 657, "x0": 227, "y0": 35, "dx": [281.9, 102.4], "dz": [0.0, -193.6], "sx0": 136, "sy0": 346, "sw": 750, "sh": 382};
   var ORDER = ['mixed', 'mango', 'blood', 'yuzu', 'berry'], MAX = 6;
   var stack = [], els = [], shadows = [], more = null;
   function pos(j){ var i = j % 2, k = Math.floor(j / 2); return {x: C.x0 + i * C.dx[0] + k * C.dz[0], y: C.y0 + i * C.dx[1] + k * C.dz[1], i: i, k: k}; }
@@ -1307,6 +1333,9 @@ function initShop(){
     var ox = W / 2 - (minx + maxx) / 2 * s, oy = H * .5 - (miny + maxy) / 2 * s;
     els.forEach(function(el, j){
       if (j >= MAX){ el.style.display = 'none'; return; }
+      // the top box in each column stands open so you can see the cans; anything with a box on it is closed
+      var src = '/assets/v3/box/' + el.getAttribute('data-k') + (j + 2 < n ? '' : '-open') + '.webp';
+      if (el.getAttribute('src') !== src) el.setAttribute('src', src);
       var p = pos(j); el.style.display = ''; el.style.width = (C.w * s) + 'px'; el.style.left = (ox + p.x * s) + 'px'; el.style.top = (oy + p.y * s) + 'px'; el.style.zIndex = 10 + j;
     });
     shadows.forEach(function(sh, i){
@@ -1323,7 +1352,7 @@ function initShop(){
       while ((have[k] || 0) > want[k]){ var j = stack.lastIndexOf(k); stack.splice(j, 1); var el = els.splice(j, 1)[0]; el.classList.remove('in'); el.classList.add('out'); setTimeout(function(e){ return function(){ e.remove(); }; }(el), 320); have[k]--; }
     });
     ORDER.forEach(function(k){
-      while ((have[k] || 0) < want[k]){ stack.push(k); var im = new Image(); im.alt = ''; im.src = '/assets/v3/box/' + k + '.webp'; if (!reduce) im.className = 'in'; stage.appendChild(im); els.push(im); have[k] = (have[k] || 0) + 1; }
+      while ((have[k] || 0) < want[k]){ stack.push(k); var im = new Image(); im.alt = ''; im.setAttribute('data-k', k); [k, k + '-open'].forEach(function(f){ (new Image()).src = '/assets/v3/box/' + f + '.webp'; }); if (!reduce) im.className = 'in'; stage.appendChild(im); els.push(im); have[k] = (have[k] || 0) + 1; }
     });
     var n = boxes();
     $('.stage-ghost', stage).style.opacity = n ? 0 : ''; $('#stageEmpty').style.opacity = n ? 0 : 1;

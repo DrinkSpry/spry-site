@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-flavor="mango">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Spry. The peptide drink.</title>
-<meta name="description" content="Spry is a lightly sparkling, low calorie drink with plant-derived peptides, clinically studied to support muscle strength and recovery. Reserve a pack. The first run ships in December.">
+<meta name="description" content="Spry is a lightly sparkling, low calorie drink with PeptiStrong&reg; plant-derived peptides, clinically studied to support muscle strength and recovery, plus electrolytes. First boxes ship in December.">
 <meta name="theme-color" content="#F2F0E9">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -13,567 +13,1280 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spry">
 <meta property="og:title" content="Spry. The peptide drink.">
-<meta property="og:description" content="Supports muscle strength and recovery. A lightly sparkling, low calorie drink with plant-derived peptides. First run ships in December.">
+<meta property="og:description" content="Supports muscle strength and recovery. A lightly sparkling, low calorie drink with plant-derived peptides and electrolytes. First boxes ship in December.">
 <meta property="og:image" content="https://drinkspry.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://drinkspry.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Spry. The peptide drink.">
-<meta name="twitter:description" content="Supports muscle strength and recovery. A lightly sparkling, low calorie drink with plant-derived peptides.">
+<meta name="twitter:description" content="Supports muscle strength and recovery. A lightly sparkling, low calorie drink with plant-derived peptides and electrolytes.">
 <meta name="twitter:image" content="https://drinkspry.com/og-image.jpg">
-<link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/can/label-mango.webp" as="image" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="preload" as="image" href="/assets/v3/can-mango.webp">
 <style>
-@font-face{font-family:"Bricolage Grotesque";src:url("/assets/fonts/bricolage-var.woff2") format("woff2");font-weight:300 800;font-display:swap}
-@font-face{font-family:"Manrope";src:url("/assets/fonts/manrope-var.woff2") format("woff2");font-weight:200 800;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-400.woff2") format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("/assets/fonts/plexmono-600.woff2") format("woff2");font-weight:600;font-display:swap}
-
+/* Layout concept: a sequence of domed "rooms" that rise over one another like can tops,
+   each room one flavor; the brand halftone cloud rises from the bottom of every dome. */
 :root{
-  /* Oct 2026: palette follows the final can (off-white ground, teal type, one flavor color per can); the dark green ground is retired */
-  --bg:#F2F0E9; --ink:#004F51; --ink-2:#0B6466;
-  --deep:#F2F0E9; --deeper:#FBFAF6; --deepest:#F2F0E9; --lift:#E9E6DC; --lift2:#E2DED1;
-  --chalk:#004F51; --chalk-80:rgba(0,79,81,.84); --chalk-60:rgba(0,79,81,.68); --chalk-40:rgba(0,79,81,.46);
-  --line:rgba(0,79,81,.14); --line-2:rgba(0,79,81,.28);
-  --off:#E9E6DC; --ember:#004F51; --ember-d:#0B6466;
-  --cloud1:#F9B25C; --cloud2:#F68512;
-  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --body:"Manrope","Helvetica Neue",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --max:1280px; --gutter:24px; --r:18px; --ease:cubic-bezier(.16,1,.3,1);
+  --paper:#F2F0E9; --paper-2:#E9E6DC; --card:#FAF9F4;
+  --ink:#004F51; --ink-2:#0B6466; --ink-deep:#00383A; --ink-soft:#3D6E6F;
+  --line:rgba(0,79,81,.16); --glass:rgba(242,240,233,.74);
+  --mango-1:#F9B25C; --mango-2:#F68512;
+  --blood-1:#FF8A6E; --blood-2:#F03E21;
+  --yuzu-1:#D6E870;  --yuzu-2:#ACC913;
+  --berry-1:#F27BB0; --berry-2:#E4066E;
+  --c1:var(--mango-1); --c2:var(--mango-2);
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --gut-l:max(16px,env(safe-area-inset-left,0px));
+  --gut-r:max(16px,env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.16,1,.3,1);
+  --dome:clamp(56px,9vw,150px);
+  color-scheme:light;
 }
-html[data-flavor="mango"]{--cloud1:#F9B25C;--cloud2:#F68512}
-html[data-flavor="blood"]{--cloud1:#FF8A6E;--cloud2:#F03E21}
-html[data-flavor="yuzu"]{--cloud1:#D6E870;--cloud2:#ACC913}
-html[data-flavor="berry"]{--cloud1:#F27BB0;--cloud2:#E4066E}
-
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
 img,video,canvas{display:block;max-width:100%}
-img{height:auto}
+button{font:inherit;color:inherit;cursor:pointer}
 a{color:inherit}
-h1,h2,h3{font-family:var(--display);font-optical-sizing:auto;font-weight:700;line-height:1.02;letter-spacing:-.025em}
-h2{font-size:clamp(2rem,4.2vw,3.4rem);max-width:16ch}
-p{max-width:62ch}
-.mono{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:12.5px;font-weight:500}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-.section{padding:clamp(72px,9vw,128px) 0}
-.lede{font-size:clamp(1.05rem,1.35vw,1.25rem);color:var(--chalk-80);max-width:58ch}
-.sub{margin-top:18px}
-
-/* buttons: pills everywhere (rule: buttons pill, panels 18px, inputs 12px) */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:var(--bg);font-weight:700;font-size:15px;padding:15px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:transform .18s var(--ease),background .18s;line-height:1}
-.btn:hover{background:var(--ink-2);transform:translateY(-1px)}
-.btn:active{transform:translateY(0) scale(.98)}
-.btn.ghost{background:transparent;color:var(--chalk);border:1.5px solid var(--line-2)}
-.btn.ghost:hover{background:rgba(0,79,81,.06)}
-.btn.lg{padding:18px 30px;font-size:16px}
-.btn.sm{padding:11px 18px;font-size:14px}
-.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
-
-/* nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:68px;display:flex;align-items:center;background:rgba(242,240,233,.86);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
-.brand{display:inline-flex;align-items:center;text-decoration:none;line-height:1;color:var(--ink)}
-.brand svg{height:24px;width:auto;display:block}
-.nav-links{display:flex;gap:30px;list-style:none}
-.nav-links a{text-decoration:none;font-size:15px;font-weight:600;color:var(--chalk-80)}
-.nav-links a:hover{color:var(--chalk)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.menu-btn{display:none;background:none;border:0;color:var(--chalk);cursor:pointer;padding:6px}
-.menu-btn svg{width:26px;height:26px}
-@media (max-width:900px){.nav-links{display:none}.menu-btn{display:block}.nav .btn{display:none}}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:49;background:var(--deeper);border-bottom:1px solid var(--line);padding:12px 24px 22px}
-.mobile-menu.open{display:block}
-.mobile-menu a{display:block;padding:14px 0;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid var(--line)}
-.mobile-menu .btn{margin-top:16px;width:100%}
-
-/* hero */
-.hero{position:relative;min-height:100dvh;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;padding-top:68px;overflow:hidden}
-.hero-copy{position:relative;z-index:2;padding:40px 0 40px var(--gutter);max-width:640px;justify-self:end;width:100%}
-.hero h1{font-size:clamp(2.3rem,3.95vw,3.7rem);letter-spacing:-.032em;line-height:.98;max-width:19ch}
-.hero .lede{margin-top:22px}
-.hero-cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
-.hero-stage{position:relative;height:calc(100dvh - 68px);min-height:560px}
-.cloud{position:absolute;inset:0;pointer-events:none}
-.cloud::before{content:"";position:absolute;left:50%;top:58%;width:78vmin;height:78vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1) 0%,var(--cloud2) 38%,transparent 72%);opacity:.38;filter:blur(38px);transition:background 1.2s var(--ease)}
-.cloud::after{content:"";position:absolute;left:50%;top:70%;width:58vmin;height:40vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud2),transparent 70%);opacity:.35;filter:blur(30px)}
-.ground{position:absolute;left:50%;bottom:7.5%;width:34%;height:5%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(40,35,30,.32),transparent 75%);filter:blur(8px);pointer-events:none}
-#can{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-.can-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:1}
-.can-fallback img{height:82%;width:auto}
-.no-webgl .can-fallback{display:flex}
-.no-webgl #can{display:none}
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr;min-height:0;padding-top:88px}
-  .hero-copy{padding:8px var(--gutter) 0;max-width:none;justify-self:stretch}
-  .hero h1{font-size:clamp(2.2rem,9vw,3rem);max-width:none}
-  .hero-stage{height:58vh;min-height:420px}
-  .cloud::before{top:55%;width:110vw;height:110vw}
-}
-
-/* facts strip */
-.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.facts ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:22px 0}
-.facts li{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60);line-height:1.5}
-.facts li strong{display:block;color:var(--chalk);font-weight:600;text-transform:none;font-size:14px;letter-spacing:.02em}
-@media (max-width:900px){.facts ul{grid-template-columns:1fr 1fr;gap:18px 16px}}
-
-/* the vial section */
-.vials .lede{margin-top:20px}
-.vials figure{margin-top:44px}
-.vials img{width:100%;border-radius:var(--r);aspect-ratio:21/9;object-fit:cover;object-position:50% 72%}
-.captions{display:flex;justify-content:space-between;margin-top:16px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
-.captions span:last-child{color:var(--ember)}
-
-/* bento */
-.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(240px,auto);gap:16px;margin-top:44px}
-.cell{border-radius:var(--r);overflow:hidden;position:relative}
-.cell.text{background:var(--lift);padding:30px 30px 32px;display:flex;flex-direction:column;justify-content:flex-end;min-height:280px}
-.cell.text h3{font-size:clamp(1.35rem,2vw,1.7rem);margin-bottom:12px;letter-spacing:-.02em}
-.cell.text p{color:var(--chalk-80);font-size:16px;max-width:38ch}
-.cell.text .big{font-family:var(--display);font-size:clamp(3rem,5vw,4.6rem);letter-spacing:-.04em;line-height:.9;color:var(--ember);margin-bottom:auto;padding-bottom:28px}
-.cell.img img,.cell.img video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.c1{grid-column:span 7}.c2{grid-column:span 5}.c3{grid-column:span 5;grid-row:span 2}.c4{grid-column:span 7}.c5{grid-column:span 7}
-.cell.tint{background:linear-gradient(160deg,var(--lift2),var(--deeper))}
-@media (max-width:900px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.c1,.c2,.c3,.c4,.c5{grid-column:span 2;grid-row:auto}.cell.img{min-height:260px;aspect-ratio:4/3}.cell.img.c3{aspect-ratio:3/4}}
-
-/* science */
-.science-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;margin-top:48px;align-items:start}
-.study{padding:30px 0;border-top:1px solid var(--line)}
-.study:last-of-type{border-bottom:1px solid var(--line)}
-.study h3{font-size:clamp(1.4rem,2vw,1.8rem);letter-spacing:-.02em}
-.study .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-top:16px;font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--chalk-60);line-height:1.5}
-.study .result{margin-top:14px;font-size:1.1rem;font-weight:600;max-width:40ch}
-.figure{display:none;margin-top:18px;font-family:var(--display);font-size:3.4rem;letter-spacing:-.04em;line-height:1;color:var(--ember)}
-.figure small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60);margin-top:6px}
-.show-figures .figure{display:block}
-.footnote{margin-top:22px;font-size:14px;color:var(--chalk-60);max-width:60ch}
-.trial-link{display:none;margin-top:22px}
-.show-trials .trial-link{display:inline-flex}
-.side-can{position:relative;display:flex;justify-content:center;padding:20px 0}
-.side-can::before{content:"";position:absolute;left:50%;top:55%;width:70%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1),transparent 72%);opacity:.35;filter:blur(30px)}
-.side-can img{position:relative;height:min(640px,70vh);width:auto}
-@media (max-width:900px){.science-grid{grid-template-columns:1fr;gap:28px}.side-can img{height:440px}}
-
-/* flavors */
-.flavors{text-align:center}
-.flavors h2,.flavors p{margin-left:auto;margin-right:auto}
-.flavors h2{max-width:22ch}
-.pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:36px}
-.pill{background:transparent;border:1.5px solid var(--line-2);color:var(--chalk);font-family:var(--body);font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:999px;cursor:pointer;transition:background .2s,border-color .2s}
-.pill:hover{background:rgba(0,79,81,.06)}
-.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.stage{position:relative;height:min(78vh,720px);margin-top:28px;display:flex;align-items:center;justify-content:center}
-.stage::before{content:"";position:absolute;left:50%;top:52%;width:min(72vmin,620px);height:min(72vmin,620px);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--cloud1) 0%,var(--cloud2) 40%,transparent 72%);opacity:.5;filter:blur(40px);transition:background 1s var(--ease)}
-.stage img{position:absolute;height:92%;width:auto;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .55s var(--ease),transform .55s var(--ease)}
-.stage img.on{opacity:1}
-.flavor-desc{margin-top:8px;min-height:3.2em}
-.flavor-desc p{font-size:1.15rem;max-width:36ch;margin:0 auto;transition:opacity .3s}
-.flavor-desc .name{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;margin-bottom:6px}
-@media (max-width:900px){.stage{height:60vh}.stage::before{width:90vw;height:90vw}}
-
-/* manifesto: the one deliberate colour-block switch on the page */
-.manifesto{background:var(--off);color:var(--ink)}
-.manifesto .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center}
-.manifesto h2{font-size:clamp(2.6rem,6vw,5.2rem);letter-spacing:-.04em;line-height:.95;max-width:none}
-.manifesto p{margin-top:22px;font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--chalk-80);max-width:52ch}
-.manifesto p:first-of-type{margin-top:34px}
-.manifesto img{width:100%;border-radius:var(--r);aspect-ratio:4/5;object-fit:cover}
-@media (max-width:900px){.manifesto .grid{grid-template-columns:1fr;gap:32px}.manifesto img{aspect-ratio:4/3}}
-
-/* reserve */
-.reserve-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
-.perks{list-style:none;margin-top:34px;display:grid;gap:14px}
-.perks li{display:flex;gap:12px;align-items:flex-start;color:var(--chalk-80);font-size:16px}
-.perks svg{width:22px;height:22px;flex:none;color:var(--ember)}
-.perks-title{margin-top:36px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
-.panel{background:var(--lift);border-radius:var(--r);padding:28px}
-.packs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pack{position:relative;border:1.5px solid var(--line-2);border-radius:14px;padding:18px 18px 16px;cursor:pointer;background:transparent;text-align:left;color:var(--chalk);font-family:var(--body);transition:border-color .2s,background .2s}
-.pack[aria-pressed="true"]{border-color:var(--ink);background:rgba(0,79,81,.06)}
-.pack .name,.pack .price,.pack .per{display:block}
-.pack .name{font-weight:700;font-size:17px}
-.pack .price{font-family:var(--display);font-weight:700;font-size:1.9rem;letter-spacing:-.03em;margin-top:8px;line-height:1}
-.pack .per{margin-top:6px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--chalk-60)}
-.pack .tag{position:absolute;top:-10px;right:14px;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:999px}
-.field{margin-top:22px}
-.field label,.field .lbl{display:block;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60);margin-bottom:10px}
-.flav-opts{display:flex;flex-wrap:wrap;gap:8px}
-.flav-opts label{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line-2);border-radius:999px;padding:10px 14px;cursor:pointer;font-size:14.5px;font-weight:600;text-transform:none;letter-spacing:0;font-family:var(--body);color:var(--chalk);margin:0}
-.flav-opts input{appearance:none;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--chalk-60);margin:0}
-.flav-opts input:checked{background:var(--ember);border-color:var(--ember)}
-.flav-opts label:has(input:checked){border-color:var(--chalk)}
-.panel .btn{width:100%;margin-top:22px}
-.fine{margin-top:14px;font-size:13.5px;color:var(--chalk-60);max-width:none}
-.fine a{color:var(--chalk-80)}
-.panel-msg{display:none;margin-top:12px;font-size:14px;color:var(--ember)}
-@media (max-width:900px){.reserve-grid{grid-template-columns:1fr;gap:32px}.packs{grid-template-columns:1fr}}
-
-/* founder */
-.founder{text-align:center}
-.founder blockquote{font-family:var(--display);font-weight:500;font-size:clamp(1.2rem,1.9vw,1.55rem);letter-spacing:-.015em;line-height:1.38;max-width:40ch;margin:0 auto}
-.founder .story-link{display:inline-block;margin-top:26px;font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
-.founder cite{display:block;margin-top:22px;font-style:normal;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
-
-/* faq */
-.faq{max-width:780px;margin:0 auto}
-.faq h2{margin-bottom:28px}
-.faq details{border-top:1px solid var(--line)}
-.faq details:last-child{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:700;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary svg{width:20px;height:20px;flex:none;transition:transform .25s var(--ease);color:var(--chalk-60)}
-.faq details[open] summary svg{transform:rotate(45deg)}
-.faq details p{padding:0 0 22px;color:var(--chalk-80);max-width:62ch}
-
-/* founder list */
-.list-panel{background:var(--lift);border-radius:var(--r);padding:36px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center}
-.list-panel h2{font-size:clamp(1.6rem,2.6vw,2.2rem);max-width:none}
-.list-panel p{color:var(--chalk-80);margin-top:10px}
-.list-form{display:flex;gap:10px;flex-wrap:wrap}
-.list-form .lbl{width:100%;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk-60)}
-.list-form input{flex:1;min-width:220px;background:#FFFFFF;border:1.5px solid var(--line-2);border-radius:12px;color:var(--chalk);padding:14px 16px;font-size:16px;font-family:var(--body)}
-.list-form input::placeholder{color:var(--chalk-60)}
-.form-msg{width:100%;font-size:14px;color:var(--chalk-80);display:none}
-@media (max-width:900px){.list-panel{grid-template-columns:1fr;padding:28px}}
-
-/* footer */
-footer{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--chalk-60);font-size:14px}
-.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
-.foot .brand{color:var(--chalk)}
-.foot p{margin-top:12px;max-width:36ch}
-.foot ul{list-style:none;display:grid;gap:10px}
-.foot a{text-decoration:none;color:var(--chalk-80)}
-.foot a:hover{color:var(--chalk)}
-.disclaimer{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;max-width:none;line-height:1.6}
-.copy{margin-top:16px;font-size:13px}
-@media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
-
-/* sticky mobile cta */
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:48;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(242,240,233,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s var(--ease)}
-.sticky-cta.on{transform:translateY(0)}
-.sticky-cta .p{font-size:14px;color:var(--chalk-80)}
-.sticky-cta .p strong{display:block;color:var(--chalk);font-size:15px}
-@media (max-width:900px){.sticky-cta{display:flex}}
-
-
-/* motion: v1 loops, recolored (glow on black, screened over the teal) */
-.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.62;-webkit-mask-image:linear-gradient(90deg,transparent 16%,#000 60%),linear-gradient(180deg,#000 78%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 16%,#000 60%),linear-gradient(180deg,#000 78%,transparent 100%);mask-composite:intersect}
-@media (max-width:900px){.hero-vid{top:auto;bottom:0;height:66vh;opacity:.55;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 32%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 32%,#000 82%,transparent 100%);-webkit-mask-composite:source-over;mask-composite:add}}
-.cell.vidcell{background:var(--deeper);min-height:420px}
-.cell.vidcell video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
-.cell.text.tint2{background:var(--lift2)}
-.cell.vidcell h3,.cell.vidcell p{position:relative;z-index:1}
-.section.founder{position:relative;overflow:hidden;padding:clamp(120px,15vw,210px) 0}
-.founder .bg-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;mix-blend-mode:screen;opacity:.62;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 20%,#000 80%,transparent 100%)}
-.founder::before{content:"";position:absolute;left:50%;top:50%;width:min(90vw,900px);height:min(60vw,520px);transform:translate(-50%,-50%);z-index:1;pointer-events:none;border-radius:50%;background:radial-gradient(closest-side,var(--cloud1),transparent 75%);opacity:.32;filter:blur(40px)}
-.founder .wrap{position:relative;z-index:2}
-.hero-vid,.founder .bg-vid{display:none}
-/* reveals */
-[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-[data-reveal].in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){
-  [data-reveal]{opacity:1;transform:none;transition:none}
-  html{scroll-behavior:auto}
-  .stage img,.cloud::before,.stage::before{transition:none}
-  .hero-vid,.founder .bg-vid{display:none}
-}
-.skip{position:absolute;left:12px;top:-60px;z-index:60;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none}
-.skip:focus{top:12px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1360px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:1em;height:1em;fill:currentColor;flex:none}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.92;margin:0;text-wrap:balance}
+p{margin:0}
+.pill-word{display:inline-block;border:.075em solid currentColor;border-radius:999px;padding:.02em .2em .06em;line-height:.9;letter-spacing:-.02em}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6em;border:0;border-radius:999px;padding:1.02em 1.6em;font-weight:800;font-size:16px;letter-spacing:-.01em;text-decoration:none;white-space:nowrap;transition:transform .25s var(--ease),background .25s,box-shadow .25s}
+.btn:active{transform:translateY(1px) scale(.985)}
+.btn-ink{background:var(--ink);color:var(--paper);box-shadow:0 10px 26px -12px rgba(0,79,81,.7)}
+.btn-ink:hover{background:var(--ink-deep);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-ghost:hover{background:rgba(0,79,81,.07)}
+.btn .ico{font-size:1.15em;transition:transform .3s var(--ease)}
+.cta-price{background:var(--mango-1);color:var(--ink);border-radius:999px;padding:.28em .7em;margin:-.3em -.8em -.3em .1em;font-size:.94em}
+.btn:hover .ico{transform:translateX(3px)}
+
+/* ---------- header ---------- */
+.hdr{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;pointer-events:none}
+.bar{pointer-events:auto;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;text-align:center;height:34px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .45s var(--ease),opacity .3s;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.bar .ico{font-size:15px}
+.nav{pointer-events:auto;margin:12px auto 0;width:min(1180px,calc(100% - 24px));display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 8px 8px 22px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:inset 0 0 0 1px rgba(0,79,81,.1),inset 0 1px 0 rgba(255,255,255,.6),0 14px 40px -24px rgba(0,60,60,.45);transition:transform .45s var(--ease)}
+.hdr.up .bar{transform:translateY(-100%);opacity:0}
+.hdr.up .nav{transform:translateY(-34px)}
+.logo{display:block;width:92px;height:25px;background:var(--ink);-webkit-mask:url(/assets/v3/wordmark.png) center/contain no-repeat;mask:url(/assets/v3/wordmark.png) center/contain no-repeat}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;text-decoration:none;font-weight:700;font-size:15px;padding:9px 14px;border-radius:999px;transition:background .2s}
+.nav ul a:hover{background:rgba(0,79,81,.08)}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.buy-btn{border:0;border-radius:999px;padding:11px 18px;background:var(--mango-1);color:var(--ink);font-weight:800;font-size:15px;transition:transform .25s var(--ease),background .25s}
+.buy-btn:hover{background:#FBC27A;transform:translateY(-1px)}
+.cart-btn{display:inline-flex;align-items:center;gap:10px;border:0;background:var(--ink);color:var(--paper);border-radius:999px;padding:11px 12px 11px 18px;font-weight:800;font-size:15px}
+.cart-btn .n{min-width:26px;height:26px;border-radius:999px;background:var(--mango-1);color:var(--ink);display:grid;place-items:center;font-size:13px;font-family:var(--mono);transition:transform .4s var(--ease)}
+.cart-btn .n.bump{animation:bump .6s var(--ease)}
+@keyframes bump{0%{transform:scale(1)}35%{transform:scale(1.45) rotate(-8deg)}100%{transform:scale(1)}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:132px;padding-bottom:64px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(24px,4vw,64px);align-items:center;min-height:min(calc(100svh - 196px),820px)}
+.hero h1{font-size:clamp(58px,8.6vw,156px);color:var(--ink)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln > span{display:inline-block}
+.hero h1 .pill-word{font-size:.84em;vertical-align:.06em;margin-left:.05em}
+.hero .hero-sub{margin-top:28px;font-size:clamp(18px,1.45vw,21px);max-width:31ch;color:var(--ink-2);font-weight:500}
+.hero .ctas{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.offer-line{margin-top:16px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--ink-2)}
+.offer-line .ico{font-size:18px}
+.chips{margin-top:40px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:10px;border:0;background:transparent;border-radius:999px;padding:8px 14px 8px 8px;font-weight:700;font-size:14px;box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .25s,background .25s}
+.chip i{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--a),var(--b));flex:none}
+.chip[aria-pressed="true"]{background:var(--card);box-shadow:inset 0 0 0 2px var(--ink)}
+.stage{position:relative;justify-self:center;width:min(500px,100%);aspect-ratio:.8;margin-top:6%}
+.dome{position:absolute;inset:0;border-radius:999px 999px 40px 40px;overflow:hidden;background:var(--c1);transition:background .6s var(--ease);box-shadow:inset 0 -40px 80px -40px rgba(0,0,0,.18)}
+.dome canvas{position:absolute;inset:0;width:100%;height:100%}
+.dome::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 2px 0 rgba(255,255,255,.35)}
+.fizz{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fizz span{position:absolute;bottom:-12px;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95),rgba(255,255,255,.25) 45%,rgba(255,255,255,.08) 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);animation:rise var(--d,6s) linear var(--dl,0s) infinite;opacity:0}
+@keyframes rise{0%{transform:translate(0,0) scale(.6);opacity:0}10%{opacity:.9}50%{transform:translate(var(--sx,6px),-50cqh) scale(1)}100%{transform:translate(calc(var(--sx,6px)*-1),-104cqh) scale(1.08);opacity:0}}
+.fizz{container-type:size}
+.hero-can{position:absolute;left:50%;bottom:3%;height:101%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 34px 34px rgba(0,50,50,.28)) drop-shadow(0 6px 8px rgba(0,50,50,.18));will-change:transform}
+.hero-can.flip{animation:flip .7s var(--ease)}
+@keyframes flip{0%{transform:translateX(-50%) scaleX(1)}45%{transform:translateX(-50%) scaleX(.06) translateY(-10px)}55%{transform:translateX(-50%) scaleX(.06) translateY(-10px)}100%{transform:translateX(-50%) scaleX(1)}}
+.prop{position:absolute;pointer-events:none;will-change:transform;filter:drop-shadow(0 18px 18px rgba(0,40,40,.22))}
+.badge{position:absolute;width:clamp(104px,10vw,148px);aspect-ratio:1;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;box-shadow:0 18px 40px -22px rgba(0,60,60,.55),inset 0 0 0 1.5px rgba(0,79,81,.12);z-index:3}
+.badge svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+.badge.rev svg.ring{animation-duration:32s;animation-direction:reverse}
+.badge text{font-family:var(--mono);font-size:13.2px;font-weight:500;letter-spacing:.1em;fill:currentColor;text-transform:uppercase}
+.badge .ico{font-size:clamp(26px,2.4vw,34px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- claims ticker (the page's one marquee) ---------- */
+.ticker{position:relative;padding-block:46px;overflow:hidden}
+.belt{display:flex;width:max-content;will-change:transform}
+.row{transform:rotate(-1.5deg);margin:0 -2vw;box-shadow:0 18px 40px -26px rgba(0,60,60,.55)}
+.row.b{transform:rotate(1.1deg);margin-top:30px}
+.row.a{background:var(--ink);color:var(--paper)}
+.row.b{background:var(--mango-1);color:var(--ink)}
+.claim{display:inline-flex;align-items:center;gap:16px;padding:18px 30px;font-family:var(--display);font-weight:800;font-size:clamp(22px,2.6vw,38px);letter-spacing:-.025em;white-space:nowrap}
+.claim .dot{width:clamp(40px,3.4vw,52px);height:clamp(40px,3.4vw,52px);border-radius:50%;display:grid;place-items:center;flex:none}
+.row.a .dot{background:rgba(242,240,233,.14);box-shadow:inset 0 0 0 1.5px rgba(242,240,233,.35)}
+.row.b .dot{background:rgba(0,79,81,.1);box-shadow:inset 0 0 0 1.5px rgba(0,79,81,.3)}
+.claim .ico{font-size:.78em}
+
+/* ---------- macro ---------- */
+.macro{position:relative;padding-block:clamp(40px,6vw,90px) 0;overflow:hidden}
+.macro h2{font-size:clamp(48px,7vw,120px);position:relative;z-index:2}
+.macro h2 span{color:var(--mango-2)}
+.macro-img{position:relative;margin-top:clamp(20px,3vw,48px);height:clamp(300px,48vw,760px);overflow:hidden;border-radius:50% 50% 0 0 / var(--dome) var(--dome) 0 0}
+.macro-img canvas{position:absolute;inset:0;width:100%;height:100%}
+.macro-img img{position:absolute;left:50%;top:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);z-index:1;filter:drop-shadow(0 40px 50px rgba(0,40,40,.25))}
+
+/* ---------- vials ---------- */
+.vials{padding-block:clamp(30px,4vw,70px) clamp(60px,8vw,120px)}
+.vials-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:end}
+.reveal{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.5vw,56px);line-height:1.04;letter-spacing:-.03em;text-wrap:pretty}
+.reveal .w{display:inline-block;margin-right:.24em}
+.reveal em{font-style:normal;color:var(--paper);background:var(--ink);border-radius:999px;padding:0 .26em .05em;margin-right:.24em;display:inline-block}
+.vials figure{margin:0;border-radius:var(--dome) var(--dome) 28px 28px;overflow:hidden;background:var(--paper-2);aspect-ratio:1/1}
+.vials figure img{width:100%;height:112%;object-fit:cover;object-position:50% 40%}
+
+/* ---------- flavor rooms ---------- */
+.rooms-intro{padding-block:0 clamp(56px,7vw,110px);text-align:left}
+.rooms-intro h2{font-size:clamp(48px,7.4vw,124px)}
+.rooms-intro p{margin-top:18px;max-width:40ch;font-size:19px;color:var(--ink-2);font-weight:500}
+.rooms{position:relative}
+.room{--c1:var(--mango-1);--c2:var(--mango-2);position:sticky;top:0;height:100svh;min-height:640px;overflow:hidden;background:var(--c1);border-radius:50% 50% 0 0 / var(--dome) var(--dome) 0 0;box-shadow:0 -30px 60px -40px rgba(0,40,40,.5)}
+.room[data-f="blood"]{--c1:var(--blood-1);--c2:var(--blood-2)}
+.room[data-f="yuzu"]{--c1:var(--yuzu-1);--c2:var(--yuzu-2)}
+.room[data-f="berry"]{--c1:var(--berry-1);--c2:var(--berry-2)}
+.room .ht{position:absolute;inset:0;width:100%;height:100%}
+.room .fizz{z-index:2}
+.room-inner{position:absolute;inset:0}
+.room-copy{position:absolute;left:clamp(16px,4.5vw,72px);top:clamp(110px,15svh,160px);z-index:5;width:min(62vw,1000px)}
+.room .name{position:relative;text-align:left;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 75,"opsz" 96;text-transform:uppercase;font-size:min(var(--nfs,14vw),27svh);line-height:.8;letter-spacing:-.012em;color:var(--ink);z-index:1;pointer-events:none}
+.room .name .ln{display:block;overflow:hidden;padding-top:.04em}
+.room .name .ln > span{display:inline-block}
+.room .can{position:absolute;left:71%;bottom:max(4svh,30px);height:min(82svh,820px);width:auto;max-width:none;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 40px 36px rgba(0,40,40,.32)) drop-shadow(0 8px 10px rgba(0,40,40,.2))}
+.room .p1{width:clamp(150px,17vw,290px);right:2.5%;top:13%}
+.room .p2{width:clamp(110px,12vw,210px);left:48%;top:60%}
+.room .p3{width:clamp(70px,7vw,120px);left:40%;bottom:5%;rotate:120deg}
+.room .p4{width:clamp(90px,9vw,150px);left:79%;bottom:3%}
+.room .p5{width:clamp(170px,17vw,300px);left:71%;bottom:calc(max(4svh,30px) - 8.6vw);translate:-50% 0;z-index:5}
+.room .prop{z-index:4}
+.room .badge{right:clamp(16px,4vw,70px);bottom:clamp(120px,24svh,240px)}
+.info{position:relative;margin-top:clamp(14px,2.6svh,32px);margin-left:-18px;width:min(420px,100%);padding:14px 18px 16px;border-radius:24px;background:var(--c1)}
+.info h3{display:none}
+.info h3{font-size:28px;letter-spacing:-.03em;line-height:1}
+.info p{font-size:clamp(18px,1.5vw,22px);line-height:1.35;color:var(--ink);font-weight:600;max-width:24ch}
+.info .buy{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.price{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+.price small{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;font-weight:500;text-transform:uppercase;color:var(--ink-soft);margin-top:5px}
+.info .btn{padding:.85em 1.25em;font-size:15px}
+.dots{position:fixed;right:max(18px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transition:opacity .4s}
+.dots.on{opacity:1;pointer-events:auto}
+.dots a{width:14px;height:14px;border-radius:50%;background:rgba(0,79,81,.22);box-shadow:inset 0 0 0 2px var(--paper);transition:transform .3s var(--ease),background .3s}
+.dots a.on{background:var(--ink);transform:scale(1.35)}
+
+/* ---------- cold band ---------- */
+.cold{position:relative;z-index:9;margin-top:0;border-radius:50% 50% 0 0 / var(--dome) var(--dome) 0 0;overflow:hidden;height:clamp(460px,60vw,880px);background:var(--ink-deep)}
+.cold img{position:absolute;left:0;top:-4%;width:100%;height:108%;object-fit:cover;object-position:12% 45%}
+.cold::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 0% 0%,rgba(0,40,42,.78),rgba(0,40,42,.35) 45%,rgba(0,40,42,0) 70%);pointer-events:none}
+.cold .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-start;padding-block:calc(var(--dome) + 40px) 0}
+.cold h2{font-size:clamp(52px,6vw,108px);color:var(--paper);max-width:5em}
+.cold p{margin-top:16px;color:#E6EFEC;font-weight:600;font-size:clamp(17px,1.3vw,19px);max-width:26ch}
+@media (max-width:900px){.cold{height:auto;min-height:680px}.cold img{object-position:62% 0%;height:78%;top:0}.cold::after{background:linear-gradient(0deg,var(--ink-deep) 30%,rgba(0,56,58,.6) 45%,rgba(0,40,42,0) 62%)}.cold .wrap{justify-content:flex-end;padding-block:0 44px;min-height:680px}}
+
+/* ---------- mixed box ---------- */
+.mixed{position:relative;padding-block:clamp(90px,11vw,170px);background:var(--paper);border-radius:50% 50% 0 0 / var(--dome) var(--dome) 0 0;margin-top:calc(var(--dome) * -1);z-index:11;overflow-x:clip}
+.mixed-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,84px);align-items:center}
+.boxshot{margin:0;position:relative;border-radius:34px;overflow:hidden;background:var(--paper-2);aspect-ratio:1;box-shadow:0 40px 70px -40px rgba(60,50,20,.45)}
+.boxshot img{width:100%;height:100%;object-fit:cover}
+.tray{position:relative;aspect-ratio:1.06;border-radius:34px;background:linear-gradient(180deg,#E3DCCB,#D7CFBB);box-shadow:inset 0 2px 0 rgba(255,255,255,.5),inset 0 -14px 30px -10px rgba(90,70,30,.25),0 40px 70px -40px rgba(60,50,20,.5);padding:clamp(14px,2.4vw,30px);display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:clamp(6px,1.1vw,14px)}
+.cell{position:relative;display:grid;place-items:center}
+.cell::before{content:"";position:absolute;width:92%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 45%,var(--b) 0 62%,var(--a) 64% 100%);box-shadow:0 10px 18px -10px rgba(40,30,10,.55)}
+.cell img{position:relative;width:78%;height:auto;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+.offer h2{font-size:clamp(52px,6.4vw,104px)}
+.offer .lede{margin-top:16px;font-size:20px;font-weight:600;color:var(--ink-2)}
+.opts{margin-top:30px;display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:16px 18px;border-radius:22px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);cursor:pointer;transition:box-shadow .25s,transform .25s var(--ease)}
+.opt:hover{transform:translateY(-1px)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .r{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--ink-soft);display:grid;place-items:center}
+.opt .r::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--ink);transform:scale(0);transition:transform .3s var(--ease)}
+.opt:has(input:checked){box-shadow:inset 0 0 0 2.5px var(--ink)}
+.opt:has(input:checked) .r::after{transform:scale(1)}
+.opt:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
+.opt b{font-family:var(--display);font-size:20px;letter-spacing:-.02em;display:block;line-height:1.1}
+.opt span.s{font-size:14.5px;color:var(--ink-soft);font-weight:600}
+.opt .amt{font-family:var(--display);font-weight:800;font-size:21px;text-align:right;line-height:1.1}
+.opt .amt small{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.ship{margin-top:18px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px}
+.meter{flex:1;height:8px;border-radius:99px;background:rgba(0,79,81,.12);overflow:hidden}
+.meter i{display:block;height:100%;width:50%;border-radius:inherit;background:var(--ink);transition:width .6s var(--ease)}
+.sub{margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:22px;background:rgba(0,79,81,.05);cursor:pointer}
+.sub input{appearance:none;-webkit-appearance:none;width:44px;height:26px;border-radius:99px;background:rgba(0,79,81,.25);position:relative;margin:2px 0 0;cursor:pointer;transition:background .25s}
+.sub input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--paper);transition:transform .3s var(--ease)}
+.sub input:checked{background:var(--ink)}
+.sub input:checked::after{transform:translateX(18px)}
+.sub b{font-weight:800}
+.sub .fine{display:block;margin-top:6px;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.offer .add{margin-top:22px;width:100%;justify-content:center;font-size:17px;padding:1.15em 1.6em}
+.reassure{margin-top:12px;text-align:center;font-size:14px;font-weight:600;color:var(--ink-soft)}
+.reassure a{color:var(--ink);font-weight:800}
+
+/* ---------- science ---------- */
+.sci{position:relative;z-index:10;margin-top:calc(var(--dome) * -1);border-radius:50% 50% 0 0 / var(--dome) var(--dome) 0 0;background:var(--ink-deep);color:var(--paper);overflow:hidden;padding-block:clamp(120px,13vw,200px) clamp(90px,11vw,170px)}
+.sci video,.sci .poster{position:absolute;right:-8%;top:0;height:100%;width:72%;object-fit:cover;mix-blend-mode:screen;opacity:.9;pointer-events:none}
+.sci::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink-deep) 34%,rgba(0,56,58,.55) 62%,rgba(0,56,58,0));z-index:1;pointer-events:none}
+.sci .wrap{position:relative;z-index:2}
+.sci h2{font-size:clamp(54px,7.6vw,132px);color:var(--paper)}
+.sci h2 .pill-word{color:var(--mango-1)}
+.ribbon{display:block;width:clamp(220px,26vw,360px);aspect-ratio:1039/174;margin:32px 0 28px;background:var(--mango-1);-webkit-mask:url(/assets/v3/ribbon.png) center/contain no-repeat;mask:url(/assets/v3/ribbon.png) center/contain no-repeat}
+.sci .lead{max-width:34ch;font-size:clamp(19px,1.6vw,23px);font-weight:600;color:#DCE8E4}
+.studies{margin-top:54px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:820px}
+.study{padding:24px;border-radius:26px;background:rgba(242,240,233,.07);box-shadow:inset 0 0 0 1px rgba(242,240,233,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.study .ico{font-size:28px;color:var(--mango-1)}
+.study h3{margin-top:12px;font-size:26px;color:var(--paper);letter-spacing:-.025em;line-height:1.02}
+.study ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px;color:#C9DAD5}
+.study li{display:flex;gap:10px;align-items:baseline}
+.study li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mango-1);flex:none;transform:translateY(-2px)}
+.study .big-fig{margin-top:14px;font-family:var(--display);font-weight:800;font-size:clamp(56px,6vw,88px);line-height:.9;letter-spacing:-.04em;color:var(--mango-1)}
+.study .big-fig sup{font-size:.45em;vertical-align:.9em;margin-left:2px}
+.study .fig-line{margin-top:10px;font-size:15.5px;color:#DCE8E4;font-weight:600}
+.papers{margin-top:26px;max-width:820px}
+.papers summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--mango-1);text-decoration:underline;text-underline-offset:4px}
+.papers summary::-webkit-details-marker{display:none}
+.papers summary .ico{transition:transform .3s var(--ease)}
+.papers[open] summary .ico{transform:rotate(180deg)}
+.papers ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.papers a{display:inline-flex;align-items:center;gap:8px;color:var(--paper);font-weight:600;font-size:15.5px;text-decoration:none;padding:12px 16px;border-radius:16px;background:rgba(242,240,233,.08);box-shadow:inset 0 0 0 1px rgba(242,240,233,.18)}
+.papers a:hover{background:rgba(242,240,233,.14)}
+.show-figures .study .fig{display:block}
+.sci .note{margin-top:26px;max-width:72ch;font-size:13px;line-height:1.55;color:#A9C2BD}
+
+/* ---------- roll ---------- */
+.roll{position:relative;height:250svh}
+.roll-pin{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;display:grid;place-items:center}
+.roll .ht{position:absolute;left:0;right:0;bottom:0;height:60%;width:100%}
+.roll canvas.turn{position:relative;z-index:2;height:min(62svh,620px);margin-bottom:12svh;width:auto;filter:drop-shadow(0 40px 36px rgba(0,40,40,.28))}
+.roll .big{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:1;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 75,"opsz" 96;font-size:clamp(70px,13.5vw,250px);letter-spacing:-.04em;line-height:.82;text-transform:uppercase;display:flex;justify-content:space-between;padding-left:var(--gut-l);padding-right:var(--gut-r);pointer-events:none}
+.roll .big span:last-child{color:var(--mango-2)}
+.roll .cap{position:absolute;z-index:3;left:50%;bottom:max(5svh,28px);transform:translateX(-50%);width:min(560px,calc(100% - 32px));text-align:center;font-weight:600;font-size:17px;color:var(--ink-2)}
+.roll .cap b{display:block;font-family:var(--display);font-size:26px;letter-spacing:-.025em;color:var(--ink);margin-bottom:4px}
+.roll .meter-ring{position:absolute;z-index:3;right:clamp(16px,6vw,110px);top:clamp(110px,18svh,200px)}
+
+/* ---------- label ---------- */
+.label{padding-block:clamp(90px,11vw,170px);overflow-x:clip}
+.label-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(30px,6vw,100px);align-items:start}
+.label h2{font-size:clamp(52px,6.4vw,104px)}
+.label .lede{margin-top:18px;max-width:40ch;font-size:19px;font-weight:500;color:var(--ink-2)}
+.stats{margin-top:44px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:620px}
+.stat{padding:22px 20px;border-radius:26px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);transition:background .3s,color .3s,transform .3s var(--ease)}
+.stat.hot,.stat:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px)}
+.stat .v{font-family:var(--display);font-weight:800;font-size:clamp(40px,4.2vw,64px);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
+.stat .v small{font-size:.42em;letter-spacing:-.01em;margin-left:2px}
+.stat .k{margin-top:10px;font-weight:700;font-size:15px;line-height:1.3}
+.stat.wide{grid-column:1/-1}
+.stat.wide .v{font-size:clamp(28px,2.6vw,40px);line-height:1}
+.nf{margin-top:8px;background:var(--card);color:var(--ink);border:2.5px solid var(--ink);padding:10px 12px 12px;font-family:"Helvetica Neue",Arial,var(--body);max-width:380px;justify-self:end;width:100%;border-radius:4px;box-shadow:0 30px 60px -40px rgba(0,60,60,.5)}
+.nf h3{font-family:"Helvetica Neue",Arial,sans-serif;font-weight:900;font-size:38px;letter-spacing:-.02em;line-height:.95}
+.nf .rule{height:10px;background:var(--ink);margin:4px 0}
+.nf .rule.m{height:5px}
+.nf .r{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--ink);padding:3px 0;font-size:15px;transition:background .2s}
+.nf .r.ind{padding-left:16px}
+.nf .r.ind2{padding-left:30px}
+.nf .r b{font-weight:800}
+.nf .r.on{background:rgba(249,178,92,.45)}
+.nf .cal{display:flex;justify-content:space-between;align-items:end;font-weight:900}
+.nf .cal span:first-child{font-size:30px}
+.nf .cal span:last-child{font-size:46px;line-height:.9}
+.nf .tiny{font-size:11px;line-height:1.35;border-top:1px solid var(--ink);padding-top:5px;margin-top:2px}
+.nf .same{margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+
+/* ---------- founder ---------- */
+.founder{padding-block:0 clamp(90px,11vw,170px)}
+.founder-card{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:0;border-radius:var(--dome) var(--dome) 34px 34px;overflow:hidden;background:var(--ink);color:var(--paper)}
+.founder-card img{width:100%;height:100%;object-fit:cover;min-height:420px}
+.founder-card blockquote{margin:0;padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;justify-content:center;gap:24px}
+.founder-card q{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);line-height:1.08;letter-spacing:-.025em;quotes:"\201C" "\201D"}
+.founder-card cite{font-style:normal;font-weight:700;font-size:15px;color:#BFD3CE}
+.founder-card cite b{display:block;color:var(--paper);font-size:17px}
+.founder-card .team{font-size:15.5px;color:#CFE0DB;max-width:40ch}
+.btn-ghost.light{color:var(--paper);box-shadow:inset 0 0 0 2px rgba(242,240,233,.7);align-self:flex-start}
+.btn-ghost.light:hover{background:rgba(242,240,233,.1)}
+
+/* ---------- faq ---------- */
+.faq{padding-block:0 clamp(60px,7vw,110px)}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px)}
+.faq h2{font-size:clamp(52px,6.4vw,104px)}
+.faq-side{position:sticky;top:110px;align-self:start;display:grid;gap:28px}
+.faq-side img{width:100%;max-width:440px;aspect-ratio:4/5;object-fit:cover;border-radius:var(--dome) var(--dome) 28px 28px}
+.qa{border-radius:22px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);margin-bottom:10px;overflow:hidden}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .ico{font-size:20px;transition:transform .35s var(--ease)}
+.qa[open] summary .ico{transform:rotate(45deg)}
+.qa .a{padding:0 22px 22px;color:var(--ink-2);font-size:16.5px;max-width:62ch}
+
+/* ---------- gyms ---------- */
+.gyms{padding-block:0 clamp(70px,8vw,120px)}
+.gyms-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:end;padding:clamp(28px,4vw,52px);border-radius:34px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line)}
+.gyms h2{font-size:clamp(40px,4.6vw,76px)}
+.gyms p{margin-top:14px;font-size:18px;font-weight:600;color:var(--ink-2);max-width:36ch}
+.gym-form{display:grid;gap:14px}
+.gym-form label,.gc-form .two label{display:block;font-weight:800;font-size:14.5px;margin-bottom:6px}
+.gym-form input,.gc-form input[type=text]{width:100%;border:0;border-radius:14px;padding:14px 16px;font:inherit;font-size:16px;background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.gc-form input[type=text]{background:var(--card)}
+.gym-form input::placeholder,.gc-form input::placeholder{color:#5F8584}
+.gym-form .btn{justify-content:center}
+.gc-form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.more{display:grid;gap:16px;padding-top:6px;border-top:1.5px solid var(--line)}
+.more[hidden]{display:none}
+.more-h{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;margin-top:10px}
+
+/* ---------- got a can ---------- */
+.gotcan{padding-block:0 clamp(90px,11vw,170px)}
+.gotcan-card{position:relative;overflow:hidden;border-radius:34px;background:var(--c1);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:center;transition:background .5s var(--ease)}
+.gotcan-card .ht{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.gotcan-card > *:not(.ht){position:relative}
+.gotcan h2{font-size:clamp(44px,5.4vw,88px)}
+.gotcan p{margin-top:14px;font-size:18px;font-weight:600;max-width:34ch}
+.gc-form{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:26px;padding:22px;display:grid;gap:16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.gc-form fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+.gc-form legend,.gc-form label{font-weight:800;font-size:14.5px;margin-bottom:6px;padding:0}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:0;border-radius:999px;padding:9px 14px;font-weight:700;font-size:14px;background:rgba(0,79,81,.08);transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.gc-form input[type=email]{width:100%;border:0;border-radius:14px;padding:14px 16px;font:inherit;font-size:16px;background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.gc-form input[type=email]::placeholder{color:#5F8584}
+.gc-form .help{font-size:13px;color:var(--ink-soft);margin-top:6px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110px) 40px;border-radius:50% 50% 0 0 / var(--dome) var(--dome) 0 0}
+.foot-mark{display:block;width:100%;aspect-ratio:3.7;background:var(--paper);-webkit-mask:url(/assets/v3/wordmark.png) center/contain no-repeat;mask:url(/assets/v3/wordmark.png) center/contain no-repeat;opacity:.96}
+.foot-row{margin-top:44px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:15px}
+.foot-row nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.foot-row a{text-decoration:none;font-weight:700}
+.social{display:flex;gap:10px}
+.social a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(242,240,233,.1);box-shadow:inset 0 0 0 1px rgba(242,240,233,.22)}
+.social a:hover{background:rgba(242,240,233,.18);text-decoration:none}
+.social .ico{font-size:18px}
+.foot-legal{margin-top:22px;padding-top:22px;border-top:1px solid rgba(242,240,233,.18);font-size:14px;align-items:center}
+.contact{display:inline-flex;align-items:center;gap:8px;color:#BFD3CE}
+.sel{user-select:all;color:var(--paper);font-weight:700}
+.foot-row a:hover{text-decoration:underline}
+.legal{margin-top:28px;font-size:12.5px;color:#9FBDB8;max-width:90ch}
+
+/* ---------- cart drawer ---------- */
+.scrim{position:fixed;inset:0;z-index:69;background:rgba(0,40,40,.36);opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer-wrap{position:fixed;inset:0;z-index:70;overflow:hidden;pointer-events:none}
+.drawer{position:absolute;top:0;right:0;bottom:0;pointer-events:auto;width:min(440px,100%);background:var(--paper);box-shadow:-30px 0 80px -40px rgba(0,40,40,.6);transform:translateX(104%);visibility:hidden;transition:transform .55s var(--ease),visibility 0s linear .55s;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 22px) max(22px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 22px) 22px;border-radius:28px 0 0 28px}
+.drawer.on{transform:none;visibility:visible;transition:transform .55s var(--ease),visibility 0s}
+.drawer-h{display:flex;justify-content:space-between;align-items:center}
+.drawer-h h2{font-size:34px}
+.icon-btn{border:0;width:44px;height:44px;border-radius:50%;background:rgba(0,79,81,.08);display:grid;place-items:center}
+.icon-btn .ico{font-size:20px}
+.free{margin-top:16px;padding:14px 16px;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;font-size:14.5px}
+.free .meter{margin-top:10px}
+.quick{margin-top:12px;padding:16px;border-radius:20px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);display:grid;gap:12px}
+.quick[hidden]{display:none}
+.q-h{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+.qsub{display:flex;gap:10px;align-items:center;font-weight:700;font-size:14px;cursor:pointer}
+.qsub input{width:18px;height:18px;accent-color:#004F51}
+.lines{flex:1;overflow:auto;margin-top:12px;display:grid;align-content:start;gap:10px;padding:4px 2px}
+.line{display:grid;grid-template-columns:58px 1fr auto;gap:12px;align-items:center;padding:10px;border-radius:18px;background:var(--card)}
+.line img{height:74px;width:auto;margin:auto}
+.line b{display:block;font-size:15.5px;line-height:1.2}
+.line small{color:var(--ink-soft);font-weight:600;font-size:13px}
+.qty{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.qty button{border:0;background:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center}
+.qty span{min-width:18px;text-align:center;font-weight:800;font-family:var(--mono);font-size:14px}
+.line .p{font-weight:800;font-family:var(--display);font-size:18px}
+.empty{padding:30px 10px;text-align:center;color:var(--ink-2);font-weight:600}
+.empty .btn{margin-top:14px}
+.drawer-f{border-top:1.5px solid var(--line);padding-top:16px;display:grid;gap:10px}
+.drawer-f .tot{display:flex;justify-content:space-between;font-weight:800;font-size:18px}
+.drawer-f .fine{font-size:12.5px;color:var(--ink-soft)}
+.drawer-f .btn{justify-content:center}
+
+/* ---------- toast + mobile bar ---------- */
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translate(-50%,calc(100% + 80px));visibility:hidden;z-index:80;background:var(--ink);color:var(--paper);padding:14px 20px;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 20px 40px -20px rgba(0,40,40,.7);transition:transform .5s var(--ease);max-width:calc(100% - 32px);text-align:center}
+.toast.on{transform:translate(-50%,0);visibility:visible}
+.mbar{display:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .nav ul{display:none}
+}
+@media (max-width:900px){
+  .hero{padding-top:118px}
+  .hero-grid{grid-template-columns:minmax(0,1fr);min-height:0;gap:20px}
+  .stage{width:min(320px,72vw);margin-top:22px;order:4}
+  .hero-copy{display:contents}
+  .hero-h{order:1}.hero-sub{order:2}.hero .ctas{order:3}.chips{order:5;margin-top:56px}
+  .vials-grid,.mixed-grid,.label-grid,.faq-grid,.gotcan-card,.founder-card,.gyms-grid{grid-template-columns:minmax(0,1fr)}
+  body{padding-bottom:84px}
+  .hero{padding-top:108px;padding-bottom:40px}
+  .hero h1{font-size:clamp(44px,12.4vw,68px)}
+  .hero .btn-ghost{display:none}
+  .hero .hero-sub{margin-top:16px;font-size:16.5px}
+  .hero .ctas{margin-top:20px}
+  .offer-line{font-size:13.5px;order:3}
+  .vials figure{aspect-ratio:4/3}
+  .faq-side{position:static}
+  .faq-side img{max-height:380px;width:100%;max-width:none;aspect-ratio:auto}
+  .nf{justify-self:start;margin-top:28px}
+  .stat.wide{grid-column:1/-1}
+  .studies{grid-template-columns:minmax(0,1fr)}
+  .sci video,.sci .poster{width:130%;right:-50%;opacity:.55}
+  .sci::before{background:linear-gradient(180deg,rgba(0,56,58,.55),var(--ink-deep) 70%)}
+  .founder-card img{min-height:300px;max-height:420px}
+  .room-copy{position:static;width:auto}
+  .room .name{position:absolute;font-size:clamp(56px,18vw,170px);top:calc(env(safe-area-inset-top,0px) + 92px);left:0;right:0;text-align:center}
+  .info{position:absolute;left:12px;right:12px;width:auto;bottom:max(2svh,12px);margin:0;padding:16px 16px 14px;border-radius:24px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),0 24px 50px -30px rgba(0,40,40,.6)}
+  .info h3{display:block}
+  .info p{font-size:14.5px;max-width:none;margin-top:6px;color:var(--ink-2)}
+  .room .can{left:50%;height:min(50svh,520px);bottom:max(24svh,170px)}
+  .room .badge{bottom:max(34svh,230px);right:10px;width:92px}
+  .room .p1{width:28vw;left:-5%;right:auto;top:38%}
+  .room .p2{width:26vw;left:auto;right:-3%;top:50%}
+  .room .p3{display:none}
+  .room .p4{width:20vw;left:66%;bottom:24svh}
+  .room .p5{width:38vw;left:50%;bottom:calc(max(24svh,170px) - 21vw);z-index:4}
+  .room .info{z-index:6}
+  .info h3{font-size:23px}
+  .dots{display:none}
+  .roll .big{top:calc(env(safe-area-inset-top,0px) + 96px);transform:none;flex-direction:column;align-items:center;text-align:center;font-size:clamp(60px,19vw,150px)}
+  .roll canvas.turn{height:min(40svh,420px);margin:10svh 0 0}
+  .roll .cap{bottom:96px;font-size:15.5px}
+  .roll .cap b{font-size:22px}
+
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);z-index:40;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:999px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px rgba(0,79,81,.12),0 18px 40px -20px rgba(0,40,40,.6);transform:translateY(160%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar b{font-family:var(--display);font-size:17px;display:block;line-height:1.1}
+  .mbar small{font-weight:700;color:var(--ink-soft);font-size:12.5px}
+  .mbar .btn{padding:.85em 1.2em;font-size:15px}
+}
+@media (max-width:520px){
+  .gc-form .two{grid-template-columns:1fr}
+  body{font-size:16px}
+  .bar{font-size:11px;letter-spacing:.05em}
+  .nav{padding-left:16px}
+  .cart-btn{padding:9px 9px 9px 14px}
+  .hero .ctas .btn{flex:1;justify-content:center}
+  .chip{font-size:13px}
+  .claim{padding:14px 20px}
+  .opt{grid-template-columns:auto 1fr;}
+  .opt .amt{grid-column:2;text-align:left}
+  .offer .add{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .badge svg.ring,.fizz span{animation:none!important}
+  .fizz{display:none}
+  .roll{height:auto}
+  .roll-pin{position:relative;height:auto;min-height:0;padding-block:80px}
+  .roll .big{position:relative;transform:none;top:auto;margin-bottom:24px}
+  .roll .cap{position:relative;left:auto;bottom:auto;transform:none;margin:24px auto 0}
+}
+.sub,.qsub{display:none!important}
 </style>
 </head>
 <body>
-<a class="skip" href="#top">Skip to content</a>
 
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Spry home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="2.1 5.7 837.7 228.3" role="img" aria-label="Spry"><path fill="currentColor" d="M 511.949219 108.269531 C 506.613281 108.269531 502.289062 103.945312 502.289062 98.609375 L 502.289062 65.59375 C 502.289062 60.261719 506.613281 55.9375 511.949219 55.9375 L 550.578125 55.9375 C 565.449219 55.9375 577.421875 68.339844 576.714844 83.367188 C 576.054688 97.441406 563.929688 108.269531 549.839844 108.269531 Z M 316.28125 108.269531 C 310.945312 108.269531 306.621094 103.945312 306.621094 98.609375 L 306.621094 65.59375 C 306.621094 60.261719 310.945312 55.9375 316.28125 55.9375 L 354.910156 55.9375 C 369.78125 55.9375 381.753906 68.339844 381.046875 83.367188 C 380.382812 97.441406 368.261719 108.269531 354.171875 108.269531 Z M 502.609375 217.765625 L 502.609375 174.617188 C 502.609375 166.160156 508.660156 158.644531 517.039062 157.523438 C 524.753906 156.492188 531.980469 160.816406 534.859375 167.828125 C 546.539062 196.25 577.050781 248.757812 657.304688 227.8125 C 663.632812 226.160156 667.996094 220.367188 667.996094 213.828125 L 667.996094 187.769531 C 667.996094 178.402344 659.238281 171.453125 650.136719 173.683594 C 638.054688 176.648438 621.75 178.546875 607.457031 173.035156 C 596.164062 168.679688 595.082031 153.171875 605.519531 147.039062 C 627.777344 133.964844 642.71875 109.78125 642.71875 82.101562 L 642.714844 81.796875 C 642.710938 77.449219 648.476562 75.917969 650.628906 79.695312 L 689.445312 147.777344 C 693.03125 154.066406 694.914062 161.175781 694.914062 168.414062 L 694.914062 217.765625 C 694.914062 225.765625 701.402344 232.253906 709.402344 232.253906 L 747.480469 232.253906 C 755.484375 232.253906 761.96875 225.765625 761.96875 217.765625 L 761.96875 168.414062 C 761.96875 161.175781 763.855469 154.066406 767.4375 147.777344 L 836.15625 28.484375 C 841.71875 18.824219 834.746094 6.765625 823.601562 6.765625 L 777.355469 6.765625 C 772.109375 6.761719 767.269531 9.59375 764.703125 14.171875 L 737.855469 85.070312 C 736.226562 89.371094 732.296875 91.429688 728.441406 91.285156 C 728.4375 91.285156 728.433594 91.28125 728.429688 91.285156 C 724.582031 91.425781 720.65625 89.367188 719.027344 85.070312 L 692.179688 14.171875 C 689.617188 9.59375 684.777344 6.761719 679.527344 6.765625 L 647.492188 6.796875 L 647.492188 6.832031 L 646.730469 6.832031 C 638.757812 6.832031 631.8125 13.164062 631.984375 21.132812 C 632.136719 28.160156 623.824219 31.761719 618.730469 27.015625 C 615.644531 24.140625 612.316406 21.527344 608.78125 19.199219 C 608.742188 19.175781 608.695312 19.15625 608.65625 19.132812 C 608.390625 18.957031 608.113281 18.789062 607.84375 18.617188 C 607.171875 18.191406 606.496094 17.769531 605.8125 17.363281 C 605.382812 17.109375 604.953125 16.859375 604.523438 16.613281 C 603.570312 16.074219 602.609375 15.546875 601.632812 15.050781 C 601.320312 14.890625 601.003906 14.742188 600.691406 14.585938 C 599.804688 14.148438 598.910156 13.726562 598.003906 13.324219 C 597.738281 13.207031 597.476562 13.082031 597.210938 12.96875 C 596.078125 12.480469 594.925781 12.019531 593.765625 11.585938 C 593.535156 11.5 593.304688 11.417969 593.074219 11.335938 C 591.847656 10.890625 590.609375 10.46875 589.355469 10.085938 L 589.355469 10.082031 C 582.425781 7.972656 575.070312 6.832031 567.449219 6.832031 L 451.0625 6.832031 C 443.089844 6.832031 436.148438 13.164062 436.316406 21.132812 C 436.46875 28.160156 428.15625 31.761719 423.0625 27.015625 C 409.621094 14.496094 391.597656 6.832031 371.777344 6.832031 C 371.777344 6.832031 148.6875 6.8125 102.707031 6.839844 C 90.707031 6.847656 78.765625 7.929688 67.046875 11.363281 C 54.621094 15.003906 42.855469 20.496094 32.9375 30.519531 C 20.148438 43.441406 13.90625 59.789062 16.050781 80.152344 C 17.828125 97.058594 25.179688 109.710938 36.734375 119.113281 C 54.113281 133.253906 73.644531 139.636719 94.1875 142.347656 C 102.578125 143.457031 111.027344 144.003906 119.359375 145.515625 C 124.136719 146.382812 129.03125 147.945312 133.355469 150.472656 C 143.085938 156.15625 143.914062 171.125 135.144531 178.722656 C 132.976562 180.601562 130.40625 182.015625 127.847656 182.976562 C 112.492188 188.742188 95.066406 180.972656 86.363281 164.671875 C 85.625 163.289062 84.882812 161.914062 84.191406 160.5 C 81.4375 154.839844 77.246094 152.476562 71.921875 152.492188 C 55.566406 152.542969 39.210938 152.445312 22.859375 152.640625 C 19.785156 152.679688 16.585938 153.347656 13.675781 154.539062 C 7.269531 157.15625 3.71875 163.765625 3.671875 171.90625 C 3.648438 175.800781 4.320312 179.550781 6.050781 182.722656 C 8.882812 187.910156 11.734375 193.195312 15.207031 197.742188 C 24.097656 209.394531 35.492188 216.320312 47.757812 221.367188 C 65.332031 228.601562 83.59375 230.949219 101.980469 231.894531 C 123.125 232.984375 144.191406 231.652344 165.0625 227.164062 C 177.589844 224.472656 189.632812 219.945312 200.855469 212.570312 C 209.46875 206.910156 216.855469 199.59375 222.492188 189.757812 C 234.648438 168.554688 230.308594 134.804688 209.679688 120.476562 C 203.75 116.355469 197.492188 113.242188 190.945312 110.894531 C 175.46875 105.351562 159.441406 103.734375 143.550781 101.066406 C 135.617188 99.738281 127.703125 98.066406 119.871094 96.050781 C 114.371094 94.636719 109.324219 91.660156 105.160156 86.894531 C 99.484375 80.398438 99.132812 71.074219 104.289062 63.957031 C 107.230469 59.890625 110.890625 57.097656 115.179688 55.621094 C 125.886719 51.9375 135.90625 54.09375 145.3125 61.058594 C 150.621094 64.988281 154.886719 70.261719 158.59375 76.21875 C 162.515625 82.515625 167.851562 85.433594 174.199219 85.023438 C 179.0625 84.707031 183.949219 83.855469 188.710938 82.609375 C 199.820312 79.707031 210.125 74.109375 220.289062 68.121094 C 222.847656 66.613281 225.453125 65.101562 228.171875 64.140625 L 228.226562 64.121094 C 234.296875 61.996094 240.652344 66.5 240.652344 72.933594 L 240.652344 217.765625 C 240.652344 225.765625 247.136719 232.253906 255.136719 232.253906 L 292.453125 232.253906 C 300.457031 232.253906 306.941406 225.765625 306.941406 217.765625 L 306.941406 171.859375 C 306.941406 163.859375 313.429688 157.371094 321.429688 157.371094 L 371.777344 157.371094 C 391.597656 157.371094 409.621094 149.710938 423.0625 137.191406 C 428.109375 132.484375 436.320312 135.984375 436.320312 142.882812 L 436.320312 217.765625 C 436.320312 225.765625 442.804688 232.253906 450.808594 232.253906 L 488.125 232.253906 C 496.125 232.253906 502.609375 225.765625 502.609375 217.765625 "/></svg></a>
-    <ul class="nav-links">
-      <li><a href="#inside">What's in it</a></li>
-      <li><a href="#science">The science</a></li>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-leaf" viewBox="0 0 256 256"><path d="M227.42,39.86a12,12,0,0,0-11.28-11.28c-39.6-2.33-74.59,2.34-104,13.87C84,53.48,62.31,70.58,49.39,91.9c-17.62,29.11-17.66,64.45-.45,98.19L31.51,207.52a12,12,0,0,0,17,17l17.43-17.43c16.74,8.54,33.88,12.85,50.45,12.85a91.31,91.31,0,0,0,47.74-13.3c21.32-12.92,38.42-34.62,49.45-62.75C225.08,114.46,229.75,79.46,227.42,39.86ZM151.66,186.08C131.57,198.25,108,199.17,83.94,189l84.54-84.54a12,12,0,1,0-17-17L67,172.06c-10.14-24-9.22-47.63,3-67.72,20.91-34.53,70.54-53.72,134-52.25C205.38,115.53,186.19,165.17,151.66,186.08Z"/></symbol><symbol id="i-flask" viewBox="0 0 256 256"><path d="M225.15,197.71,164,95.81V44h4a12,12,0,0,0,0-24H88a12,12,0,0,0,0,24h4V95.81L30.85,197.71A20,20,0,0,0,48,228H208a20,20,0,0,0,17.15-30.29ZM140,44V99.14a12,12,0,0,0,1.71,6.17l35.13,58.54c-10.79.86-25.15-1.31-43.42-10.56-14-7.08-27.46-11.33-40.27-12.76l21.14-35.22A12,12,0,0,0,116,99.14V44ZM55.06,204,79,164.19c13-1.11,27.62,2.42,43.62,10.52,19.61,9.92,36.25,13.31,49.85,13.31A75.44,75.44,0,0,0,190.11,186l10.83,18Z"/></symbol><symbol id="i-barbell" viewBox="0 0 256 256"><path d="M244,116V88a20,20,0,0,0-20-20H208V64a20,20,0,0,0-20-20H164a20,20,0,0,0-20,20v52H112V64A20,20,0,0,0,92,44H68A20,20,0,0,0,48,64v4H32A20,20,0,0,0,12,88v28a12,12,0,0,0,0,24v28a20,20,0,0,0,20,20H48v4a20,20,0,0,0,20,20H92a20,20,0,0,0,20-20V140h32v52a20,20,0,0,0,20,20h24a20,20,0,0,0,20-20v-4h16a20,20,0,0,0,20-20V140a12,12,0,0,0,0-24ZM36,164V92H48v72Zm52,24H72V68H88Zm96,0H168V68h16Zm36-24H208V92h12Z"/></symbol><symbol id="i-sparkle" viewBox="0 0 256 256"><path d="M199,125.31l-49.88-18.39L130.69,57a19.92,19.92,0,0,0-37.38,0L74.92,106.92,25,125.31a19.92,19.92,0,0,0,0,37.38l49.88,18.39L93.31,231a19.92,19.92,0,0,0,37.38,0l18.39-49.88L199,162.69a19.92,19.92,0,0,0,0-37.38Zm-63.38,35.16a12,12,0,0,0-7.11,7.11L112,212.28l-16.47-44.7a12,12,0,0,0-7.11-7.11L43.72,144l44.7-16.47a12,12,0,0,0,7.11-7.11L112,75.72l16.47,44.7a12,12,0,0,0,7.11,7.11L180.28,144ZM140,40a12,12,0,0,1,12-12h12V16a12,12,0,0,1,24,0V28h12a12,12,0,0,1,0,24H188V64a12,12,0,0,1-24,0V52H152A12,12,0,0,1,140,40ZM252,88a12,12,0,0,1-12,12h-4v4a12,12,0,0,1-24,0v-4h-4a12,12,0,0,1,0-24h4V72a12,12,0,0,1,24,0v4h4A12,12,0,0,1,252,88Z"/></symbol><symbol id="i-drop-half" viewBox="0 0 256 256"><path d="M134.88,6.17a12,12,0,0,0-13.76,0,259,259,0,0,0-42.18,39C50.85,77.43,36,111.63,36,144a92,92,0,0,0,184,0C220,66.64,138.36,8.6,134.88,6.17ZM194.08,160H140V144h56A68,68,0,0,1,194.08,160ZM140,120V104h47a115,115,0,0,1,5.68,16Zm19.3-58.71A197.29,197.29,0,0,1,173.68,80H140V41.46A243.5,243.5,0,0,1,159.3,61.29ZM60,144c0-33.31,20-63.37,36.7-82.71A243.5,243.5,0,0,1,116,41.46V210.92A68.1,68.1,0,0,1,60,144Zm80,66.92V184h42.94A68,68,0,0,1,140,210.92Z"/></symbol><symbol id="i-prohibit" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm84,108a83.6,83.6,0,0,1-16.75,50.28L77.72,60.75A84,84,0,0,1,212,128ZM44,128A83.6,83.6,0,0,1,60.75,77.72L178.28,195.25A84,84,0,0,1,44,128Z"/></symbol><symbol id="i-plant" viewBox="0 0 256 256"><path d="M255.62,51.65a12,12,0,0,0-11.27-11.27c-53.27-3.13-96.2,13.36-114.84,44.14-12.14,20-12.56,44.17-1.46,67.3a75.14,75.14,0,0,0-12.28,23l-12.66-12.66c7.19-16.77,6.43-34.11-2.4-48.69C86.73,90.36,54.89,78,15.55,80.27A12,12,0,0,0,4.28,91.55C2,130.89,14.36,162.73,37.45,176.71a49.76,49.76,0,0,0,26,7.27,57.54,57.54,0,0,0,22.7-4.87L112,205v23a12,12,0,0,0,24,0V198.51a51.63,51.63,0,0,1,9.49-29.95,76.82,76.82,0,0,0,32.1,7.39,64.91,64.91,0,0,0,33.89-9.46C242.25,147.85,258.76,104.92,255.62,51.65ZM49.88,156.18c-13.19-8-21.18-27.46-21.83-52.13,24.67.65,44.14,8.64,52.13,21.83a26,26,0,0,1,3.63,17L72.48,131.51a12,12,0,0,0-17,17l11.34,11.34A26.27,26.27,0,0,1,49.88,156.18ZM199.05,146c-10.66,6.45-23,7.67-35.81,3.76l37.25-37.24a12,12,0,0,0-17-17l-37.25,37.24C142.37,120,143.59,107.61,150,97c12.7-21,42.65-33,81.32-33H232C232.14,103,220.14,133.18,199.05,146Z"/></symbol><symbol id="i-snowflake" viewBox="0 0 256 256"><path d="M227.65,149.14a12,12,0,0,1-8.79,14.51l-20.67,5.08,5.4,20.16a12,12,0,0,1-23.18,6.22l-7.29-27.2L140,148.78V187l20.48,20.48a12,12,0,0,1-17,17L128,209l-15.51,15.52a12,12,0,0,1-17-17L116,187V148.78L82.88,167.91l-7.29,27.2a12,12,0,0,1-23.18-6.22l5.4-20.16-20.67-5.08a12,12,0,1,1,5.72-23.3l27.89,6.85L104,128,70.75,108.8l-27.89,6.85A11.8,11.8,0,0,1,40,116a12,12,0,0,1-2.85-23.65l20.67-5.08-5.4-20.16a12,12,0,0,1,23.18-6.22l7.29,27.2L116,107.21V69L95.52,48.48a12,12,0,0,1,17-17L128,47l15.51-15.52a12,12,0,1,1,17,17L140,69v38.24l33.12-19.12,7.29-27.2a12,12,0,0,1,23.18,6.22l-5.4,20.16,20.67,5.08A12,12,0,0,1,216,116a11.8,11.8,0,0,1-2.87-.35l-27.89-6.85L152,128l33.25,19.2,27.89-6.85A12,12,0,0,1,227.65,149.14Z"/></symbol><symbol id="i-arrows-clockwise" viewBox="0 0 256 256"><path d="M228,48V96a12,12,0,0,1-12,12H168a12,12,0,0,1,0-24h19l-7.8-7.8a75.55,75.55,0,0,0-53.32-22.26h-.43A75.49,75.49,0,0,0,72.39,75.57,12,12,0,1,1,55.61,58.41a99.38,99.38,0,0,1,69.87-28.47H126A99.42,99.42,0,0,1,196.2,59.23L204,67V48a12,12,0,0,1,24,0ZM183.61,180.43a75.49,75.49,0,0,1-53.09,21.63h-.43A75.55,75.55,0,0,1,76.77,179.8L69,172H88a12,12,0,0,0,0-24H40a12,12,0,0,0-12,12v48a12,12,0,0,0,24,0V189l7.8,7.8A99.42,99.42,0,0,0,130,226.06h.56a99.38,99.38,0,0,0,69.87-28.47,12,12,0,0,0-16.78-17.16Z"/></symbol><symbol id="i-lightning" viewBox="0 0 256 256"><path d="M219.71,117.38a12,12,0,0,0-7.25-8.52L161.28,88.39l10.59-70.61a12,12,0,0,0-20.64-10l-112,120a12,12,0,0,0,4.31,19.33l51.18,20.47L84.13,238.22a12,12,0,0,0,20.64,10l112-120A12,12,0,0,0,219.71,117.38ZM113.6,203.55l6.27-41.77a12,12,0,0,0-7.41-12.92L68.74,131.37,142.4,52.45l-6.27,41.77a12,12,0,0,0,7.41,12.92l43.72,17.49Z"/></symbol><symbol id="i-x" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol><symbol id="i-plus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></symbol><symbol id="i-minus" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128Z"/></symbol><symbol id="i-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol><symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></symbol><symbol id="i-truck" viewBox="0 0 256 256"><path d="M255.14,115.54l-14-35A19.89,19.89,0,0,0,222.58,68H196V64a12,12,0,0,0-12-12H32A20,20,0,0,0,12,72V184a20,20,0,0,0,20,20H46.06a36,36,0,0,0,67.88,0h44.12a36,36,0,0,0,67.88,0H236a20,20,0,0,0,20-20V120A21.7,21.7,0,0,0,255.14,115.54ZM196,92h23.88l6.4,16H196ZM80,204a12,12,0,1,1,12-12A12,12,0,0,1,80,204Zm92-41.92A36.32,36.32,0,0,0,158.06,180H113.94a36,36,0,0,0-67.88,0H36V140H172ZM172,116H36V76H172Zm20,88a12,12,0,1,1,12-12A12,12,0,0,1,192,204Zm40-24h-6.06A36.09,36.09,0,0,0,196,156.23V132h36Z"/></symbol><symbol id="i-repeat" viewBox="0 0 256 256"><path d="M20,128A76.08,76.08,0,0,1,96,52h99l-3.52-3.51a12,12,0,1,1,17-17l24,24a12,12,0,0,1,0,17l-24,24a12,12,0,0,1-17-17L195,76H96a52.06,52.06,0,0,0-52,52,12,12,0,0,1-24,0Zm204-12a12,12,0,0,0-12,12,52.06,52.06,0,0,1-52,52H61l3.52-3.51a12,12,0,1,0-17-17l-24,24a12,12,0,0,0,0,17l24,24a12,12,0,1,0,17-17L61,204h99a76.08,76.08,0,0,0,76-76A12,12,0,0,0,224,116Z"/></symbol><symbol id="i-shopping-bag" viewBox="0 0 256 256"><path d="M216,36H40A20,20,0,0,0,20,56V200a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V56A20,20,0,0,0,216,36Zm-4,160H44V60H212ZM76,88a12,12,0,0,1,24,0,28,28,0,0,0,56,0,12,12,0,0,1,24,0A52,52,0,0,1,76,88Z"/></symbol><symbol id="i-qr-code" viewBox="0 0 256 256"><path d="M100,36H56A20,20,0,0,0,36,56v44a20,20,0,0,0,20,20h44a20,20,0,0,0,20-20V56A20,20,0,0,0,100,36ZM96,96H60V60H96Zm4,40H56a20,20,0,0,0-20,20v44a20,20,0,0,0,20,20h44a20,20,0,0,0,20-20V156A20,20,0,0,0,100,136Zm-4,60H60V160H96ZM200,36H156a20,20,0,0,0-20,20v44a20,20,0,0,0,20,20h44a20,20,0,0,0,20-20V56A20,20,0,0,0,200,36Zm-4,60H160V60h36Zm-60,76V148a12,12,0,0,1,24,0v24a12,12,0,0,1-24,0Zm84-8a12,12,0,0,1-12,12H196v32a12,12,0,0,1-12,12H148a12,12,0,0,1,0-24h24V148a12,12,0,0,1,24,0v4h12A12,12,0,0,1,220,164Z"/></symbol><symbol id="i-heartbeat" viewBox="0 0 256 256"><path d="M71.76,148H31.7a12,12,0,1,1,0-24H65.33l12.45-18.66a12,12,0,0,1,20,0l22,33,6-9a12,12,0,0,1,10-5.34h24a12,12,0,1,1,0,24h-17.6l-12.46,18.66a12,12,0,0,1-20,0l-22-33-6,9A12,12,0,0,1,71.76,148ZM177.91,36c-20.12,0-38,7.93-50.07,21.56C115.74,43.93,97.89,36,77.76,36A66,66,0,0,0,12.07,94.68,12,12,0,0,0,36,97.32,42,42,0,0,1,77.76,60c17.83,0,32.75,9.4,38.95,24.54a12,12,0,0,0,22.25,0C145.16,69.4,160.08,60,177.91,60A42.08,42.08,0,0,1,220,102c0,29.42-25.86,57.77-47.56,76.36a329,329,0,0,1-44.58,31.81c-10.87-6.45-35.37-22-56.51-42.73a12,12,0,1,0-16.84,17.12c30.39,29.81,66.15,49.2,67.66,50a12.06,12.06,0,0,0,11.39,0C138,232.14,244,174.34,244,102A66.12,66.12,0,0,0,177.91,36Z"/></symbol><symbol id="i-drop" viewBox="0 0 256 256"><path d="M134.88,6.17a12,12,0,0,0-13.76,0,259,259,0,0,0-42.18,39C50.85,77.43,36,111.62,36,144a92,92,0,0,0,184,0C220,66.64,138.36,8.6,134.88,6.17ZM128,212a68.07,68.07,0,0,1-68-68c0-33.31,20-63.37,36.7-82.71A249.35,249.35,0,0,1,128,31.11a249.35,249.35,0,0,1,31.3,30.18C176,80.63,196,110.69,196,144A68.07,68.07,0,0,1,128,212Zm49.62-52.4a52,52,0,0,1-34,34,12.2,12.2,0,0,1-3.6.55,12,12,0,0,1-3.6-23.45,28,28,0,0,0,18.32-18.32,12,12,0,0,1,22.9,7.2Z"/></symbol><symbol id="i-caret-down" viewBox="0 0 256 256"><path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"/></symbol><symbol id="i-star" viewBox="0 0 256 256"><path d="M243,96a20.33,20.33,0,0,0-17.74-14l-56.59-4.57L146.83,24.62a20.36,20.36,0,0,0-37.66,0L87.35,77.44,30.76,82A20.45,20.45,0,0,0,19.1,117.88l43.18,37.24-13.2,55.7A20.37,20.37,0,0,0,79.57,233L128,203.19,176.43,233a20.39,20.39,0,0,0,30.49-22.15l-13.2-55.7,43.18-37.24A20.43,20.43,0,0,0,243,96ZM172.53,141.7a12,12,0,0,0-3.84,11.86L181.58,208l-47.29-29.08a12,12,0,0,0-12.58,0L74.42,208l12.89-54.4a12,12,0,0,0-3.84-11.86L41.2,105.24l55.4-4.47a12,12,0,0,0,10.13-7.38L128,41.89l21.27,51.5a12,12,0,0,0,10.13,7.38l55.4,4.47Z"/></symbol><symbol id="i-tiktok-logo" viewBox="0 0 256 256"><path d="M224,68a44.05,44.05,0,0,1-44-44,12,12,0,0,0-12-12H128a12,12,0,0,0-12,12V156a16,16,0,1,1-22.85-14.47A12,12,0,0,0,100,130.69V88A12,12,0,0,0,85.9,76.19a79.35,79.35,0,0,0-47.08,27.74A81.84,81.84,0,0,0,20,156a80,80,0,0,0,160,0V122.67A107.47,107.47,0,0,0,224,132a12,12,0,0,0,12-12V80A12,12,0,0,0,224,68Zm-12,39.15a83.05,83.05,0,0,1-37-14.91A12,12,0,0,0,156,102v54a56,56,0,0,1-112,0,57.86,57.86,0,0,1,32-51.56V124a40,40,0,1,0,64,32V36h17.06A68.21,68.21,0,0,0,212,90.94Z"/></symbol><symbol id="i-instagram-logo" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM176,20H80A60.07,60.07,0,0,0,20,80v96a60.07,60.07,0,0,0,60,60h96a60.07,60.07,0,0,0,60-60V80A60.07,60.07,0,0,0,176,20Zm36,156a36,36,0,0,1-36,36H80a36,36,0,0,1-36-36V80A36,36,0,0,1,80,44h96a36,36,0,0,1,36,36ZM196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Z"/></symbol><symbol id="i-envelope-simple" viewBox="0 0 256 256"><path d="M224,44H32A12,12,0,0,0,20,56V192a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V56A12,12,0,0,0,224,44ZM193.15,68,128,127.72,62.85,68ZM44,188V83.28l75.89,69.57a12,12,0,0,0,16.22,0L212,83.28V188Z"/></symbol></svg>
+
+<header class="hdr" id="hdr">
+  <div class="bar"><svg class="ico"><use href="#i-truck"/></svg><span>Two boxes ship free</span></div>
+  <nav class="nav" aria-label="Main">
+    <a href="#top" aria-label="Spry home"><span class="logo"></span></a>
+    <ul>
       <li><a href="#flavors">Flavors</a></li>
-      <li><a href="#faq">Questions</a></li>
-      <li><a href="our-story.html">Our story</a></li>
+      <li><a href="#mixed">Mixed Box</a></li>
+      <li><a href="#science">Science</a></li>
+      <li><a href="#label">Label</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
-    <div class="nav-right">
-      <a class="btn sm" href="#reserve">Reserve a pack</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg></button>
-    </div>
-  </div>
+    <div class="nav-actions"><button class="buy-btn" id="buyBtn">Buy now</button><button class="cart-btn" id="cartBtn" aria-label="Open cart">Cart <span class="n" id="cartN">0</span></button></div>
+  </nav>
 </header>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-  <a href="#inside">What's in it</a>
-  <a href="#science">The science</a>
-  <a href="#flavors">Flavors</a>
-  <a href="#faq">Questions</a>
-  <a href="our-story.html">Our story</a>
-  <a class="btn" href="#reserve">Reserve a pack</a>
-</nav>
 
 <main id="top">
-
-<section class="hero" id="hero">
+<!-- ================= HERO ================= -->
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
     <div class="hero-copy">
-    <h1>The peptide drink.</h1>
-    <p class="lede">Plant-derived bioactive peptides from fava beans, clinically studied to support muscle strength and recovery after training. Lightly sparkling, low calorie, best served cold.</p>
-    <div class="hero-cta">
-      <a class="btn lg" href="#reserve">Reserve a pack</a>
-      <a class="btn ghost lg" href="#science">Read the science</a>
+      <h1 id="h1" class="hero-h"><span class="ln"><span>The <span class="pill-word">PEPTIDE</span></span></span><span class="ln"><span>drink.</span></span></h1>
+      <p class="hero-sub">A cold can with electrolytes, for after training. PeptiStrong&reg; plant-derived peptides, clinically studied to support muscle strength and recovery.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#mixed">Start with all four <span class="cta-price">$47.88</span></a>
+        <a class="btn btn-ghost" href="#flavors">Meet the flavors</a>
+      </div>
+      <p class="offer-line"><svg class="ico"><use href="#i-truck"/></svg>12 cans, three of each flavor. Two boxes ship free.</p>
+      <div class="chips" role="group" aria-label="Preview a flavor">
+        <button class="chip" data-f="mango" aria-pressed="true" style="--a:#F9B25C;--b:#F68512"><i></i>Mango Passionfruit</button>
+        <button class="chip" data-f="blood" aria-pressed="false" style="--a:#FF8A6E;--b:#F03E21"><i></i>Blood Orange</button>
+        <button class="chip" data-f="yuzu" aria-pressed="false" style="--a:#D6E870;--b:#ACC913"><i></i>Yuzu Lime</button>
+        <button class="chip" data-f="berry" aria-pressed="false" style="--a:#F27BB0;--b:#E4066E"><i></i>Mixed Berry</button>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <div class="dome" id="heroDome"><canvas class="ht" data-ht="hero"></canvas><div class="fizz" data-fizz="22"></div></div>
+      <img class="prop" id="heroFruitA" src="/assets/v3/f0.webp" alt="" style="width:46%;left:-24%;bottom:-6%" data-depth="0.6">
+      <img class="prop" id="heroFruitB" src="/assets/v3/f1.webp" alt="" style="width:34%;right:-14%;top:14%" data-depth="-0.5">
+      <img class="hero-can" id="heroCan" src="/assets/v3/can-mango.webp" alt="A cold can of Spry Mango Passionfruit with condensation" width="441" height="1100" fetchpriority="high">
+      <img class="prop" src="/assets/v3/ice1.webp" alt="" style="width:36%;right:-10%;bottom:-5%" data-depth="0.9">
+      <img class="prop" src="/assets/v3/ice2.webp" alt="" style="width:30%;left:4%;bottom:-8%" data-depth="0.3">
+      <div class="badge" style="left:-9%;top:6%" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 200 200"><defs><path id="bp1" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#bp1" textLength="472">Clinically studied &#8226; Plant-derived peptides &#8226; </textPath></text></svg>
+        <svg class="ico"><use href="#i-flask"/></svg>
+      </div>
+      <div class="badge rev" style="right:-7%;bottom:30%" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 200 200"><defs><path id="bp2" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#bp2" textLength="472">Lightly sparkling &#8226; Low calorie &#8226; Electrolytes &#8226; </textPath></text></svg>
+        <svg class="ico"><use href="#i-drop-half"/></svg>
+      </div>
     </div>
   </div>
-  <div class="hero-stage">
-    <div class="cloud" aria-hidden="true"></div>
-    <div class="ground" aria-hidden="true"></div>
-    <canvas id="can" aria-label="The Spry can, turning as you scroll" role="img"></canvas>
-    <div class="can-fallback" aria-hidden="true"><img id="canFallback" src="/assets/can/can-mango-hero.webp" alt=""></div>
+</section>
+
+<!-- ================= CLAIMS TICKER ================= -->
+<section class="ticker" aria-label="What is in every can">
+  <ul class="sr">
+    <li>Plant-derived peptides</li><li>Clinically studied</li><li>Supports muscle strength and recovery</li><li>Lightly sparkling</li><li>Low calorie</li><li>Electrolytes</li><li>No artificial colors or flavors</li><li>No artificial sweeteners</li><li>Plant-based</li>
+  </ul>
+  <div class="row a" aria-hidden="true"><div class="belt" data-dir="-1"></div></div>
+  <div class="row b" aria-hidden="true"><div class="belt" data-dir="1"></div></div>
+</section>
+
+<!-- ================= COLD ================= -->
+<section class="cold" aria-labelledby="ch">
+  <img id="coldImg" src="/assets/v3/life-ice.webp" alt="Cans of Spry Mango Passionfruit, Blood Orange and Yuzu Lime in an ice bucket at the gym" loading="lazy" width="2000" height="1131">
+  <div class="wrap"><h2 id="ch">Best served cold.</h2><p>Keep a few in the fridge. Roll one, crack it after training.</p></div>
+</section>
+
+<!-- ================= MIXED BOX ================= -->
+<span id="reserve" aria-hidden="true"></span><section class="mixed" id="mixed" aria-labelledby="mh">
+  <div class="wrap mixed-grid">
+    <figure class="boxshot" id="boxshot"><img src="/assets/v3/mixed-box.webp" alt="An open Mixed Box: twelve cans, three of each flavor" loading="lazy" width="1400" height="1400"></figure>
+    <div class="offer">
+      <h2 id="mh">The Mixed Box.</h2>
+      <p class="lede">Three of each flavor. Twelve cans, $47.88.</p>
+      <div class="opts" role="radiogroup" aria-label="How many boxes">
+        <label class="opt"><input type="radio" name="boxes" id="b1" value="1" checked><span class="r"></span><span><b>One box</b><span class="s">12 cans, $3.99 a can</span></span><span class="amt" id="amt1">$47.88<small>+ $5.99 shipping</small></span></label>
+        <label class="opt"><input type="radio" name="boxes" id="b2" value="2"><span class="r"></span><span><b>Two boxes</b><span class="s">24 cans, $3.99 a can</span></span><span class="amt" id="amt2">$95.76<small>Ships free</small></span></label>
+      </div>
+      <div class="ship" id="shipNote"><svg class="ico"><use href="#i-truck"/></svg><span id="shipTxt">Add a second box and shipping is free.</span></div>
+      <label class="sub" for="subT">
+        <input type="checkbox" id="subT">
+        <span><b>Subscribe: $44.28 a box every 4 weeks</b>, ships free. That is $3.69 a can.
+          <span class="fine" id="subFine">Renews every 4 weeks at $44.28 a box until you cancel. Skip or cancel any time before your next box ships.</span></span>
+      </label>
+      <button class="btn btn-ink add" id="addMixed">Add to cart <span id="addAmt">$47.88</span></button>
+      <p class="reassure">First boxes ship in December, within the US. <a href="/legal.html#refund" target="_blank" rel="noopener">Refund policy</a></p>
+    </div>
   </div>
 </section>
 
-<section class="facts" aria-label="At a glance">
-  <div class="wrap">
-    <ul>
-      <li><strong>2.4 g</strong> hydrolyzed fava bean protein in every can, the amount the studies used</li>
-      <li><strong>Plant-based</strong> peptides extracted from fava beans</li>
-      <li><strong>Low calorie</strong> no artificial colors, flavors or sweeteners</li>
-      <li><strong>December</strong> the first run ships</li>
-    </ul>
+<!-- ================= GYMS ================= -->
+<section class="gyms" id="gyms" aria-labelledby="gyh">
+  <div class="wrap gyms-grid">
+    <div>
+      <h2 id="gyh">Not ready for twelve? Find us at your gym.</h2>
+      <p>We are starting in LA gyms. Tell us where you train and we will try to bring cold cans there first.</p>
+    </div>
+    <form class="gym-form" id="gymForm" novalidate>
+      <div><label for="gymName">Your gym</label><input type="text" id="gymName" placeholder="Gym name and neighborhood" autocomplete="off"></div>
+      <div><label for="gymEmail">Email</label><input type="email" id="gymEmail" placeholder="you@example.com" autocomplete="email"></div>
+      <button class="btn btn-ink" type="submit">Bring Spry to my gym <svg class="ico"><use href="#i-arrow-right"/></svg></button>
+    </form>
   </div>
 </section>
 
-<section class="section vials" id="vials">
+<!-- ================= WHY ================= -->
+<section class="vials" aria-labelledby="vh">
+  <div class="wrap vials-grid">
+    <div>
+      <h2 id="vh" class="sr">Why a drink</h2>
+      <p class="reveal" id="reveal">Peptides get talked about a lot in strength and recovery. Ours is PeptiStrong&reg;, <em>one</em> plant-derived peptide from fava beans, clinically studied in people, in a cold can with a label you can read.</p>
+    </div>
+    <figure><img src="/assets/v3/fava.webp" alt="Fava bean pods split open on linen" loading="lazy" width="725" height="900" data-par="-8"></figure>
+  </div>
+</section>
+
+<!-- ================= FLAVOR ROOMS ================= -->
+<section id="flavors" aria-labelledby="fh">
+  <div class="wrap rooms-intro">
+    <h2 id="fh">It has to taste good, too.</h2>
+    <p>Four flavors, lightly sparkling and low calorie. Best straight from the fridge.</p>
+  </div>
+  <div class="rooms" id="rooms">
+    <article class="room" data-f="mango" id="room-mango" aria-label="Mango Passionfruit" style="--nfs:11.6vw">
+      <canvas class="ht" data-ht="room"></canvas><div class="fizz" data-fizz="26"></div>
+      <div class="room-inner">
+        <div class="room-copy">
+          <div class="name" aria-hidden="true"><span class="ln"><span>Mango</span></span><span class="ln"><span>Passionfruit</span></span></div>
+        <div class="info">
+          <h3>Mango Passionfruit</h3>
+          <p>The crowd-pleaser. Tropical and bright, with a tart edge.</p>
+          <div class="buy"><div class="price">$47.88<small>12 cans &middot; $3.99 a can</small></div><button class="btn btn-ink" data-add="mango">Add a box <svg class="ico"><use href="#i-plus"/></svg></button></div>
+        </div>
+        </div>
+        <img class="prop p1" src="/assets/v3/f0.webp" alt="" loading="lazy" data-depth="1.1">
+        <img class="prop p2" src="/assets/v3/f1.webp" alt="" loading="lazy" data-depth="-0.8">
+        <img class="prop p3" src="/assets/v3/f1.webp" alt="" loading="lazy" data-depth="0.5">
+        <img class="can" src="/assets/v3/can-mango.webp" alt="Spry Mango Passionfruit can" loading="lazy" width="441" height="1100">
+        <img class="prop p5" src="/assets/v3/ice2.webp" alt="" loading="lazy" data-depth="0.15">
+        <img class="prop p4" src="/assets/v3/ice0.webp" alt="" loading="lazy" data-depth="0.3">
+        <div class="badge" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="r1" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#r1" textLength="472">Tropical &#8226; Bright &#8226; Tart edge &#8226; </textPath></text></svg><svg class="ico"><use href="#i-sparkle"/></svg></div>
+      </div>
+    </article>
+    <article class="room" data-f="blood" id="room-blood" aria-label="Blood Orange" style="--nfs:18vw">
+      <canvas class="ht" data-ht="room"></canvas><div class="fizz" data-fizz="26"></div>
+      <div class="room-inner">
+        <div class="room-copy">
+          <div class="name" aria-hidden="true"><span class="ln"><span>Blood</span></span><span class="ln"><span>Orange</span></span></div>
+        <div class="info">
+          <h3>Blood Orange</h3>
+          <p>The sophisticated one. Grown-up citrus with a dry finish.</p>
+          <div class="buy"><div class="price">$47.88<small>12 cans &middot; $3.99 a can</small></div><button class="btn btn-ink" data-add="blood">Add a box <svg class="ico"><use href="#i-plus"/></svg></button></div>
+        </div>
+        </div>
+        <img class="prop p1" src="/assets/v3/f3.webp" alt="" loading="lazy" data-depth="1.1">
+        <img class="prop p2" src="/assets/v3/f2.webp" alt="" loading="lazy" data-depth="-0.8">
+        <img class="prop p3" src="/assets/v3/f2.webp" alt="" loading="lazy" data-depth="0.5">
+        <img class="can" src="/assets/v3/can-blood.webp" alt="Spry Blood Orange can" loading="lazy" width="441" height="1100">
+        <img class="prop p5" src="/assets/v3/ice2.webp" alt="" loading="lazy" data-depth="0.15">
+        <img class="prop p4" src="/assets/v3/ice1.webp" alt="" loading="lazy" data-depth="0.3">
+        <div class="badge rev" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="r2" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#r2" textLength="472">Dry finish &#8226; Grown-up citrus &#8226; </textPath></text></svg><svg class="ico"><use href="#i-sparkle"/></svg></div>
+      </div>
+    </article>
+    <article class="room" data-f="yuzu" id="room-yuzu" aria-label="Yuzu Lime" style="--nfs:19vw">
+      <canvas class="ht" data-ht="room"></canvas><div class="fizz" data-fizz="26"></div>
+      <div class="room-inner">
+        <div class="room-copy">
+          <div class="name" aria-hidden="true"><span class="ln"><span>Yuzu</span></span><span class="ln"><span>Lime</span></span></div>
+        <div class="info">
+          <h3>Yuzu Lime</h3>
+          <p>The cleanest sip. Citrus first, and a clean finish.</p>
+          <div class="buy"><div class="price">$47.88<small>12 cans &middot; $3.99 a can</small></div><button class="btn btn-ink" data-add="yuzu">Add a box <svg class="ico"><use href="#i-plus"/></svg></button></div>
+        </div>
+        </div>
+        <img class="prop p1" src="/assets/v3/f4.webp" alt="" loading="lazy" data-depth="1.1">
+        <img class="prop p2" src="/assets/v3/f5.webp" alt="" loading="lazy" data-depth="-0.8">
+        <img class="prop p3" src="/assets/v3/f5.webp" alt="" loading="lazy" data-depth="0.5">
+        <img class="can" src="/assets/v3/can-yuzu.webp" alt="Spry Yuzu Lime can" loading="lazy" width="441" height="1100">
+        <img class="prop p5" src="/assets/v3/ice2.webp" alt="" loading="lazy" data-depth="0.15">
+        <img class="prop p4" src="/assets/v3/ice0.webp" alt="" loading="lazy" data-depth="0.3">
+        <div class="badge" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="r3" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#r3" textLength="472">Citrus first &#8226; Clean finish &#8226; Crisp &#8226; </textPath></text></svg><svg class="ico"><use href="#i-sparkle"/></svg></div>
+      </div>
+    </article>
+    <article class="room" data-f="berry" id="room-berry" aria-label="Mixed Berry" style="--nfs:18vw">
+      <canvas class="ht" data-ht="room"></canvas><div class="fizz" data-fizz="26"></div>
+      <div class="room-inner">
+        <div class="room-copy">
+          <div class="name" aria-hidden="true"><span class="ln"><span>Mixed</span></span><span class="ln"><span>Berry</span></span></div>
+        <div class="info">
+          <h3>Mixed Berry</h3>
+          <p>Dark fruit, more tart than sweet.</p>
+          <div class="buy"><div class="price">$47.88<small>12 cans &middot; $3.99 a can</small></div><button class="btn btn-ink" data-add="berry">Add a box <svg class="ico"><use href="#i-plus"/></svg></button></div>
+        </div>
+        </div>
+        <img class="prop p1" src="/assets/v3/f6.webp" alt="" loading="lazy" data-depth="1.1">
+        <img class="prop p2" src="/assets/v3/f7.webp" alt="" loading="lazy" data-depth="-0.8">
+        <img class="prop p3" src="/assets/v3/f8.webp" alt="" loading="lazy" data-depth="0.5">
+        <img class="can" src="/assets/v3/can-berry.webp" alt="Spry Mixed Berry can" loading="lazy" width="441" height="1100">
+        <img class="prop p5" src="/assets/v3/ice2.webp" alt="" loading="lazy" data-depth="0.15">
+        <img class="prop p4" src="/assets/v3/ice2.webp" alt="" loading="lazy" data-depth="0.3">
+        <div class="badge rev" aria-hidden="true"><svg class="ring" viewBox="0 0 200 200"><defs><path id="r4" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#r4" textLength="472">Dark fruit &#8226; More tart than sweet &#8226; </textPath></text></svg><svg class="ico"><use href="#i-sparkle"/></svg></div>
+      </div>
+    </article>
+  </div>
+  <nav class="dots" id="dots" aria-label="Jump to a flavor">
+    <a href="#room-mango" aria-label="Mango Passionfruit"></a><a href="#room-blood" aria-label="Blood Orange"></a><a href="#room-yuzu" aria-label="Yuzu Lime"></a><a href="#room-berry" aria-label="Mixed Berry"></a>
+  </nav>
+</section>
+
+<!-- ================= SCIENCE ================= -->
+<section class="sci" id="science" aria-labelledby="sh">
+  <img class="poster" src="/assets/v3/ribbons.webp" alt="" aria-hidden="true">
+  <video id="ribbons" muted loop playsinline preload="none" poster="/assets/v3/ribbons.webp" aria-hidden="true"><source src="/assets/v3/ribbons.mp4" type="video/mp4"></video>
   <div class="wrap">
-    <h2 data-reveal>Every way to take a peptide.</h2>
-    <p class="lede" data-reveal>Peptides are the most talked-about thing in strength and recovery. Almost all of it happens in vials, sold by strangers, with no label anyone can check. People do it anyway. So we made a drink with a peptide that has been clinically studied in humans.</p>
-    <figure data-reveal>
-      <img src="/assets/img/vials-can.webp" alt="A counter lined with a vial, a dropper bottle, a scoop of powder, two large capsules and a shaker bottle, and at the end a cold can of Spry" loading="lazy" width="1800" height="1005">
-      <figcaption class="captions"><span>The usual way</span><span>Ours</span></figcaption>
+    <h2 id="sh">One <span class="pill-word">PEPTIDE</span>.<br>Clinically studied.</h2>
+    <span class="ribbon" aria-hidden="true"></span>
+    <p class="lead">PeptiStrong&reg; plant-derived bioactive peptides in each can, clinically studied to support muscle strength and recovery after training.</p>
+    <div class="studies">
+      <div class="study">
+        <svg class="ico"><use href="#i-heartbeat"/></svg>
+        <p class="big-fig">2x<sup>+</sup></p>
+        <h3>Faster recovery after hard sessions</h3>
+        <p class="fig-line">More than twice as fast strength recovery as placebo over the 72 hours after a hard workout.*</p>
+        <ul><li>30 men, ages 30 to 45</li><li>Placebo-controlled, peer-reviewed, 2023</li></ul>
+      </div>
+      <div class="study">
+        <svg class="ico"><use href="#i-barbell"/></svg>
+        <p class="big-fig">14%</p>
+        <h3>Improved strength after training</h3>
+        <p class="fig-line">14% more leg strength than placebo at day 28 of a resistance-training program.*</p>
+        <ul><li>72 adults, ages 19 to 40</li><li>Placebo-controlled, peer-reviewed, 2025</li></ul>
+      </div>
+    </div>
+    <details class="papers">
+      <summary>Don&rsquo;t believe us? Read the peer-reviewed clinical studies here <svg class="ico"><use href="#i-caret-down"/></svg></summary>
+      <ul>
+        <li><a href="https://www.mdpi.com/2072-6643/15/4/986" target="_blank" rel="noopener">Kerr et al., Nutrients, 2023: strength recovery and fatigue after a muscle-damaging workout <svg class="ico"><use href="#i-arrow-up-right"/></svg></a></li>
+        <li><a href="https://doi.org/10.1136/bmjnph-2024-001050" target="_blank" rel="noopener">Mohan et al., BMJ Nutrition, Prevention &amp; Health, 2025: strength over 8 weeks of resistance training <svg class="ico"><use href="#i-arrow-up-right"/></svg></a></li>
+      </ul>
+    </details>
+    <p class="note">*Placebo-controlled, peer-reviewed human studies of PeptiStrong&reg; (hydrolyzed fava bean protein), the peptide in Spry, taken as capsules. Recovery: 30 healthy men aged 30 to 45, rate of strength recovery over the 72 hours after a workout designed to cause muscle soreness. Strength: 72 healthy adults aged 19 to 40 on a resistance-training program, one-rep max leg extension at day 28. These results are for the ingredient, not for Spry itself.</p>
+  </div>
+</section>
+
+<!-- ================= ROLL IT ONCE ================= -->
+<section class="roll" id="roll" aria-labelledby="rh">
+  <div class="roll-pin">
+    <canvas class="ht" data-ht="roll"></canvas>
+    <div class="big" aria-hidden="true"><span>Roll it</span><span>once.</span></div>
+    <canvas class="turn" id="turn" width="440" height="760" role="img" aria-label="A can of Spry Mango Passionfruit turning"></canvas>
+    <p class="cap"><b id="rh">Cloudy on purpose.</b>The light haze is the peptide. It settles a little, so give the can one slow roll, then open.</p>
+  </div>
+</section>
+
+<!-- ================= LABEL ================= -->
+<span id="inside" aria-hidden="true"></span><section class="label" id="label" aria-labelledby="lh">
+  <div class="wrap label-grid">
+    <div>
+      <h2 id="lh">Read the label.</h2>
+      <p class="lede">The whole panel, as printed on every can. Electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar.</p>
+      <div class="stats">
+        <div class="stat" data-row="cal"><div class="v">30</div><div class="k">Calories a can</div></div>
+        <div class="stat" data-row="sug"><div class="v">2<small>g</small></div><div class="k">Sugars</div></div>
+        <div class="stat wide" data-row="sod k mg"><div class="v">150<small>mg</small> sodium, plus potassium and magnesium</div><div class="k">Electrolytes</div></div>
+      </div>
+    </div>
+    <div class="nf" id="nf" aria-label="Nutrition Facts">
+      <h3>Nutrition Facts</h3>
+      <div class="r" style="border-top:0"><span>1 serving per container</span></div>
+      <div class="r"><b>Serving size</b><b>1 can (355 mL)</b></div>
+      <div class="rule"></div>
+      <div style="font-weight:800;font-size:13px">Amount per serving</div>
+      <div class="cal" data-r="cal"><span>Calories</span><span>30</span></div>
+      <div class="rule m"></div>
+      <div class="r" style="justify-content:flex-end;font-weight:800;font-size:13px"><span>% Daily Value*</span></div>
+      <div class="r"><span><b>Total Fat</b> 0g</span><b>0%</b></div>
+      <div class="r ind"><span>Saturated Fat 0g</span><b>0%</b></div>
+      <div class="r ind"><span><i>Trans</i> Fat 0g</span><span></span></div>
+      <div class="r"><span><b>Cholesterol</b> 0mg</span><b>0%</b></div>
+      <div class="r" data-r="sod"><span><b>Sodium</b> 150mg</span><b>7%</b></div>
+      <div class="r"><span><b>Total Carbohydrate</b> 6g</span><b>2%</b></div>
+      <div class="r ind"><span>Dietary Fiber Less than 1g</span><b>3%</b></div>
+      <div class="r ind" data-r="sug"><span>Total Sugars 2g</span><span></span></div>
+      <div class="r ind2" data-r="sug"><span>Includes 2g Added Sugars</span><b>4%</b></div>
+      <div class="r" data-r="pro"><span><b>Protein</b> 1g</span><span></span></div>
+      <div class="rule"></div>
+      <div class="r" style="border-top:0"><span>Vitamin D 0mcg</span><span>0%</span></div>
+      <div class="r"><span>Calcium 0mg</span><span>0%</span></div>
+      <div class="r"><span>Iron 0mg</span><span>0%</span></div>
+      <div class="r" data-r="k"><span>Potassium 120mg</span><span>2%</span></div>
+      <div class="r" data-r="mg"><span>Magnesium 15mg</span><span>4%</span></div>
+      <div class="rule m"></div>
+      <p class="tiny">*The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</p>
+      <p class="same">Same panel on all four flavors</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOUNDER ================= -->
+<section class="founder" aria-label="From the founder">
+  <div class="wrap">
+    <figure class="founder-card" style="margin:0">
+      <img src="/assets/v3/life-hand.webp" alt="A hand holding a cold can of Spry Mango Passionfruit on a beach path at golden hour" loading="lazy" width="1000" height="1250">
+      <blockquote>
+        <q>I went looking for a peptide that had been studied in people and could go in a drink, and built Spry around it.</q>
+        <cite><b>Alejandro Navarro</b>Founder, Spry</cite>
+        <p class="team">We built the four flavors with our team, including a former head of global R&amp;D at a major beverage company.</p>
+        <a class="btn btn-ghost light" href="/our-story.html" target="_blank" rel="noopener">Read our story <svg class="ico"><use href="#i-arrow-up-right"/></svg></a>
+      </blockquote>
     </figure>
   </div>
 </section>
 
-<section class="section" id="inside">
-  <div class="wrap">
-    <h2 data-reveal>What's in the can.</h2>
-    <div class="bento" data-reveal>
-      <div class="cell text c1">
-        <div class="big">2.4 g</div>
-        <h3>The studied amount, in every can</h3>
-        <p>Each can carries 2.4 g of hydrolyzed fava bean protein, the source of the peptides and the daily amount used in the human studies. That is why Spry exists.</p>
-      </div>
-      <div class="cell img c2"><img src="/assets/img/fava.webp" alt="Fava bean pods split open on linen" loading="lazy" width="1200" height="1490"></div>
-      <div class="cell img c3"><img src="/assets/img/glass-blood-orange.webp" alt="A glass of Spry Blood Orange: lightly sparkling, with a light haze" loading="lazy" width="900" height="1200" style="object-position:50% 60%"></div>
-      <div class="cell text c4 tint2">
-        <h3>Cloudy on purpose</h3>
-        <p>A light haze from the fava bean protein, which settles a little in the can. Roll it once, then open.</p>
-      </div>
-      <div class="cell text c5">
-        <h3>Lightly sparkling. Low calorie.</h3>
-        <p>Sweetened with monk fruit and stevia, plus a little cane sugar. It drinks closer to a dry citrus soda than a sports drink. Electrolytes include sodium, potassium and magnesium.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section" id="science">
-  <div class="wrap">
-    <h2 data-reveal>One peptide. Clinically studied.</h2>
-    <p class="lede sub" data-reveal>Two placebo-controlled, peer-reviewed human studies of the fava bean ingredient in Spry, at 2.4 g a day, the amount in every can. Both are cited below.</p>
-    <div class="science-grid">
-      <div data-reveal>
-        <article class="study">
-          <h3>Strength with training</h3>
-          <div class="meta"><span>72 adults, ages 19 to 40</span><span>8 weeks of resistance training</span><span>Placebo-controlled</span><span>Peer-reviewed, 2025</span></div>
-          <div class="figure">14%<small>more leg strength than placebo at day 28*</small></div>
-          <p class="result">Supports muscle strength with resistance training.</p>
-        </article>
-        <article class="study">
-          <h3>Recovery after hard sessions</h3>
-          <div class="meta"><span>30 men, ages 30 to 45</span><span>A muscle-damaging protocol, followed for 72 hours</span><span>Placebo-controlled</span><span>Peer-reviewed, 2023</span></div>
-          <div class="figure">&gt;2x<small>faster strength recovery than placebo*</small></div>
-          <p class="result">Supports muscle recovery after training and helps reduce exercise-induced fatigue.</p>
-        </article>
-        <p class="footnote">*Placebo-controlled, peer-reviewed human studies of hydrolyzed fava bean protein, the ingredient in Spry, taken as capsules at 2.4 g a day, the amount in one can. Strength: 72 healthy adults aged 19 to 40 on a resistance-training program, one-rep max leg extension at day 28 (Mohan et al., BMJ Nutrition, Prevention &amp; Health, 2025). Recovery: 30 healthy men aged 30 to 45, rate of strength recovery over the 72 hours after a workout designed to cause muscle soreness (Kerr et al., Nutrients, 2023). These results are for the ingredient, not for Spry itself, and we are testing that the can keeps the ingredient intact.</p>
-        <a class="btn ghost trial-link" href="#" id="trialLink">Read both trials</a>
-      </div>
-      <div class="side-can" data-reveal>
-        <img id="sideCan" src="/assets/can/can-mango-side.webp" alt="The side panel of the Spry can: One peptide. Clinically studied." loading="lazy" width="700" height="1000">
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section flavors" id="flavors">
+<!-- ================= GOT A CAN ================= -->
+<section class="gotcan" id="can" aria-labelledby="gh">
   <div class="wrap">
-    <h2 data-reveal>It has to taste good, too.</h2>
-    <p class="lede sub" data-reveal>Four flavors, lightly sparkling and low calorie. Pick one and the can changes.</p>
-    <div class="pills" role="group" aria-label="Choose a flavor" data-reveal>
-      <button class="pill" data-flavor="mango" aria-pressed="true">Mango Passionfruit</button>
-      <button class="pill" data-flavor="blood" aria-pressed="false">Blood Orange</button>
-      <button class="pill" data-flavor="yuzu" aria-pressed="false">Yuzu Lime</button>
-      <button class="pill" data-flavor="berry" aria-pressed="false">Mixed Berry</button>
-    </div>
-    <div class="stage" data-reveal>
-      <img class="on" data-flavor="mango" src="/assets/can/can-mango-front.webp" alt="Spry Mango Passionfruit can" width="700" height="1000">
-      <img data-flavor="blood" src="/assets/can/can-blood-front.webp" alt="Spry Blood Orange can" loading="lazy" width="700" height="1000">
-      <img data-flavor="yuzu" src="/assets/can/can-yuzu-front.webp" alt="Spry Yuzu Lime can" loading="lazy" width="700" height="1000">
-      <img data-flavor="berry" src="/assets/can/can-berry-front.webp" alt="Spry Mixed Berry can" loading="lazy" width="700" height="1000">
-    </div>
-    <div class="flavor-desc" aria-live="polite">
-      <p class="name" id="flavorName">Mango Passionfruit</p>
-      <p id="flavorText">The crowd-pleaser. Tropical and bright, with a tart edge.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section manifesto" id="habit">
-  <div class="wrap">
-    <div class="grid">
-      <div data-reveal>
-        <h2>Strong is a habit.</h2>
-        <p>Not a heroic act. The stairs two at a time at forty-six, and the run club on a wet Tuesday. Showing up tomorrow because you recovered today.</p>
-        <p>The science that helps you keep that habit is real. Almost all of it is sold in vials, by strangers, with no label anyone can check. People buy it anyway, because nobody offered a better way.</p>
-        <p>So we took one ingredient that was studied in people, at the amount that was studied, and made a drink around it. We print what the studies found. Roll it once. Then get on with your day.</p>
-      </div>
-      <img data-reveal src="/assets/img/runclub.webp" alt="Runners catching their breath by a railing after a run club on a wet morning" loading="lazy" width="1600" height="1073">
-    </div>
-  </div>
-</section>
-
-<section class="section" id="reserve">
-  <div class="wrap">
-    <div class="reserve-grid">
-      <div data-reveal>
-        <h2>The first run ships in December.</h2>
-        <p class="lede sub">Reserve a pack now. You pay the pack price, and it is fully refundable any time before we ship.</p>
-        <div class="perks-title">Founding members get</div>
-        <ul class="perks">
-          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>Launch pricing, honored for your first year</span></li>
-          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>The first production run, before anyone else</span></li>
-          <li><svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg><span>A direct line to the founder and a vote on flavors</span></li>
-        </ul>
-      </div>
-      <div class="panel" data-reveal>
-        <div class="packs" role="group" aria-label="Pack size">
-          <button class="pack" data-pack="6" data-price="$26.94" aria-pressed="true"><span class="name">6-pack</span><span class="price">$26.94</span><span class="per">$4.49 a can</span></button>
-          <button class="pack" data-pack="12" data-price="$47.88" aria-pressed="false"><span class="tag">Best value</span><span class="name">12-pack</span><span class="price">$47.88</span><span class="per">$3.99 a can</span></button>
-        </div>
-        <div class="field">
-          <div class="lbl" id="flavLbl">Your flavor</div>
-          <div class="flav-opts" role="radiogroup" aria-labelledby="flavLbl">
-            <label><input type="radio" name="flav" value="mango" checked>Mango Passionfruit</label>
-            <label><input type="radio" name="flav" value="blood">Blood Orange</label>
-            <label><input type="radio" name="flav" value="yuzu">Yuzu Lime</label>
-            <label><input type="radio" name="flav" value="berry">Mixed Berry</label>
-            <label><input type="radio" name="flav" value="mixed">Mixed pack, all four</label>
-          </div>
-        </div>
-        <button class="btn lg" id="reserveBtn">Reserve my <span id="btnPack">6-pack</span> · <span id="btnPrice">$26.94</span></button>
-        <p class="panel-msg" id="panelMsg"></p>
-        <p class="fine">Secure checkout via Shopify. Shipping is $5.99, free on orders of $70 or more, within the United States. Fully refundable any time before we ship in December, and you can change your flavor until then. <a href="legal.html#reservation">Reservation terms</a> and <a href="legal.html#refund">refund policy</a>.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section founder">
-  <div class="wrap" data-reveal>
-    <blockquote>&ldquo;I&rsquo;m into health and longevity, not as a fanatic, but enough that peptides kept coming up. Most of the ones people take are injected, with little human research behind them. I wasn&rsquo;t going to inject something I couldn&rsquo;t check. So I went looking for a peptide that had been studied in people and could go in a drink, and built Spry around it.&rdquo;</blockquote>
-    <cite>Alejandro Navarro, founder</cite>
-    <a class="story-link" href="our-story.html">Read our story</a>
-  </div>
-</section>
-
-<section class="section" id="faq">
-  <div class="wrap">
-    <div class="faq" data-reveal>
-      <h2>Questions.</h2>
-      <details><summary>When does it ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first production run ships in December 2026, to founding members first. You will hear from us before it leaves.</p></details>
-      <details><summary>Is my payment refundable? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, in full, any time before we ship. Cancel and we refund it. Otherwise it is simply your order at founding-member pricing.</p></details>
-      <details><summary>Can I change my flavor? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Yes, any time before we ship. Reply to your confirmation email and we will switch it.</p></details>
-      <details><summary>What is in it? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Lightly sparkling water, 2.4 g of hydrolyzed fava bean protein (the clinically studied ingredient) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners. Each flavor has its own ingredient list and Nutrition Facts, and both go on this page before we ship.</p></details>
-      <details><summary>Why is it a little cloudy? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The light haze comes from the fava bean protein. It settles a little in the can, so roll it once, then open.</p></details>
-      <details><summary>Is it a soda? A protein shake? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
-      <details><summary>Does it need to be refrigerated? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>No. Store it in a cool, dry place. It tastes best cold.</p></details>
-      <details><summary>Where do you ship? <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>The first run ships within the United States. Shipping is $5.99, and free on orders of $70 or more.</p></details>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="list">
-  <div class="wrap">
-    <div class="list-panel" data-reveal>
+    <div class="gotcan-card" id="gcCard">
+      <canvas class="ht" data-ht="card"></canvas>
       <div>
-        <h2>Not ready to reserve? Join the founder list.</h2>
-        <p>A handful of emails between now and launch. No spam.</p>
+        <svg class="ico" style="font-size:44px"><use href="#i-qr-code"/></svg>
+        <h2 id="gh" style="margin-top:18px">Got a can in hand?</h2>
+        <p>Scanned the code on the side? Three taps and you are done. Every answer shapes the next batch.</p>
       </div>
-      <form class="list-form" id="founderForm" novalidate>
-        <label class="lbl" for="email">Email address</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-        <button class="btn" type="submit" id="submitBtn">Join</button>
-        <p class="form-msg" id="formMsg" role="status"></p>
+      <form class="gc-form" id="gcForm" novalidate>
+        <fieldset><legend>Which flavor?</legend>
+          <div class="seg" id="gcFlavor"><button type="button" data-f="mango" aria-pressed="true">Mango Passionfruit</button><button type="button" data-f="blood" aria-pressed="false">Blood Orange</button><button type="button" data-f="yuzu" aria-pressed="false">Yuzu Lime</button><button type="button" data-f="berry" aria-pressed="false">Mixed Berry</button></div>
+        </fieldset>
+        <fieldset><legend>How was it?</legend>
+          <div class="seg" data-q="overall"><button type="button" aria-pressed="false">Loved it</button><button type="button" aria-pressed="false">Liked it</button><button type="button" aria-pressed="false">Not for me</button></div>
+        </fieldset>
+        <fieldset><legend>Would you buy it at $3.99 a can?</legend>
+          <div class="seg" data-q="buy"><button type="button" aria-pressed="false">Yes</button><button type="button" aria-pressed="false">Maybe</button><button type="button" aria-pressed="false">No</button></div>
+        </fieldset>
+                <div class="more" id="gcMore" hidden>
+          <p class="more-h">Two more? It helps us tune the next batch.</p>
+          <fieldset><legend>Sweetness</legend>
+          <div class="seg" data-q="sweet"><button type="button" aria-pressed="false">Too sweet</button><button type="button" aria-pressed="false">Just right</button><button type="button" aria-pressed="false">Not sweet enough</button></div>
+        </fieldset>
+        <fieldset><legend>Aftertaste</legend>
+          <div class="seg" data-q="after"><button type="button" aria-pressed="false">None</button><button type="button" aria-pressed="false">A little</button><button type="button" aria-pressed="false">Noticeable</button></div>
+        </fieldset>
+        <fieldset><legend>What would it replace?</legend>
+          <div class="seg" data-q="replace"><button type="button" aria-pressed="false">Protein shake</button><button type="button" aria-pressed="false">Energy drink</button><button type="button" aria-pressed="false">Sparkling water</button><button type="button" aria-pressed="false">Nothing</button></div>
+        </fieldset>
+        <fieldset><legend>How often would you drink it?</legend>
+          <div class="seg" data-q="freq"><button type="button" aria-pressed="false">Most days</button><button type="button" aria-pressed="false">A few times a week</button><button type="button" aria-pressed="false">Weekly</button><button type="button" aria-pressed="false">Rarely</button></div>
+        </fieldset>
+        <fieldset><legend>Where did you get it?</legend>
+          <div class="seg" data-q="where"><button type="button" aria-pressed="false">A gym</button><button type="button" aria-pressed="false">An event</button><button type="button" aria-pressed="false">A friend</button><button type="button" aria-pressed="false">Online</button></div>
+        </fieldset>
+        <div class="two">
+          <div><label for="gcWhere">Which gym or event?</label><input type="text" id="gcWhere" placeholder="Optional" autocomplete="off"></div>
+          <div><label for="gcEmail">Email (optional)</label><input type="email" id="gcEmail" placeholder="you@example.com" autocomplete="email"></div>
+        </div>
+        </div>
+        <button class="btn btn-ink" type="submit" id="gcSend" style="justify-content:center">Send <svg class="ico"><use href="#i-arrow-right"/></svg></button>
       </form>
     </div>
   </div>
 </section>
 
+<!-- ================= FAQ ================= -->
+<section class="faq" id="faq" aria-labelledby="qh">
+  <div class="wrap faq-grid">
+    <div class="faq-side"><h2 id="qh">Questions.</h2><img src="/assets/v3/life-bench.webp" alt="A cold can of Spry Mango Passionfruit on a gym bench next to a towel and a kettlebell" loading="lazy" width="1000" height="1250"></div>
+    <div>
+      <details class="qa"><summary>When does it ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The first production run ships in December 2026, within the United States. You will hear from us before your box leaves.</p></details>
+      <details class="qa"><summary>What is in it?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Lightly sparkling water, PeptiStrong&reg; (the clinically studied plant-derived peptide, from fava beans) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners.</p></details>
+      <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so roll it once, then open.</p></details>
+      <details class="qa"><summary>Is it a soda? A protein shake?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
+      <details class="qa" hidden><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">A box every 4 weeks at $44.28 ($3.69 a can), shipped free. Skip or cancel any time before your next box ships. It renews until you cancel.</p></details>
+      <details class="qa"><summary>Does it need to be refrigerated?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">No. Store it in a cool, dry place. It tastes best cold.</p></details>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="foot">
-      <div>
-        <a class="brand" href="#top" aria-label="Spry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="2.1 5.7 837.7 228.3" role="img" aria-label="Spry"><path fill="currentColor" d="M 511.949219 108.269531 C 506.613281 108.269531 502.289062 103.945312 502.289062 98.609375 L 502.289062 65.59375 C 502.289062 60.261719 506.613281 55.9375 511.949219 55.9375 L 550.578125 55.9375 C 565.449219 55.9375 577.421875 68.339844 576.714844 83.367188 C 576.054688 97.441406 563.929688 108.269531 549.839844 108.269531 Z M 316.28125 108.269531 C 310.945312 108.269531 306.621094 103.945312 306.621094 98.609375 L 306.621094 65.59375 C 306.621094 60.261719 310.945312 55.9375 316.28125 55.9375 L 354.910156 55.9375 C 369.78125 55.9375 381.753906 68.339844 381.046875 83.367188 C 380.382812 97.441406 368.261719 108.269531 354.171875 108.269531 Z M 502.609375 217.765625 L 502.609375 174.617188 C 502.609375 166.160156 508.660156 158.644531 517.039062 157.523438 C 524.753906 156.492188 531.980469 160.816406 534.859375 167.828125 C 546.539062 196.25 577.050781 248.757812 657.304688 227.8125 C 663.632812 226.160156 667.996094 220.367188 667.996094 213.828125 L 667.996094 187.769531 C 667.996094 178.402344 659.238281 171.453125 650.136719 173.683594 C 638.054688 176.648438 621.75 178.546875 607.457031 173.035156 C 596.164062 168.679688 595.082031 153.171875 605.519531 147.039062 C 627.777344 133.964844 642.71875 109.78125 642.71875 82.101562 L 642.714844 81.796875 C 642.710938 77.449219 648.476562 75.917969 650.628906 79.695312 L 689.445312 147.777344 C 693.03125 154.066406 694.914062 161.175781 694.914062 168.414062 L 694.914062 217.765625 C 694.914062 225.765625 701.402344 232.253906 709.402344 232.253906 L 747.480469 232.253906 C 755.484375 232.253906 761.96875 225.765625 761.96875 217.765625 L 761.96875 168.414062 C 761.96875 161.175781 763.855469 154.066406 767.4375 147.777344 L 836.15625 28.484375 C 841.71875 18.824219 834.746094 6.765625 823.601562 6.765625 L 777.355469 6.765625 C 772.109375 6.761719 767.269531 9.59375 764.703125 14.171875 L 737.855469 85.070312 C 736.226562 89.371094 732.296875 91.429688 728.441406 91.285156 C 728.4375 91.285156 728.433594 91.28125 728.429688 91.285156 C 724.582031 91.425781 720.65625 89.367188 719.027344 85.070312 L 692.179688 14.171875 C 689.617188 9.59375 684.777344 6.761719 679.527344 6.765625 L 647.492188 6.796875 L 647.492188 6.832031 L 646.730469 6.832031 C 638.757812 6.832031 631.8125 13.164062 631.984375 21.132812 C 632.136719 28.160156 623.824219 31.761719 618.730469 27.015625 C 615.644531 24.140625 612.316406 21.527344 608.78125 19.199219 C 608.742188 19.175781 608.695312 19.15625 608.65625 19.132812 C 608.390625 18.957031 608.113281 18.789062 607.84375 18.617188 C 607.171875 18.191406 606.496094 17.769531 605.8125 17.363281 C 605.382812 17.109375 604.953125 16.859375 604.523438 16.613281 C 603.570312 16.074219 602.609375 15.546875 601.632812 15.050781 C 601.320312 14.890625 601.003906 14.742188 600.691406 14.585938 C 599.804688 14.148438 598.910156 13.726562 598.003906 13.324219 C 597.738281 13.207031 597.476562 13.082031 597.210938 12.96875 C 596.078125 12.480469 594.925781 12.019531 593.765625 11.585938 C 593.535156 11.5 593.304688 11.417969 593.074219 11.335938 C 591.847656 10.890625 590.609375 10.46875 589.355469 10.085938 L 589.355469 10.082031 C 582.425781 7.972656 575.070312 6.832031 567.449219 6.832031 L 451.0625 6.832031 C 443.089844 6.832031 436.148438 13.164062 436.316406 21.132812 C 436.46875 28.160156 428.15625 31.761719 423.0625 27.015625 C 409.621094 14.496094 391.597656 6.832031 371.777344 6.832031 C 371.777344 6.832031 148.6875 6.8125 102.707031 6.839844 C 90.707031 6.847656 78.765625 7.929688 67.046875 11.363281 C 54.621094 15.003906 42.855469 20.496094 32.9375 30.519531 C 20.148438 43.441406 13.90625 59.789062 16.050781 80.152344 C 17.828125 97.058594 25.179688 109.710938 36.734375 119.113281 C 54.113281 133.253906 73.644531 139.636719 94.1875 142.347656 C 102.578125 143.457031 111.027344 144.003906 119.359375 145.515625 C 124.136719 146.382812 129.03125 147.945312 133.355469 150.472656 C 143.085938 156.15625 143.914062 171.125 135.144531 178.722656 C 132.976562 180.601562 130.40625 182.015625 127.847656 182.976562 C 112.492188 188.742188 95.066406 180.972656 86.363281 164.671875 C 85.625 163.289062 84.882812 161.914062 84.191406 160.5 C 81.4375 154.839844 77.246094 152.476562 71.921875 152.492188 C 55.566406 152.542969 39.210938 152.445312 22.859375 152.640625 C 19.785156 152.679688 16.585938 153.347656 13.675781 154.539062 C 7.269531 157.15625 3.71875 163.765625 3.671875 171.90625 C 3.648438 175.800781 4.320312 179.550781 6.050781 182.722656 C 8.882812 187.910156 11.734375 193.195312 15.207031 197.742188 C 24.097656 209.394531 35.492188 216.320312 47.757812 221.367188 C 65.332031 228.601562 83.59375 230.949219 101.980469 231.894531 C 123.125 232.984375 144.191406 231.652344 165.0625 227.164062 C 177.589844 224.472656 189.632812 219.945312 200.855469 212.570312 C 209.46875 206.910156 216.855469 199.59375 222.492188 189.757812 C 234.648438 168.554688 230.308594 134.804688 209.679688 120.476562 C 203.75 116.355469 197.492188 113.242188 190.945312 110.894531 C 175.46875 105.351562 159.441406 103.734375 143.550781 101.066406 C 135.617188 99.738281 127.703125 98.066406 119.871094 96.050781 C 114.371094 94.636719 109.324219 91.660156 105.160156 86.894531 C 99.484375 80.398438 99.132812 71.074219 104.289062 63.957031 C 107.230469 59.890625 110.890625 57.097656 115.179688 55.621094 C 125.886719 51.9375 135.90625 54.09375 145.3125 61.058594 C 150.621094 64.988281 154.886719 70.261719 158.59375 76.21875 C 162.515625 82.515625 167.851562 85.433594 174.199219 85.023438 C 179.0625 84.707031 183.949219 83.855469 188.710938 82.609375 C 199.820312 79.707031 210.125 74.109375 220.289062 68.121094 C 222.847656 66.613281 225.453125 65.101562 228.171875 64.140625 L 228.226562 64.121094 C 234.296875 61.996094 240.652344 66.5 240.652344 72.933594 L 240.652344 217.765625 C 240.652344 225.765625 247.136719 232.253906 255.136719 232.253906 L 292.453125 232.253906 C 300.457031 232.253906 306.941406 225.765625 306.941406 217.765625 L 306.941406 171.859375 C 306.941406 163.859375 313.429688 157.371094 321.429688 157.371094 L 371.777344 157.371094 C 391.597656 157.371094 409.621094 149.710938 423.0625 137.191406 C 428.109375 132.484375 436.320312 135.984375 436.320312 142.882812 L 436.320312 217.765625 C 436.320312 225.765625 442.804688 232.253906 450.808594 232.253906 L 488.125 232.253906 C 496.125 232.253906 502.609375 225.765625 502.609375 217.765625 "/></svg></a>
-        <p>The peptide drink. Lightly sparkling, low calorie, with plant-derived peptides.</p>
+    <span class="foot-mark" role="img" aria-label="Spry"></span>
+    <div class="foot-row">
+      <nav aria-label="Footer"><a href="#flavors">Flavors</a><a href="#mixed">Mixed Box</a><a href="#science">Science</a><a href="#label">Label</a><a href="#faq">FAQ</a><a href="#can">Got a can?</a><a href="/our-story.html" target="_blank" rel="noopener">Our story</a></nav>
+      <div class="social" aria-label="Follow Spry">
+        <a href="https://www.tiktok.com/@drinkspry" target="_blank" rel="noopener" aria-label="Spry on TikTok"><svg class="ico"><use href="#i-tiktok-logo"/></svg>TikTok</a>
+        <a href="https://www.instagram.com/alejandro.navarro.spry/" target="_blank" rel="noopener" aria-label="Spry on Instagram"><svg class="ico"><use href="#i-instagram-logo"/></svg>Instagram</a>
       </div>
-      <ul>
-        <li><a href="#inside">What's in it</a></li>
-        <li><a href="#science">The science</a></li>
-        <li><a href="#flavors">Flavors</a></li>
-        <li><a href="our-story.html">Our story</a></li>
-        <li><a href="#reserve">Reserve a pack</a></li>
-      </ul>
-      <ul>
-        <li><a href="mailto:alejandro@drinkspry.com">Press and partnerships</a></li>
-        <li><a href="https://www.tiktok.com/@drinkspry" rel="noopener" target="_blank">TikTok</a></li>
-        <li><a href="#list">Founder list</a></li>
-      </ul>
-      <ul>
-        <li><a href="legal.html#reservation">Reservation terms</a></li>
-        <li><a href="legal.html#refund">Refund policy</a></li>
-        <li><a href="legal.html#terms">Terms of service</a></li>
-        <li><a href="legal.html#privacy">Privacy</a></li>
-      </ul>
     </div>
-    <p class="disclaimer">Spry is an early-stage venture. Founding-member reservations are fully refundable and the product is not yet available for general sale.</p>
-    <p class="copy">© 2026 Spry Inc.</p>
+    <div class="foot-row foot-legal">
+      <nav aria-label="Legal"><a href="/legal.html#terms" target="_blank" rel="noopener">Terms of service</a><a href="/legal.html#privacy" target="_blank" rel="noopener">Privacy policy</a><a href="/legal.html#refund" target="_blank" rel="noopener">Refund policy</a><a href="/legal.html#reservation" target="_blank" rel="noopener">Shipping</a></nav>
+      <p class="contact"><svg class="ico"><use href="#i-envelope-simple"/></svg>Press and partnerships: <span class="sel">alejandro@drinkspry.com</span></p>
+    </div>
+    <p class="legal">PeptiStrong&reg; is a registered trademark of Nuritas and is used under license. Spry is an early-stage venture. Ships within the United States. &copy; 2026 Spry Inc.</p>
   </div>
 </footer>
 
-<div class="sticky-cta" id="stickyCta" aria-hidden="true">
-  <div class="p"><strong>6-pack, $26.94</strong>Refundable until we ship</div>
-  <a class="btn sm" href="#reserve">Reserve</a>
-</div>
+<div class="mbar" id="mbar"><span><b>The Mixed Box</b><small>12 cans, $47.88</small></span><button class="btn btn-ink" data-add="mixed">Add to cart</button></div>
 
+<div class="scrim" id="scrim"></div>
+<div class="drawer-wrap"><aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+  <div class="drawer-h"><h2>Your cart</h2><button class="icon-btn" id="closeCart" aria-label="Close cart"><svg class="ico"><use href="#i-x"/></svg></button></div>
+  <div class="free" id="freeBox"><span id="freeTxt">Add a second box and shipping is free.</span><div class="meter"><i id="freeMeter"></i></div></div>
+  <div class="quick" id="quick">
+    <p class="q-h">Buy now</p>
+    <div class="seg" id="qProd" role="group" aria-label="Choose a box"><button type="button" data-p="mixed" aria-pressed="true">Mixed Box</button><button type="button" data-p="mango" aria-pressed="false">Mango Passionfruit</button><button type="button" data-p="blood" aria-pressed="false">Blood Orange</button><button type="button" data-p="yuzu" aria-pressed="false">Yuzu Lime</button><button type="button" data-p="berry" aria-pressed="false">Mixed Berry</button></div>
+    <div class="seg" id="qQty" role="group" aria-label="How many boxes"><button type="button" data-n="1" aria-pressed="true">1 box</button><button type="button" data-n="2" aria-pressed="false">2 boxes, ships free</button></div>
+    <label class="qsub" for="qSub"><input type="checkbox" id="qSub"> Subscribe every 4 weeks: $3.69 a can, ships free</label>
+    <button class="btn btn-ink" id="qAdd" style="justify-content:center">Add to cart <span id="qAmt">$47.88</span></button>
+  </div>
+  <div class="lines" id="lines"></div>
+  <div class="drawer-f">
+    <div class="tot"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+    <p class="fine" id="shipLine">Shipping $5.99 on one box. Two or more ship free.</p>
+    <button class="btn btn-ink" id="checkout">Checkout <svg class="ico"><use href="#i-arrow-right"/></svg></button>
+  </div>
+</aside></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-window.SPRY_CONFIG = {
-  showFigures: true,
-  trialsUrl: "",
-  shop: "https://spry-9197.myshopify.com",
-  variants: {
-    "6":  { mango: "43321056788528", blood: "43321056755760", yuzu: "43321056722992", berry: "50624505413680", mixed: "43321056821296" },
-    "12": { mango: "43321056919600", blood: "43321056886832", yuzu: "43321056854064", berry: "50624505479216", mixed: "43321056952368" }
-  },
-  loopsFormId: "cmpj2dwx5018t0j1l8yx344hv",
-  pourVideo: "/assets/img/pour.mp4"
+(function(){
+"use strict";
+var CONFIG = { showFigures:false };            // keep the trial figures hidden until counsel clears them
+if (CONFIG.showFigures) document.documentElement.classList.add('show-figures');
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hasGsap = !!(window.gsap && window.ScrollTrigger);
+if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+var $ = function(s,r){return (r||document).querySelector(s)};
+var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var FL = {
+  mango:{name:'Mango Passionfruit',c1:'#F9B25C',c2:'#F68512',fruitA:'f0',fruitB:'f1'},
+  blood:{name:'Blood Orange',c1:'#FF8A6E',c2:'#F03E21',fruitA:'f3',fruitB:'f2'},
+  yuzu:{name:'Yuzu Lime',c1:'#D6E870',c2:'#ACC913',fruitA:'f4',fruitB:'f5'},
+  berry:{name:'Mixed Berry',c1:'#F27BB0',c2:'#E4066E',fruitA:'f6',fruitB:'f7'}
 };
+
+/* ---------------- halftone cloud (the can's flavor cloud, live) ---------------- */
+var hts = [];
+function Halftone(cv, opts){
+  this.cv = cv; this.ctx = cv.getContext('2d'); this.o = opts; this.t = Math.random()*10; this.vis = false; this.last = 0;
+  this.color = opts.color || '#F68512';
+  this.resize();
+}
+Halftone.prototype.resize = function(){
+  var r = this.cv.getBoundingClientRect(), d = Math.min(window.devicePixelRatio||1, 2);
+  this.w = Math.max(1, r.width); this.h = Math.max(1, r.height); this.d = d;
+  this.cv.width = Math.round(this.w*d); this.cv.height = Math.round(this.h*d);
+  this.draw();
+};
+Halftone.prototype.draw = function(){
+  var c = this.ctx, d = this.d, w = this.w, h = this.h, o = this.o, t = this.t;
+  c.setTransform(d,0,0,d,0,0); c.clearRect(0,0,w,h);
+  var s = o.step || (w < 600 ? 9 : 12), rmax = s*0.62, top = o.top || 0.45, band = o.band || 0.32;
+  c.fillStyle = this.color; c.beginPath();
+  var row = 0;
+  for (var y = h + s; y > h*(top-0.18); y -= s*0.866, row++){
+    var yn = y/h, off = (row%2) ? s/2 : 0;
+    for (var x = -s + off; x < w + s; x += s){
+      var xn = x/w;
+      var edge = top + 0.075*Math.sin(xn*6.3 + t*0.55) + 0.05*Math.sin(xn*13.1 - t*0.8) + 0.03*Math.sin(xn*27 + t*1.4);
+      var v = (yn - edge)/band; if (v <= 0) continue; if (v > 1) v = 1;
+      var r = rmax*Math.pow(v, 0.85); if (r < 0.45) continue;
+      c.moveTo(x + r, y); c.arc(x, y, r, 0, 6.2832);
+    }
+  }
+  c.fill();
+};
+Halftone.prototype.setColor = function(col){ this.color = col; this.draw(); };
+function initHalftones(){
+  $$('canvas[data-ht]').forEach(function(cv){
+    var kind = cv.getAttribute('data-ht'), host = cv.closest('.room,.dome,.gotcan-card,.roll-pin,.macro-img');
+    var col = getComputedStyle(host).getPropertyValue('--c2').trim() || '#F68512';
+    var o = kind === 'macro' ? {top:.42, band:.5} : kind === 'room' ? (innerWidth > 900 ? {top:.64, band:.32} : {top:.56, band:.36}) : kind === 'hero' ? {top:.5, band:.4, step:10} : kind === 'roll' ? {top:.35, band:.6} : {top:.4, band:.5};
+    if (kind === 'roll') col = '#F9B25C';
+    var ht = new Halftone(cv, Object.assign(o, {color: col}));
+    ht.kind = kind; cv._ht = ht; hts.push(ht);
+  });
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target._ht.vis = e.isIntersecting; }); }, {rootMargin:'100px'});
+    hts.forEach(function(h){ io.observe(h.cv); });
+  }
+  var resizeT; window.addEventListener('resize', function(){ clearTimeout(resizeT); resizeT = setTimeout(function(){ hts.forEach(function(h){ h.resize(); }); }, 150); });
+  if (reduce) return;
+  (function loop(now){
+    hts.forEach(function(h){ if (h.vis && now - h.last > 40){ h.t += 0.04; h.draw(); h.last = now; } });
+    requestAnimationFrame(loop);
+  })(0);
+}
+
+/* ---------------- fizz ---------------- */
+function initFizz(){
+  $$('[data-fizz]').forEach(function(el){
+    var n = +el.getAttribute('data-fizz'), html = '';
+    for (var i = 0; i < n; i++){
+      var sz = (3 + Math.random()*Math.random()*14).toFixed(1);
+      html += '<span style="left:'+(Math.random()*100).toFixed(1)+'%;width:'+sz+'px;height:'+sz+'px;--d:'+(4 + Math.random()*6).toFixed(2)+'s;--dl:-'+(Math.random()*9).toFixed(2)+'s;--sx:'+(Math.random()*16 - 8).toFixed(1)+'px"></span>';
+    }
+    el.innerHTML = html;
+  });
+}
+
+/* ---------------- claims ticker ---------------- */
+function initTicker(){
+  var A = [['leaf','PeptiStrong\u00AE plant-derived peptides'],['flask','Clinically studied'],['barbell','Supports muscle strength and recovery'],['drop-half','Electrolytes'],['sparkle','Lightly sparkling'],['lightning','Low calorie']];
+  var B = [['drop','Electrolytes: sodium, potassium, magnesium'],['prohibit','No artificial colors or flavors'],['prohibit','No artificial sweeteners'],['plant','Plant-based'],['snowflake','Best served cold'],['arrows-clockwise','Roll it once, then open']];
+  function items(list){ return list.map(function(it){ return '<span class="claim"><span class="dot"><svg class="ico"><use href="#i-'+it[0]+'"/></svg></span>'+it[1]+'</span>'; }).join(''); }
+  var belts = $$('.belt'), tweens = [];
+  belts.forEach(function(b, i){
+    var set = items(i ? B : A); b.innerHTML = set + set + set + set;
+    if (reduce || !hasGsap) return;
+    var dir = +b.getAttribute('data-dir');
+    var tw = gsap.fromTo(b, {xPercent: dir < 0 ? 0 : -50}, {xPercent: dir < 0 ? -50 : 0, duration: i ? 46 : 40, ease:'none', repeat:-1});
+    tweens.push(tw);
+  });
+  if (!tweens.length) return;
+  var decay;
+  ScrollTrigger.create({ trigger:'.ticker', start:'top bottom', end:'bottom top', onUpdate:function(self){
+    var v = self.getVelocity(), boost = 1 + Math.min(Math.abs(v)/260, 6), dir = v < 0 ? -1 : 1;
+    tweens.forEach(function(tw){ gsap.to(tw, {timeScale: boost*dir, duration:.2, overwrite:true}); });
+    clearTimeout(decay); decay = setTimeout(function(){ tweens.forEach(function(tw){ gsap.to(tw, {timeScale: dir, duration:1.2, ease:'power2.out', overwrite:true}); }); }, 140);
+  }});
+}
+
+/* ---------------- hero ---------------- */
+function setHeroFlavor(f, animate){
+  var F = FL[f]; if (!F) return;
+  $$('.chip').forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-f') === f ? 'true' : 'false'); });
+  var dome = $('#heroDome'), can = $('#heroCan');
+  dome.style.setProperty('--c1', F.c1); dome.style.setProperty('--c2', F.c2); dome.style.background = F.c1;
+  var ht = $('canvas', dome)._ht; if (ht) ht.setColor(F.c2);
+  var swap = function(){ can.src = '/assets/v3/can-'+f+'.webp'; can.alt = 'A cold can of Spry '+F.name+' with condensation'; $('#heroFruitA').src = '/assets/v3/'+F.fruitA+'.webp'; $('#heroFruitB').src = '/assets/v3/'+F.fruitB+'.webp'; };
+  if (animate && !reduce){ can.classList.remove('flip'); void can.offsetWidth; can.classList.add('flip'); setTimeout(swap, 300); }
+  else swap();
+}
+function initHero(){
+  $$('.chip').forEach(function(c){ c.addEventListener('click', function(){ setHeroFlavor(c.getAttribute('data-f'), true); }); });
+  ['blood','yuzu','berry'].forEach(function(f){ var i = new Image(); i.src = '/assets/v3/can-'+f+'.webp'; });
+  if (reduce || !hasGsap) return;
+  var tl = gsap.timeline({defaults:{ease:'expo.out'}});
+  tl.from('.hero-h .ln > span', {yPercent:110, duration:1.1, stagger:.1})
+    .from('.hero .hero-sub, .hero .ctas, .chips', {y:24, opacity:0, duration:.9, stagger:.08}, '-=.75')
+    .from('#heroDome', {scale:.86, yPercent:8, opacity:0, duration:1.2, transformOrigin:'50% 100%'}, '-=1.1')
+    .from('#heroCan', {yPercent:-14, rotation:-7, opacity:0, duration:1.3, ease:'elastic.out(1,.65)'}, '-=.95')
+    .from('.stage .prop', {scale:.4, opacity:0, duration:1, stagger:.07, ease:'back.out(1.6)'}, '-=1.05')
+    .from('.stage .badge', {scale:0, rotation:-90, duration:1, stagger:.1, ease:'back.out(1.7)'}, '-=.9');
+  // scroll: the can lifts and the props drift at different depths
+  gsap.to('#heroCan', {yPercent:-10, rotation:4, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:.6}});
+  $$('.stage .prop').forEach(function(p){ var d = +p.getAttribute('data-depth') || .5; gsap.to(p, {y: -160*d, rotation: 22*d, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:.6}}); });
+  // pointer tilt on desktop
+  if (window.matchMedia('(pointer:fine)').matches){
+    var stage = $('#stage'), can = $('#heroCan');
+    var rx = gsap.quickTo(can, 'rotationY', {duration:.8, ease:'power3'}), rz = gsap.quickTo(can, 'x', {duration:.8, ease:'power3'});
+    gsap.set(can, {transformPerspective:900});
+    stage.addEventListener('pointermove', function(e){ var r = stage.getBoundingClientRect(), nx = (e.clientX - r.left)/r.width - .5; rx(nx*16); rz(nx*14); });
+    stage.addEventListener('pointerleave', function(){ rx(0); rz(0); });
+  }
+}
+
+/* ---------------- word reveal ---------------- */
+function initReveal(){
+  var el = $('#reveal'); if (!el || reduce || !hasGsap) return;
+  var html = '';
+  el.childNodes.forEach(function(n){
+    if (n.nodeType === 3) n.textContent.split(/\s+/).forEach(function(w){ if (w) html += '<span class="w">'+w+'</span>'; });
+    else html += '<em class="w">'+n.textContent+'</em>';
+  });
+  el.innerHTML = html;
+  gsap.fromTo($$('.w', el), {opacity:.14}, {opacity:1, stagger:.08, ease:'none', scrollTrigger:{trigger:el, start:'top 78%', end:'bottom 42%', scrub:.4}});
+  gsap.fromTo('#coldImg', {yPercent:-3, scale:1.06}, {yPercent:3, scale:1, ease:'none', scrollTrigger:{trigger:'.cold', start:'top bottom', end:'bottom top', scrub:.6}});
+  gsap.to('.vials figure img', {yPercent:-8, ease:'none', scrollTrigger:{trigger:'.vials', start:'top bottom', end:'bottom top', scrub:.6}});
+}
+
+/* ---------------- flavor rooms ---------------- */
+function initRooms(){
+  var rooms = $$('.room'), dots = $$('#dots a');
+  rooms.forEach(function(r, i){ r.style.zIndex = i + 1; });
+  if (!hasGsap) return;
+  rooms.forEach(function(room, i){
+    ScrollTrigger.create({trigger:room, start:'top 55%', end:'bottom 45%', onToggle:function(s){ if (s.isActive) dots.forEach(function(d, j){ d.classList.toggle('on', j === i); }); }});
+    if (reduce) return;
+    var can = $('.can', room), lines = $$('.name .ln > span', room), props = $$('.prop', room), info = $('.info', room), badge = $('.badge', room);
+    var tl = gsap.timeline({scrollTrigger:{trigger:room, start:'top bottom', end:'top top', scrub:.7}});
+    tl.fromTo(lines, {yPercent:105}, {yPercent:0, stagger:.12, ease:'power3.out'}, 0)
+      .fromTo(can, {yPercent:34, rotation:-9, scale:.86}, {yPercent:0, rotation:0, scale:1, ease:'power2.out'}, 0)
+      .fromTo(info, {y:80, opacity:0}, {y:0, opacity:1, ease:'power2.out'}, .35)
+      .fromTo(badge, {scale:.2, rotation:-120}, {scale:1, rotation:0, ease:'back.out(1.6)'}, .3);
+    props.forEach(function(p){ var d = +p.getAttribute('data-depth') || .5; gsap.fromTo(p, {y: 260*d, rotation: -30*d}, {y: -120*d, rotation: 25*d, ease:'none', scrollTrigger:{trigger:room, start:'top bottom', end:'bottom top', scrub:.8}}); });
+    // the room underneath sinks a little as the next dome rises over it
+    if (i < rooms.length - 1){
+      gsap.to($('.room-inner', room), {scale:.92, yPercent:-4, ease:'none', scrollTrigger:{trigger:rooms[i+1], start:'top bottom', end:'top top', scrub:true}});
+    }
+  });
+  ScrollTrigger.create({trigger:'#rooms', start:'top 40%', end:'bottom 60%', onToggle:function(s){ $('#dots').classList.toggle('on', s.isActive); }});
+}
+
+/* ---------------- mixed box tray ---------------- */
+function initTray(){
+  if (reduce || !hasGsap) return;
+  gsap.fromTo('#boxshot', {y:120, rotation:-6, scale:.9}, {y:0, rotation:0, scale:1, ease:'power3.out', scrollTrigger:{trigger:'.mixed', start:'top 90%', end:'top 30%', scrub:.8}});
+  gsap.fromTo('#boxshot img', {scale:1.18}, {scale:1, ease:'none', scrollTrigger:{trigger:'.mixed', start:'top bottom', end:'bottom top', scrub:.6}});
+}
+
+/* ---------------- cart ---------------- */
+var PRICE = 47.88, SUB = 44.28, SHIP = 5.99;
+var cart = { lines:{}, sub:false };
+function fmt(n){ return '$' + n.toFixed(2); }
+function boxes(){ var n = 0; for (var k in cart.lines) n += cart.lines[k]; return n; }
+function addBox(f, n){ cart.lines[f] = (cart.lines[f] || 0) + (n || 1); renderCart(); bump(); }
+function bump(){ var n = $('#cartN'); n.classList.remove('bump'); void n.offsetWidth; n.classList.add('bump'); }
+function postForm(name, data){
+  var b = new URLSearchParams(); b.append('form-name', name);
+  for (var k in data) b.append(k, data[k] == null ? '' : data[k]);
+  return fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:b.toString()}).then(function(r){ if (!r.ok) throw new Error(r.status); });
+}
+function toast(msg){ var t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('on'); }, 3200); }
+function renderCart(){
+  var n = boxes(), each = cart.sub ? SUB : PRICE, sub = n*each;
+  $('#cartN').textContent = n;
+  var free = cart.sub || n >= 2;
+  $('#freeTxt').textContent = n === 0 ? 'Two boxes ship free.' : free ? 'Free shipping unlocked.' : 'Add a second box and shipping is free.';
+  $('#freeMeter').style.width = (free ? 100 : n*50) + '%';
+  $('#subtotal').textContent = fmt(sub);
+  $('#shipLine').textContent = n === 0 ? 'Shipping $5.99 on one box. Two or more ship free.' : free ? 'Shipping is free on this order.' : 'Shipping $5.99. Add one more box and it is free.';
+  var L = $('#lines'), html = '';
+  if (!n){ $('#quick').hidden = false; }
+  for (var k in cart.lines){
+    if (!cart.lines[k]) continue;
+    var name = k === 'mixed' ? 'The Mixed Box' : FL[k].name, img = k === 'mixed' ? 'mango' : k;
+    html += '<div class="line"><img src="/assets/v3/can-'+img+'.webp" alt=""><div><b>'+name+'</b><small>12 cans'+(cart.sub ? ', every 4 weeks' : '')+'</small><div class="qty"><button aria-label="Remove one" data-q="'+k+'" data-d="-1"><svg class="ico"><use href="#i-minus"/></svg></button><span>'+cart.lines[k]+'</span><button aria-label="Add one" data-q="'+k+'" data-d="1"><svg class="ico"><use href="#i-plus"/></svg></button></div></div><span class="p">'+fmt(cart.lines[k]*each)+'</span></div>';
+  }
+  L.innerHTML = html;
+}
+function syncQuick(){
+  var p = ($('#qProd [aria-pressed="true"]') || {}).getAttribute ? $('#qProd [aria-pressed="true"]').getAttribute('data-p') : 'mixed';
+  var n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n'), sub = $('#qSub').checked;
+  $('#qAmt').textContent = fmt(n * (sub ? SUB : PRICE));
+}
+function openCart(){ $('#drawer').classList.add('on'); $('#drawer').setAttribute('aria-hidden','false'); $('#scrim').classList.add('on'); $('#closeCart').focus(); }
+function closeCart(){ $('#drawer').classList.remove('on'); $('#drawer').setAttribute('aria-hidden','true'); $('#scrim').classList.remove('on'); }
+function initCart(){
+  $('#cartBtn').addEventListener('click', function(){ $('#quick').hidden = boxes() > 0; openCart(); });
+  $('#buyBtn').addEventListener('click', function(){ $('#quick').hidden = false; openCart(); });
+  ['#qProd', '#qQty'].forEach(function(id){ $(id).addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; $$('button', $(id)).forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); syncQuick(); }); });
+  $('#qSub').addEventListener('change', syncQuick);
+  $('#qAdd').addEventListener('click', function(){
+    var p = $('#qProd [aria-pressed="true"]').getAttribute('data-p'), n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n');
+    cart.sub = $('#qSub').checked; addBox(p, n); $('#quick').hidden = true;
+  });
+  $('#closeCart').addEventListener('click', closeCart);
+  $('#scrim').addEventListener('click', closeCart);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeCart(); });
+  $('#lines').addEventListener('click', function(e){
+    var b = e.target.closest('[data-q]'); if (b){ var k = b.getAttribute('data-q'); cart.lines[k] = Math.max(0, (cart.lines[k]||0) + (+b.getAttribute('data-d'))); if (!cart.lines[k]) delete cart.lines[k]; renderCart(); return; }
+    if (e.target.closest('[data-close]')) closeCart();
+  });
+  $$('[data-add]').forEach(function(b){ b.addEventListener('click', function(){ var f = b.getAttribute('data-add'); addBox(f, 1); toast((f === 'mixed' ? 'The Mixed Box' : FL[f].name) + ' added. ' + (boxes() >= 2 ? 'Shipping is free.' : 'Add one more box for free shipping.')); }); });
+  // mixed box offer
+  var subT = $('#subT');
+  function syncOffer(){
+    var n = +$('input[name=boxes]:checked').value, each = subT.checked ? SUB : PRICE;
+    $('#addAmt').textContent = fmt(n*each);
+    $('#amt1').innerHTML = fmt(each) + '<small>' + (subT.checked ? 'Ships free' : '+ $5.99 shipping') + '</small>';
+    $('#amt2').innerHTML = fmt(2*each) + '<small>Ships free</small>';
+    $('#shipTxt').textContent = subT.checked ? 'Subscriptions ship free.' : n >= 2 ? 'Two boxes ship free.' : 'Add a second box and shipping is free.';
+    $$('.opt .s')[0].textContent = '12 cans, ' + (subT.checked ? '$3.69' : '$3.99') + ' a can';
+    $$('.opt .s')[1].textContent = '24 cans, ' + (subT.checked ? '$3.69' : '$3.99') + ' a can';
+  }
+  $$('input[name=boxes]').forEach(function(r){ r.addEventListener('change', syncOffer); });
+  subT.addEventListener('change', syncOffer);
+  $('#addMixed').addEventListener('click', function(){ var n = +$('input[name=boxes]:checked').value; cart.sub = subT.checked; addBox('mixed', n); openCart(); });
+  var SHOP = 'https://spry-9197.myshopify.com', VAR = {mixed:'43321056952368', mango:'43321056919600', blood:'43321056886832', yuzu:'43321056854064', berry:'50624505479216'};
+  $('#checkout').addEventListener('click', function(){
+    if (!boxes()){ toast('Add a box first.'); return; }
+    var items = []; for (var k in cart.lines){ if (cart.lines[k] && VAR[k]) items.push(VAR[k] + ':' + cart.lines[k]); }
+    var b = $('#checkout'); b.disabled = true; b.firstChild.textContent = 'Opening checkout ';
+    location.href = SHOP + '/cart/' + items.join(',');
+    setTimeout(function(){ b.disabled = false; b.firstChild.textContent = 'Checkout '; }, 5000);
+  });
+  renderCart(); syncOffer();
+}
+
+/* ---------------- science ---------------- */
+function initScience(){
+  var v = $('#ribbons');
+  if (v && 'IntersectionObserver' in window && !reduce){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ if (v.preload === 'none'){ v.preload = 'auto'; v.load(); } v.play().catch(function(){}); $('.sci .poster').style.opacity = 0; } else v.pause(); }); }, {threshold:.15}).observe(v);
+  }
+  if (reduce || !hasGsap) return;
+  gsap.fromTo('.ribbon', {clipPath:'inset(0 100% 0 0)'}, {clipPath:'inset(0 0% 0 0)', ease:'none', scrollTrigger:{trigger:'.sci', start:'top 70%', end:'top 15%', scrub:.5}});
+  gsap.from('.study', {y:60, opacity:0, stagger:.12, duration:1, ease:'expo.out', scrollTrigger:{trigger:'.studies', start:'top 85%'}});
+}
+
+/* ---------------- roll it once: scroll-scrubbed photoreal turntable ---------------- */
+function initRoll(){
+  var cv = $('#turn'), ctx = cv.getContext('2d'), N = 36, frames = [], loaded = 0, cur = 0;
+  function draw(i){ var im = frames[i]; if (!im || !im.complete || !im.naturalWidth) return; if (cv.width !== im.naturalWidth){ cv.width = im.naturalWidth; cv.height = im.naturalHeight; } ctx.clearRect(0,0,cv.width,cv.height); ctx.drawImage(im, 0, 0); }
+  function load(){
+    for (var i = 0; i < N; i++){ (function(i){ var im = new Image(); im.onload = function(){ loaded++; if (i === cur) draw(i); }; im.onerror = function(){ if (i === 0) fallback(); }; im.src = '/assets/v3/turn/t' + (i < 10 ? '0' : '') + i + '.webp'; frames[i] = im; })(i); }
+  }
+  function fallback(){ var im = new Image(); im.onload = function(){ cv.width = im.naturalWidth; cv.height = im.naturalHeight; ctx.drawImage(im,0,0); }; im.src = '/assets/v3/can-mango.webp'; }
+  if ('IntersectionObserver' in window){ var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting){ load(); io.disconnect(); } }, {rootMargin:'600px'}); io.observe($('#roll')); } else load();
+  if (reduce || !hasGsap) return;
+  var o = {f:0};
+  gsap.to(o, {f:N*2 - 1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top top', end:'bottom bottom', scrub:.4}, onUpdate:function(){ var i = Math.round(o.f) % N; if (i !== cur){ cur = i; draw(i); } }});
+  gsap.fromTo('.roll .big span:first-child', {xPercent:-30, opacity:.2}, {xPercent:0, opacity:1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top bottom', end:'top top', scrub:.5}});
+  gsap.fromTo('.roll .big span:last-child', {xPercent:30, opacity:.2}, {xPercent:0, opacity:1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top bottom', end:'top top', scrub:.5}});
+}
+
+/* ---------------- label ---------------- */
+function initLabel(){
+  var nf = $('#nf');
+  $$('.stat').forEach(function(s){
+    var keys = s.getAttribute('data-row').split(' ');
+    function on(v){ keys.forEach(function(k){ $$('[data-r="'+k+'"]', nf).forEach(function(r){ r.classList.toggle('on', v); }); }); }
+    s.addEventListener('mouseenter', function(){ on(true); }); s.addEventListener('mouseleave', function(){ on(false); });
+  });
+  if (reduce || !hasGsap) return;
+  gsap.from('.stat', {y:40, opacity:0, stagger:.07, duration:.9, ease:'expo.out', scrollTrigger:{trigger:'.stats', start:'top 85%'}});
+  gsap.from('#nf', {rotation:3, y:60, opacity:0, duration:1.1, ease:'expo.out', scrollTrigger:{trigger:'#nf', start:'top 85%'}});
+}
+
+/* ---------------- got a can ---------------- */
+function initGotCan(){
+  var card = $('#gcCard');
+  function setF(f){ var F = FL[f]; card.style.setProperty('--c1', F.c1); card.style.setProperty('--c2', F.c2); card.style.background = F.c1; var ht = $('canvas', card)._ht; if (ht) ht.setColor(F.c2); }
+  $('#gcFlavor').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; $$('#gcFlavor button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); setF(b.getAttribute('data-f')); });
+  $$('.gc-form .seg[data-q]').forEach(function(g){ g.addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; $$('button', g).forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); }); });
+  $('#gymForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var g = $('#gymName').value.trim(), em = $('#gymEmail').value.trim();
+    if (!g){ toast('Add your gym first.'); return; }
+    if (em.indexOf('@') < 1){ toast('Add your email so we can tell you when we are there.'); return; }
+    var btn = $('#gymForm button'); btn.disabled = true;
+    postForm('gym-sampling', {gym:g, email:em}).then(function(){ toast('Thanks. ' + g + ' is on the list.'); $('#gymForm').reset(); })
+      .catch(function(){ toast('That did not go through. Email alejandro@drinkspry.com.'); })
+      .then(function(){ btn.disabled = false; });
+  });
+  var step = 1, rid = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  function pick(q){ var b = $('.gc-form .seg[data-q="'+q+'"] [aria-pressed="true"]'); return b ? b.textContent.trim() : ''; }
+  function answers(){
+    var f = $('#gcFlavor [aria-pressed="true"]');
+    return {rid:rid, step:step, flavor: f ? f.textContent.trim() : '', overall:pick('overall'), buy:pick('buy'), sweet:pick('sweet'), after:pick('after'), replace:pick('replace'), freq:pick('freq'), where:pick('where'), where_name:($('#gcWhere').value || '').trim(), email:($('#gcEmail').value || '').trim(), source:(location.search + location.hash).slice(0, 60)};
+  }
+  $('#gcForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    if (step === 1 && !pick('overall')){ toast('Tap how it was first.'); return; }
+    var btn = $('#gcSend'); btn.disabled = true;
+    postForm('can-feedback', answers()).then(function(){
+      if (step === 1){ step = 2; $('#gcMore').hidden = false; btn.firstChild.textContent = 'Send the rest '; toast('Thanks, that is in.'); $('#gcMore').scrollIntoView({block:'nearest', behavior: reduce ? 'auto' : 'smooth'}); }
+      else { step = 3; toast('Thanks. That helps a lot.'); btn.firstChild.textContent = 'Sent '; btn.disabled = true; return; }
+    }).catch(function(){ toast('That did not go through. Try again in a moment.'); })
+      .then(function(){ if (step !== 3) btn.disabled = false; });
+  });
+  // the QR on each can lands on ?c=m / o / y / b
+  var m = /[?&]c=([moyb])/.exec(location.search) || /#can-([moyb])/.exec(location.hash);
+  if (m){ var f = {m:'mango',o:'blood',y:'yuzu',b:'berry'}[m[1]]; var btn = $('#gcFlavor [data-f="'+f+'"]'); if (btn) btn.click(); setTimeout(function(){ $('#can').scrollIntoView(); }, 300); }
+}
+
+/* ---------------- header + mobile bar ---------------- */
+function initChrome(){
+  if (!hasGsap) return;
+  ScrollTrigger.create({start:120, end:'max', onUpdate:function(s){ $('#hdr').classList.toggle('up', s.direction === 1 && s.scroll() > 120); }});
+  var inHero = true, inRooms = false, inMixed = false;
+  function sync(){ $('#mbar').classList.toggle('on', !inHero && !inRooms && !inMixed); }
+  ScrollTrigger.create({trigger:'.hero', start:'top top', end:'bottom 70%', onToggle:function(s){ inHero = s.isActive; sync(); }});
+  ScrollTrigger.create({trigger:'#rooms', start:'top 60%', end:'bottom 40%', onToggle:function(s){ inRooms = s.isActive; sync(); }});
+  ScrollTrigger.create({trigger:'#mixed', start:'top 70%', end:'bottom 30%', onToggle:function(s){ inMixed = s.isActive; sync(); }});
+  ScrollTrigger.create({trigger:'footer', start:'top bottom', onToggle:function(s){ if (s.isActive){ inRooms = true; sync(); } else { inRooms = false; sync(); } }});
+}
+
+initFizz(); initHalftones(); initTicker(); initHero(); initReveal(); initRooms(); initTray(); initCart(); initScience(); initRoll(); initLabel(); initGotCan(); initChrome();
+window.addEventListener('load', function(){ if (hasGsap) ScrollTrigger.refresh(); });
+})();
 </script>
-<script src="/assets/js/can.bundle.js" defer></script>
-<script src="/assets/js/site.js" defer></script>
+
+<!-- Netlify Forms: static copies so the forms are registered at deploy -->
+<form name="gym-sampling" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="gym"><input type="email" name="email"><input name="bot-field">
+</form>
+<form name="can-feedback" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="rid"><input name="step"><input name="flavor"><input name="overall"><input name="buy"><input name="sweet"><input name="after"><input name="replace"><input name="freq"><input name="where"><input name="where_name"><input type="email" name="email"><input name="source"><input name="bot-field">
+</form>
 </body>
 </html>

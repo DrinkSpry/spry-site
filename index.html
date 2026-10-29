@@ -242,7 +242,7 @@ p{margin:0}
 
 /* ---------- science ---------- */
 .sci{position:relative;z-index:10;margin-top:calc(var(--dome) * -1);border-radius:50% 50% 0 0 / var(--dome) var(--dome) 0 0;background:var(--ink-deep);color:var(--paper);overflow:hidden;padding-block:clamp(120px,13vw,200px) clamp(90px,11vw,170px)}
-.sci video,.sci .poster{position:absolute;right:-8%;top:0;height:100%;width:72%;object-fit:cover;mix-blend-mode:screen;opacity:.9;pointer-events:none}
+.sci .sci-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .sci::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink-deep) 34%,rgba(0,56,58,.55) 62%,rgba(0,56,58,0));z-index:1;pointer-events:none}
 .sci .wrap{position:relative;z-index:2}
 .sci h2{font-size:clamp(54px,7.6vw,132px);color:var(--paper)}
@@ -271,15 +271,17 @@ p{margin:0}
 .sci .note{margin-top:26px;max-width:72ch;font-size:13px;line-height:1.55;color:#A9C2BD}
 
 /* ---------- roll ---------- */
-.roll{position:relative;height:250svh}
-.roll-pin{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;display:grid;place-items:center}
-.roll .ht{position:absolute;left:0;right:0;bottom:0;height:60%;width:100%}
-.roll canvas.turn{position:relative;z-index:2;height:min(62svh,620px);margin-bottom:12svh;width:auto;filter:drop-shadow(0 40px 36px rgba(0,40,40,.28))}
-.roll .big{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:1;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 75,"opsz" 96;font-size:clamp(70px,13.5vw,250px);letter-spacing:-.04em;line-height:.82;text-transform:uppercase;display:flex;justify-content:space-between;padding-left:var(--gut-l);padding-right:var(--gut-r);pointer-events:none}
+.roll{position:relative;padding-block:clamp(90px,10vw,160px) clamp(80px,9vw,150px);overflow:hidden}
+.roll-pin{position:relative}
+.roll .ht{position:absolute;left:0;right:0;bottom:0;height:62%;width:100%}
+.roll .big{position:relative;z-index:1;display:flex;justify-content:center;gap:.22em;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 75,"opsz" 96;font-size:clamp(64px,10.5vw,190px);letter-spacing:-.04em;line-height:.82;text-transform:uppercase;color:var(--ink);padding-inline:var(--gut-l) var(--gut-r)}
 .roll .big span:last-child{color:var(--mango-2)}
-.roll .cap{position:absolute;z-index:3;left:50%;bottom:max(5svh,28px);transform:translateX(-50%);width:min(560px,calc(100% - 32px));text-align:center;font-weight:600;font-size:17px;color:var(--ink-2)}
+.roll-vid{position:relative;z-index:2;margin:clamp(26px,3.2vw,48px) auto 0;width:min(1180px,calc(100% - var(--gut-l) - var(--gut-r)));aspect-ratio:16/9;border-radius:clamp(24px,3vw,44px);overflow:hidden;background:#EAE6DE;box-shadow:0 60px 90px -55px rgba(0,60,60,.5)}
+.roll-vid video{display:block;width:100%;height:100%;object-fit:cover}
+.roll-vid .replay{position:absolute;right:clamp(12px,1.6vw,22px);bottom:clamp(12px,1.6vw,22px);display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:0;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--ink);font:700 14px/1 var(--body);cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,79,81,.14);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s var(--ease)}
+.roll-vid .replay.on{opacity:1;transform:none}
+.roll .cap{position:relative;z-index:3;margin:clamp(22px,2.6vw,34px) auto 0;width:min(560px,calc(100% - 32px));text-align:center;font-weight:600;font-size:17px;color:var(--ink-2)}
 .roll .cap b{display:block;font-family:var(--display);font-size:26px;letter-spacing:-.025em;color:var(--ink);margin-bottom:4px}
-.roll .meter-ring{position:absolute;z-index:3;right:clamp(16px,6vw,110px);top:clamp(110px,18svh,200px)}
 
 /* ---------- label ---------- */
 .label{padding-block:clamp(90px,11vw,170px);overflow-x:clip}
@@ -287,13 +289,16 @@ p{margin:0}
 .label h2{font-size:clamp(52px,6.4vw,104px)}
 .label .lede{margin-top:18px;max-width:40ch;font-size:19px;font-weight:500;color:var(--ink-2)}
 .stats{margin-top:44px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:620px}
-.stat{padding:22px 20px;border-radius:26px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);transition:background .3s,color .3s,transform .3s var(--ease)}
+.stat{padding:22px 20px;border-radius:26px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);transition:background .3s,color .3s}
 .stat.hot,.stat:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px)}
 .stat .v{font-family:var(--display);font-weight:800;font-size:clamp(40px,4.2vw,64px);letter-spacing:-.04em;line-height:.9;font-variant-numeric:tabular-nums}
 .stat .v small{font-size:.42em;letter-spacing:-.01em;margin-left:2px}
 .stat .k{margin-top:10px;font-weight:700;font-size:15px;line-height:1.3}
 .stat.wide{grid-column:1/-1}
 .stat.wide .v{font-size:clamp(28px,2.6vw,40px);line-height:1}
+.claims-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;max-width:620px}
+.claims-list li{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:999px;background:rgba(0,79,81,.06);font-weight:700;font-size:16px;color:var(--ink)}
+.claims-list .ico{flex:none;font-size:20px;color:var(--mango-2)}
 .nf{margin-top:8px;background:var(--card);color:var(--ink);border:2.5px solid var(--ink);padding:10px 12px 12px;font-family:"Helvetica Neue",Arial,var(--body);max-width:380px;justify-self:end;width:100%;border-radius:4px;box-shadow:0 30px 60px -40px rgba(0,60,60,.5)}
 .nf h3{font-family:"Helvetica Neue",Arial,sans-serif;font-weight:900;font-size:38px;letter-spacing:-.02em;line-height:.95}
 .nf .rule{height:10px;background:var(--ink);margin:4px 0}
@@ -445,7 +450,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   .nf{justify-self:start;margin-top:28px}
   .stat.wide{grid-column:1/-1}
   .studies{grid-template-columns:minmax(0,1fr)}
-  .sci video,.sci .poster{width:130%;right:-50%;opacity:.55}
+  .sci .sci-fx{opacity:.6}
   .sci::before{background:linear-gradient(180deg,rgba(0,56,58,.55),var(--ink-deep) 70%)}
   .founder-card img{min-height:300px;max-height:420px}
   .room-copy{position:static;width:auto}
@@ -463,9 +468,10 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   .room .info{z-index:6}
   .info h3{font-size:23px}
   .dots{display:none}
-  .roll .big{top:calc(env(safe-area-inset-top,0px) + 96px);transform:none;flex-direction:column;align-items:center;text-align:center;font-size:clamp(60px,19vw,150px)}
-  .roll canvas.turn{height:min(40svh,420px);margin:10svh 0 0}
-  .roll .cap{bottom:96px;font-size:15.5px}
+  .roll .big{font-size:clamp(56px,17vw,120px)}
+  .roll-vid{aspect-ratio:4/3}
+  .roll-vid video{object-position:58% 50%}
+  .roll .cap{font-size:15.5px}
   .roll .cap b{font-size:22px}
 
   .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);z-index:40;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:999px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px rgba(0,79,81,.12),0 18px 40px -20px rgba(0,40,40,.6);transform:translateY(160%);transition:transform .5s var(--ease)}
@@ -491,10 +497,66 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   html{scroll-behavior:auto}
   .badge svg.ring,.fizz span{animation:none!important}
   .fizz{display:none}
-  .roll{height:auto}
-  .roll-pin{position:relative;height:auto;min-height:0;padding-block:80px}
-  .roll .big{position:relative;transform:none;top:auto;margin-bottom:24px}
-  .roll .cap{position:relative;left:auto;bottom:auto;transform:none;margin:24px auto 0}
+}
+
+/* ---------- shop: stack your boxes ---------- */
+.shop{position:relative;padding-block:clamp(90px,10vw,160px) clamp(70px,8vw,120px);background:var(--paper)}
+.shop-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:30px;align-items:end}
+.shop h2{font-size:clamp(52px,6.4vw,104px)}
+.shop-head p{font-size:19px;font-weight:500;color:var(--ink-2);max-width:36ch;justify-self:end}
+.shop-grid{margin-top:clamp(30px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(18px,3vw,44px);align-items:start}
+.shop-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.sku{display:grid;grid-template-columns:104px minmax(0,1fr) auto;align-items:center;gap:16px;padding:10px 14px 10px 8px;border-radius:26px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .3s,background .3s,transform .35s var(--ease)}
+.sku.on{box-shadow:inset 0 0 0 2.5px var(--c);background:#fff}
+.sku.pop{transform:scale(1.015)}
+.sku img{width:104px;height:auto;display:block}
+.sku-t b{display:block;font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1.05}
+.sku-t small{display:block;margin-top:3px;font-size:14px;color:var(--ink-soft);font-weight:600}
+.sku-t .pr{display:block;margin-top:6px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.step{display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;background:rgba(0,79,81,.06)}
+.step button{width:40px;height:40px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:inset 0 0 0 1px var(--line);font-size:16px}
+.step button[data-d="1"]{background:var(--ink);color:var(--paper);box-shadow:none}
+.step button:disabled{opacity:.35;cursor:default}
+.step output{min-width:26px;text-align:center;font-family:var(--display);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.shipbox{position:sticky;top:96px;padding:22px;border-radius:34px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line),0 40px 70px -50px rgba(0,60,60,.45)}
+.shipbox-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.shipbox-top b{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em}
+.shipbox-top span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.ship-stage{position:relative;width:100%;aspect-ratio:auto;justify-self:stretch;order:0;margin-top:14px;height:clamp(300px,30vw,430px);border-radius:24px;background:radial-gradient(110% 75% at 50% 92%,#E6E0D3 0%,#EFEBE2 45%,#F6F4EE 100%);overflow:hidden}
+.ship-stage img{position:absolute;max-width:none;transition:left .6s var(--ease),top .6s var(--ease),width .6s var(--ease),opacity .35s;pointer-events:none}
+.ship-stage img.sh{opacity:.9}
+.ship-stage img.in{animation:bxdrop .75s cubic-bezier(.22,1.25,.36,1) both}
+.ship-stage img.out{opacity:0;transform:translateY(-30%) scale(.96);transition:opacity .3s,transform .3s}
+@keyframes bxdrop{from{transform:translateY(-120%) rotate(-4deg);opacity:0}55%{opacity:1}to{transform:none;opacity:1}}
+.stage-empty{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-weight:700;color:var(--ink-soft);transition:opacity .3s}
+.stage-ghost{position:absolute;left:50%;top:50%;width:46%;transform:translate(-50%,-56%);opacity:.18;filter:grayscale(1);transition:opacity .3s}
+.free-tag{position:absolute;left:14px;top:14px;z-index:40;padding:8px 12px;border-radius:999px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:translateY(-6px);transition:opacity .35s,transform .35s var(--ease)}
+.free-tag.on{opacity:1;transform:none}
+.more-tag{position:absolute;right:14px;top:14px;z-index:40;padding:8px 12px;border-radius:999px;background:var(--mango-1);color:var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.smeter{margin-top:16px;height:8px;border-radius:99px;background:rgba(0,79,81,.1);overflow:hidden}
+.smeter span{display:block;height:100%;width:0;background:var(--ink);border-radius:99px;transition:width .5s var(--ease)}
+.shipbox-msg{margin-top:9px;font-weight:600;font-size:14.5px;color:var(--ink-2)}
+.shipbox-tot{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.shipbox-tot span{font-weight:600;color:var(--ink-2)}
+.shipbox-tot b{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.shipbox .btn{margin-top:14px;width:100%;justify-content:center}
+@media (max-width:900px){
+  .shop-head,.shop-grid{grid-template-columns:minmax(0,1fr)}
+  .shop-head p{justify-self:start}
+  .shipbox{position:sticky;top:104px;z-index:5;order:-1;padding:12px 14px 14px;border-radius:26px;box-shadow:inset 0 0 0 1.5px var(--line),0 24px 40px -24px rgba(0,60,60,.45)}
+  .shipbox-top b{font-size:19px}
+  .ship-stage{height:clamp(170px,46vw,220px);margin-top:8px}
+  .shipbox-msg{display:none}
+  .smeter{margin-top:10px}
+  .shipbox-tot{margin-top:8px;padding-top:8px}
+  .shipbox-tot b{font-size:24px}
+  .shipbox .btn{margin-top:10px;padding-block:12px}
+  .stage-empty{bottom:12px;font-size:14px}
+  .sku{grid-template-columns:76px minmax(0,1fr) auto;gap:10px;border-radius:22px}
+  .sku img{width:76px}
+  .sku-t b{font-size:18px}
+  .sku-t small{font-size:13px}
+  .step button{width:36px;height:36px}
 }
 .sub,.qsub{display:none!important}
 </style>
@@ -509,7 +571,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
     <a href="#top" aria-label="Spry home"><span class="logo"></span></a>
     <ul>
       <li><a href="#flavors">Flavors</a></li>
-      <li><a href="#mixed">Mixed Box</a></li>
+      <li><a href="#shop">Shop</a></li>
       <li><a href="#science">Science</a></li>
       <li><a href="#label">Label</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -598,13 +660,13 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
 <section class="gyms" id="gyms" aria-labelledby="gyh">
   <div class="wrap gyms-grid">
     <div>
-      <h2 id="gyh">Not ready for twelve? Find us at your gym.</h2>
-      <p>We are starting in LA gyms. Tell us where you train and we will try to bring cold cans there first.</p>
+      <h2 id="gyh">Not ready for twelve? Ask your gym to stock us.</h2>
+      <p>Tell us where you train and we will get in touch with them.</p>
     </div>
     <form class="gym-form" id="gymForm" novalidate>
       <div><label for="gymName">Your gym</label><input type="text" id="gymName" placeholder="Gym name and neighborhood" autocomplete="off"></div>
       <div><label for="gymEmail">Email</label><input type="email" id="gymEmail" placeholder="you@example.com" autocomplete="email"></div>
-      <button class="btn btn-ink" type="submit">Bring Spry to my gym <svg class="ico"><use href="#i-arrow-right"/></svg></button>
+      <button class="btn btn-ink" type="submit">Ask my gym <svg class="ico"><use href="#i-arrow-right"/></svg></button>
     </form>
   </div>
 </section>
@@ -715,8 +777,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
 
 <!-- ================= SCIENCE ================= -->
 <section class="sci" id="science" aria-labelledby="sh">
-  <img class="poster" src="/assets/v3/ribbons.webp" alt="" aria-hidden="true">
-  <video id="ribbons" muted loop playsinline preload="none" poster="/assets/v3/ribbons.webp" aria-hidden="true"><source src="/assets/v3/ribbons.mp4" type="video/mp4"></video>
+  <canvas class="sci-fx" id="sciFx" aria-hidden="true"></canvas>
   <div class="wrap">
     <h2 id="sh">One <span class="pill-word">PEPTIDE</span>.<br>Clinically studied.</h2>
     <span class="ribbon" aria-hidden="true"></span>
@@ -727,14 +788,14 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
         <p class="big-fig">2x<sup>+</sup></p>
         <h3>Faster recovery after hard sessions</h3>
         <p class="fig-line">More than twice as fast strength recovery as placebo over the 72 hours after a hard workout.*</p>
-        <ul><li>30 men, ages 30 to 45</li><li>Placebo-controlled, peer-reviewed, 2023</li></ul>
+        <ul><li>Placebo-controlled, peer-reviewed, 2023</li></ul>
       </div>
       <div class="study">
         <svg class="ico"><use href="#i-barbell"/></svg>
         <p class="big-fig">14%</p>
         <h3>Improved strength after training</h3>
         <p class="fig-line">14% more leg strength than placebo at day 28 of a resistance-training program.*</p>
-        <ul><li>72 adults, ages 19 to 40</li><li>Placebo-controlled, peer-reviewed, 2025</li></ul>
+        <ul><li>Placebo-controlled, peer-reviewed, 2025</li></ul>
       </div>
     </div>
     <details class="papers">
@@ -753,8 +814,38 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="roll-pin">
     <canvas class="ht" data-ht="roll"></canvas>
     <div class="big" aria-hidden="true"><span>Roll it</span><span>once.</span></div>
-    <canvas class="turn" id="turn" width="440" height="760" role="img" aria-label="A can of Spry Mango Passionfruit turning"></canvas>
+    <figure class="roll-vid">
+      <video id="rollVid" muted playsinline preload="none" poster="/assets/v3/roll-poster.webp" aria-label="A hand lays a can of Spry on its side and rolls it once"><source src="/assets/v3/roll.mp4" type="video/mp4"></video>
+      <button class="replay" id="rollReplay" type="button"><svg class="ico"><use href="#i-arrows-clockwise"/></svg>Roll it again</button>
+    </figure>
     <p class="cap"><b id="rh">Cloudy on purpose.</b>The light haze is the peptide. It settles a little, so give the can one slow roll, then open.</p>
+  </div>
+</section>
+
+<!-- ================= SHOP ================= -->
+<section class="shop" id="shop" aria-labelledby="shh">
+  <div class="wrap">
+    <div class="shop-head">
+      <h2 id="shh">Stack your boxes.</h2>
+      <p>Every box is 12 cans for $47.88. Mix flavors however you like. Two or more boxes ship free.</p>
+    </div>
+    <div class="shop-grid">
+      <ul class="shop-list" id="shopList">
+        <li class="sku" data-k="mixed" style="--c:#F68512"><img src="/assets/v3/box/mixed-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>The Mixed Box</b><small>Three of each flavor</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="The Mixed Box boxes"><button type="button" data-d="-1" aria-label="One fewer The Mixed Box box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more The Mixed Box box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="mango" style="--c:#F68512"><img src="/assets/v3/box/mango-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Mango Passionfruit</b><small>Tropical and bright</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Mango Passionfruit boxes"><button type="button" data-d="-1" aria-label="One fewer Mango Passionfruit box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Mango Passionfruit box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="blood" style="--c:#F03E21"><img src="/assets/v3/box/blood-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Blood Orange</b><small>Red citrus, dry finish</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Blood Orange boxes"><button type="button" data-d="-1" aria-label="One fewer Blood Orange box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Blood Orange box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="yuzu" style="--c:#ACC913"><img src="/assets/v3/box/yuzu-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Yuzu Lime</b><small>Crisp and floral</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Yuzu Lime boxes"><button type="button" data-d="-1" aria-label="One fewer Yuzu Lime box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Yuzu Lime box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+        <li class="sku" data-k="berry" style="--c:#E4066E"><img src="/assets/v3/box/berry-s.webp" alt="" width="110" height="97" loading="lazy"><div class="sku-t"><b>Mixed Berry</b><small>Dark berries, tart snap</small><span class="pr">$47.88 &middot; 12 cans</span></div><div class="step" role="group" aria-label="Mixed Berry boxes"><button type="button" data-d="-1" aria-label="One fewer Mixed Berry box"><svg class="ico"><use href="#i-minus"/></svg></button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="One more Mixed Berry box"><svg class="ico"><use href="#i-plus"/></svg></button></div></li>
+      </ul>
+      <aside class="shipbox" aria-label="Your shipment">
+        <div class="shipbox-top"><b>Your shipment</b><span id="shipCount">0 boxes</span></div>
+        <div class="stage ship-stage" id="shipStage"><img class="stage-ghost" src="/assets/v3/box/mixed.webp" alt="" aria-hidden="true"><p class="stage-empty" id="stageEmpty">Add a box and watch it stack.</p><span class="free-tag" id="freeTag">Ships free</span></div>
+        <div class="smeter" aria-hidden="true"><span id="shipMeter"></span></div>
+        <p class="shipbox-msg" id="shipMsg">Two boxes ship free.</p>
+        <div class="shipbox-tot"><span id="shipCans">0 cans</span><b id="shipSub">$0.00</b></div>
+        <button class="btn btn-ink" type="button" id="shipGo">Review and check out <svg class="ico"><use href="#i-arrow-right"/></svg></button>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -766,9 +857,14 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <p class="lede">The whole panel, as printed on every can. Electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar.</p>
       <div class="stats">
         <div class="stat" data-row="cal"><div class="v">30</div><div class="k">Calories a can</div></div>
-        <div class="stat" data-row="sug"><div class="v">2<small>g</small></div><div class="k">Sugars</div></div>
-        <div class="stat wide" data-row="sod k mg"><div class="v">150<small>mg</small> sodium, plus potassium and magnesium</div><div class="k">Electrolytes</div></div>
+        <div class="stat" data-row="sug"><div class="v">2<small>g</small></div><div class="k">Sugars, from a little cane sugar</div></div>
+        <div class="stat wide" data-row="sod k mg"><div class="v">Electrolytes</div><div class="k">150 mg sodium, plus potassium and magnesium</div></div>
       </div>
+      <ul class="claims-list">
+        <li><svg class="ico"><use href="#i-prohibit"/></svg>No artificial colors, flavors or sweeteners</li>
+        <li><svg class="ico"><use href="#i-plant"/></svg>Plant-based peptide</li>
+        <li><svg class="ico"><use href="#i-sparkle"/></svg>Lightly sparkling, low calorie</li>
+      </ul>
     </div>
     <div class="nf" id="nf" aria-label="Nutrition Facts">
       <h3>Nutrition Facts</h3>
@@ -887,7 +983,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="wrap">
     <span class="foot-mark" role="img" aria-label="Spry"></span>
     <div class="foot-row">
-      <nav aria-label="Footer"><a href="#flavors">Flavors</a><a href="#mixed">Mixed Box</a><a href="#science">Science</a><a href="#label">Label</a><a href="#faq">FAQ</a><a href="#can">Got a can?</a><a href="/our-story.html" target="_blank" rel="noopener">Our story</a></nav>
+      <nav aria-label="Footer"><a href="#flavors">Flavors</a><a href="#mixed">Mixed Box</a><a href="#shop">Shop</a><a href="#science">Science</a><a href="#label">Label</a><a href="#faq">FAQ</a><a href="#can">Got a can?</a><a href="/our-story.html" target="_blank" rel="noopener">Our story</a></nav>
       <div class="social" aria-label="Follow Spry">
         <a href="https://www.tiktok.com/@drinkspry" target="_blank" rel="noopener" aria-label="Spry on TikTok"><svg class="ico"><use href="#i-tiktok-logo"/></svg>TikTok</a>
         <a href="https://www.instagram.com/alejandro.navarro.spry/" target="_blank" rel="noopener" aria-label="Spry on Instagram"><svg class="ico"><use href="#i-instagram-logo"/></svg>Instagram</a>
@@ -1079,6 +1175,15 @@ function initReveal(){
 }
 
 /* ---------------- flavor rooms ---------------- */
+/* flavour names: never wider than their column, at any viewport */
+function fitNames(){
+  $$('.room .name').forEach(function(n){
+    n.style.fontSize = '';
+    var w = n.clientWidth; if (!w) return;
+    var widest = 0; $$('.ln > span', n).forEach(function(s){ widest = Math.max(widest, s.offsetWidth); });
+    if (widest > w){ var fs = parseFloat(getComputedStyle(n).fontSize); n.style.fontSize = Math.floor(fs * (w / widest) * 0.97) + 'px'; }
+  });
+}
 function initRooms(){
   var rooms = $$('.room'), dots = $$('#dots a');
   rooms.forEach(function(r, i){ r.style.zIndex = i + 1; });
@@ -1187,31 +1292,143 @@ function initCart(){
   renderCart(); syncOffer();
 }
 
+/* ---------------- shop: boxes stack as you add them ---------------- */
+function initShop(){
+  var stage = $('#shipStage'); if (!stage) return;
+  var C = {"w": 494, "h": 434, "x0": 203, "y0": 233, "dx": [317.1, 104.6], "dz": [0.0, -219.9], "sx0": 103, "sy0": 329, "sw": 783, "sh": 381};
+  var ORDER = ['mixed', 'mango', 'blood', 'yuzu', 'berry'], MAX = 6;
+  var stack = [], els = [], shadows = [], more = null;
+  function pos(j){ var i = j % 2, k = Math.floor(j / 2); return {x: C.x0 + i * C.dx[0] + k * C.dz[0], y: C.y0 + i * C.dx[1] + k * C.dz[1], i: i, k: k}; }
+  function layout(){
+    var W = stage.clientWidth, H = stage.clientHeight, n = Math.min(stack.length, MAX);
+    var s = Math.min(W * .9 / (C.dx[0] + C.w), H * .9 / (C.h + C.dx[1] - 2 * C.dz[1]));
+    var minx = 1e9, maxx = -1e9, miny = 1e9, maxy = -1e9;
+    for (var j = 0; j < Math.max(n, 1); j++){ var p = pos(j); minx = Math.min(minx, p.x); maxx = Math.max(maxx, p.x + C.w); miny = Math.min(miny, p.y); maxy = Math.max(maxy, p.y + C.h); }
+    var ox = W / 2 - (minx + maxx) / 2 * s, oy = H * .5 - (miny + maxy) / 2 * s;
+    els.forEach(function(el, j){
+      if (j >= MAX){ el.style.display = 'none'; return; }
+      var p = pos(j); el.style.display = ''; el.style.width = (C.w * s) + 'px'; el.style.left = (ox + p.x * s) + 'px'; el.style.top = (oy + p.y * s) + 'px'; el.style.zIndex = 10 + j;
+    });
+    shadows.forEach(function(sh, i){
+      sh.style.display = i < Math.min(n, 2) ? '' : 'none';
+      sh.style.width = (C.sw * s) + 'px'; sh.style.left = (ox + (C.sx0 + i * C.dx[0]) * s) + 'px'; sh.style.top = (oy + (C.sy0 + i * C.dx[1]) * s) + 'px';
+    });
+  }
+  for (var i = 0; i < 2; i++){ var sh = new Image(); sh.className = 'sh'; sh.alt = ''; sh.src = '/assets/v3/box/shadow.webp'; sh.style.zIndex = 1; sh.style.display = 'none'; stage.appendChild(sh); shadows.push(sh); }
+  function sync(){
+    // reconcile the visual stack with the cart, keeping the order boxes were added in
+    var want = {}; ORDER.forEach(function(k){ want[k] = cart.lines[k] || 0; });
+    var have = {}; stack.forEach(function(k){ have[k] = (have[k] || 0) + 1; });
+    ORDER.forEach(function(k){
+      while ((have[k] || 0) > want[k]){ var j = stack.lastIndexOf(k); stack.splice(j, 1); var el = els.splice(j, 1)[0]; el.classList.remove('in'); el.classList.add('out'); setTimeout(function(e){ return function(){ e.remove(); }; }(el), 320); have[k]--; }
+    });
+    ORDER.forEach(function(k){
+      while ((have[k] || 0) < want[k]){ stack.push(k); var im = new Image(); im.alt = ''; im.src = '/assets/v3/box/' + k + '.webp'; if (!reduce) im.className = 'in'; stage.appendChild(im); els.push(im); have[k] = (have[k] || 0) + 1; }
+    });
+    var n = boxes();
+    $('.stage-ghost', stage).style.opacity = n ? 0 : ''; $('#stageEmpty').style.opacity = n ? 0 : 1;
+    $('#freeTag').classList.toggle('on', n >= 2);
+    if (n > MAX){ if (!more){ more = document.createElement('span'); more.className = 'more-tag'; stage.appendChild(more); } more.textContent = '+' + (n - MAX) + ' more'; } else if (more){ more.remove(); more = null; }
+    $('#shipCount').textContent = n + (n === 1 ? ' box' : ' boxes');
+    $('#shipCans').textContent = (n * 12) + ' cans';
+    $('#shipSub').textContent = fmt(n * PRICE);
+    $('#shipMeter').style.width = Math.min(100, n * 50) + '%';
+    $('#shipMsg').textContent = n === 0 ? 'Two boxes ship free.' : n === 1 ? 'Add one more box and shipping is free.' : 'Free shipping unlocked.';
+    $$('.sku').forEach(function(li){ var k = li.getAttribute('data-k'), q = cart.lines[k] || 0; $('output', li).textContent = q; li.classList.toggle('on', q > 0); $('[data-d="-1"]', li).disabled = !q; });
+    layout();
+  }
+  var base = renderCart; renderCart = function(){ base(); sync(); };
+  $('#shopList').addEventListener('click', function(e){
+    var b = e.target.closest('[data-d]'); if (!b) return;
+    var li = b.closest('.sku'), k = li.getAttribute('data-k'), d = +b.getAttribute('data-d');
+    if (d > 0){ addBox(k, 1); li.classList.add('pop'); setTimeout(function(){ li.classList.remove('pop'); }, 250); }
+    else if (cart.lines[k]){ cart.lines[k]--; if (!cart.lines[k]) delete cart.lines[k]; renderCart(); }
+  });
+  $('#shipGo').addEventListener('click', function(){ if (!boxes()){ toast('Add a box first.'); return; } $('#quick').hidden = true; openCart(); });
+  window.addEventListener('resize', layout);
+  sync();
+}
+
 /* ---------------- science ---------------- */
 function initScience(){
-  var v = $('#ribbons');
-  if (v && 'IntersectionObserver' in window && !reduce){
-    new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ if (v.preload === 'none'){ v.preload = 'auto'; v.load(); } v.play().catch(function(){}); $('.sci .poster').style.opacity = 0; } else v.pause(); }); }, {threshold:.15}).observe(v);
+  /* A twisting ribbon drawn line by line: crisp at any size, no video. */
+  var c = $('#sciFx'); if (!c) return;
+  var ctx = c.getContext('2d'), W = 0, H = 0, dpr = 1, run = false, raf = 0, t0 = performance.now();
+  var dots = []; for (var i = 0; i < 26; i++) dots.push({u: Math.random(), v: Math.random(), r: 1.5 + Math.random() * 3.5, sp: .2 + Math.random() * .6, ph: Math.random() * 6.28, o: Math.random() < .3});
+  var rings = [{u: .62, v: .28, r: .11, sp: .05}, {u: .86, v: .66, r: .07, sp: .08}, {u: .48, v: .78, r: .05, sp: .11}];
+  function size(){
+    var r = c.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
-  if (reduce || !hasGsap) return;
-  gsap.fromTo('.ribbon', {clipPath:'inset(0 100% 0 0)'}, {clipPath:'inset(0 0% 0 0)', ease:'none', scrollTrigger:{trigger:'.sci', start:'top 70%', end:'top 15%', scrub:.5}});
-  gsap.from('.study', {y:60, opacity:0, stagger:.12, duration:1, ease:'expo.out', scrollTrigger:{trigger:'.studies', start:'top 85%'}});
+  var narrow = function(){ return W < 760; };
+  function centre(t, k){
+    var x0 = narrow() ? -.1 : .30, x1 = 1.08;
+    return [W * (x0 + (x1 - x0) * t), H * (1.02 - .95 * t) + Math.sin(t * 6.9 + k * .32) * H * .085 + Math.sin(t * 2.3 - k * .21) * H * .05];
+  }
+  function ribbon(k, base, spread, col, lines, aMax){
+    var M = 150;
+    var pts = [];
+    for (var j = 0; j <= M; j++){
+      var t = j / M, p = centre(t, k), q = centre(Math.min(1, t + .004), k);
+      var dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1;
+      pts.push([p[0], p[1], -dy / l, dx / l, Math.sin(Math.PI * Math.min(1, t * 1.15)) * spread, t * 9.4 + k * base]);
+    }
+    for (var i = 0; i < lines; i++){
+      var sN = i / (lines - 1) * 2 - 1;
+      ctx.beginPath();
+      for (j = 0; j <= M; j++){
+        var P = pts[j], off = sN * P[4] * Math.cos(P[5]);
+        var x = P[0] + P[2] * off, y = P[1] + P[3] * off;
+        if (j) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+      }
+      ctx.strokeStyle = 'rgba(' + col + ',' + (aMax * (.18 + .82 * Math.pow(Math.abs(sN), 3))).toFixed(3) + ')';
+      ctx.stroke();
+    }
+  }
+  function draw(now){
+    var k = (now - t0) / 1000;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter'; ctx.lineWidth = 1;
+    ribbon(k, .55, H * .2, '120,214,196', 56, .5);
+    ribbon(k * .8 + 2.1, .4, H * .08, '249,178,92', 20, .32);
+    ctx.globalCompositeOperation = 'source-over';
+    rings.forEach(function(g){
+      var x = W * g.u + Math.sin(k * g.sp * 3) * 18, y = H * g.v + Math.cos(k * g.sp * 2) * 14, r = Math.min(W, H) * g.r;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.strokeStyle = 'rgba(160,220,206,.22)'; ctx.lineWidth = 1.2; ctx.stroke();
+    });
+    dots.forEach(function(d){
+      var x = W * (.25 + .75 * d.u) + Math.sin(k * d.sp + d.ph) * 22, y = ((d.v * H - k * d.sp * 14) % H + H) % H;
+      ctx.beginPath(); ctx.arc(x, y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = d.o ? 'rgba(249,178,92,.75)' : 'rgba(170,228,214,.35)'; ctx.fill();
+    });
+  }
+  function loop(now){ if (!run) return; draw(now); raf = requestAnimationFrame(loop); }
+  size(); draw(t0 + 4000);
+  window.addEventListener('resize', function(){ size(); if (!run) draw(performance.now()); });
+  if (reduce || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){ es.forEach(function(e){
+    if (e.isIntersecting && !run){ run = true; raf = requestAnimationFrame(loop); }
+    else if (!e.isIntersecting){ run = false; cancelAnimationFrame(raf); }
+  }); }, {threshold: .05}).observe(c);
 }
 
 /* ---------------- roll it once: scroll-scrubbed photoreal turntable ---------------- */
 function initRoll(){
-  var cv = $('#turn'), ctx = cv.getContext('2d'), N = 36, frames = [], loaded = 0, cur = 0;
-  function draw(i){ var im = frames[i]; if (!im || !im.complete || !im.naturalWidth) return; if (cv.width !== im.naturalWidth){ cv.width = im.naturalWidth; cv.height = im.naturalHeight; } ctx.clearRect(0,0,cv.width,cv.height); ctx.drawImage(im, 0, 0); }
-  function load(){
-    for (var i = 0; i < N; i++){ (function(i){ var im = new Image(); im.onload = function(){ loaded++; if (i === cur) draw(i); }; im.onerror = function(){ if (i === 0) fallback(); }; im.src = '/assets/v3/turn/t' + (i < 10 ? '0' : '') + i + '.webp'; frames[i] = im; })(i); }
+  var v = $('#rollVid'), btn = $('#rollReplay'); if (!v) return;
+  var started = false;
+  function play(){ if (v.preload === 'none'){ v.preload = 'auto'; v.load(); } v.currentTime = 0; btn.classList.remove('on'); var p = v.play(); if (p && p.catch) p.catch(function(){ btn.classList.add('on'); }); }
+  v.addEventListener('ended', function(){ btn.classList.add('on'); });
+  btn.addEventListener('click', play);
+  if (reduce || !('IntersectionObserver' in window)){ btn.classList.add('on'); }
+  else {
+    new IntersectionObserver(function(es){ es.forEach(function(e){
+      if (e.isIntersecting && !started){ started = true; play(); }
+      else if (!e.isIntersecting && !v.paused){ v.pause(); btn.classList.add('on'); }
+    }); }, {threshold: .55}).observe(v);
   }
-  function fallback(){ var im = new Image(); im.onload = function(){ cv.width = im.naturalWidth; cv.height = im.naturalHeight; ctx.drawImage(im,0,0); }; im.src = '/assets/v3/can-mango.webp'; }
-  if ('IntersectionObserver' in window){ var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting){ load(); io.disconnect(); } }, {rootMargin:'600px'}); io.observe($('#roll')); } else load();
-  if (reduce || !hasGsap) return;
-  var o = {f:0};
-  gsap.to(o, {f:N*2 - 1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top top', end:'bottom bottom', scrub:.4}, onUpdate:function(){ var i = Math.round(o.f) % N; if (i !== cur){ cur = i; draw(i); } }});
-  gsap.fromTo('.roll .big span:first-child', {xPercent:-30, opacity:.2}, {xPercent:0, opacity:1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top bottom', end:'top top', scrub:.5}});
-  gsap.fromTo('.roll .big span:last-child', {xPercent:30, opacity:.2}, {xPercent:0, opacity:1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top bottom', end:'top top', scrub:.5}});
+  if (!hasGsap || reduce) return;
+  gsap.fromTo('.roll .big span:first-child', {xPercent:-18, opacity:.25}, {xPercent:0, opacity:1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top bottom', end:'top 30%', scrub:.5}});
+  gsap.fromTo('.roll .big span:last-child', {xPercent:18, opacity:.25}, {xPercent:0, opacity:1, ease:'none', scrollTrigger:{trigger:'#roll', start:'top bottom', end:'top 30%', scrub:.5}});
 }
 
 /* ---------------- label ---------------- */
@@ -1223,8 +1440,10 @@ function initLabel(){
     s.addEventListener('mouseenter', function(){ on(true); }); s.addEventListener('mouseleave', function(){ on(false); });
   });
   if (reduce || !hasGsap) return;
-  gsap.from('.stat', {y:40, opacity:0, stagger:.07, duration:.9, ease:'expo.out', scrollTrigger:{trigger:'.stats', start:'top 85%'}});
-  gsap.from('#nf', {rotation:3, y:60, opacity:0, duration:1.1, ease:'expo.out', scrollTrigger:{trigger:'#nf', start:'top 85%'}});
+  // fromTo with explicit end values: .stat has a CSS transform transition, and a refresh mid-transition
+  // would otherwise record the offset as the end state (the cards stayed 40px low and covered the claims)
+  gsap.fromTo('.stat, .claims-list li', {y:40, opacity:0}, {y:0, opacity:1, stagger:.07, duration:.9, ease:'expo.out', clearProps:'transform', scrollTrigger:{trigger:'.stats', start:'top 85%'}});
+  gsap.fromTo('#nf', {rotation:3, y:60, opacity:0}, {rotation:0, y:0, opacity:1, duration:1.1, ease:'expo.out', clearProps:'transform', scrollTrigger:{trigger:'#nf', start:'top 85%'}});
 }
 
 /* ---------------- got a can ---------------- */
@@ -1237,9 +1456,9 @@ function initGotCan(){
     e.preventDefault();
     var g = $('#gymName').value.trim(), em = $('#gymEmail').value.trim();
     if (!g){ toast('Add your gym first.'); return; }
-    if (em.indexOf('@') < 1){ toast('Add your email so we can tell you when we are there.'); return; }
+    if (em.indexOf('@') < 1){ toast('Add your email so we can tell you when they stock us.'); return; }
     var btn = $('#gymForm button'); btn.disabled = true;
-    postForm('gym-sampling', {gym:g, email:em}).then(function(){ toast('Thanks. ' + g + ' is on the list.'); $('#gymForm').reset(); })
+    postForm('gym-sampling', {gym:g, email:em}).then(function(){ toast('Thanks. We will get in touch with ' + g + '.'); $('#gymForm').reset(); })
       .catch(function(){ toast('That did not go through. Email alejandro@drinkspry.com.'); })
       .then(function(){ btn.disabled = false; });
   });
@@ -1268,15 +1487,17 @@ function initGotCan(){
 function initChrome(){
   if (!hasGsap) return;
   ScrollTrigger.create({start:120, end:'max', onUpdate:function(s){ $('#hdr').classList.toggle('up', s.direction === 1 && s.scroll() > 120); }});
-  var inHero = true, inRooms = false, inMixed = false;
-  function sync(){ $('#mbar').classList.toggle('on', !inHero && !inRooms && !inMixed); }
+  var inHero = true, inRooms = false, inMixed = false, inShop = false;
+  function sync(){ $('#mbar').classList.toggle('on', !inHero && !inRooms && !inMixed && !inShop); }
+  ScrollTrigger.create({trigger:'#shop', start:'top 80%', end:'bottom 20%', onToggle:function(s){ inShop = s.isActive; sync(); }});
   ScrollTrigger.create({trigger:'.hero', start:'top top', end:'bottom 70%', onToggle:function(s){ inHero = s.isActive; sync(); }});
   ScrollTrigger.create({trigger:'#rooms', start:'top 60%', end:'bottom 40%', onToggle:function(s){ inRooms = s.isActive; sync(); }});
   ScrollTrigger.create({trigger:'#mixed', start:'top 70%', end:'bottom 30%', onToggle:function(s){ inMixed = s.isActive; sync(); }});
   ScrollTrigger.create({trigger:'footer', start:'top bottom', onToggle:function(s){ if (s.isActive){ inRooms = true; sync(); } else { inRooms = false; sync(); } }});
 }
 
-initFizz(); initHalftones(); initTicker(); initHero(); initReveal(); initRooms(); initTray(); initCart(); initScience(); initRoll(); initLabel(); initGotCan(); initChrome();
+fitNames(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fitNames(); if (hasGsap) ScrollTrigger.refresh(); }); window.addEventListener('resize', function(){ clearTimeout(fitNames._t); fitNames._t = setTimeout(fitNames, 120); });
+initFizz(); initHalftones(); initTicker(); initHero(); initReveal(); initRooms(); initTray(); initCart(); initShop(); initScience(); initRoll(); initLabel(); initGotCan(); initChrome();
 window.addEventListener('load', function(){ if (hasGsap) ScrollTrigger.refresh(); });
 })();
 </script>

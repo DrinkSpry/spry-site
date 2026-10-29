@@ -1004,7 +1004,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <nav aria-label="Footer"><a href="#flavors">Flavors</a><a href="#mixed">Mixed Box</a><a href="#shop">Shop</a><a href="#science">Science</a><a href="#label">Label</a><a href="#faq">FAQ</a><a href="#can">Got a can?</a><a href="/our-story.html" target="_blank" rel="noopener">Our story</a></nav>
       <div class="social" aria-label="Follow Spry">
         <a href="https://www.tiktok.com/@drinkspry" target="_blank" rel="noopener" aria-label="Spry on TikTok"><svg class="ico"><use href="#i-tiktok-logo"/></svg>TikTok</a>
-        <a href="https://www.instagram.com/drink.spry/" target="_blank" rel="noopener" aria-label="Spry on Instagram"><svg class="ico"><use href="#i-instagram-logo"/></svg>Instagram</a>
+        <a href="https://www.instagram.com/alejandro.navarro.spry/" target="_blank" rel="noopener" aria-label="Spry on Instagram"><svg class="ico"><use href="#i-instagram-logo"/></svg>Instagram</a>
       </div>
     </div>
     <div class="foot-row foot-legal">
@@ -1434,6 +1434,11 @@ function initScience(){
   function loop(now){ if (!run) return; draw(now); raf = requestAnimationFrame(loop); }
   size(); draw(t0 + 4000);
   window.addEventListener('resize', function(){ size(); if (!run) draw(performance.now()); });
+  // the peptide chain draws itself in as the section scrolls up, and the study cards rise in after it
+  if (!reduce && hasGsap){
+    gsap.fromTo('.ribbon', {clipPath:'inset(0 100% 0 0)'}, {clipPath:'inset(0 0% 0 0)', ease:'none', scrollTrigger:{trigger:'.sci', start:'top 70%', end:'top 15%', scrub:.5}});
+    gsap.fromTo('.study', {y:60, opacity:0}, {y:0, opacity:1, stagger:.12, duration:1, ease:'expo.out', clearProps:'transform', scrollTrigger:{trigger:'.studies', start:'top 85%'}});
+  }
   if (reduce || !('IntersectionObserver' in window)) return;
   new IntersectionObserver(function(es){ es.forEach(function(e){
     if (e.isIntersecting && !run){ run = true; raf = requestAnimationFrame(loop); }

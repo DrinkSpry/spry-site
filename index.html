@@ -115,9 +115,7 @@ p{margin:0}
 .fizz span{position:absolute;bottom:-12px;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95),rgba(255,255,255,.25) 45%,rgba(255,255,255,.08) 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);animation:rise var(--d,6s) linear var(--dl,0s) infinite;opacity:0}
 @keyframes rise{0%{transform:translate(0,0) scale(.6);opacity:0}10%{opacity:.9}50%{transform:translate(var(--sx,6px),-50cqh) scale(1)}100%{transform:translate(calc(var(--sx,6px)*-1),-104cqh) scale(1.08);opacity:0}}
 .fizz{container-type:size}
-.hero-can{position:absolute;left:50%;bottom:3%;height:101%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 34px 34px rgba(0,50,50,.28)) drop-shadow(0 6px 8px rgba(0,50,50,.18));will-change:transform}
-.hero-can.flip{animation:flip .7s var(--ease)}
-@keyframes flip{0%{transform:translateX(-50%) scaleX(1)}45%{transform:translateX(-50%) scaleX(.06) translateY(-10px)}55%{transform:translateX(-50%) scaleX(.06) translateY(-10px)}100%{transform:translateX(-50%) scaleX(1)}}
+.hero-can{position:absolute;left:0;right:0;margin:0 auto;bottom:3%;height:101%;width:auto;max-width:none;filter:drop-shadow(0 34px 34px rgba(0,50,50,.28)) drop-shadow(0 6px 8px rgba(0,50,50,.18));will-change:transform}
 .prop{position:absolute;pointer-events:none;will-change:transform;filter:drop-shadow(0 18px 18px rgba(0,40,40,.22))}
 .badge{position:absolute;width:clamp(104px,10vw,148px);aspect-ratio:1;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;box-shadow:0 18px 40px -22px rgba(0,60,60,.55),inset 0 0 0 1.5px rgba(0,79,81,.12);z-index:3}
 .badge svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
@@ -1150,9 +1148,24 @@ function setHeroFlavor(f, animate){
   var dome = $('#heroDome'), can = $('#heroCan');
   dome.style.setProperty('--c1', F.c1); dome.style.setProperty('--c2', F.c2); dome.style.background = F.c1;
   var ht = $('canvas', dome)._ht; if (ht) ht.setColor(F.c2);
-  var swap = function(){ can.src = '/assets/v3/can-'+f+'.webp'; can.alt = 'A cold can of Spry '+F.name+' with condensation'; $('#heroFruitA').src = '/assets/v3/'+F.fruitA+'.webp'; $('#heroFruitB').src = '/assets/v3/'+F.fruitB+'.webp'; };
-  if (animate && !reduce){ can.classList.remove('flip'); void can.offsetWidth; can.classList.add('flip'); setTimeout(swap, 300); }
-  else swap();
+  var fruits = [$('#heroFruitA'), $('#heroFruitB')];
+  var swap = function(){ can.src = '/assets/v3/can-'+f+'.webp'; can.alt = 'A cold can of Spry '+F.name+' with condensation'; fruits[0].src = '/assets/v3/'+F.fruitA+'.webp'; fruits[1].src = '/assets/v3/'+F.fruitB+'.webp'; };
+  if (!animate || reduce || !hasGsap){ swap(); return; }
+  // the can dips into the dome, the new flavor rises back up with a little settle; the fruit pops in after it.
+  // (uses y/scale/opacity only, so it never fights the scroll tween on yPercent/rotation or the pointer tilt)
+  var token = setHeroFlavor._t = (setHeroFlavor._t || 0) + 1;
+  gsap.killTweensOf(can, 'y,scale,opacity'); gsap.killTweensOf(fruits, 'scale,opacity');
+  gsap.to(fruits, {scale:.6, opacity:0, duration:.22, ease:'power2.in'});
+  gsap.to(can, {y:70, scale:.94, opacity:0, duration:.26, ease:'power2.in', onComplete:function(){
+    if (token !== setHeroFlavor._t) return;
+    swap();
+    var go = function(){
+      if (token !== setHeroFlavor._t) return;
+      gsap.fromTo(can, {y:90, scale:.94, opacity:0}, {y:0, scale:1, opacity:1, duration:.75, ease:'back.out(1.5)'});
+      gsap.fromTo(fruits, {scale:.6, opacity:0}, {scale:1, opacity:1, duration:.6, ease:'back.out(2)', stagger:.07, delay:.12});
+    };
+    (can.decode ? can.decode() : Promise.resolve()).then(go, go);
+  }});
 }
 function initHero(){
   $$('.chip').forEach(function(c){ c.addEventListener('click', function(){ setHeroFlavor(c.getAttribute('data-f'), true); }); });

@@ -662,7 +662,6 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <div class="plans" id="plans" role="radiogroup" aria-label="Subscription plan" hidden>
         <label class="plan"><input type="radio" name="plan" value="m4" checked><span><b>2 boxes every 4 weeks</b><small>24 cans, $3.49 a can. One a day, six days a week.</small></span><span class="amt">$83.76</span></label>
         <label class="plan"><input type="radio" name="plan" value="m3"><span><b>2 boxes every 3 weeks</b><small>24 cans, $3.49 a can. Every day, no skips.</small></span><span class="amt">$83.76</span></label>
-        <label class="plan"><input type="radio" name="plan" value="b2"><span><b>1 box every 2 weeks</b><small>12 cans, $3.69 a can.</small></span><span class="amt">$44.28</span></label>
       </div>
       <button class="btn btn-ink add" id="addMixed">Add to cart <span id="addAmt">$47.88</span></button>
       <p class="reassure">First boxes ship in December, within the US. <a href="/legal.html#refund" target="_blank" rel="noopener">Refund policy</a></p>
@@ -988,7 +987,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <details class="qa"><summary>How many should I drink?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">One can a day. That is the daily serving used in the clinical studies, and each can holds one serving.</p></details>
       <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so roll it once, then open.</p></details>
       <details class="qa"><summary>Is it a soda? A protein shake?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
-      <details class="qa" hidden><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Pick a plan: 2 boxes every 4 weeks or every 3 weeks at $3.49 a can, or 1 box every 2 weeks at $3.69 a can. Subscriptions ship free. Skip or cancel any time before your next delivery ships. It renews until you cancel.</p></details>
+      <details class="qa" hidden><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Pick a plan: 2 boxes every 4 weeks or every 3 weeks at $3.49 a can. Subscriptions ship free. Skip or cancel any time before your next delivery ships. It renews until you cancel.</p></details>
       <details class="qa"><summary>Does it need to be refrigerated?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">No. Store it in a cool, dry place. It tastes best cold.</p></details>
     </div>
   </div>
@@ -1023,7 +1022,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
     <p class="q-h">Buy now</p>
     <div class="seg" id="qProd" role="group" aria-label="Choose a box"><button type="button" data-p="mixed" aria-pressed="true">Mixed Box</button><button type="button" data-p="mango" aria-pressed="false">Mango Passionfruit</button><button type="button" data-p="blood" aria-pressed="false">Blood Orange</button><button type="button" data-p="yuzu" aria-pressed="false">Yuzu Lime</button><button type="button" data-p="berry" aria-pressed="false">Mixed Berry</button></div>
     <div class="seg" id="qQty" role="group" aria-label="How many boxes"><button type="button" data-n="1" aria-pressed="true">1 box</button><button type="button" data-n="2" aria-pressed="false">2 boxes, ships free</button></div>
-    <label class="qsub" for="qSub"><input type="checkbox" id="qSub"> <span id="qSubTxt">Subscribe: 1 box every 2 weeks, $3.69 a can, ships free</span></label>
+    <label class="qsub" for="qSub"><input type="checkbox" id="qSub"> <span id="qSubTxt">Subscribe: 2 boxes every 4 weeks, $3.49 a can, ships free</span></label>
     <button class="btn btn-ink" id="qAdd" style="justify-content:center">Add to cart <span id="qAmt">$47.88</span></button>
   </div>
   <div class="lines" id="lines"></div>
@@ -1247,7 +1246,7 @@ function initTray(){
 /* ---------------- cart ---------------- */
 var PRICE = 47.88, SHIP = 5.99;
 // subscriptions are whole boxes; cadence does the work (no six-packs)
-var PLANS = { m4:{boxes:2, each:41.88, label:'2 boxes every 4 weeks', every:'every 4 weeks'}, m3:{boxes:2, each:41.88, label:'2 boxes every 3 weeks', every:'every 3 weeks'}, b2:{boxes:1, each:44.28, label:'1 box every 2 weeks', every:'every 2 weeks'} };
+var PLANS = { m4:{boxes:2, each:41.88, label:'2 boxes every 4 weeks', every:'every 4 weeks'}, m3:{boxes:2, each:41.88, label:'2 boxes every 3 weeks', every:'every 3 weeks'} };
 var cart = { lines:{}, sub:false };
 function fmt(n){ return '$' + n.toFixed(2); }
 function boxes(){ var n = 0; for (var k in cart.lines) n += cart.lines[k]; return n; }
@@ -1278,7 +1277,8 @@ function renderCart(){
 }
 function syncQuick(){
   var p = ($('#qProd [aria-pressed="true"]') || {}).getAttribute ? $('#qProd [aria-pressed="true"]').getAttribute('data-p') : 'mixed';
-  var n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n'), sub = $('#qSub').checked, plan = PLANS[n >= 2 ? 'm4' : 'b2'];
+  var n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n'), sub = $('#qSub').checked, plan = PLANS.m4;
+  if (sub && n < 2){ n = 2; $$('button', $('#qQty')).forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-n') === '2' ? 'true' : 'false'); }); }
   $('#qSubTxt').textContent = 'Subscribe: ' + plan.label + ', $' + (plan.each / 12).toFixed(2) + ' a can, ships free';
   $('#qAmt').textContent = fmt(n * (sub ? plan.each : PRICE));
 }
@@ -1291,7 +1291,7 @@ function initCart(){
   $('#qSub').addEventListener('change', syncQuick);
   $('#qAdd').addEventListener('click', function(){
     var p = $('#qProd [aria-pressed="true"]').getAttribute('data-p'), n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n');
-    cart.sub = $('#qSub').checked ? (n >= 2 ? 'm4' : 'b2') : false; addBox(p, n); $('#quick').hidden = true;
+    if ($('#qSub').checked){ cart.sub = 'm4'; n = Math.max(n, 2); } else { cart.sub = false; } addBox(p, n); $('#quick').hidden = true;
   });
   $('#closeCart').addEventListener('click', closeCart);
   $('#scrim').addEventListener('click', closeCart);
@@ -1320,12 +1320,22 @@ function initCart(){
     var k = $('input[name=plan]:checked').value, n = subT.checked ? PLANS[k].boxes : +$('input[name=boxes]:checked').value;
     cart.sub = subT.checked ? k : false; addBox('mixed', n); openCart();
   });
-  var SHOP = 'https://spry-9197.myshopify.com', VAR = {mixed:'43321056952368', mango:'43321056919600', blood:'43321056886832', yuzu:'43321056854064', berry:'50624505479216'};
+  var SHOP = 'https://spry-9197.myshopify.com', VAR = {mixed:'50834609700912', mango:'50834609569840', blood:'50834609635376', yuzu:'50834609438768', berry:'50834609504304'};
+  // Shopify Subscriptions selling plan ids (Apps > Subscriptions > Plans > Subscribe and save). Cart permalinks drop selling plans, so subscriptions go through /cart/add.
+  var SELL = {m4:'7242055728', m3:'7242088496'};
   $('#checkout').addEventListener('click', function(){
     if (!boxes()){ toast('Add a box first.'); return; }
     var items = []; for (var k in cart.lines){ if (cart.lines[k] && VAR[k]) items.push(VAR[k] + ':' + cart.lines[k]); }
     var b = $('#checkout'); b.disabled = true; b.firstChild.textContent = 'Opening checkout ';
-    location.href = SHOP + '/cart/' + items.join(',');
+    var plan = cart.sub && SELL[cart.sub];
+    if (plan){
+      var f = document.createElement('form'), i = 0; f.method = 'POST'; f.action = SHOP + '/cart/add';
+      var put = function(n, v){ var x = document.createElement('input'); x.type = 'hidden'; x.name = n; x.value = v; f.appendChild(x); };
+      for (var q in cart.lines){ if (cart.lines[q] && VAR[q]){ put('items['+i+'][id]', VAR[q]); put('items['+i+'][quantity]', cart.lines[q]); put('items['+i+'][selling_plan]', plan); i++; } }
+      put('return_to', '/checkout'); document.body.appendChild(f); f.submit();
+    } else {
+      location.href = SHOP + '/cart/' + items.join(',');
+    }
     setTimeout(function(){ b.disabled = false; b.firstChild.textContent = 'Checkout '; }, 5000);
   });
   renderCart(); syncOffer();

@@ -411,6 +411,10 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
 .free .meter{margin-top:10px}
 .quick{margin-top:12px;padding:16px;border-radius:20px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);display:grid;gap:12px}
 .quick[hidden]{display:none}
+.quick.more{order:2;margin-top:10px;padding:14px;gap:10px}
+.quick.more .q-h{font-size:18px}
+.quick.more #qQty,.quick.more .qsub{display:none}
+.drawer-f{order:3}
 .q-h{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
 .qsub{display:flex;gap:10px;align-items:center;font-weight:700;font-size:14px;cursor:pointer}
 .qsub input{width:18px;height:18px;accent-color:#004F51}
@@ -567,7 +571,6 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   .sku-t small{font-size:13px}
   .step button{width:36px;height:36px}
 }
-.sub,.qsub,.plans{display:none!important}
 </style>
 </head>
 <body>
@@ -987,7 +990,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <details class="qa"><summary>How many should I drink?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">One can a day. That is the daily serving used in the clinical studies, and each can holds one serving.</p></details>
       <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so roll it once, then open.</p></details>
       <details class="qa"><summary>Is it a soda? A protein shake?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
-      <details class="qa" hidden><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Pick a plan: 2 boxes every 4 weeks or every 3 weeks at $3.49 a can. Subscriptions ship free. Skip or cancel any time before your next delivery ships. It renews until you cancel.</p></details>
+      <details class="qa"><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Pick a plan: 2 boxes every 4 weeks or every 3 weeks at $3.49 a can. Subscriptions ship free. Skip or cancel any time before your next delivery ships. It renews until you cancel.</p></details>
       <details class="qa"><summary>Does it need to be refrigerated?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">No. Store it in a cool, dry place. It tastes best cold.</p></details>
     </div>
   </div>
@@ -1019,7 +1022,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="drawer-h"><h2>Your cart</h2><button class="icon-btn" id="closeCart" aria-label="Close cart"><svg class="ico"><use href="#i-x"/></svg></button></div>
   <div class="free" id="freeBox"><span id="freeTxt">Add a second box and shipping is free.</span><div class="meter"><i id="freeMeter"></i></div></div>
   <div class="quick" id="quick">
-    <p class="q-h">Buy now</p>
+    <p class="q-h" id="qH">Buy now</p>
     <div class="seg" id="qProd" role="group" aria-label="Choose a box"><button type="button" data-p="mixed" aria-pressed="true">Mixed Box</button><button type="button" data-p="mango" aria-pressed="false">Mango Passionfruit</button><button type="button" data-p="blood" aria-pressed="false">Blood Orange</button><button type="button" data-p="yuzu" aria-pressed="false">Yuzu Lime</button><button type="button" data-p="berry" aria-pressed="false">Mixed Berry</button></div>
     <div class="seg" id="qQty" role="group" aria-label="How many boxes"><button type="button" data-n="1" aria-pressed="true">1 box</button><button type="button" data-n="2" aria-pressed="false">2 boxes, ships free</button></div>
     <label class="qsub" for="qSub"><input type="checkbox" id="qSub"> <span id="qSubTxt">Subscribe: 2 boxes every 4 weeks, $3.49 a can, ships free</span></label>
@@ -1267,7 +1270,7 @@ function renderCart(){
   $('#subtotal').textContent = fmt(sub);
   $('#shipLine').textContent = n === 0 ? 'Shipping $5.99 on one box. Two or more ship free.' : free ? 'Shipping is free on this order.' : 'Shipping $5.99. Add one more box and it is free.';
   var L = $('#lines'), html = '';
-  if (!n){ $('#quick').hidden = false; }
+  var q = $('#quick'); q.hidden = false; q.classList.toggle('more', n > 0); $('#qH').textContent = n ? 'Add another box' : 'Buy now'; syncQuick();
   for (var k in cart.lines){
     if (!cart.lines[k]) continue;
     var name = k === 'mixed' ? 'The Mixed Box' : FL[k].name, img = k === 'mixed' ? 'mango' : k;
@@ -1277,6 +1280,7 @@ function renderCart(){
 }
 function syncQuick(){
   var p = ($('#qProd [aria-pressed="true"]') || {}).getAttribute ? $('#qProd [aria-pressed="true"]').getAttribute('data-p') : 'mixed';
+  if (boxes() > 0){ $('#qAmt').textContent = fmt(cart.sub ? PLANS[cart.sub].each : PRICE); return; }
   var n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n'), sub = $('#qSub').checked, plan = PLANS.m4;
   if (sub && n < 2){ n = 2; $$('button', $('#qQty')).forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-n') === '2' ? 'true' : 'false'); }); }
   $('#qSubTxt').textContent = 'Subscribe: ' + plan.label + ', $' + (plan.each / 12).toFixed(2) + ' a can, ships free';
@@ -1285,13 +1289,14 @@ function syncQuick(){
 function openCart(){ $('#drawer').classList.add('on'); $('#drawer').setAttribute('aria-hidden','false'); $('#scrim').classList.add('on'); $('#closeCart').focus(); }
 function closeCart(){ $('#drawer').classList.remove('on'); $('#drawer').setAttribute('aria-hidden','true'); $('#scrim').classList.remove('on'); }
 function initCart(){
-  $('#cartBtn').addEventListener('click', function(){ $('#quick').hidden = boxes() > 0; openCart(); });
+  $('#cartBtn').addEventListener('click', function(){ openCart(); });
   $('#buyBtn').addEventListener('click', function(){ $('#quick').hidden = false; openCart(); });
   ['#qProd', '#qQty'].forEach(function(id){ $(id).addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; $$('button', $(id)).forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); syncQuick(); }); });
   $('#qSub').addEventListener('change', syncQuick);
   $('#qAdd').addEventListener('click', function(){
     var p = $('#qProd [aria-pressed="true"]').getAttribute('data-p'), n = +$('#qQty [aria-pressed="true"]').getAttribute('data-n');
-    if ($('#qSub').checked){ cart.sub = 'm4'; n = Math.max(n, 2); } else { cart.sub = false; } addBox(p, n); $('#quick').hidden = true;
+    if (boxes() > 0){ n = 1; } else if ($('#qSub').checked){ cart.sub = 'm4'; n = Math.max(n, 2); } else { cart.sub = false; }
+    addBox(p, n); toast((p === 'mixed' ? 'The Mixed Box' : FL[p].name) + ' added.');
   });
   $('#closeCart').addEventListener('click', closeCart);
   $('#scrim').addEventListener('click', closeCart);
@@ -1396,7 +1401,7 @@ function initShop(){
     if (d > 0){ addBox(k, 1); li.classList.add('pop'); setTimeout(function(){ li.classList.remove('pop'); }, 250); }
     else if (cart.lines[k]){ cart.lines[k]--; if (!cart.lines[k]) delete cart.lines[k]; renderCart(); }
   });
-  $('#shipGo').addEventListener('click', function(){ if (!boxes()){ toast('Add a box first.'); return; } $('#quick').hidden = true; openCart(); });
+  $('#shipGo').addEventListener('click', function(){ if (!boxes()){ toast('Add a box first.'); return; } openCart(); });
   window.addEventListener('resize', layout);
   sync();
 }

@@ -1,0 +1,5 @@
+.git
+.cloudflare
+netlify.toml
+.DS_Store
+.gitignore

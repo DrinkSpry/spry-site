@@ -283,7 +283,8 @@ p{margin:0}
 .roll{position:relative;padding-block:clamp(90px,10vw,160px) clamp(80px,9vw,150px);overflow:hidden}
 .roll-pin{position:relative}
 .roll .ht{position:absolute;left:0;right:0;bottom:0;height:62%;width:100%}
-.roll .big{position:relative;z-index:1;display:flex;justify-content:center;gap:.22em;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 75,"opsz" 96;font-size:clamp(64px,10.5vw,190px);letter-spacing:-.04em;line-height:.82;text-transform:uppercase;color:var(--ink);padding-inline:var(--gut-l) var(--gut-r)}
+.roll .big{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:.04em .28em;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 75,"opsz" 96;font-size:clamp(64px,10.5vw,190px);letter-spacing:.03em;line-height:.82;text-transform:uppercase;color:var(--ink);padding-inline:var(--gut-l) var(--gut-r)}
+.roll .big span{white-space:nowrap}
 .roll .big span:last-child{color:var(--mango-2)}
 .roll-vid{position:relative;z-index:2;margin:clamp(26px,3.2vw,48px) auto 0;width:min(1180px,calc(100% - var(--gut-l) - var(--gut-r)));aspect-ratio:16/9;border-radius:clamp(24px,3vw,44px);overflow:hidden;background:#EAE6DE;box-shadow:0 60px 90px -55px rgba(0,60,60,.5)}
 .roll-vid video{display:block;width:100%;height:100%;object-fit:cover}
@@ -643,7 +644,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
 <!-- ================= COLD ================= -->
 <section class="cold" aria-labelledby="ch">
   <img id="coldImg" src="/assets/v3/life-ice.webp" alt="Cans of Spry Mango Passionfruit, Blood Orange and Yuzu Lime in an ice bucket at the gym" loading="lazy" width="2000" height="1131">
-  <div class="wrap"><h2 id="ch">Best served cold.</h2><p>Keep a few in the fridge. Roll one, crack it after training.</p></div>
+  <div class="wrap"><h2 id="ch">Best served cold.</h2><p>Keep a few in the fridge. Flip one, roll it, crack it after training.</p></div>
 </section>
 
 <!-- ================= MIXED BOX ================= -->
@@ -834,9 +835,9 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
     <div class="big" aria-hidden="true"><span>Flip, roll,</span><span>and sip.</span></div>
     <figure class="roll-vid">
       <video id="rollVid" muted playsinline preload="none" poster="/assets/v3/roll-poster.webp" aria-label="A hand flips a can of Spry, rolls it once on a kitchen counter, then opens it"><source src="/assets/v3/roll.mp4" type="video/mp4"></video>
-      <button class="replay" id="rollReplay" type="button"><svg class="ico"><use href="#i-arrows-clockwise"/></svg>Roll it again</button>
+      <button class="replay" id="rollReplay" type="button"><svg class="ico"><use href="#i-arrows-clockwise"/></svg>Flip it again</button>
     </figure>
-    <p class="cap"><b id="rh">Cloudy on purpose.</b>The light haze is the peptide. It settles a little, so give the can one slow roll, then open.</p>
+    <p class="cap"><b id="rh">Cloudy on purpose.</b>The light haze is the peptide. It settles a little, so flip the can, give it one slow roll, then open.</p>
   </div>
 </section>
 
@@ -989,7 +990,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <details class="qa"><summary>When does it ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The first production run ships in December 2026, within the United States. You will hear from us before your box leaves.</p></details>
       <details class="qa"><summary>What is in it?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Lightly sparkling water, PeptiStrong&reg; (the clinically studied plant-derived peptide, from fava beans) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners.</p></details>
       <details class="qa"><summary>How many should I drink?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">One can a day. That is the daily serving used in the clinical studies, and each can holds one serving.</p></details>
-      <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so roll it once, then open.</p></details>
+      <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so flip it, roll it once, then open.</p></details>
       <details class="qa"><summary>Is it a soda? A protein shake?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is.</p></details>
       <details class="qa" hidden><summary>How does the subscription work?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Pick a plan: 2 boxes every 4 weeks or every 3 weeks at $3.49 a can. Subscriptions ship free. Skip or cancel any time before your next delivery ships. It renews until you cancel.</p></details>
       <details class="qa"><summary>Does it need to be refrigerated?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">No. Store it in a cool, dry place. It tastes best cold.</p></details>
@@ -1125,7 +1126,7 @@ function initFizz(){
 /* ---------------- claims ticker ---------------- */
 function initTicker(){
   var A = [['leaf','PeptiStrong\u00AE plant-derived peptides'],['flask','Clinically studied'],['barbell','Supports muscle strength and recovery'],['drop-half','Electrolytes'],['sparkle','Lightly sparkling'],['lightning','Low calorie']];
-  var B = [['drop','Electrolytes: sodium, potassium, magnesium'],['prohibit','No artificial colors or flavors'],['prohibit','No artificial sweeteners'],['plant','Plant-based'],['snowflake','Best served cold'],['arrows-clockwise','Roll it once, then open']];
+  var B = [['drop','Electrolytes: sodium, potassium, magnesium'],['prohibit','No artificial colors or flavors'],['prohibit','No artificial sweeteners'],['plant','Plant-based'],['snowflake','Best served cold'],['arrows-clockwise','Flip, roll, then open']];
   function items(list){ return list.map(function(it){ return '<span class="claim"><span class="dot"><svg class="ico"><use href="#i-'+it[0]+'"/></svg></span>'+it[1]+'</span>'; }).join(''); }
   var belts = $$('.belt'), tweens = [];
   belts.forEach(function(b, i){

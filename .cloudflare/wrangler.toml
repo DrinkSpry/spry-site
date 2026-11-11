@@ -11,3 +11,8 @@ routes = [
 directory = "../"
 binding = "ASSETS"
 run_worker_first = true
+
+[[d1_databases]]
+binding = "FORMS"
+database_name = "spry-site-forms"
+database_id = "3d29a031-977f-410f-abb1-6ca07387f836"

@@ -987,7 +987,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="wrap faq-grid">
     <div class="faq-side"><h2 id="qh">Questions.</h2><img src="/assets/v3/life-bench.webp" alt="A cold can of Spry Mango Passionfruit on a gym bench next to a towel and a kettlebell" loading="lazy" width="1000" height="1250"></div>
     <div>
-      <details class="qa"><summary>When does it ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The first production run ships in December 2026. For now we ship to 40 states and DC, but not yet to Alaska, Connecticut, Hawaii, Iowa, Maine, Massachusetts, Michigan, New York, Oregon or Vermont. Live in one of those? Email alejandro@drinkspry.com and we will tell you when we can ship to you. You will hear from us before your box leaves.</p></details>
+      <details class="qa"><summary>When does it ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The first production run ships in December 2026. For now we ship to 40 states and DC, but not yet to Alaska, Connecticut, Hawaii, Iowa, Maine, Massachusetts, Michigan, New York, Oregon or Vermont. Live in one of those? Email alejandro@drinkspry.com and we will tell you when we can ship to you. California orders include the state&rsquo;s CRV of 5 cents a can, added at checkout. You will hear from us before your box leaves.</p></details>
       <details class="qa"><summary>What is in it?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Lightly sparkling water, PeptiStrong&reg; (the clinically studied plant-derived peptide, from fava beans) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners.</p></details>
       <details class="qa"><summary>How many should I drink?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">One can a day. That is the daily serving used in the clinical studies, and each can holds one serving.</p></details>
       <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so flip it, roll it once, then open.</p></details>
@@ -1126,7 +1126,7 @@ function initFizz(){
 /* ---------------- claims ticker ---------------- */
 function initTicker(){
   var A = [['leaf','PeptiStrong\u00AE plant-derived peptides'],['flask','Clinically studied'],['barbell','Supports muscle strength and recovery'],['drop-half','Electrolytes'],['sparkle','Lightly sparkling'],['lightning','Low calorie']];
-  var B = [['drop','Electrolytes: sodium, potassium, magnesium'],['prohibit','No artificial colors or flavors'],['prohibit','No artificial sweeteners'],['plant','Plant-based'],['snowflake','Best served cold'],['arrows-clockwise','Flip, roll, then open']];
+  var B = [['drop','Electrolytes: sodium, potassium, magnesium'],['prohibit','No artificial colors or flavors'],['prohibit','No artificial sweeteners'],['plant','Plant-based'],['check','No fridge needed'],['arrows-clockwise','Flip, roll, then open']];
   function items(list){ return list.map(function(it){ return '<span class="claim"><span class="dot"><svg class="ico"><use href="#i-'+it[0]+'"/></svg></span>'+it[1]+'</span>'; }).join(''); }
   var belts = $$('.belt'), tweens = [];
   belts.forEach(function(b, i){

@@ -1126,7 +1126,7 @@ function initFizz(){
 /* ---------------- claims ticker ---------------- */
 function initTicker(){
   var A = [['leaf','PeptiStrong\u00AE plant-derived peptides'],['flask','Clinically studied'],['barbell','Supports muscle strength and recovery'],['drop-half','Electrolytes'],['sparkle','Lightly sparkling'],['lightning','Low calorie']];
-  var B = [['drop','Electrolytes: sodium, potassium, magnesium'],['prohibit','No artificial colors or flavors'],['prohibit','No artificial sweeteners'],['plant','Plant-based'],['check','No fridge needed'],['arrows-clockwise','Flip, roll, then open']];
+  var B = [['drop','Electrolytes: sodium, potassium, magnesium'],['prohibit','No artificial colors or flavors'],['prohibit','No artificial sweeteners'],['plant','Plant-based'],['check','One can a day'],['arrows-clockwise','Flip, roll, then open']];
   function items(list){ return list.map(function(it){ return '<span class="claim"><span class="dot"><svg class="ico"><use href="#i-'+it[0]+'"/></svg></span>'+it[1]+'</span>'; }).join(''); }
   var belts = $$('.belt'), tweens = [];
   belts.forEach(function(b, i){

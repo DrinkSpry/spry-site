@@ -1,0 +1,109 @@
+<!-- ============================================================
+     SPRY · Order confirmation email v3, 12 Nov 2026 (Shopify notification, Liquid)
+     Paste this into: Settings -> Notifications -> Order confirmation -> Edit code
+     Replace the entire Email body, then Preview / Send test, then Save.
+     v3: regular pre-orders and subscriptions, current cans in the banner, site colors.
+     The banner loads from drinkspry.com/og-image.jpg. Footer links need the Nov 2026 legal page (#shipping, #subscriptions) to be live.
+     "Revert to default" is always available if you want to undo.
+     ============================================================ -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#E9E6DC;padding:24px 12px;">
+  <tr><td align="center">
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#F2F0E9;border-radius:18px;overflow:hidden;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;">
+
+      <!-- Hero band -->
+      <tr><td style="padding:0;">
+        <img src="https://drinkspry.com/og-image.jpg" width="600" alt="Spry, the peptide drink" style="display:block;width:100%;max-width:600px;height:auto;">
+      </td></tr>
+
+      <!-- Body card -->
+      <tr><td style="padding:8px 14px 14px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFFFFF;border-radius:14px;">
+          <tr><td style="padding:34px 36px 10px;">
+            <div style="font-size:11.5px;font-weight:bold;letter-spacing:1.6px;text-transform:uppercase;color:#004F51;">Order confirmed</div>
+            <h1 style="font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-0.8px;color:#004F51;margin:12px 0 0;">You're in, {{ customer.first_name | default: 'there' }}.</h1>
+            <p style="font-size:15px;line-height:1.62;color:#3a4148;margin:16px 0 0;">Thank you for ordering Spry this early. Your order is in, and it ships with our first production run.</p>
+          </td></tr>
+
+          <!-- Ship-date callout -->
+          <tr><td style="padding:18px 36px 4px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F2F0E9;border-left:4px solid #F9B25C;border-radius:8px;">
+              <tr><td style="padding:16px 18px;">
+                <div style="font-size:14.5px;font-weight:bold;color:#004F51;">Ordered now, ships in December</div>
+                <p style="font-size:13.5px;line-height:1.6;color:#3a4148;margin:6px 0 0;">This is a pre-order. We expect to ship first boxes in <b>December 2026</b>, and we'll email you when yours is on its way. Your order is <b>fully refundable any time before it ships</b>, no questions asked. See our <a href="https://drinkspry.com/legal.html#refund" style="color:#004F51;font-weight:bold;">refund policy</a>.</p>
+              </td></tr>
+            </table>
+          </td></tr>
+
+          {% assign has_subscription = false %}{% for line in line_items %}{% if line.selling_plan_allocation %}{% assign has_subscription = true %}{% endif %}{% endfor %}
+          {% if has_subscription %}
+          <!-- Subscription acknowledgement -->
+          <tr><td style="padding:14px 36px 0;">
+            <p style="font-size:13.5px;line-height:1.6;color:#3a4148;margin:0;"><b>Your subscription renews automatically until you cancel.</b> Each delivery is charged to the payment method you used today. Skip a delivery or cancel any time before it ships, in your <a href="https://shopify.com/69126979632/account" style="color:#004F51;font-weight:bold;">Spry account</a> or by replying to this email. See the <a href="https://drinkspry.com/legal.html#subscriptions" style="color:#004F51;font-weight:bold;">subscription terms</a>.</p>
+          </td></tr>
+          {% endif %}
+
+          <!-- Order summary -->
+          <tr><td style="padding:24px 36px 6px;">
+            <div style="font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#5C6660;border-bottom:1px solid #e7e2d6;padding-bottom:10px;">Order {{ order_name }}</div>
+
+            {% for line in line_items %}
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:14px;">
+              <tr>
+                <td width="64" valign="top" style="padding:0 14px 0 0;">
+                  {% if line.image %}
+                  <img src="{{ line.image | img_url: 'compact' }}" width="56" alt="{{ line.title | escape }}" style="display:block;width:56px;height:auto;border-radius:8px;background:#004F51;">
+                  {% endif %}
+                </td>
+                <td valign="top" style="font-size:14px;color:#004F51;line-height:1.45;">
+                  <b>{{ line.title }}</b>
+                  {% unless line.variant.title == 'Default Title' %}<br><span style="color:#5C6660;font-size:13px;">{{ line.variant.title }}</span>{% endunless %}
+                  {% if line.selling_plan_allocation %}<br><span style="color:#5C6660;font-size:13px;">{{ line.selling_plan_allocation.selling_plan.name }}</span>{% endif %}
+                  <br><span style="color:#5C6660;font-size:13px;">Qty {{ line.quantity }}</span>
+                </td>
+                <td valign="top" align="right" style="font-size:14px;color:#004F51;white-space:nowrap;">{{ line.final_line_price | money }}</td>
+              </tr>
+            </table>
+            {% endfor %}
+
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:18px;border-top:1px solid #e7e2d6;padding-top:14px;">
+              <tr><td style="font-size:13.5px;color:#5C6660;padding:3px 0;">Subtotal</td><td align="right" style="font-size:13.5px;color:#004F51;">{{ subtotal_price | money }}</td></tr>
+              <tr><td style="font-size:13.5px;color:#5C6660;padding:3px 0;">Shipping</td><td align="right" style="font-size:13.5px;color:#004F51;">{% if shipping_price > 0 %}{{ shipping_price | money }}{% else %}Free{% endif %}</td></tr>
+              <tr><td style="font-size:13.5px;color:#5C6660;padding:3px 0;">Taxes</td><td align="right" style="font-size:13.5px;color:#004F51;">{{ tax_price | money }}</td></tr>
+              <tr><td style="font-size:16px;font-weight:bold;color:#004F51;padding:10px 0 0;">Total</td><td align="right" style="font-size:16px;font-weight:bold;color:#004F51;padding:10px 0 0;">{{ total_price | money_with_currency }}</td></tr>
+            </table>
+          </td></tr>
+
+          <!-- CTA -->
+          <tr><td align="center" style="padding:26px 36px 8px;">
+            <a href="{{ order_status_url }}" style="display:inline-block;background:#F9B25C;color:#00383A;font-size:15px;font-weight:bold;text-decoration:none;padding:15px 38px;border-radius:999px;">View your order</a>
+          </td></tr>
+
+          <!-- Support -->
+          <tr><td style="padding:20px 36px 34px;">
+            <p style="font-size:13.5px;line-height:1.6;color:#5C6660;margin:0;">Questions, or want to change your flavor? Just reply to this email or write to <a href="mailto:alejandro@drinkspry.com" style="color:#004F51;">alejandro@drinkspry.com</a>. A real person (often the founder) will answer.</p>
+          </td></tr>
+        </table>
+      </td></tr>
+
+      <!-- Footer -->
+      <tr><td style="padding:6px 14px 22px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#004F51;border-radius:14px;">
+          <tr><td style="padding:26px 30px;">
+            <span style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.6px;color:#F2F0E9;">SPRY</span>
+            <p style="font-size:12.5px;line-height:1.7;color:rgba(246,241,232,0.62);margin:12px 0 0;">
+              <a href="https://drinkspry.com/legal.html#shipping" style="color:rgba(246,241,232,0.85);text-decoration:none;">Shipping</a> &nbsp;&middot;&nbsp;
+              <a href="https://drinkspry.com/legal.html#refund" style="color:rgba(246,241,232,0.85);text-decoration:none;">Refund policy</a> &nbsp;&middot;&nbsp;
+              <a href="https://drinkspry.com/legal.html#terms" style="color:rgba(246,241,232,0.85);text-decoration:none;">Terms</a> &nbsp;&middot;&nbsp;
+              <a href="https://drinkspry.com/legal.html#privacy" style="color:rgba(246,241,232,0.85);text-decoration:none;">Privacy</a>
+            </p>
+            <p style="font-size:11.5px;line-height:1.65;color:rgba(246,241,232,0.45);margin:14px 0 0;">
+              Spry Inc., 251 Little Falls Drive, Wilmington, DE 19808. Spry is a food and beverage product, not a drug or dietary supplement, and is not intended to diagnose, treat, cure, or prevent any disease.
+            </p>
+            <p style="font-size:11.5px;color:rgba(246,241,232,0.45);margin:10px 0 0;">&copy; 2026 Spry Inc. · drinkspry.com</p>
+          </td></tr>
+        </table>
+      </td></tr>
+
+    </table>
+  </td></tr>
+</table>

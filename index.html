@@ -349,6 +349,15 @@ p{margin:0}
 .qa[open] summary .ico{transform:rotate(45deg)}
 .qa .a{padding:0 22px 22px;color:var(--ink-2);font-size:16.5px;max-width:62ch}
 
+/* ---------- founding members ---------- */
+.founding{padding-block:0 clamp(22px,2.6vw,36px);scroll-margin-top:124px}
+.founding-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,60px);align-items:center;padding:clamp(28px,4vw,52px);border-radius:34px;background:var(--ink);color:var(--paper)}
+.founding h2{font-size:clamp(40px,4.6vw,76px);color:var(--paper)}
+.founding p{margin-top:16px;font-size:18px;font-weight:600;color:rgba(242,240,233,.88);max-width:44ch}
+.founding ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.founding li{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(242,240,233,.08);box-shadow:inset 0 0 0 1.5px rgba(242,240,233,.2);font-weight:800;font-size:17px;line-height:1.3}
+.founding li .ico{font-size:22px;color:var(--mango-1);flex:none}
+@media (max-width:900px){.founding-grid{grid-template-columns:minmax(0,1fr)}.founding p{font-size:16.5px}}
 /* ---------- gyms ---------- */
 .gyms{padding-block:0 clamp(70px,8vw,120px)}
 .gyms-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:end;padding:clamp(28px,4vw,52px);border-radius:34px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line)}
@@ -434,6 +443,9 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
 .drawer-f .tot{display:flex;justify-content:space-between;font-weight:800;font-size:18px}
 .drawer-f .fine{font-size:12.5px;color:var(--ink-soft)}
 .drawer-f .btn{justify-content:center}
+@media (max-height:760px){.drawer{padding-top:calc(env(safe-area-inset-top,0px) + 16px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 16px)}.free{margin-top:10px;padding:10px 14px}.lines{margin-top:8px}.quick.more{padding:12px;gap:8px}.drawer-f{padding-top:12px;gap:8px}#preLine{margin-top:-4px}}
+@media (max-height:760px) and (pointer:coarse){.quick.more .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}.quick.more .seg::-webkit-scrollbar{display:none}.quick.more .seg button{flex:none}}
+@media (max-height:600px){.quick.more{display:none}}
 
 /* ---------- toast + mobile bar ---------- */
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translate(-50%,calc(100% + 80px));visibility:hidden;z-index:80;background:var(--ink);color:var(--paper);padding:14px 20px;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 20px 40px -20px rgba(0,40,40,.7);transition:transform .5s var(--ease);max-width:calc(100% - 32px);text-align:center}
@@ -849,6 +861,85 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
      "merchantReturnLink": "https://drinkspry.com/legal.html#refund"
     }
    }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://drinkspry.com/#faq",
+   "url": "https://drinkspry.com/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "When does it ship?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Our first production run ships in December 2026. That is a good-faith estimate, not a guaranteed date. We email you when your order ships, and sooner if the date moves."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "When is my card charged?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "When you order. Until the first run ships, every order is a pre-order, and you can cancel for a full refund any time before yours ships."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I change or cancel my order?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, any time before it ships. Email alejandro@drinkspry.com from the address you ordered with. You can switch flavors, subject to availability, and a cancelled order is refunded in full, including shipping."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What comes in a box?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "12 cans, 12 fl oz each. Pick one flavor, or the Mixed Box with three cans each of Mango Passionfruit, Blood Orange, Yuzu Lime and Mixed Berry."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does shipping cost, and where do you ship?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "$5.99 on one box. Two or more boxes ship free. We ship to 40 states and DC, but not yet to Alaska, Connecticut, Hawaii, Iowa, Maine, Massachusetts, Michigan, New York, Oregon or Vermont. Live in one of those? Email alejandro@drinkspry.com and we will tell you when we can ship to you. California orders include the state’s CRV of 5 cents a can, $0.60 a box. It shows on the shipping line at checkout, including on orders that ship free."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How many should I drink?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "One can a day. That is the daily serving used in the clinical studies, and each can holds one serving."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why is it a little cloudy?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The light haze is the peptide. It settles a little in the can, so flip it, roll it once, then open."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is it a soda? A protein shake?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Neither. It is a lightly sparkling, low calorie drink built around one clinically studied ingredient, and it is not sweet the way a soda is."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does it need to be refrigerated?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Store it in a cool, dry place. It tastes best cold."
+     }
+    }
+   ]
   }
  ]
 }
@@ -950,6 +1041,21 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <button class="btn btn-ink add" id="addMixed">Add to cart <span id="addAmt">$47.88</span></button>
       <p class="reassure">First boxes ship in December, within the US. <a href="/legal.html#refund" target="_blank" rel="noopener">Refund policy</a></p>
     </div>
+  </div>
+</section>
+
+<!-- ================= FOUNDING MEMBERS ================= -->
+<section class="founding" id="founding" aria-labelledby="fmh">
+  <div class="wrap founding-grid">
+    <div>
+      <h2 id="fmh">Founding members ship first.</h2>
+      <p>Order before the first boxes ship and you are a founding member. You pay today, your box is due to ship with the first run in December, and you can cancel for a full refund any time before it ships.</p>
+    </div>
+    <ul>
+      <li><svg class="ico"><use href="#i-truck"/></svg>First boxes from the first run</li>
+      <li><svg class="ico"><use href="#i-envelope-simple"/></svg>A direct line to the founder</li>
+      <li><svg class="ico"><use href="#i-star"/></svg>A vote on the next flavor</li>
+    </ul>
   </div>
 </section>
 
@@ -1221,7 +1327,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
       <div>
         <svg class="ico" style="font-size:44px"><use href="#i-qr-code"/></svg>
         <h2 id="gh" style="margin-top:18px">Got a can in hand?</h2>
-        <p>Scanned the code on the side? Three taps and you are done. Every answer shapes the next batch.</p>
+        <p>Scan the code on the side. Three taps and you are done. Every answer shapes the next batch.</p>
       </div>
       <form class="gc-form" id="gcForm" novalidate>
         <fieldset><legend>Which flavor?</legend>
@@ -1266,7 +1372,11 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="wrap faq-grid">
     <div class="faq-side"><h2 id="qh">Questions.</h2><img src="/assets/v3/life-bench.webp" alt="A cold can of Spry Mango Passionfruit on a gym bench next to a towel and a kettlebell" loading="lazy" width="1000" height="1250"></div>
     <div>
-      <details class="qa"><summary>When does it ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The first production run ships in December 2026. For now we ship to 40 states and DC, but not yet to Alaska, Connecticut, Hawaii, Iowa, Maine, Massachusetts, Michigan, New York, Oregon or Vermont. Live in one of those? Email alejandro@drinkspry.com and we will tell you when we can ship to you. California orders include the state&rsquo;s CRV of 5 cents a can, added at checkout. You will hear from us before your box leaves.</p></details>
+      <details class="qa"><summary>When does it ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Our first production run ships in December 2026. That is a good-faith estimate, not a guaranteed date. We email you when your order ships, and sooner if the date moves.</p></details>
+      <details class="qa"><summary>When is my card charged?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">When you order. Until the first run ships, every order is a pre-order, and you can cancel for a full refund any time before yours ships.</p></details>
+      <details class="qa"><summary>Can I change or cancel my order?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Yes, any time before it ships. Email alejandro@drinkspry.com from the address you ordered with. You can switch flavors, subject to availability, and a cancelled order is refunded in full, including shipping.</p></details>
+      <details class="qa"><summary>What comes in a box?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">12 cans, 12 fl oz each. Pick one flavor, or the Mixed Box with three cans each of Mango Passionfruit, Blood Orange, Yuzu Lime and Mixed Berry.</p></details>
+      <details class="qa"><summary>What does shipping cost, and where do you ship?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">$5.99 on one box. Two or more boxes ship free. We ship to 40 states and DC, but not yet to Alaska, Connecticut, Hawaii, Iowa, Maine, Massachusetts, Michigan, New York, Oregon or Vermont. Live in one of those? Email alejandro@drinkspry.com and we will tell you when we can ship to you. California orders include the state&rsquo;s CRV of 5 cents a can, $0.60 a box. It shows on the shipping line at checkout, including on orders that ship free.</p></details>
       <details class="qa"><summary>What is in it?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">Lightly sparkling water, PeptiStrong&reg; (the clinically studied plant-derived peptide, from fava beans) and electrolytes: sodium, potassium and magnesium. Sweetened with monk fruit and stevia, plus a little cane sugar. No artificial colors, flavors or sweeteners.</p></details>
       <details class="qa"><summary>How many should I drink?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">One can a day. That is the daily serving used in the clinical studies, and each can holds one serving.</p></details>
       <details class="qa"><summary>Why is it a little cloudy?<svg class="ico"><use href="#i-plus"/></svg></summary><p class="a">The light haze is the peptide. It settles a little in the can, so flip it, roll it once, then open.</p></details>
@@ -1282,7 +1392,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="wrap">
     <span class="foot-mark" role="img" aria-label="Spry"></span>
     <div class="foot-row">
-      <nav aria-label="Footer"><a href="#flavors">Flavors</a><a href="#mixed">Mixed Box</a><a href="#shop">Shop</a><a href="#science">Science</a><a href="#label">Label</a><a href="#faq">FAQ</a><a href="#can">Got a can?</a><a href="/our-story.html" target="_blank" rel="noopener">Our story</a></nav>
+      <nav aria-label="Footer"><a href="#flavors">Flavors</a><a href="#mixed">Mixed Box</a><a href="#founding">Founding members</a><a href="#shop">Shop</a><a href="#science">Science</a><a href="#label">Label</a><a href="#faq">FAQ</a><a href="#can">Got a can?</a><a href="/our-story.html" target="_blank" rel="noopener">Our story</a></nav>
       <div class="social" aria-label="Follow Spry">
         <a href="https://www.tiktok.com/@drinkspry" target="_blank" rel="noopener" aria-label="Spry on TikTok"><svg class="ico"><use href="#i-tiktok-logo"/></svg>TikTok</a>
         <a href="https://www.instagram.com/drink.spry/" target="_blank" rel="noopener" aria-label="Spry on Instagram"><svg class="ico"><use href="#i-instagram-logo"/></svg>Instagram</a>
@@ -1313,6 +1423,7 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
   <div class="drawer-f">
     <div class="tot"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
     <p class="fine" id="shipLine">Shipping $5.99 on one box. Two or more ship free.</p>
+    <p class="fine" id="preLine">First boxes are due to ship in December. Cancel any time before yours ships for a full refund.</p>
     <button class="btn btn-ink" id="checkout">Checkout <svg class="ico"><use href="#i-arrow-right"/></svg></button>
   </div>
 </aside></div>

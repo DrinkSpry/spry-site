@@ -1532,6 +1532,27 @@ var PRICE = 47.88, SHIP = 5.99;
 // subscriptions are whole boxes; cadence does the work (no six-packs)
 var PLANS = { m4:{boxes:2, each:41.88, label:'2 boxes every 4 weeks', every:'every 4 weeks'}, m3:{boxes:2, each:41.88, label:'2 boxes every 3 weeks', every:'every 3 weeks'} };
 var cart = { lines:{}, sub:false };
+// Campaign tags: utm_* and click_id from the landing URL travel to Shopify as cart attributes, so an order shows where it came from.
+// Kept in this browser for 30 days (a later tagged visit replaces them). Nothing is sent anywhere until checkout.
+var TAG_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','click_id'], TAG_STORE = 'spry_src', TAG_DAYS = 30;
+function srcTags(){
+  var found = {}, n = 0, saved = null;
+  try {
+    var p = new URLSearchParams(location.search);
+    TAG_KEYS.forEach(function(k){ var v = (p.get(k) || '').replace(/[\u0000-\u001f\u007f<>"'`]/g, '').trim().slice(0, 200); if (v){ found[k] = v; n++; } });
+  } catch(e){}
+  if (n){
+    found.landed = new Date().toISOString().slice(0, 10);
+    try { localStorage.setItem(TAG_STORE, JSON.stringify({t: Date.now(), v: found})); } catch(e){}
+    return found;
+  }
+  try { saved = JSON.parse(localStorage.getItem(TAG_STORE) || 'null'); } catch(e){}
+  if (saved && saved.v && typeof saved.v === 'object' && Date.now() - saved.t < TAG_DAYS * 864e5){
+    var out = {}; TAG_KEYS.concat('landed').forEach(function(k){ if (typeof saved.v[k] === 'string' && saved.v[k]) out[k] = saved.v[k].slice(0, 200); });
+    return out;
+  }
+  return {};
+}
 function fmt(n){ return '$' + n.toFixed(2); }
 function boxes(){ var n = 0; for (var k in cart.lines) n += cart.lines[k]; return n; }
 function addBox(f, n){ cart.lines[f] = (cart.lines[f] || 0) + (n || 1); renderCart(); bump(); }
@@ -1614,13 +1635,16 @@ function initCart(){
     var items = []; for (var k in cart.lines){ if (cart.lines[k] && VAR[k]) items.push(VAR[k] + ':' + cart.lines[k]); }
     var b = $('#checkout'); b.disabled = true; b.firstChild.textContent = 'Opening checkout ';
     var plan = cart.sub && SELL[cart.sub];
+    var tags = srcTags();
     if (plan){
       var f = document.createElement('form'), i = 0; f.method = 'POST'; f.action = SHOP + '/cart/add';
       var put = function(n, v){ var x = document.createElement('input'); x.type = 'hidden'; x.name = n; x.value = v; f.appendChild(x); };
       for (var q in cart.lines){ if (cart.lines[q] && VAR[q]){ put('items['+i+'][id]', VAR[q]); put('items['+i+'][quantity]', cart.lines[q]); put('items['+i+'][selling_plan]', plan); i++; } }
+      for (var t in tags) put('attributes[' + t + ']', tags[t]);
       put('return_to', '/checkout'); document.body.appendChild(f); f.submit();
     } else {
-      location.href = SHOP + '/cart/' + items.join(',');
+      var qs = []; for (var u in tags) qs.push(encodeURIComponent('attributes[' + u + ']') + '=' + encodeURIComponent(tags[u]));
+      location.href = SHOP + '/cart/' + items.join(',') + (qs.length ? '?' + qs.join('&') : '');
     }
     setTimeout(function(){ b.disabled = false; b.firstChild.textContent = 'Checkout '; }, 5000);
   });
@@ -1840,7 +1864,7 @@ function initChrome(){
 }
 
 fitNames(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fitNames(); if (hasGsap) ScrollTrigger.refresh(); }); window.addEventListener('resize', function(){ clearTimeout(fitNames._t); fitNames._t = setTimeout(fitNames, 120); });
-initFizz(); initHalftones(); initTicker(); initHero(); initReveal(); initRooms(); initTray(); initCart(); initShop(); initScience(); initRoll(); initLabel(); initGotCan(); initChrome();
+srcTags(); initFizz(); initHalftones(); initTicker(); initHero(); initReveal(); initRooms(); initTray(); initCart(); initShop(); initScience(); initRoll(); initLabel(); initGotCan(); initChrome();
 window.addEventListener('load', function(){ if (hasGsap) ScrollTrigger.refresh(); });
 })();
 </script>

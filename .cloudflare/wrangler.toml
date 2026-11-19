@@ -16,3 +16,15 @@ run_worker_first = true
 binding = "FORMS"
 database_name = "spry-site-forms"
 database_id = "3d29a031-977f-410f-abb1-6ca07387f836"
+
+# NEW: once an hour, retry sign-ups Loops has not taken yet.
+[triggers]
+crons = ["23 * * * *"]
+
+# NEW: sign-ups in one hour above this number are stored but held back from Loops. Raise it before a press day.
+[vars]
+SIGNUP_HOURLY_CAP = "60"
+
+# Secret, added in the Cloudflare dashboard (Workers & Pages > drinkspry-site > Settings > Variables and Secrets,
+# type Secret), never in this file, a chat or the repository:
+#   LOOPS_API_KEY   (Loops > Settings > API, a key named spry-site-signup)

@@ -951,6 +951,88 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
  ]
 }
 </script>
+<style>
+/* ---------- email sign-up (scoped to .su; values are the site's own) ---------- */
+.su{--su-paper:#F2F0E9;--su-card:#FAF9F4;--su-ink:#004F51;--su-ink-2:#0B6466;--su-ink-deep:#00383A;--su-ink-soft:#3D6E6F;--su-line:rgba(0,79,81,.16);--su-ease:cubic-bezier(.16,1,.3,1);
+  --su-display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--su-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-family:var(--su-body);color:var(--su-ink);line-height:1.55;text-align:left}
+.su *,.su *::before,.su *::after{box-sizing:border-box}
+.su p{margin:0}
+.su a{color:inherit}
+.su .su-form[hidden],.su .su-done[hidden]{display:none}
+.su-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* fields and buttons (as .gym-form input, .btn, .btn-ink, .btn-ghost.light) */
+.su-form label{display:block;font-weight:800;font-size:14.5px;margin:0 0 6px}
+.su-form input[type=email]{display:block;width:100%;min-width:0;border:0;border-radius:14px;padding:14px 16px;margin:0;font:inherit;font-size:16px;line-height:1.4;background:var(--su-paper);color:var(--su-ink);box-shadow:inset 0 0 0 1.5px var(--su-line);-webkit-appearance:none;appearance:none}
+.su-form input[type=email]::placeholder{color:#5F8584;opacity:1}
+.su-form input[aria-invalid="true"]{box-shadow:inset 0 0 0 2.5px var(--su-ink)}
+.su-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;border:0;border-radius:999px;padding:1.02em 1.6em;margin:0;font-family:inherit;font-weight:800;font-size:16px;line-height:1.55;letter-spacing:-.01em;white-space:nowrap;cursor:pointer;background:var(--su-ink);color:var(--su-paper);box-shadow:0 10px 26px -12px rgba(0,79,81,.7);transition:transform .25s var(--su-ease),background .25s,box-shadow .25s}
+.su-btn:hover{background:var(--su-ink-deep);transform:translateY(-2px)}
+.su-btn:active{transform:translateY(1px) scale(.985)}
+.su-btn[disabled]{opacity:.6;cursor:default;transform:none}
+.su-btn svg{width:1em;height:1em;fill:currentColor;flex:none;font-size:1.15em;transition:transform .3s var(--su-ease)}
+.su-btn:hover svg{transform:translateX(3px)}
+.su :focus-visible{outline:3px solid var(--su-ink);outline-offset:3px}
+.su-form input[type=email]:focus-visible{border-radius:14px}
+.su-btn:focus-visible{border-radius:999px}
+.su-msg{font-size:14.5px;font-weight:700;color:var(--su-ink)}
+.su-msg:empty{display:none}
+.su-consent{font-size:13px;line-height:1.45;color:var(--su-ink-soft)}
+.su-consent a{font-weight:700;text-underline-offset:3px}
+.su-done{outline:0}
+.su-done b{display:flex;align-items:center;gap:12px;font-family:var(--su-display);font-weight:800;font-size:26px;letter-spacing:-.025em;line-height:1.05}
+.su-done b svg{width:34px;height:34px;padding:8px;border-radius:50%;background:var(--su-ink);fill:var(--su-paper);flex:none}
+.su-done span{display:block;margin-top:10px;font-size:17px;font-weight:600;color:var(--su-ink-2)}
+
+/* placement A: the band (as .gyms and .gyms-grid) */
+.su-band{padding-block:0 clamp(70px,8vw,120px);scroll-margin-top:110px}
+.su-wrap{max-width:1360px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.su-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:end;padding:clamp(28px,4vw,52px);border-radius:34px;background:var(--su-card);box-shadow:inset 0 0 0 1.5px var(--su-line)}
+.su-card h2{font-family:var(--su-display);font-weight:800;font-size:clamp(40px,4.6vw,76px);letter-spacing:-.035em;line-height:.92;margin:0;padding:0;color:var(--su-ink);text-wrap:balance}
+.su .su-lede{margin-top:14px;font-size:18px;font-weight:600;color:var(--su-ink-2);max-width:36ch}
+.su .su-sig{margin-top:14px;font-size:15px;font-weight:700;color:var(--su-ink-soft)}
+.su .su-perks{margin-top:14px;font-size:15px;font-weight:700;color:var(--su-ink);max-width:40ch}
+.su-band .su-form{display:grid;gap:14px}
+.su-band .su-msg{margin-top:8px}
+.su-band .su-btn{width:100%}
+
+/* placement B: the compact line in the footer (ink footer by default) */
+.su-foot{--su-f-text:#F2F0E9;--su-f-muted:#9FBDB8;--su-f-field:rgba(242,240,233,.1);--su-f-edge:rgba(242,240,233,.22);--su-f-ph:#BFD3CE;--su-f-ring:rgba(242,240,233,.7);--su-f-hover:rgba(242,240,233,.1);
+  margin-top:44px;color:var(--su-f-text)}
+.su-foot--light{--su-f-text:#004F51;--su-f-muted:#3D6E6F;--su-f-field:#FAF9F4;--su-f-edge:rgba(0,79,81,.16);--su-f-ph:#5F8584;--su-f-ring:#004F51;--su-f-hover:rgba(0,79,81,.07);margin:0 0 32px}
+.su-foot .su-form{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:10px clamp(20px,4vw,60px);align-items:center}
+.su-foot .su-form label{margin:0;font-family:var(--su-display);font-weight:800;font-size:26px;letter-spacing:-.025em;line-height:1.05;color:var(--su-f-text);text-wrap:balance}
+.su-foot .su-row{display:flex;gap:10px;align-items:stretch}
+.su-foot .su-form input[type=email]{flex:1 1 auto;background:var(--su-f-field);color:var(--su-f-text);box-shadow:inset 0 0 0 1px var(--su-f-edge)}
+.su-foot .su-form input[type=email]::placeholder{color:var(--su-f-ph)}
+.su-foot .su-form input[aria-invalid="true"]{box-shadow:inset 0 0 0 2px var(--su-f-text)}
+.su-foot .su-btn{flex:none;padding:.85em 1.25em;font-size:15px;background:transparent;color:var(--su-f-text);box-shadow:inset 0 0 0 2px var(--su-f-ring)}
+.su-foot .su-btn:hover{background:var(--su-f-hover);transform:none}
+.su-foot :focus-visible{outline-color:var(--su-f-text)}
+.su-foot .su-msg,.su-foot .su-consent{grid-column:2;color:var(--su-f-muted)}
+.su-foot .su-msg{color:var(--su-f-text)}
+.su-foot .su-consent{font-size:12.5px}
+.su-foot .su-done b{font-size:26px}
+.su-foot .su-done b svg{background:var(--su-f-text);fill:var(--su-ink)}
+.su-foot--light .su-done b svg{fill:var(--su-paper)}
+.su-foot .su-done span{color:var(--su-f-muted);font-size:15px}
+
+@media (max-width:900px){
+  .su-card{grid-template-columns:minmax(0,1fr)}
+  .su-foot .su-form{grid-template-columns:minmax(0,1fr)}
+  .su-foot .su-msg,.su-foot .su-consent{grid-column:1}
+}
+@media (max-width:520px){
+  .su-foot .su-row{flex-direction:column}
+  .su-foot .su-btn{width:100%;padding:1.02em 1.6em;font-size:16px}
+  .su-foot .su-form label{font-size:23px}
+}
+@media (prefers-reduced-motion:reduce){
+  .su-btn,.su-btn svg{transition:none}
+  .su-btn:hover{transform:none}
+}
+</style>
 </head>
 <body>
 
@@ -1393,11 +1475,59 @@ footer{background:var(--ink);color:var(--paper);padding-block:clamp(60px,8vw,110
     </div>
   </div>
 </section>
+<section class="su su-band" id="signup" aria-labelledby="suH">
+  <div class="su-wrap">
+    <div class="su-card">
+      <div>
+        <h2 id="suH">Want to know when it ships?</h2>
+        <p class="su-lede">Leave your email and I will write when the first boxes are ready. Now and then I also send a short note on how the drink is made.</p>
+        <!-- PERKS LINE, OFF. Switch on only when the Founding members section is live and says who counts:
+        <p class="su-perks">On the list you get first call on the first boxes, a direct line to me and a flavor vote.</p>
+        -->
+        <p class="su-sig">Alejandro Navarro, founder</p>
+      </div>
+      <div>
+        <form class="su-form" data-su data-placement="band" novalidate>
+          <div>
+            <label for="suEmail">Email</label>
+            <input type="email" id="suEmail" name="email" placeholder="you@example.com" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" maxlength="254" required aria-describedby="suMsg suConsent">
+            <p class="su-msg" id="suMsg" role="alert"></p>
+          </div>
+          <div class="su-hp" aria-hidden="true"><label for="suHp">Leave this empty</label><input type="text" id="suHp" name="bot-field" tabindex="-1" autocomplete="off"></div>
+          <button class="su-btn" type="submit">Keep me posted <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></button>
+          <p class="su-consent" id="suConsent">By signing up you agree to get news and marketing emails from Spry. Unsubscribe any time. <a href="/legal.html#privacy" target="_blank" rel="noopener">Privacy policy</a></p>
+          <noscript><p class="su-consent">This form needs JavaScript. You can also email alejandro@drinkspry.com and ask to be added.</p></noscript>
+        </form>
+        <div class="su-done" role="status" tabindex="-1" hidden>
+          <b><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>You are on the list.</b>
+          <span>I will write when there is news.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
     <span class="foot-mark" role="img" aria-label="Spry"></span>
+<div class="su su-foot">
+  <form class="su-form" data-su data-placement="footer" novalidate>
+    <label for="suEmailF">Want to know when it ships?</label>
+    <div class="su-row">
+      <input type="email" id="suEmailF" name="email" placeholder="you@example.com" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" maxlength="254" required aria-describedby="suMsgF suConsentF">
+      <button class="su-btn" type="submit">Keep me posted <svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></svg></button>
+    </div>
+    <div class="su-hp" aria-hidden="true"><label for="suHpF">Leave this empty</label><input type="text" id="suHpF" name="bot-field" tabindex="-1" autocomplete="off"></div>
+    <p class="su-msg" id="suMsgF" role="alert"></p>
+    <p class="su-consent" id="suConsentF">By signing up you agree to get news and marketing emails from Spry. Unsubscribe any time. <a href="/legal.html#privacy" target="_blank" rel="noopener">Privacy policy</a></p>
+  </form>
+  <div class="su-done" role="status" tabindex="-1" hidden>
+    <b><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>You are on the list.</b>
+    <span>I will write when there is news.</span>
+  </div>
+</div>
+
     <div class="foot-row">
       <nav aria-label="Footer"><a href="#flavors">Flavors</a><a href="#mixed">Mixed Box</a><a href="#founding">Founding members</a><a href="#shop">Shop</a><a href="#science">Science</a><a href="#label">Label</a><a href="#faq">FAQ</a><a href="#can">Got a can?</a><a href="/our-story.html" target="_blank" rel="noopener">Our story</a></nav>
       <div class="social" aria-label="Follow Spry">
@@ -2011,5 +2141,76 @@ window.addEventListener('load', function(){ if (hasGsap) ScrollTrigger.refresh()
 <form name="can-feedback" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input name="rid"><input name="step"><input name="flavor"><input name="overall"><input name="buy"><input name="sweet"><input name="after"><input name="replace"><input name="freq"><input name="where"><input name="where_name"><input type="email" name="email"><input name="source"><input name="bot-field">
 </form>
+<script>
+/* Spry email sign-up. Posts to the site's own Worker (POST /signup), which keeps a copy and passes it to Loops.
+   No dependencies. Handles every form[data-su] on the page. */
+(function(){
+  'use strict';
+  var ENDPOINT = '/signup';
+  var CONSENT = 'site-2026-11';   // names the consent sentence shown under the field; change it when that sentence changes
+  var TAG_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','click_id'];
+  var TAG_STORE = 'spry_src', TAG_DAYS = 30;   // the same 30-day store index.html keeps for the cart
+  var MSG = {
+    empty: 'Add your email first.',
+    invalid: 'Check the email address and try again.',
+    fail: 'That did not go through. Try again, or email alejandro@drinkspry.com.'
+  };
+  var t0 = Date.now();
+  var forms = document.querySelectorAll('form[data-su]');
+  if (!forms.length) return;
+
+  function clean(v){ return String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f<>"'`]/g, '').trim().slice(0, 200); }
+  function okEmail(e){ return e.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
+  function tags(){
+    var out = {}, n = 0, saved = null;
+    try { var p = new URLSearchParams(location.search); TAG_KEYS.forEach(function(k){ var v = clean(p.get(k)); if (v){ out[k] = v; n++; } }); } catch(e){}
+    if (n) return out;
+    try { saved = JSON.parse(localStorage.getItem(TAG_STORE) || 'null'); } catch(e){}
+    if (saved && saved.v && typeof saved.v === 'object' && Date.now() - saved.t < TAG_DAYS * 864e5){
+      TAG_KEYS.concat('landed').forEach(function(k){ if (typeof saved.v[k] === 'string' && saved.v[k]) out[k] = clean(saved.v[k]); });
+    }
+    return out;
+  }
+  function each(list, fn){ Array.prototype.forEach.call(list, fn); }
+  function showDone(from){
+    each(forms, function(f){ var d = f.parentNode.querySelector('.su-done'); f.hidden = true; if (d) d.hidden = false; });
+    var mine = from.parentNode.querySelector('.su-done'); if (mine) mine.focus();
+  }
+
+  each(forms, function(form){
+    var input = form.querySelector('input[type="email"]'), hp = form.querySelector('input[name="bot-field"]'),
+        btn = form.querySelector('button[type="submit"]'), msg = form.querySelector('.su-msg');
+    function fail(text){ msg.textContent = text; input.setAttribute('aria-invalid', 'true'); input.focus(); }
+    input.addEventListener('input', function(){ if (msg.textContent){ msg.textContent = ''; input.removeAttribute('aria-invalid'); } });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (btn.disabled) return;
+      var email = input.value.trim();
+      if (!email){ fail(MSG.empty); return; }
+      if (!okEmail(email)){ fail(MSG.invalid); return; }
+      var b = new URLSearchParams(), t = tags(), k;
+      b.append('email', email);
+      b.append('bot-field', hp ? hp.value : '');
+      b.append('t', String(Date.now() - t0));
+      b.append('placement', form.getAttribute('data-placement') || '');
+      b.append('page', location.pathname.slice(0, 80));
+      b.append('consent', CONSENT);
+      for (k in t) b.append(k, t[k]);
+      btn.disabled = true; form.setAttribute('aria-busy', 'true');
+      msg.textContent = ''; input.removeAttribute('aria-invalid');
+      fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:b.toString()})
+        .then(function(r){ if (r.status === 422) throw new Error('invalid'); if (!r.ok) throw new Error('fail'); showDone(form); })
+        .catch(function(err){ fail(err && err.message === 'invalid' ? MSG.invalid : MSG.fail); })
+        .then(function(){ btn.disabled = false; form.removeAttribute('aria-busy'); });
+    });
+  });
+
+  // A link or a QR code ending in #signup lands on the band, after the page's own scroll effects have settled.
+  if (location.hash === '#signup'){
+    var band = document.getElementById('signup');
+    if (band) setTimeout(function(){ band.scrollIntoView(); }, 300);
+  }
+})();
+</script>
 </body>
 </html>

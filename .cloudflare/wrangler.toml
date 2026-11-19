@@ -10,7 +10,11 @@ routes = [
 [assets]
 directory = "../"
 binding = "ASSETS"
-run_worker_first = true
+# The Worker runs first only where it is needed: page requests (the www redirect) and the form POSTs.
+# Images, video, scripts and fonts go straight to static assets, which are free and unlimited and do not
+# count against the Workers Free plan's 100,000 requests a day (shared with spry-hq). Before 19 Nov 2026 this was
+# true, so every file of a visit (about 35) counted, and past the limit visitors would get a 429.
+run_worker_first = ["/*", "!/assets/*", "!/*.png", "!/*.jpg", "!/*.svg", "!/*.webp", "!/*.mp4"]
 
 [[d1_databases]]
 binding = "FORMS"

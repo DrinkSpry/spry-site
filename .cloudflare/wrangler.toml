@@ -17,11 +17,13 @@ binding = "FORMS"
 database_name = "spry-site-forms"
 database_id = "3d29a031-977f-410f-abb1-6ca07387f836"
 
-# NEW: once an hour, retry sign-ups Loops has not taken yet.
-[triggers]
-crons = ["23 * * * *"]
+# Hourly retry of sign-ups Loops has not taken yet: OFF until the Cloudflare account has a workers.dev subdomain.
+# The 19 Nov 2026 deploy failed at this step ("You need a workers.dev subdomain in order to proceed") after the
+# code itself had gone live. Once the subdomain exists (dashboard > Workers & Pages), restore these two lines:
+# [triggers]
+# crons = ["23 * * * *"]
 
-# NEW: sign-ups in one hour above this number are stored but held back from Loops. Raise it before a press day.
+# Sign-ups in one hour above this number are stored but held back from Loops. Raise it before a press day.
 [vars]
 SIGNUP_HOURLY_CAP = "60"
 

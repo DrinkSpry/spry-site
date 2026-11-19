@@ -1877,7 +1877,7 @@ function initCart(){
     $('.opts').hidden = on; $('#plans').hidden = !on;
     var pk = $('input[name=plan]:checked').value, due = plan.boxes * plan.each;
     $('#subFine').textContent = !PRE.on ? (on ? 'Renews ' + plan.every + ' at ' + fmt(due) + ' until you cancel. Skip or cancel any time before your next delivery ships.' : 'Pick how often. Skip or cancel any time before your next delivery ships.')
-      : on ? 'Starts in December. You pay ' + fmt(due) + ' today for your first delivery, and it ships with the first run. ' + subTerms(pk, due)
+      : on ? 'Starts in December. You pay for your first delivery today, and it ships with the first run. ' + subTerms(pk, due)
       : 'Starts in December with the first run. Pick how often. Skip or cancel any time before your next delivery ships.';
     $('#addAmt').textContent = fmt(on ? plan.boxes * plan.each : n * each);
     $('#amt1').innerHTML = fmt(each) + '<small>+ $5.99 shipping</small>';

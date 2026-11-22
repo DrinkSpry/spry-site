@@ -3,6 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ChatGPT ads measurement: OpenAI's pixel (data source "drinkspry.com" in Ads Manager, added 22 Nov 2026).
+     Records page views here and boxes added to the cart. Checkouts and orders are recorded by the custom pixel
+     "OpenAI ads (ChatGPT)" in Shopify, Settings > Customer events, because checkout runs on Shopify's domain. -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "FDzjVP5iznRUGyM3a6pkGx",
+  });
+  oaiq("measure", "page_viewed", { type: "contents" });
+</script>
 <title>Spry. The fine print, in plain language.</title>
 <meta name="description" content="Orders, shipping, subscriptions, refunds, terms of service and privacy policy for drinkspry.com.">
 <meta name="robots" content="noindex">
@@ -48,7 +71,7 @@ footer a{text-decoration:none}
 <section class="lhero"><div class="wrap">
   <div class="eyebrow">Legal</div>
   <h1>The fine print, in plain language.</h1>
-  <p class="sub">How ordering, shipping, subscriptions and refunds work at drinkspry.com, plus our terms of service and privacy policy. Updated November 19, 2026.</p>
+  <p class="sub">How ordering, shipping, subscriptions and refunds work at drinkspry.com, plus our terms of service and privacy policy. Updated November 22, 2026.</p>
   <div class="toc"><a href="#orders">Orders</a><a href="#shipping">Shipping</a><a href="#subscriptions">Subscriptions</a><a href="#refund">Refunds</a><a href="#terms">Terms of service</a><a href="#privacy">Privacy</a></div>
 </div></section>
 <main>
@@ -132,13 +155,14 @@ footer a{text-decoration:none}
     <!-- 6 -->
     <div class="policy" id="privacy">
       <h2>Privacy Policy</h2>
-      <p class="eff">Effective June 26, 2026. Updated November 12, 2026.</p>
+      <p class="eff">Effective June 26, 2026. Updated November 22, 2026.</p>
       <h3>What we collect</h3>
       <p>Information you give us (name, email, shipping address, what you order, and anything you send through a form on the site, such as your gym's name or feedback on a can) and information collected automatically (device and usage data, cookies). Payment-card data is collected and processed by our payment processor, not stored by us.</p>
       <h3>How we use it</h3>
       <p>To process and deliver orders and subscriptions, communicate with you about your order, provide support, improve the site and the product, and (with your consent) send marketing you can opt out of any time. If you ask us to contact your gym, we use what you send to do that.</p>
       <h3>Who we share it with</h3>
       <p>Service providers that run our business, including our e-commerce platform (Shopify), our payment processor, our email/marketing tool, our warehouse and carriers, and our website host. We do not sell your personal information. We may disclose information if required by law.</p>
+      <p><strong>Advertising measurement.</strong> We use OpenAI's measurement pixel to see which of our ads in ChatGPT lead to orders. On drinkspry.com it records page views and boxes added to the cart, and it sets two first-party cookies (__oppref and __obref). If you came from one of our ChatGPT ads, our store also tells OpenAI when you start checkout or place an order, with the order value and products, linked to that ad click. The pixel may send OpenAI a hashed (one-way scrambled) copy of an email address, phone number or name you enter on drinkspry.com so it can match these events to an ad. OpenAI does not receive your payment details.</p>
       <h3>Your choices and rights</h3>
       <p>You can access, correct, or delete your information, and opt out of marketing, by emailing alejandro@drinkspry.com. <strong>California (CCPA/CPRA):</strong> California residents have the right to know, delete, and correct personal information and to opt out of "sale"/"sharing"; we do not sell personal information. <strong>EU/UK (GDPR):</strong> where applicable, you have rights of access, rectification, erasure, restriction, portability, and objection, and may lodge a complaint with your supervisory authority. Our legal bases are contract performance (fulfilling your order), consent (marketing), and legitimate interests (running and securing the site).</p>
       <h3>Retention &amp; contact</h3>

@@ -3,6 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ChatGPT ads measurement: OpenAI's pixel (data source "drinkspry.com" in Ads Manager, added 22 Nov 2026).
+     Records page views here and boxes added to the cart. Checkouts and orders are recorded by the custom pixel
+     "OpenAI ads (ChatGPT)" in Shopify, Settings > Customer events, because checkout runs on Shopify's domain. -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "FDzjVP5iznRUGyM3a6pkGx",
+  });
+  oaiq("measure", "page_viewed", { type: "contents" });
+</script>
 <title>Our story · Spry</title>
 <meta name="description" content="Why Spry exists: a drink built around a clinically studied peptide from fava bean protein, from founder Alejandro Navarro.">
 <link rel="canonical" href="https://drinkspry.com/our-story.html">

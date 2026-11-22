@@ -3,6 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- ChatGPT ads measurement: OpenAI's pixel (data source "drinkspry.com" in Ads Manager, added 22 Nov 2026).
+     Records page views here and boxes added to the cart. Checkouts and orders are recorded by the custom pixel
+     "OpenAI ads (ChatGPT)" in Shopify, Settings > Customer events, because checkout runs on Shopify's domain. -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "FDzjVP5iznRUGyM3a6pkGx",
+  });
+  oaiq("measure", "page_viewed", { type: "contents" });
+</script>
 <title>Spry. The peptide drink.</title>
 <meta name="description" content="Spry is a lightly sparkling, low calorie drink with PeptiStrong&reg; plant-derived peptides, clinically studied to support muscle strength and recovery, plus electrolytes. First boxes ship in December.">
 <meta name="theme-color" content="#F2F0E9">
@@ -1777,6 +1800,7 @@ function initTray(){
 
 /* ---------------- cart ---------------- */
 var PRICE = 47.88, SHIP = 5.99;
+var SHOP = 'https://spry-9197.myshopify.com', VAR = {mixed:'50834609700912', mango:'50834609569840', blood:'50834609635376', yuzu:'50834609438768', berry:'50834609504304'};
 // subscriptions are whole boxes; cadence does the work (no six-packs)
 var PLANS = { m4:{boxes:2, each:41.88, days:28, label:'2 boxes every 4 weeks', every:'every 4 weeks'}, m3:{boxes:2, each:41.88, days:21, label:'2 boxes every 3 weeks', every:'every 3 weeks'} };
 // Until the first run ships: Shopify bills the first delivery at checkout and counts renewals from the order date, with no start date to set.
@@ -1791,11 +1815,15 @@ var cart = { lines:{}, sub:false };
 // Campaign tags: utm_* and click_id from the landing URL travel to Shopify as cart attributes, so an order shows where it came from.
 // Kept in this browser for 30 days (a later tagged visit replaces them). Nothing is sent anywhere until checkout.
 var TAG_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','click_id'], TAG_STORE = 'spry_src', TAG_DAYS = 30;
+// click_id carries OpenAI's click reference (oppref), which can run past 200 characters and must not be cut:
+// the Shopify checkout pixel sends it back to OpenAI to tie an order to its ad click. If the tracking template's
+// click_id is missing, fall back to the oppref parameter OpenAI adds to the landing URL itself.
+function tagCap(k){ return k === 'click_id' ? 1000 : 200; }
 function srcTags(){
   var found = {}, n = 0, saved = null;
   try {
     var p = new URLSearchParams(location.search);
-    TAG_KEYS.forEach(function(k){ var v = (p.get(k) || '').replace(/[\u0000-\u001f\u007f<>"'`]/g, '').trim().slice(0, 200); if (v){ found[k] = v; n++; } });
+    TAG_KEYS.forEach(function(k){ var v = (p.get(k) || (k === 'click_id' ? p.get('oppref') : '') || '').replace(/[\u0000-\u001f\u007f<>"'`]/g, '').trim().slice(0, tagCap(k)); if (v){ found[k] = v; n++; } });
   } catch(e){}
   if (n){
     found.landed = new Date().toISOString().slice(0, 10);
@@ -1804,14 +1832,23 @@ function srcTags(){
   }
   try { saved = JSON.parse(localStorage.getItem(TAG_STORE) || 'null'); } catch(e){}
   if (saved && saved.v && typeof saved.v === 'object' && Date.now() - saved.t < TAG_DAYS * 864e5){
-    var out = {}; TAG_KEYS.concat('landed').forEach(function(k){ if (typeof saved.v[k] === 'string' && saved.v[k]) out[k] = saved.v[k].slice(0, 200); });
+    var out = {}; TAG_KEYS.concat('landed').forEach(function(k){ if (typeof saved.v[k] === 'string' && saved.v[k]) out[k] = saved.v[k].slice(0, tagCap(k)); });
     return out;
   }
   return {};
 }
 function fmt(n){ return '$' + n.toFixed(2); }
 function boxes(){ var n = 0; for (var k in cart.lines) n += cart.lines[k]; return n; }
-function addBox(f, n){ cart.lines[f] = (cart.lines[f] || 0) + (n || 1); renderCart(); bump(); }
+function addBox(f, n){ cart.lines[f] = (cart.lines[f] || 0) + (n || 1); renderCart(); bump(); adMeasure('items_added', f, n || 1); }
+// ChatGPT ads measurement (OpenAI pixel, loaded in <head>): boxes added to the cart, amounts in cents.
+// Never allowed to get in the way of the cart.
+function adMeasure(ev, f, n){
+  try {
+    if (typeof window.oaiq !== 'function' || !VAR[f]) return;
+    var each = Math.round((cart.sub ? PLANS[cart.sub].each : PRICE) * 100);
+    window.oaiq('measure', ev, {type:'contents', amount:each * n, currency:'USD', contents:[{id:VAR[f], name:(f === 'mixed' ? 'The Mixed Box' : FL[f].name), content_type:'product', quantity:n, amount:each, currency:'USD'}]});
+  } catch(e){}
+}
 function bump(){ var n = $('#cartN'); n.classList.remove('bump'); void n.offsetWidth; n.classList.add('bump'); }
 function postForm(name, data){
   var b = new URLSearchParams(); b.append('form-name', name);
@@ -1891,7 +1928,7 @@ function initCart(){
     var k = $('input[name=plan]:checked').value, n = subT.checked ? PLANS[k].boxes : +$('input[name=boxes]:checked').value;
     cart.sub = subT.checked ? k : false; addBox('mixed', n); openCart();
   });
-  var SHOP = 'https://spry-9197.myshopify.com', VAR = {mixed:'50834609700912', mango:'50834609569840', blood:'50834609635376', yuzu:'50834609438768', berry:'50834609504304'};
+  // SHOP and VAR (Shopify variant ids) are set with the prices at the top of the cart section.
   // Shopify Subscriptions selling plan ids (Apps > Subscriptions > Plans > Subscribe and save). Cart permalinks drop selling plans, so subscriptions go through /cart/add.
   var SELL = {m4:'7242055728', m3:'7242088496'};
   $('#checkout').addEventListener('click', function(){
